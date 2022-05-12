@@ -1,7 +1,7 @@
 CREATE TABLE "UserType"(
 	"UT_ID" SERIAL PRIMARY KEY,
 	"UT_Name" VARCHAR(2) NOT NULL
-)
+);
 
 CREATE TABLE "User"(
 	"U_ID" BIGSERIAL PRIMARY KEY,
@@ -17,7 +17,7 @@ CREATE TABLE "User"(
 	"U_IsActive" BOOLEAN DEFAULT FALSE,
 	"U_LastLogin" TIMESTAMPTZ,
 	"U_IsActDrtUser" BOOLEAN DEFAULT FALSE
-)
+);
 
 CREATE TABLE "MasterApplication"(
 	"MA_ID" SERIAL PRIMARY KEY,
@@ -28,12 +28,12 @@ CREATE TABLE "MasterApplication"(
 	"MA_AddedBy" BIGSERIAL REFERENCES "User" ("U_ID") NOT NULL,
 	"MA_UpdatedOn" TIMESTAMPTZ NOT NULL,
 	"MA_UpdatedBy" BIGSERIAL REFERENCES "User" ("U_ID") NOT NULL
-) 
+);
 
 CREATE TABLE "DataBaseType" (
 	"DBT_ID" SERIAL PRIMARY KEY,
 	"DBT_Name" VARCHAR(3) NOT NULL UNIQUE
-)
+);
 
 CREATE TABLE "DataBaseApplicationMapping"(
 	"DBAM_ID" BIGSERIAL PRIMARY KEY,
@@ -50,7 +50,7 @@ CREATE TABLE "DataBaseApplicationMapping"(
 	"DBAM_AddedBy" BIGSERIAL REFERENCES "User" ("U_ID") NOT NULL,
 	"DBAM_UpdatedOn" TIMESTAMPTZ NOT NULL,
 	"DBAM_UpdatedBy" BIGSERIAL REFERENCES "User" ("U_ID") NOT NULL
-)
+);
 
 
 CREATE TABLE "ApplicationScreen"(
@@ -60,7 +60,7 @@ CREATE TABLE "ApplicationScreen"(
 	"AS_AddedBy" BIGSERIAL REFERENCES "User" ("U_ID") NOT NULL,
 	"AS_UpdatedOn" TIMESTAMPTZ NOT NULL,
 	"AS_UpdatedBy" BIGSERIAL REFERENCES "User" ("U_ID") NOT NULL
-)
+);
 
 CREATE TABLE "ApplicationScreenRightsMapping"(
 	"ASR_ID" BIGSERIAL PRIMARY KEY,
@@ -75,7 +75,7 @@ CREATE TABLE "ApplicationScreenRightsMapping"(
 	"ASR_AddedBy" BIGSERIAL REFERENCES "User" ("U_ID") NOT NULL,
 	"ASR_UpdatedOn" TIMESTAMPTZ NOT NULL,
 	"ASR_UpdatedBy" BIGSERIAL REFERENCES "User" ("U_ID") NOT NULL
-)
+);
 
 CREATE TABLE "UserPermission"(
 	"UP_ID" BIGSERIAL PRIMARY KEY,
@@ -85,12 +85,12 @@ CREATE TABLE "UserPermission"(
 	"UP_RightToCreate" BOOLEAN DEFAULT FALSE,
 	"UP_RightToUpdate" BOOLEAN DEFAULT FALSE,
 	"UP_RightToDelete" BOOLEAN DEFAULT FALSE
-)
+);
 
 CREATE TABLE "QueryStatus"(
 	"QS_ID" SERIAL PRIMARY KEY,
 	"QS_Name" VARCHAR(50) NOT NULL UNIQUE
-)
+);
 
 CREATE TABLE "Query"(
 	"Q_ID" BIGSERIAL PRIMARY KEY,
@@ -115,4 +115,6 @@ CREATE TABLE "Query"(
 	"Q_IsDrafed" BOOLEAN DEFAULT FALSE,
 	"Q_IsDeleted" BOOLEAN DEFAULT FALSE,
 	"Q_BackupTableName" VARCHAR(1000)
-)
+);
+
+commit;
