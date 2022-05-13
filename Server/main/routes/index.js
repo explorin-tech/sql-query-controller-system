@@ -1,6 +1,8 @@
-const MasterApplicationRoute = require('./MasterApplicationRoute')
+const express = require('express');
+const masterApplicationRouter = require('./master_application.router');
 
+const init = (app) => {
+  app.use('/api', masterApplicationRouter);
+};
 
-module.exports = {
-    MasterApplicationRoute
-}
+module.exports = init;

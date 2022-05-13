@@ -1,6 +1,5 @@
-const MasterApplicationService = require('./MasterApplicationService')
-
+const MasterApplicationService = require('./master_application.service');
 
 module.exports = {
-    MasterApplicationService
-}
+  MasterApplicationService,
+};
