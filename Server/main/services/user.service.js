@@ -51,3 +51,12 @@ module.exports.PUT_editUserDetails = (req, res, next) => {
   const response = UserDao.editUser(req, res, next, params);
   return response;
 };
+
+module.exports.POST_deleteUser = (req, res, next) => {
+  const user_id = req.body.user_id;
+  const params = {
+    user_id: user_id,
+  };
+  const response = UserDao.deleteUser(req, res, next, params);
+  return response;
+};

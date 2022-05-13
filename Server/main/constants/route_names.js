@@ -14,4 +14,5 @@ module.exports = Object.freeze({
   GET_USER_DETAILS: '/get/user_details',
   ADD_AN_USER: '/post/user',
   EDIT_USER_DETAILS: '/put/user_details',
+  DELETE_AN_USER: 'delete/user',
 });

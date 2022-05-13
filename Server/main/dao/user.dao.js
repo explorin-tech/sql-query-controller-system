@@ -27,3 +27,10 @@ module.exports.editUser = (req, res, next, params) => {
     return res.json(q_res.rows);
   });
 };
+
+module.exports.deleteUser = (req, res, next, params) => {
+  const user_id = params.user_id;
+  pool.query(UserQuery.DELETE_USER, [user_id], (q_err, q_res) => {
+    return res.json(q_res.rows);
+  });
+};

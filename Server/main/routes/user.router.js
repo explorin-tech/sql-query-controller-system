@@ -19,4 +19,7 @@ router.post(routeNames.ADD_AN_USER, [UserService.POST_addNewUser]);
 // Edit user
 router.put(routeNames.EDIT_USER_DETAILS, [UserService.PUT_editUserDetails]);
 
+// Delete user
+router.delete(routeNames.DELETE_AN_USER, [UserService.POST_deleteUser]);
+
 module.exports = router;
