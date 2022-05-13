@@ -16,4 +16,7 @@ router.get(routeNames.GET_USER_DETAILS, [UserService.GET_getUserDetails]);
 // Add user
 router.post(routeNames.ADD_AN_USER, [UserService.POST_addNewUser]);
 
+// Edit user
+router.put(routeNames.EDIT_USER_DETAILS, [UserService.PUT_editUserDetails]);
+
 module.exports = router;
