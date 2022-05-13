@@ -1,5 +1,10 @@
 const { UserDao } = require('../dao/index');
 
+module.exports.GET_getAllUserTypes = (req, res, next) => {
+  const response = UserDao.getAllUserTypes(req, res, next);
+  return response;
+};
+
 module.exports.GET_getAllUsers = (req, res, next) => {
   const response = UserDao.getAllUsers(req, res, next);
   return response;

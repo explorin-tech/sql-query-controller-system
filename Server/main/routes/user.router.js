@@ -7,6 +7,9 @@ const { UserService } = require('../services');
     USER ROUTES
 */
 
+// Get list of all user types
+router.get(routeNames.GET_ALL_USERTYPES, [UserService.GET_getAllUserTypes]);
+
 // Get list of all users
 router.get(routeNames.GET_ALL_USERS, [UserService.GET_getAllUsers]);
 
