@@ -4,7 +4,7 @@ const routeNames = require('../constants/route_names');
 const { ApplicationDatabaseMappingService } = require('../services');
 
 /*
-    MASTER APPLICATION ROUTES
+    APPLICATION DATABASE MAPPING ROUTES
 */
 
 // Get all databases

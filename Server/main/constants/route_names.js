@@ -7,4 +7,5 @@ module.exports = Object.freeze({
   ADD_DATABASE: '/post/database',
   EDIT_A_DATABASE: '/put/database',
   DELETE_A_DATABASE: '/delete/database',
+  GET_ALL_DATABASE_TYPES: '/get/database_types',
 });
