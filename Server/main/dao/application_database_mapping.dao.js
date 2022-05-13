@@ -1,6 +1,15 @@
 const pool = require('../db/index');
 const { ApplicationDatabaseMappingQuery } = require('../query');
 
+module.exports.getAllDatabaseTypes = (req, res, next) => {
+  pool.query(
+    ApplicationDatabaseMappingQuery.SELECT_ALL_DATABASE_TYPES,
+    (q_err, q_res) => {
+      return res.json(q_res.rows);
+    }
+  );
+};
+
 module.exports.getAllDatabases = (req, res, next) => {
   pool.query(
     ApplicationDatabaseMappingQuery.SELECT_ALL_MAPPED_DATABASES,

@@ -7,6 +7,11 @@ const { ApplicationDatabaseMappingService } = require('../services');
     APPLICATION DATABASE MAPPING ROUTES
 */
 
+// Get list of all database types
+router.get(routeNames.GET_ALL_DATABASE_TYPES, [
+  ApplicationDatabaseMappingService.GET_allDatabaseTypes,
+]);
+
 // Get all databases
 
 router.get(routeNames.GET_ALL_MAPPED_DATABASES, [

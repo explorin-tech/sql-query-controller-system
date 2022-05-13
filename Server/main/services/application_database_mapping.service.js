@@ -1,5 +1,14 @@
 const { ApplicationDatabaseMappingDao } = require('../dao/index');
 
+module.exports.GET_allDatabaseTypes = (req, res, next) => {
+  const response = ApplicationDatabaseMappingDao.getAllDatabaseTypes(
+    req,
+    res,
+    next
+  );
+  return response;
+};
+
 module.exports.GET_allDatabases = (req, res, next) => {
   const response = ApplicationDatabaseMappingDao.getAllDatabases(
     req,
