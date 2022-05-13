@@ -11,4 +11,5 @@ module.exports = Object.freeze({
   DELETE_A_DATABASE: '/delete/database',
   GET_ALL_DATABASE_TYPES: '/get/database_types',
   GET_ALL_USERS: '/get/users',
+  GET_USER_DETAILS: '/get/user_details',
 });
