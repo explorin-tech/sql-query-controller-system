@@ -5,6 +5,20 @@ module.exports.GET_allApplications = (req, res, next) => {
   return response;
 };
 
+module.exports.GET_applicationDetails = (req, res, next) => {
+  const application_id = req.body.application_id;
+  const params = {
+    application_id: application_id,
+  };
+  const response = MasterApplicationDao.getApplicationDetails(
+    req,
+    res,
+    next,
+    params
+  );
+  return response;
+};
+
 module.exports.POST_addApplication = (req, res, next) => {
   const values = [
     req.body.application.application_name,

@@ -12,11 +12,17 @@ router.get(routeNames.GET_ALL_APPLICATIONS, [
   MasterApplicationService.GET_allApplications,
 ]);
 
+// Get one application details
+router.get(routeNames.GET_APPLICATION_DETAILS, [
+  MasterApplicationService.GET_applicationDetails,
+]);
+
 // Add an application
 router.post(routeNames.ADD_AN_APPLICATION, [
   MasterApplicationService.POST_addApplication,
 ]);
 
+// Edit an application
 router.put(routeNames.EDIT_AN_APPLICATION, [
   MasterApplicationService.PUT_editApplication,
 ]);

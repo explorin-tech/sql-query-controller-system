@@ -19,6 +19,18 @@ module.exports.getAllDatabases = (req, res, next) => {
   );
 };
 
+module.exports.getDatabaseDetails = (req, res, next, params) => {
+  const database_application_mapping_id =
+    params.database_application_mapping_id;
+  pool.query(
+    ApplicationDatabaseMappingQuery.GET_DATABASE_DETAILS,
+    [database_application_mapping_id],
+    (q_err, q_res) => {
+      return res.json(q_res.rows);
+    }
+  );
+};
+
 module.exports.addDatabase = (req, res, next, params) => {
   const values = params.values;
   pool.query(

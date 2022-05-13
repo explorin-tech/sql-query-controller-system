@@ -18,6 +18,22 @@ module.exports.GET_allDatabases = (req, res, next) => {
   return response;
 };
 
+module.exports.GET_databaseDetails = (req, res, next) => {
+  const database_application_mapping_id =
+    req.body.database.database_application_mapping_id;
+
+  const params = {
+    database_application_mapping_id: database_application_mapping_id,
+  };
+  const response = ApplicationDatabaseMappingDao.getDatabaseDetails(
+    req,
+    res,
+    next,
+    params
+  );
+  return response;
+};
+
 module.exports.POST_addDatabase = (req, res, next) => {
   const values = [
     req.body.database.application_id,
