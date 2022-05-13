@@ -24,8 +24,20 @@ module.exports.addDatabase = (req, res, next, params) => {
 module.exports.editDatabase = (req, res, next, params) => {
   const values = params.values;
   pool.query(
-    ApplicationDatabaseMappingQuery.EDIT_A_DATABASE_MAPPING,
+    ApplicationDatabaseMappingQuery.EDIT_DATABASE_MAPPING,
     values,
+    (q_err, q_res) => {
+      return res.json(q_res.rows);
+    }
+  );
+};
+
+module.exports.deleteDatabase = (req, res, next, params) => {
+  const database_application_mapping_id =
+    params.database_application_mapping_id;
+  pool.query(
+    ApplicationDatabaseMappingQuery.DELETE_DATABASE_MAPPING,
+    [database_application_mapping_id],
     (q_err, q_res) => {
       return res.json(q_res.rows);
     }

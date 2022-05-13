@@ -6,4 +6,5 @@ module.exports = Object.freeze({
   GET_ALL_MAPPED_DATABASES: '/get/databases',
   ADD_DATABASE: '/post/database',
   EDIT_A_DATABASE: '/put/database',
+  DELETE_A_DATABASE: '/delete/database',
 });

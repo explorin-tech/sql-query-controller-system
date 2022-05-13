@@ -60,3 +60,18 @@ module.exports.PUT_editDatabase = (req, res, next) => {
   );
   return response;
 };
+
+module.exports.DELETE_deleteDatabase = (req, res, next) => {
+  const database_application_mapping_id =
+    req.body.database.database_application_mapping_id;
+
+  const params = {
+    database_application_mapping_id: database_application_mapping_id,
+  };
+  const response = ApplicationDatabaseMappingDao.deleteDatabase(
+    req,
+    res,
+    next,
+    params
+  );
+};
