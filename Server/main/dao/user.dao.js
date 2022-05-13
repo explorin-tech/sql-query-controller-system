@@ -13,3 +13,10 @@ module.exports.getUserDetails = (req, res, next, params) => {
     return res.json(q_res.rows);
   });
 };
+
+module.exports.addUser = (req, res, next, params) => {
+  const values = params.values;
+  pool.query(UserQuery.ADD_NEW_USER, values, (q_err, q_res) => {
+    return res.json(q_res.rows);
+  });
+};
