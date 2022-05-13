@@ -11,3 +11,5 @@ const { DatabaseTypeService } = require('../services');
 router.get(routeNames.GET_ALL_DATABASE_TYPES, [
   DatabaseTypeService.GET_allDatabaseTypes,
 ]);
+
+module.exports = router;

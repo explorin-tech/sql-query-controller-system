@@ -29,4 +29,5 @@ router.put(routeNames.EDIT_A_DATABASE, [
 router.delete(routeNames.DELETE_A_DATABASE, [
   ApplicationDatabaseMappingService.DELETE_deleteDatabase,
 ]);
+
 module.exports = router;
