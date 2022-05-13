@@ -1,4 +1,3 @@
-const express = require('express');
 const { MasterApplicationDao } = require('../dao/index');
 
 module.exports.GET_allApplications = (req, res, next) => {

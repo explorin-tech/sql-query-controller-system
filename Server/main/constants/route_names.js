@@ -3,5 +3,5 @@ module.exports = Object.freeze({
   ADD_AN_APPLICATION: '/post/application',
   EDIT_AN_APPLICATION: '/put/application',
   DELETE_AN_APPLICATION: '/delete/application/',
-  GET_ALL_DATABASES: '/get/databases',
+  GET_ALL_MAPPED_DATABASES: '/get/databases',
 });
