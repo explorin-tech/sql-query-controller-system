@@ -17,6 +17,10 @@ router.post(routeNames.ADD_AN_APPLICATION, [
   MasterApplicationService.POST_addApplication,
 ]);
 
+router.put(routeNames.EDIT_AN_APPLICATION, [
+  MasterApplicationService.PUT_editApplication,
+]);
+
 // Delete an application
 router.delete(routeNames.DELETE_AN_APPLICATION, [
   MasterApplicationService.DELETE_deleteApplication,

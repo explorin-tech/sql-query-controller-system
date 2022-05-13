@@ -1,6 +1,11 @@
 const express = require('express');
 const { MasterApplicationDao } = require('../dao/index');
 
+module.exports.GET_allApplications = (req, res, next) => {
+  const response = MasterApplicationDao.getAllApplications(req, res, next);
+  return response;
+};
+
 module.exports.POST_addApplication = (req, res, next) => {
   const values = [
     req.body.application.application_name,
@@ -13,6 +18,21 @@ module.exports.POST_addApplication = (req, res, next) => {
     values: values,
   };
   const response = MasterApplicationDao.addApplication(req, res, next, params);
+  return response;
+};
+
+module.exports.PUT_editApplication = (req, res, next) => {
+  const values = [
+    req.body.application_id,
+    req.body.application.application_name,
+    req.body.application.owner_1,
+    req.body.application.owner_2,
+    req.body.application.updated_by,
+  ];
+  const params = {
+    values: values,
+  };
+  const response = MasterApplicationDao.editApplication(req, res, next, params);
   return response;
 };
 
@@ -31,9 +51,4 @@ module.exports.DELETE_deleteApplication = (req, res, next) => {
   return response;
   //log.info("method = {}, API = {}, values = {}, request = {}, response = {}, error = {}, cost = {}",
   //  "deleteNewApplication", MasterApplicationDao.DELETE_AN_APPLICATION, );
-};
-
-module.exports.GET_allApplications = (req, res, next) => {
-  const response = MasterApplicationDao.getAllApplications(req, res, next);
-  return response;
 };
