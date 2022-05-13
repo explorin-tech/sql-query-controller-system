@@ -4,4 +4,5 @@ module.exports = Object.freeze({
   EDIT_AN_APPLICATION: '/put/application',
   DELETE_AN_APPLICATION: '/delete/application/',
   GET_ALL_MAPPED_DATABASES: '/get/databases',
+  ADD_DATABASE: '/post/database',
 });

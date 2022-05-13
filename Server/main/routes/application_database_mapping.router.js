@@ -13,4 +13,9 @@ router.get(routeNames.GET_ALL_MAPPED_DATABASES, [
   ApplicationDatabaseMappingService.GET_allDatabases,
 ]);
 
+// Add a database
+
+router.post(routeNames.ADD_DATABASE, [
+  ApplicationDatabaseMappingService.POST_addDatabase,
+]);
 module.exports = router;
