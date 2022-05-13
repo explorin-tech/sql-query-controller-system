@@ -18,4 +18,11 @@ router.get(routeNames.GET_ALL_MAPPED_DATABASES, [
 router.post(routeNames.ADD_DATABASE, [
   ApplicationDatabaseMappingService.POST_addDatabase,
 ]);
+
+// Edit a database
+
+router.put(routeNames.EDIT_A_DATABASE, [
+  ApplicationDatabaseMappingService.PUT_editDatabase,
+]);
+
 module.exports = router;
