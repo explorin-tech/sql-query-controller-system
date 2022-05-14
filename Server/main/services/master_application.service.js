@@ -1,11 +1,11 @@
 const { MasterApplicationDao } = require('../dao/index');
 
-module.exports.GET_allApplications = (req, res, next) => {
+module.exports.GET_getAllApplications = (req, res, next) => {
   const response = MasterApplicationDao.getAllApplications(req, res, next);
   return response;
 };
 
-module.exports.GET_applicationDetails = (req, res, next) => {
+module.exports.GET_getApplicationDetails = (req, res, next) => {
   const application_id = req.body.application_id;
   const params = {
     application_id: application_id,

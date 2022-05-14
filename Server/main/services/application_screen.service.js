@@ -1,6 +1,6 @@
 const { ApplicationScreenDao } = require('../dao/index');
 
-module.exports.GET_allApplicationScreens = (req, res, next) => {
+module.exports.GET_getAllApplicationScreens = (req, res, next) => {
   const response = ApplicationScreenDao.getAllApplicationScreens(
     req,
     res,
@@ -9,7 +9,7 @@ module.exports.GET_allApplicationScreens = (req, res, next) => {
   return response;
 };
 
-module.exports.GET_screenDetails = (req, res, next) => {
+module.exports.GET_getScreenDetails = (req, res, next) => {
   const screen_id = req.body.screen.screen_id;
   const params = {
     screen_id: screen_id,

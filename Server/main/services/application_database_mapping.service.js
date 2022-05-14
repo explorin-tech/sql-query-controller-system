@@ -1,6 +1,6 @@
 const { ApplicationDatabaseMappingDao } = require('../dao/index');
 
-module.exports.GET_allDatabaseTypes = (req, res, next) => {
+module.exports.GET_getAllDatabaseTypes = (req, res, next) => {
   const response = ApplicationDatabaseMappingDao.getAllDatabaseTypes(
     req,
     res,
@@ -9,7 +9,7 @@ module.exports.GET_allDatabaseTypes = (req, res, next) => {
   return response;
 };
 
-module.exports.GET_allDatabases = (req, res, next) => {
+module.exports.GET_getAllDatabases = (req, res, next) => {
   const response = ApplicationDatabaseMappingDao.getAllDatabases(
     req,
     res,
@@ -18,7 +18,7 @@ module.exports.GET_allDatabases = (req, res, next) => {
   return response;
 };
 
-module.exports.GET_databaseDetails = (req, res, next) => {
+module.exports.GET_getDatabaseDetails = (req, res, next) => {
   const database_application_mapping_id =
     req.body.database.database_application_mapping_id;
 

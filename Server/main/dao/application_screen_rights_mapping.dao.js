@@ -16,3 +16,14 @@ module.exports.getAllScreenRightsMappingForAnUser = (
     }
   );
 };
+
+module.exports.addScreenRightsMappingForAnUser = (req, res, next, params) => {
+  const values = params.values;
+  pool.query(
+    ApplicationScreenRightsMappingQuery.INSERT_SCREEN_RIGHTS_MAPPING_FOR_AN_USER,
+    values,
+    (q_err, q_res) => {
+      return res.json(q_res.rows);
+    }
+  );
+};
