@@ -9,12 +9,12 @@ const { ApplicationScreenService } = require('../services');
 
 // Get all application screens
 router.get(routeNames.GET_ALL_APPLICATION_SCREENS, [
-  ApplicationScreenService.GET_allApplicationScreens,
+  ApplicationScreenService.GET_getAllApplicationScreens,
 ]);
 
 // Get screen details
 router.get(routeNames.GET_SCREEN_DETIALS, [
-  ApplicationScreenService.GET_screenDetails,
+  ApplicationScreenService.GET_getScreenDetails,
 ]);
 
 // Add a screen
