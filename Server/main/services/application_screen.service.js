@@ -58,3 +58,11 @@ module.exports.PUT_editApplicationScreen = (req, res, next) => {
   );
   return response;
 };
+
+module.exports.DELETE_deleteApplicationScreen = (req, res, next) => {
+  const screen_id = req.body.screen.screen_id;
+  const params = {
+    screen_id: screen_id,
+  };
+  const response = ApplicationScreenDao.deleteScreen(req, res, next, params);
+};

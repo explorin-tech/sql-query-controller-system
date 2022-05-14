@@ -42,3 +42,14 @@ module.exports.editApplicationScreen = (req, res, next, params) => {
     }
   );
 };
+
+module.exports.deleteScreen = (req, res, next, params) => {
+  const screen_id = params.screen_id;
+  pool.query(
+    ApplicationScreenQuery.DELETE_SCREEN,
+    [screen_id],
+    (q_err, q_res) => {
+      return res.json(q_res.rows);
+    }
+  );
+};

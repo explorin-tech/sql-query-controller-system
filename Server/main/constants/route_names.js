@@ -20,4 +20,5 @@ module.exports = Object.freeze({
   GET_SCREEN_DETIALS: '/get/application_screen_details',
   ADD_AN_APPLICATION_SCREEN: '/post/application_screen',
   EDIT_AN_APPLICATION_SCREEN: '/put/application_screen',
+  DELETE_AN_APPLICATION_SCREEN: '/delete/application_screen',
 });

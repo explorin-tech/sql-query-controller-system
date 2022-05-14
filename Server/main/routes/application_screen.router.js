@@ -27,4 +27,8 @@ router.put(routeNames.EDIT_AN_APPLICATION_SCREEN, [
   ApplicationScreenService.PUT_editApplicationScreen,
 ]);
 
+router.delete(routeNames.DELETE_AN_APPLICATION_SCREEN, [
+  ApplicationScreenService.DELETE_deleteApplicationScreen,
+]);
+
 module.exports = router;
