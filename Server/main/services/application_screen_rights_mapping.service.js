@@ -15,6 +15,23 @@ module.exports.GET_getAllScreenRightsMappingForAnUser = (req, res, next) => {
   return response;
 };
 
+module.exports.GET_getScreenRightsMappingForAnUser = (req, res, next) => {
+  const user_id = req.body.screen_rights.user_id;
+  const screen_id = req.body.screen.screen_id;
+  const params = {
+    user_id: user_id,
+    screen_id: screen_id,
+  };
+  const response =
+    ApplicationScreenRightsMappingDao.getScreenRightsMappingForAnUser(
+      req,
+      res,
+      next,
+      params
+    );
+  return response;
+};
+
 module.exports.POST_addScreenRightsMappingForAnUser = (req, res, next) => {
   const values = [
     req.body.screen_rights.user_id,
