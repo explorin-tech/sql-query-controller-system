@@ -1,0 +1,30 @@
+:root {
+  /* fonts */
+  --heading1: calc(0.2em + 1.7vw);
+  --heading2: calc(0.1em + 1.3vw);
+  --mediumheading1: calc(0.2em + 1vw);
+  --mediumheading2: calc(0.2em + 0.9vw);
+  --subheading1: calc(0.1em + 0.9vw);
+  --subheading2: calc(0.1em + 0.8vw);
+  --heightOne: calc(4em + 5vw);
+  --widthOne: calc(4em + 6vw);
+
+  /* colours */
+  --baseBlue: #1d0f5a;
+  --shade2Blue: #3FAAD7;
+  --shade3Blue: #DBF1F3;
+  --shade2Gray: #e5e7eb;
+  --baseBlack: rgba(14, 14, 18, 0.5);
+}
+
+html,
+body {
+  min-height: -webkit-fill-available;
+  font-family: 'Roboto Flex', sans-serif;
+  ;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}

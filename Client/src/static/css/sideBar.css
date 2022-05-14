@@ -1,0 +1,63 @@
+.dashboardSidebar {
+  width: 18%;
+  min-width: 200px;
+  height: 100%;
+  border-right: 1px solid var(--shade2Gray);
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboardSidebar>div {
+  width: 100%;
+}
+
+.dashboardSidebarUpper {
+  width: 100%;
+  padding: 1em 1em;
+  border-bottom: 1px solid var(--shade2Gray);
+}
+
+.dashboardSidebar li {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  list-style: none;
+  padding: 0.5em 0.7em;
+  border-radius: 8px;
+  margin: 0.2em 0em;
+  cursor: pointer;
+}
+
+.dashboardSidebar li:hover {
+  background-color: var(--shade3Blue);
+}
+
+.dashboardSidebarUpper span {
+  width: 100%;
+  font-weight: 500;
+  opacity: 0.8;
+  margin-left: 1em;
+  color: var(--baseBlack);
+  font-size: 1em;
+}
+
+.dashboardSidebarUpper a {
+  text-decoration: none;
+}
+
+.dashboardSidebarUpper img {
+  width: 23px;
+  height: 25px;
+  opacity: 0.8;
+}
+
+.active-navbar .active-navbar-list {
+  background-color: var(--shade3Blue);
+  opacity: 1;
+  font-weight: 700;
+}
+
+.active-navbar .active-navbar-list span {
+  color: var(--shade2Blue);
+}
