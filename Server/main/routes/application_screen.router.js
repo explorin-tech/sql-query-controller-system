@@ -27,6 +27,7 @@ router.put(routeNames.EDIT_AN_APPLICATION_SCREEN, [
   ApplicationScreenService.PUT_editApplicationScreen,
 ]);
 
+// Delete a screen
 router.delete(routeNames.DELETE_AN_APPLICATION_SCREEN, [
   ApplicationScreenService.DELETE_deleteApplicationScreen,
 ]);
