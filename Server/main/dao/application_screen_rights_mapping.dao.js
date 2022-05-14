@@ -27,3 +27,30 @@ module.exports.addScreenRightsMappingForAnUser = (req, res, next, params) => {
     }
   );
 };
+
+module.exports.editScreenRightsMappingForAnUser = (req, res, params) => {
+  const values = params.values;
+  pool.query(
+    ApplicationScreenRightsMappingQuery.EDIT_SCREEN_RIGHTS_MAPPING_FOR_AN_USER,
+    values,
+    (q_err, q_res) => {
+      return res.json(q_res.rows);
+    }
+  );
+};
+
+module.exports.deleteScreenRightsMappingsForAnUser = (
+  req,
+  res,
+  next,
+  params
+) => {
+  const user_id = params.user_id;
+  pool.query(
+    ApplicationScreenRightsMappingQuery.DELETE_SCREEN_RIGHTS_MAPPING_FOR_AN_USER,
+    [user_id],
+    (q_err, q_res) => {
+      return res.json(q_res.rows);
+    }
+  );
+};

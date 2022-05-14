@@ -24,4 +24,8 @@ module.exports = Object.freeze({
   GET_ALL_SCREEN_RIGHTS_FOR_AN_USER: '/get/screen_rights_mapping_for_an_user',
   ADD_SCREEN_RIGHTS_MAPPING_FOR_AN_USER:
     '/post/screen_rights_mapping_for_an_user',
+  EDIT_SCREEN_RIGHTS_MAPPING_FOR_AN_USER:
+    '/put/screen_rights_mapping_for_an_user',
+  DELETE_SCREEN_RIGHTS_MAPPING_FOR_AN_USER:
+    '/delete/screen_rights_mapping_for_an_user',
 });
