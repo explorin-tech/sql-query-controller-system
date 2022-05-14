@@ -28,4 +28,6 @@ module.exports = Object.freeze({
     '/put/screen_rights_mapping_for_an_user',
   DELETE_SCREEN_RIGHTS_MAPPING_FOR_AN_USER:
     '/delete/screen_rights_mapping_for_an_user',
+  GET_ALL_USER_PERMISSION_MAPPING_FOR_AN_USER:
+    '/get/user_permission_rights_mappings_for_an_user',
 });

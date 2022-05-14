@@ -3,6 +3,7 @@ const ApplicationDatabaseMappingDao = require('./application_database_mapping.da
 const UserDao = require('./user.dao');
 const ApplicationScreenDao = require('./application_screen.dao');
 const ApplicationScreenRightsMappingDao = require('./application_screen_rights_mapping.dao');
+const UserPermissionMappingDao = require('./user_permission_mapping.dao');
 
 module.exports = {
   MasterApplicationDao,
@@ -10,4 +11,5 @@ module.exports = {
   UserDao,
   ApplicationScreenDao,
   ApplicationScreenRightsMappingDao,
+  UserPermissionMappingDao,
 };

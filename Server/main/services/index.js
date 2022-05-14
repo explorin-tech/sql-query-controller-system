@@ -3,6 +3,7 @@ const ApplicationDatabaseMappingService = require('./application_database_mappin
 const UserService = require('./user.service');
 const ApplicationScreenService = require('./application_screen.service');
 const ApplicationScreenRightsMappingService = require('./application_screen_rights_mapping.service');
+const UserPermissionMappingService = require('./user_permission_mapping.service');
 
 module.exports = {
   MasterApplicationService,
@@ -10,4 +11,5 @@ module.exports = {
   UserService,
   ApplicationScreenService,
   ApplicationScreenRightsMappingService,
+  UserPermissionMappingService,
 };
