@@ -21,4 +21,5 @@ module.exports = Object.freeze({
   ADD_AN_APPLICATION_SCREEN: '/post/application_screen',
   EDIT_AN_APPLICATION_SCREEN: '/put/application_screen',
   DELETE_AN_APPLICATION_SCREEN: '/delete/application_screen',
+  GET_ALL_SCREEN_RIGHTS_FOR_AN_USER: '/get/screen_rights_mapping_for_an_user',
 });
