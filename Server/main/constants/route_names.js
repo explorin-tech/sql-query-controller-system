@@ -15,6 +15,9 @@ module.exports = Object.freeze({
   GET_USER_DETAILS: '/get/user_details',
   ADD_AN_USER: '/post/user',
   EDIT_USER_DETAILS: '/put/user_details',
-  DELETE_AN_USER: 'delete/user',
-  GET_ALL_APPLICATION_SCREENS: 'get/application_screens',
+  DELETE_AN_USER: '/delete/user',
+  GET_ALL_APPLICATION_SCREENS: '/get/application_screens',
+  GET_SCREEN_DETIALS: '/get/application_screen_details',
+  ADD_AN_APPLICATION_SCREEN: '/post/application_screen',
+  EDIT_AN_APPLICATION_SCREEN: '/put/application_screen',
 });
