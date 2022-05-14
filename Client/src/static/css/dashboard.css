@@ -1,22 +1,24 @@
 .dashboard {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .dashboardContainer {
-    width: 100%;
-    height: 93vh;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  width: 100%;
+  height: 93vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .dashboardContent {
-    display: flex;
-    height: inherit;
-    flex: 1;
-    overflow-x: hidden;
-    overflow-y: auto;
+  display: flex;
+  height: inherit;
+  flex: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: var(--shade3Blue);
+  padding: 1.5em;
 }

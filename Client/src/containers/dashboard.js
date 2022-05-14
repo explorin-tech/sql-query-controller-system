@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import Navbar from "../common/components/navBar";
 import Sidebar from "../common/components/sideBar";
@@ -7,6 +8,7 @@ import AddApplication from "../components/addApplication";
 import Home from "../components/home";
 
 import "../static/css/dashboard.css";
+import "../static/css/table.css";
 
 export default function Dashboard() {
 
@@ -19,11 +21,11 @@ export default function Dashboard() {
           <Switch>
             <Route
               exact
-              path="/"
+              path="/home"
               render={(props) => <Home />}
             />
             <Route exact path="/application" component={AddApplication} />
-            {/* <Route exact path="/tasks/:id" component={TaxPage} /> */}
+            <Route exact path="/" component={Home} />
           </Switch>
         </div>
       </div>

@@ -6,8 +6,8 @@ import "../../static/css/sideBar.css";
 export default function Sidebar() {
 
   return (
-    <div className="dashboardSidebar">
-      <div className="dashboardSidebarUpper">
+    <div className="sideBar">
+      <div className="sideBarUpper">
         <MenuItem
           to="/home"
           image={require("../../static/images/dummy.png")}

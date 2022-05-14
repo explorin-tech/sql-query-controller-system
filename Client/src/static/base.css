@@ -10,11 +10,13 @@
   --widthOne: calc(4em + 6vw);
 
   /* colours */
-  --baseBlue: #1d0f5a;
+  --baseBlue: #062C5B;
   --shade2Blue: #3FAAD7;
   --shade3Blue: #DBF1F3;
-  --shade2Gray: #e5e7eb;
+  --shade4Blue: #A1D9DF;
+  --shade2Gray: #E5E7EB;
   --baseBlack: rgba(14, 14, 18, 0.5);
+  --baseWhite: #FFFFFF;
 }
 
 html,

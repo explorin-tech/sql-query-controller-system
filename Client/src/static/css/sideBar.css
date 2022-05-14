@@ -1,4 +1,4 @@
-.dashboardSidebar {
+.sideBar {
   width: 18%;
   min-width: 200px;
   height: 100%;
@@ -7,17 +7,17 @@
   flex-direction: column;
 }
 
-.dashboardSidebar>div {
+.sideBar>div {
   width: 100%;
 }
 
-.dashboardSidebarUpper {
+.sideBarUpper {
   width: 100%;
   padding: 1em 1em;
   border-bottom: 1px solid var(--shade2Gray);
 }
 
-.dashboardSidebar li {
+.sideBar li {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -29,35 +29,33 @@
   cursor: pointer;
 }
 
-.dashboardSidebar li:hover {
+.sideBar li:hover {
   background-color: var(--shade3Blue);
 }
 
-.dashboardSidebarUpper span {
+.sideBarUpper span {
   width: 100%;
   font-weight: 500;
-  opacity: 0.8;
   margin-left: 1em;
   color: var(--baseBlack);
   font-size: 1em;
 }
 
-.dashboardSidebarUpper a {
+.sideBarUpper a {
   text-decoration: none;
 }
 
-.dashboardSidebarUpper img {
+.sideBarUpper img {
   width: 23px;
   height: 25px;
-  opacity: 0.8;
 }
 
 .active-navbar .active-navbar-list {
   background-color: var(--shade3Blue);
-  opacity: 1;
   font-weight: 700;
 }
 
 .active-navbar .active-navbar-list span {
   color: var(--shade2Blue);
+  font-weight: 600;
 }
