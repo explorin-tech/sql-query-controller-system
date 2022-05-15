@@ -1,5 +1,5 @@
 import React from 'react';
-import { MenuItem } from './MenuItem';
+import { MenuItem } from '../common/MenuItem';
 
 import '../static/css/sideBar.css';
 

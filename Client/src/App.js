@@ -1,8 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+import * as URLS from './utils/ApplicationUrls';
+
 import { ProtectedRoutes } from './protectedRoutes';
-import SignIn from './components/SignIn';
+import SignIn from './containers/SignIn';
 import Dashboard from './containers/Dashboard';
 
 import './static/css/base.css';
@@ -11,8 +13,8 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/signin" exact component={SignIn} />
-        <ProtectedRoutes path="/" component={Dashboard} />
+        <Route path={URLS.SIGN_PAGE} exact component={SignIn} />
+        <ProtectedRoutes path={URLS.DASHBOARD_PAGE} component={Dashboard} />
       </Switch>
     </BrowserRouter>
   );
