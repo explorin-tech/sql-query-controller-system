@@ -43,7 +43,7 @@ CREATE TABLE "DataBaseApplicationMapping"(
 	"DMAM_DBT_Name" VARCHAR(3) REFERENCES "DataBaseType" ("DBT_Name") ON DELETE CASCADE,
 	"DBAM_DBConnectionString" VARCHAR(500),
 	"DBAM_DBPortNumber" INT,
-	"DBAM_DBHostName" VARCHAR(100),
+	"DBAM_DBHostName" VARCHAR(500),
 	"DBAM_DBUserName" VARCHAR(100),
 	"DBAM_DBPassword" VARCHAR(100),
 	"DBAM_AddedOn" TIMESTAMPTZ NOT NULL,
