@@ -1,0 +1,81 @@
+.selectTable input:focus,
+.searchTable select:focus {
+  outline: none;
+}
+
+.selectTable table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableHeading,
+.selected {
+  background: var(--shade4Blue);
+}
+
+.selectTable table {
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.selectTable thead {
+  color: var(--baseBlack);
+  margin: 0.2em 0;
+}
+
+.selectTable tbody {
+  color: var(--baseBlack);
+}
+
+.selectTable th,
+.selectTable td {
+  padding: 0.6em 0.2em 0.6em 1em;
+  border-bottom: 1px solid var(--shade2Blue);
+  text-align: left;
+}
+
+.selectTable tr:hover {
+  background-color: var(--shade4Blue);
+}
+
+.checkbox {
+  height: 1.2em;
+  width: 1.2em;
+  cursor: pointer;
+}
+
+.application {
+  width: 100%;
+}
+
+.appTab {
+  margin: 0.7em 0.1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9em;
+}
+
+.headData {
+  font-size: 1.3em;
+  font-weight: 700;
+  margin-right: 1em;
+  color: var(--baseBlack);
+}
+
+.searchTable select {
+  cursor: pointer;
+}
+
+.searchTable input,
+.searchTable select {
+  padding: 0.4em 1em;
+  background: var(--baseWhite);
+  border: 1px solid var(--shade2Gray);
+  border-radius: 4px;
+  width: 200px;
+}
+
+.sortIcon {
+  margin-left: 0.3em;
+}

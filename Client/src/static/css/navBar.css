@@ -1,0 +1,40 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4em 1em 0.4em 1.7em;
+  border-bottom: 1px solid var(--shade7Gray);
+  background-color: var(--baseBlue);
+}
+
+.navbar .logo {
+  margin: 0px;
+  width: 65px;
+  height: 30px;
+  background-image: url('../images/icon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.navbar .dropdown button {
+  background-color: transparent;
+  border: none;
+}
+
+.navbar .show>.btn-primary.dropdown-toggle {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.navbar .btn-primary:not(:disabled):not(.disabled).active:focus,
+.navbar .btn-primary:not(:disabled):not(.disabled):active:focus,
+.navbar .show>.btn-primary.dropdown-toggle:focus,
+.navbar .btn-primary:focus {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}

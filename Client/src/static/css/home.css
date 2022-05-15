@@ -1,0 +1,44 @@
+.homePage {
+  width: 100%;
+}
+
+.homePage h4 {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: var(--baseBlack);
+  margin-top: 0.5em;
+}
+
+.homePage .cards {
+  padding: 0.8em;
+  border: 1px solid var(--shade2Gray);
+  max-width: 30%;
+  margin: 0.5em 1em 1em !important;
+  border-radius: 4px;
+  background-color: var(--baseWhite);
+  color: var(--baseBlack);
+}
+
+.homePage .cards h5 {
+  font-size: 1em;
+  margin: 0;
+  font-weight: 700;
+}
+
+.homePage .cards h6 {
+  font-size: 1em;
+  margin: 0.3em 0 0;
+}
+
+.homePage .row {
+  margin-bottom: 1.5em;
+}
+
+.homePage .acrdn {
+  margin-bottom: 1em;
+}
+
+.homePage .accordion-button,
+.homePage .accordion-button::after {
+  color: var(--baseBlack);
+}

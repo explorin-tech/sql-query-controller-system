@@ -1,15 +1,21 @@
-import { useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-function App() {
-  useEffect(() => {
-    axios
-      .get('/api/get/applications')
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err));
-  }, []);
+import { ProtectedRoutes } from './protectedRoutes';
+import SignIn from './components/SignIn';
+import Dashboard from './containers/Dashboard';
 
-  return <div>SQL - Query Controller System</div>;
-}
+import './static/css/base.css';
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route path="/signin" exact component={SignIn} />
+        <ProtectedRoutes path="/" component={Dashboard} />
+      </Switch>
+    </BrowserRouter>
+  );
+};
 
 export default App;
