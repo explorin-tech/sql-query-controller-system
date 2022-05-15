@@ -44,6 +44,7 @@ CREATE TABLE "DataBaseApplicationMapping"(
 	"DBAM_DBConnectionString" VARCHAR(500),
 	"DBAM_DBPortNumber" INT,
 	"DBAM_DBHostName" VARCHAR(100),
+	"DBAM_DBUserName" VARCHAR(100),
 	"DBAM_DBPassword" VARCHAR(100),
 	"DBAM_AddedOn" TIMESTAMPTZ NOT NULL,
 	"DBAM_AddedBy" BIGSERIAL REFERENCES "User" ("U_ID") NOT NULL,

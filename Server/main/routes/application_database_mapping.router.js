@@ -19,7 +19,7 @@ router.get(routeNames.GET_ALL_MAPPED_DATABASES, [
 
 // Get database details
 router.get(routeNames.GET_DATABASE_DETAILS, [
-  ApplicationDatabaseMappingService.GET_getDatabaseDetails,
+  ApplicationDatabaseMappingService.GET_databaseDetails,
 ]);
 
 // Add a database
