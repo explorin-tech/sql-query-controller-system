@@ -1,13 +1,13 @@
-import React, { useMemo, useState } from "react";
-import { useTable, useGlobalFilter, useSortBy } from "react-table";
-import AddModal from "../common/addModal";
+import React, { useMemo, useState } from 'react';
+import { useTable, useGlobalFilter, useSortBy } from 'react-table';
+import AddModal from '../common/AddModal';
 
 function GlobalFilter({ filter, setFilter }) {
   return (
     <span className="searchTable">
-      <span className="headData"> Application </span>{" "}
+      <span className="headData"> Application </span>{' '}
       <input
-        value={filter || ""}
+        value={filter || ''}
         onChange={(e) => setFilter(e.target.value)}
         placeholder="  Search"
       />
@@ -16,34 +16,33 @@ function GlobalFilter({ filter, setFilter }) {
 }
 
 export default function AddApplication() {
-
   const [filteredData, setFilteredData] = useState([]);
   const [modalShow, setModalShow] = useState(false);
   const columns = useMemo(
     () => [
       {
-        Header: "Column 1",
-        accessor: "",
+        Header: 'Column 1',
+        accessor: '',
         filterable: true,
       },
       {
-        Header: "Column 2",
-        accessor: "",
+        Header: 'Column 2',
+        accessor: '',
         filterable: true,
       },
       {
-        Header: "Column 3",
-        accessor: "",
+        Header: 'Column 3',
+        accessor: '',
         filterable: true,
       },
       {
-        Header: "Column 4",
-        accessor: "",
+        Header: 'Column 4',
+        accessor: '',
         filterable: true,
       },
       {
-        Header: "Column 5",
-        accessor: "",
+        Header: 'Column 5',
+        accessor: '',
         filterable: true,
       },
     ],
@@ -58,7 +57,7 @@ export default function AddApplication() {
       data,
     },
     useGlobalFilter,
-    useSortBy,
+    useSortBy
   );
 
   const {
@@ -78,10 +77,7 @@ export default function AddApplication() {
       <div className="application">
         <div className="appTab">
           <div>
-            <GlobalFilter
-              filter={globalFilter}
-              setFilter={setGlobalFilter}
-            />
+            <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
           </div>
           <AddModal
             modalShow={modalShow}
@@ -90,36 +86,35 @@ export default function AddApplication() {
           >
             <form>
               <table>
-                <tr>
-                  <td>
-                    <span>Application</span><br />
-                    <input type="text" />
-                  </td>
-                </tr> <br />
-                <tr>
-                  <td>
-                    <span>Owner 1</span><br />
-                    <select>
-                      <option>A</option>
-                      <option>B</option>
-                    </select>
-                  </td>
-                  <td>
-                    <span>Owner 2</span><br />
-                    <select>
-                      <option>A</option>
-                      <option>B</option>
-                    </select>
-                  </td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td>
+                      <span>Application</span>
+                      <input type="text" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>Owner 1</span>
+                      <select>
+                        <option>A</option>
+                        <option>B</option>
+                      </select>
+                    </td>
+                    <td>
+                      <span>Owner 2</span>
+                      <select>
+                        <option>A</option>
+                        <option>B</option>
+                      </select>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
             </form>
           </AddModal>
           <div>
-            <button
-              className="blueButton"
-              onClick={() => setModalShow(true)}
-            >
+            <button className="blueButton" onClick={() => setModalShow(true)}>
               <i className="fas fa-plus"></i> Add Application
             </button>
           </div>
@@ -135,12 +130,10 @@ export default function AddApplication() {
                 >
                   {headerGroup.headers.map((column) => (
                     <th
-                      {...column.getHeaderProps(
-                        column.getSortByToggleProps()
-                      )}
+                      {...column.getHeaderProps(column.getSortByToggleProps())}
                       key={column.id}
                     >
-                      {column.render("Header")}
+                      {column.render('Header')}
                       {/* Add a sort direction indicator */}
                       <span>
                         {column.isSorted ? (
@@ -150,7 +143,7 @@ export default function AddApplication() {
                             <i className="fas fa-angle-up sortIcon"></i>
                           )
                         ) : (
-                          ""
+                          ''
                         )}
                       </span>
                     </th>
@@ -166,7 +159,7 @@ export default function AddApplication() {
                     {row.cells.map((cell) => {
                       return (
                         <td {...cell.getCellProps()} key={cell.value}>
-                          {cell.render("Cell")}
+                          {cell.render('Cell')}
                         </td>
                       );
                     })}

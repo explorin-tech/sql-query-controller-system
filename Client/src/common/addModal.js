@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import React from 'react';
+import { Modal } from 'react-bootstrap';
 
-import "../static/css/addModal.css";
+import '../static/css/addModal.css';
 
 export default function AddModal({ modalShow, setModalShow, title, ...props }) {
-
   const saveData = () => {
     setModalShow(false);
-  }
+  };
 
   return (
     <>
@@ -24,9 +23,7 @@ export default function AddModal({ modalShow, setModalShow, title, ...props }) {
             {title}
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body className="body">
-          {props.children}
-        </Modal.Body>
+        <Modal.Body className="body">{props.children}</Modal.Body>
         <Modal.Footer>
           <br />
           <button className="greenButton" onClick={() => saveData()}>

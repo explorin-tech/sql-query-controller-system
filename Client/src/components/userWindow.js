@@ -1,15 +1,14 @@
-import React, { useState } from "react";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import "react-tabs/style/react-tabs.css";
+import React, { useState } from 'react';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 
-import AddModal from "../common/addModal";
-import ScreenRights from "./screenRights";
-import DbRights from "./databaseRights";
+import AddModal from '../common/AddModal';
+import DbRights from './DatabaseRights';
+import ScreenRights from './ScreenRights';
 
-import "../static/css/tabs.css";
+import '../static/css/tabs.css';
 
 export default function AddUser() {
-
   const [modalShow, setModalShow] = useState(false);
 
   return (
@@ -18,7 +17,7 @@ export default function AddUser() {
         <div className="appTab">
           <div>
             <span className="searchTable">
-              <span className="headData"> User </span>{" "}
+              <span className="headData"> User </span>{' '}
               <select>
                 <option>-- Select --</option>
                 <option>A</option>
@@ -33,48 +32,46 @@ export default function AddUser() {
           >
             <form>
               <table>
-                <tr>
-                  <td>
-                    <span>First Name</span><br />
-                    <input type="text" />
-                  </td>
-                  <td>
-                    <span>Last Name</span><br />
-                    <input type="text" />
-
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span>Email</span><br />
-                    <input type="email" />
-                  </td>
-                  <td>
-                    <span>Password</span><br />
-                    <input type="password" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <span>User Role</span><br />
-                    <select>
-                      <option>A</option>
-                      <option>B</option>
-                    </select>
-                  </td>
-                  <td>
-                    <span>Is Active Direct User</span><br />
-                    <input type="text" />
-                  </td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td>
+                      <span>First Name</span>
+                      <input type="text" />
+                    </td>
+                    <td>
+                      <span>Last Name</span>
+                      <input type="text" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>Email</span>
+                      <input type="email" />
+                    </td>
+                    <td>
+                      <span>Password</span>
+                      <input type="password" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>User Role</span>
+                      <select>
+                        <option>A</option>
+                        <option>B</option>
+                      </select>
+                    </td>
+                    <td>
+                      <span>Is Active Direct User</span>
+                      <input type="text" />
+                    </td>
+                  </tr>
+                </tbody>
               </table>
             </form>
           </AddModal>
           <div>
-            <button
-              className="blueButton"
-              onClick={() => setModalShow(true)}
-            >
+            <button className="blueButton" onClick={() => setModalShow(true)}>
               <i className="fas fa-plus"></i> Add User
             </button>
           </div>

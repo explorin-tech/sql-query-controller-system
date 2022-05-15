@@ -1,34 +1,33 @@
-import React, { useMemo, useState } from "react";
-import { useTable, useSortBy } from "react-table";
+import React, { useMemo, useState } from 'react';
+import { useTable, useSortBy } from 'react-table';
 
 export default function DbRights() {
-
   const [filteredData, setFilteredData] = useState([]);
   const columns = useMemo(
     () => [
       {
-        Header: "Column 1",
-        accessor: "",
+        Header: 'Column 1',
+        accessor: '',
         filterable: true,
       },
       {
-        Header: "Column 2",
-        accessor: "",
+        Header: 'Column 2',
+        accessor: '',
         filterable: true,
       },
       {
-        Header: "Column 3",
-        accessor: "",
+        Header: 'Column 3',
+        accessor: '',
         filterable: true,
       },
       {
-        Header: "Column 4",
-        accessor: "",
+        Header: 'Column 4',
+        accessor: '',
         filterable: true,
       },
       {
-        Header: "Column 5",
-        accessor: "",
+        Header: 'Column 5',
+        accessor: '',
         filterable: true,
       },
     ],
@@ -42,7 +41,7 @@ export default function DbRights() {
       columns,
       data,
     },
-    useSortBy,
+    useSortBy
   );
 
   const {
@@ -58,12 +57,8 @@ export default function DbRights() {
     <>
       <div className="application">
         <div className="buttonDiv">
-          <button className="yellowButton">
-            Edit
-          </button>
-          <button className="greenButton">
-            Save Changes
-          </button>
+          <button className="yellowButton">Edit</button>
+          <button className="greenButton">Save Changes</button>
         </div>
         <div className="selectTable">
           <table {...getTableProps()}>
@@ -76,12 +71,10 @@ export default function DbRights() {
                 >
                   {headerGroup.headers.map((column) => (
                     <th
-                      {...column.getHeaderProps(
-                        column.getSortByToggleProps()
-                      )}
+                      {...column.getHeaderProps(column.getSortByToggleProps())}
                       key={column.id}
                     >
-                      {column.render("Header")}
+                      {column.render('Header')}
                       {/* Add a sort direction indicator */}
                       <span>
                         {column.isSorted ? (
@@ -91,7 +84,7 @@ export default function DbRights() {
                             <i className="fas fa-angle-up sortIcon"></i>
                           )
                         ) : (
-                          ""
+                          ''
                         )}
                       </span>
                     </th>
@@ -107,7 +100,7 @@ export default function DbRights() {
                     {row.cells.map((cell) => {
                       return (
                         <td {...cell.getCellProps()} key={cell.value}>
-                          {cell.render("Cell")}
+                          {cell.render('Cell')}
                         </td>
                       );
                     })}

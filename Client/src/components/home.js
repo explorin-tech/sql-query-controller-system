@@ -1,27 +1,27 @@
-import React from "react";
+import React from 'react';
 
-import "../static/css/home.css";
-import Cards from "../common/cards";
-import Acrdn from "../common/accordion";
+import '../static/css/home.css';
+import Card from '../common/Card';
+import Acrdn from '../common/Accordion';
 
 const data = [
   {
-    "applicationName": "App One",
-    "database": "Application One db"
+    applicationName: 'App One',
+    database: 'Application One db',
   },
   {
-    "applicationName": "App Two",
-    "database": "Application Two db"
+    applicationName: 'App Two',
+    database: 'Application Two db',
   },
   {
-    "applicationName": "App Three",
-    "database": "Application Three db"
+    applicationName: 'App Three',
+    database: 'Application Three db',
   },
   {
-    "applicationName": "App Four",
-    "database": "Application Four db"
-  }
-]
+    applicationName: 'App Four',
+    database: 'Application Four db',
+  },
+];
 
 export default function Home() {
   return (
@@ -30,7 +30,11 @@ export default function Home() {
       <div className="row">
         {data.map((item, index) => {
           return (
-            <Cards key={index} appName={item.applicationName} db={item.database} />
+            <Card
+              key={index}
+              appName={item.applicationName}
+              db={item.database}
+            />
           );
         })}
       </div>
