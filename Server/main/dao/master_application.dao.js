@@ -10,6 +10,17 @@ module.exports.getAllApplications = (req, res, next) => {
   );
 };
 
+module.exports.getApplicationDetails = (req, res, next, params) => {
+  const application_id = params.application_id;
+  pool.query(
+    MasterApplicationQuery.GET_APPLICATION_DETAILS,
+    [application_id],
+    (q_err, q_res) => {
+      return res.json(q_res.rows);
+    }
+  );
+};
+
 module.exports.addApplication = (req, res, next, params) => {
   const values = params.values;
   pool.query(

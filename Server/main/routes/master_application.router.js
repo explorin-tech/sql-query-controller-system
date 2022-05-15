@@ -9,7 +9,12 @@ const { MasterApplicationService } = require('../services');
 
 // Get list of all applications
 router.get(routeNames.GET_ALL_APPLICATIONS, [
-  MasterApplicationService.GET_allApplications,
+  MasterApplicationService.GET_getAllApplications,
+]);
+
+// Get one application details
+router.get(routeNames.GET_APPLICATION_DETAILS, [
+  MasterApplicationService.GET_getApplicationDetails,
 ]);
 
 // Add an application
@@ -17,6 +22,7 @@ router.post(routeNames.ADD_AN_APPLICATION, [
   MasterApplicationService.POST_addApplication,
 ]);
 
+// Edit an application
 router.put(routeNames.EDIT_AN_APPLICATION, [
   MasterApplicationService.PUT_editApplication,
 ]);
