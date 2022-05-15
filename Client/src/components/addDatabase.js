@@ -5,7 +5,7 @@ import AddModal from "../common/addModal";
 function GlobalFilter({ filter, setFilter }) {
   return (
     <span className="searchTable">
-      <span className="headData"> Application </span>{" "}
+      <span className="headData"> Database </span>{" "}
       <input
         value={filter || ""}
         onChange={(e) => setFilter(e.target.value)}
@@ -15,7 +15,7 @@ function GlobalFilter({ filter, setFilter }) {
   );
 }
 
-export default function AddApplication() {
+export default function AddDatabase() {
 
   const [filteredData, setFilteredData] = useState([]);
   const [modalShow, setModalShow] = useState(false);
@@ -86,30 +86,50 @@ export default function AddApplication() {
           <AddModal
             modalShow={modalShow}
             setModalShow={setModalShow}
-            title="Add Application"
+            title="Add Database"
           >
             <form>
               <table>
                 <tr>
                   <td>
-                    <span>Application</span><br />
-                    <input type="text" />
+                    <span>Application Name</span><br />
+                    <select>
+                      <option>A</option>
+                      <option>B</option>
+                    </select>
                   </td>
                 </tr> <br />
                 <tr>
                   <td>
-                    <span>Owner 1</span><br />
+                    <span>Database Name</span><br />
+                    <input type="text" />
+                  </td>
+                  <td>
+                    <span>Database Type</span><br />
                     <select>
                       <option>A</option>
                       <option>B</option>
                     </select>
                   </td>
+                </tr>
+                <tr>
                   <td>
-                    <span>Owner 2</span><br />
-                    <select>
-                      <option>A</option>
-                      <option>B</option>
-                    </select>
+                    <span>Database Host Name</span><br />
+                    <input type="text" />
+                  </td>
+                  <td>
+                    <span>Database Password</span><br />
+                    <input type="text" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span>Database Connection String</span><br />
+                    <input type="text" />
+                  </td>
+                  <td>
+                    <span>Database Port Number</span><br />
+                    <input type="text" />
                   </td>
                 </tr>
               </table>
@@ -120,7 +140,7 @@ export default function AddApplication() {
               className="addApp"
               onClick={() => setModalShow(true)}
             >
-              <i className="fas fa-plus"></i> Add Application
+              <i className="fas fa-plus"></i> Add Database
             </button>
           </div>
         </div>

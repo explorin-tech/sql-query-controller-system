@@ -1,24 +1,9 @@
 import React, { useMemo, useState } from "react";
-import { useTable, useGlobalFilter, useSortBy } from "react-table";
-import AddModal from "../common/addModal";
+import { useTable, useSortBy } from "react-table";
 
-function GlobalFilter({ filter, setFilter }) {
-  return (
-    <span className="searchTable">
-      <span className="headData"> Application </span>{" "}
-      <input
-        value={filter || ""}
-        onChange={(e) => setFilter(e.target.value)}
-        placeholder="  Search"
-      />
-    </span>
-  );
-}
-
-export default function AddApplication() {
+export default function ScreenRights() {
 
   const [filteredData, setFilteredData] = useState([]);
-  const [modalShow, setModalShow] = useState(false);
   const columns = useMemo(
     () => [
       {
@@ -57,7 +42,6 @@ export default function AddApplication() {
       columns,
       data,
     },
-    useGlobalFilter,
     useSortBy,
   );
 
@@ -67,63 +51,12 @@ export default function AddApplication() {
     headerGroups,
     rows,
     prepareRow,
-    setGlobalFilter,
     state,
   } = tableInstance;
-
-  const { globalFilter } = state;
 
   return (
     <>
       <div className="application">
-        <div className="appTab">
-          <div>
-            <GlobalFilter
-              filter={globalFilter}
-              setFilter={setGlobalFilter}
-            />
-          </div>
-          <AddModal
-            modalShow={modalShow}
-            setModalShow={setModalShow}
-            title="Add Application"
-          >
-            <form>
-              <table>
-                <tr>
-                  <td>
-                    <span>Application</span><br />
-                    <input type="text" />
-                  </td>
-                </tr> <br />
-                <tr>
-                  <td>
-                    <span>Owner 1</span><br />
-                    <select>
-                      <option>A</option>
-                      <option>B</option>
-                    </select>
-                  </td>
-                  <td>
-                    <span>Owner 2</span><br />
-                    <select>
-                      <option>A</option>
-                      <option>B</option>
-                    </select>
-                  </td>
-                </tr>
-              </table>
-            </form>
-          </AddModal>
-          <div>
-            <button
-              className="addApp"
-              onClick={() => setModalShow(true)}
-            >
-              <i className="fas fa-plus"></i> Add Application
-            </button>
-          </div>
-        </div>
         <div className="selectTable">
           <table {...getTableProps()}>
             <thead>

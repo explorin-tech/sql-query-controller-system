@@ -1,0 +1,59 @@
+.addModal table {
+  width: 100%;
+}
+
+.addModal td {
+  width: 50%;
+}
+
+.addModal input,
+.addModal select {
+  width: 90%;
+  border: 1px solid var(--shade2Gray);
+  border-radius: 4px;
+  padding: 0.5em;
+}
+
+.addModal input:focus,
+.addModal select:focus {
+  border: 1px solid var(--shade2Blue);
+  outline: none;
+}
+
+.addModal tr {
+  margin: 0.3em 0;
+}
+
+.addModal .title {
+  color: var(--baseBlack);
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.addModal span {
+  color: var(--baseBlack);
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.addModal .modal-header {
+  padding: 0.8em 1.5em;
+}
+
+.addModal .modal-body {
+  margin: 1em 0;
+  padding: 1em 1.5em;
+}
+
+.addModal .modal-footer {
+  justify-content: left;
+  border-top: none;
+}
+
+.addModal .saveButton {
+  background-color: var(--baseGreen);
+  color: var(--baseWhite);
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+}

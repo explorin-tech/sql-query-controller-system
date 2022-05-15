@@ -9,6 +9,8 @@ import Home from "../components/home";
 
 import "../static/css/dashboard.css";
 import "../static/css/table.css";
+import AddDatabase from "../components/addDatabase";
+import AddUser from "../components/userWindow";
 
 export default function Dashboard() {
 
@@ -25,6 +27,10 @@ export default function Dashboard() {
               render={(props) => <Home />}
             />
             <Route exact path="/application" component={AddApplication} />
+            <Route exact path="/database" component={AddDatabase} />
+            <Route exact path="/user" component={AddUser} />
+            {/* <Route exact path="/query" component={AddUser} />
+            <Route exact path="/draft" component={AddUser} /> */}
             <Route exact path="/" component={Home} />
           </Switch>
         </div>
