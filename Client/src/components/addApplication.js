@@ -117,7 +117,7 @@ export default function AddApplication() {
           </AddModal>
           <div>
             <button
-              className="addApp"
+              className="blueButton"
               onClick={() => setModalShow(true)}
             >
               <i className="fas fa-plus"></i> Add Application

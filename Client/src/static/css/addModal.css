@@ -49,11 +49,3 @@
   justify-content: left;
   border-top: none;
 }
-
-.addModal .saveButton {
-  background-color: var(--baseGreen);
-  color: var(--baseWhite);
-  border: none;
-  padding: 0.5em 1em;
-  border-radius: 4px;
-}

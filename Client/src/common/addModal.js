@@ -29,7 +29,7 @@ export default function AddModal({ modalShow, setModalShow, title, ...props }) {
         </Modal.Body>
         <Modal.Footer>
           <br />
-          <button className="saveButton" onClick={() => saveData()}>
+          <button className="greenButton" onClick={() => saveData()}>
             Save changes
           </button>
         </Modal.Footer>

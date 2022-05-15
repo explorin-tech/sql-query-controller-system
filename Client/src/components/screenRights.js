@@ -57,6 +57,14 @@ export default function ScreenRights() {
   return (
     <>
       <div className="application">
+        <div className="buttonDiv">
+          <button className="yellowButton">
+            Edit
+          </button>
+          <button className="greenButton">
+            Save Changes
+          </button>
+        </div>
         <div className="selectTable">
           <table {...getTableProps()}>
             <thead>

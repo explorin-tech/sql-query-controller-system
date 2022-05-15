@@ -18,6 +18,7 @@
   --baseBlack: rgba(14, 14, 18, 0.5);
   --baseWhite: #FFFFFF;
   --baseGreen: #3FD77C;
+  --baseYellow: #DDC131;
 }
 
 html,
@@ -30,4 +31,25 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+button {
+  color: var(--baseWhite);
+  border: none;
+  padding: 0.5em 1.2em;
+  border-radius: 4px;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.blueButton {
+  background-color: var(--shade2Blue);
+}
+
+.greenButton {
+  background-color: var(--baseGreen);
+}
+
+.yellowButton {
+  background-color: var(--baseYellow);
 }

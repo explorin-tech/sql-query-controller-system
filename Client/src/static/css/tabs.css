@@ -24,3 +24,13 @@
 .react-tabs__tab:focus:after {
   content: none;
 }
+
+.buttonDiv {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1em;
+}
+
+.buttonDiv .yellowButton {
+  margin-right: 1em;
+}

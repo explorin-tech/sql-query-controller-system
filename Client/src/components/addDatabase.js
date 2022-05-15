@@ -137,7 +137,7 @@ export default function AddDatabase() {
           </AddModal>
           <div>
             <button
-              className="addApp"
+              className="blueButton"
               onClick={() => setModalShow(true)}
             >
               <i className="fas fa-plus"></i> Add Database
