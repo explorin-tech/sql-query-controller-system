@@ -1,6 +1,10 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { useTable, useGlobalFilter, useSortBy } from 'react-table';
 import AddModal from '../common/AddModal';
+
+import axios from 'axios';
+
+import * as BACKEND_URLS from '../utils/BackendUrls';
 
 function GlobalFilter({ filter, setFilter }) {
   return (
@@ -16,6 +20,18 @@ function GlobalFilter({ filter, setFilter }) {
 }
 
 export default function AddApplication() {
+  useEffect(() => {
+    axios({
+      method: 'get',
+      url: BACKEND_URLS.GET_ALL_APPLCIATIONS_FOR_AN_USER,
+      params: {
+        user_id: 1,
+      },
+    }).then(function (response) {
+      console.log(response);
+    });
+  }, []);
+
   const [filteredData, setFilteredData] = useState([]);
   const [modalShow, setModalShow] = useState(false);
   const columns = useMemo(
