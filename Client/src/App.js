@@ -1,6 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+import { Provider } from 'react-redux';
+import store from './store/ConfigureStore';
+
 import * as URLS from './utils/ApplicationUrls';
 
 import { ProtectedRoutes } from './protectedRoutes';
@@ -11,12 +14,14 @@ import './static/css/base.css';
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path={URLS.SIGN_PAGE} exact component={SignIn} />
-        <ProtectedRoutes path={URLS.DASHBOARD_PAGE} component={Dashboard} />
-      </Switch>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Switch>
+          <Route path={URLS.SIGN_PAGE} exact component={SignIn} />
+          <ProtectedRoutes path={URLS.DASHBOARD_PAGE} component={Dashboard} />
+        </Switch>
+      </BrowserRouter>
+    </Provider>
   );
 };
 
