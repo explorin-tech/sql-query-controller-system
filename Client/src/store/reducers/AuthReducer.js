@@ -1,24 +1,42 @@
-// const DefaultAuthState = () => {
-//     if (localStorage.getItem("auth")) {
-//       return JSON.parse(localStorage.getItem("auth"));
-//     } else {
-//       return {};
-//     }
-//   };
+import * as ACTION_TYPES from '../actions/ActionTypes';
 
-//   const AuthReducer = (state = DefaultAuthState(), action) => {
-//     switch (action.type) {
-//       case "LOGIN":
-//         return {
-//           displayName: action.displayName,
-//           id: action.id,
-//           role: action.role
-//         };
-//       case "LOGOUT":
-//         return {};
-//       default:
-//         return state;
-//     }
-//   };
+export const initialState = {
+  is_authenticated: false,
+  user: null,
+};
 
-//   export default AuthReducer;
+const AuthReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case ACTION_TYPES.LOGIN_SUCCESS:
+      return {
+        ...state,
+        is_authenticated: true,
+      };
+    case ACTION_TYPES.LOGIN_FAILURE:
+      return {
+        ...state,
+        is_authenticated: false,
+      };
+    case ACTION_TYPES.LOGOUT:
+      return {
+        ...state,
+        is_authenticated: false,
+        user: null,
+      };
+
+    case ACTION_TYPES.SET_DB_USER:
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case ACTION_TYPES.REMOVE_DB_USER:
+      return {
+        ...state,
+        user: null,
+      };
+    default:
+      return state;
+  }
+};
+
+export default AuthReducer;
