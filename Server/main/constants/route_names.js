@@ -1,5 +1,6 @@
 module.exports = Object.freeze({
   GET_ALL_APPLICATIONS: '/get/applications',
+  GET_ALL_APPLCIATIONS_FOR_AN_USER: '/get/applications_for_an_user',
   GET_APPLICATION_DETAILS: '/get/application_details',
   ADD_AN_APPLICATION: '/post/application',
   EDIT_AN_APPLICATION: '/put/application',

@@ -5,8 +5,23 @@ module.exports.GET_getAllApplications = (req, res, next) => {
   return response;
 };
 
+module.exports.GET_getAllApplicationsForAnUser = (req, res, next) => {
+  const user_id = req.query.user_id;
+
+  const params = {
+    user_id: user_id,
+  };
+  const response = MasterApplicationDao.getAllApplicationsForAnUser(
+    req,
+    res,
+    next,
+    params
+  );
+  return response;
+};
+
 module.exports.GET_getApplicationDetails = (req, res, next) => {
-  const application_id = req.body.application_id;
+  const application_id = req.query.application_id;
   const params = {
     application_id: application_id,
   };

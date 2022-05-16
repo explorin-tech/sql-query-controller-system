@@ -12,6 +12,11 @@ router.get(routeNames.GET_ALL_APPLICATIONS, [
   MasterApplicationService.GET_getAllApplications,
 ]);
 
+// Get list of all applications for a user.
+router.get(routeNames.GET_ALL_APPLCIATIONS_FOR_AN_USER, [
+  MasterApplicationService.GET_getAllApplicationsForAnUser,
+]);
+
 // Get one application details
 router.get(routeNames.GET_APPLICATION_DETAILS, [
   MasterApplicationService.GET_getApplicationDetails,

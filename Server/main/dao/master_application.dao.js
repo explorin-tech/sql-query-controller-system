@@ -10,6 +10,19 @@ module.exports.getAllApplications = (req, res, next) => {
   );
 };
 
+module.exports.getAllApplicationsForAnUser = (req, res, next, params) => {
+  pool.query(
+    MasterApplicationQuery.SELECT_ALL_MASTER_APPLICATIONS_FOR_AN_USER,
+    [params.user_id],
+    (q_err, q_res) => {
+      if (q_err) {
+        console.log(q_err);
+      }
+      return res.json(q_res.rows);
+    }
+  );
+};
+
 module.exports.getApplicationDetails = (req, res, next, params) => {
   const application_id = params.application_id;
   pool.query(
