@@ -1,0 +1,50 @@
+.signin {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.signin div:nth-child(1) {
+  width: 40%;
+}
+
+.signin div:nth-child(2) {
+  width: 25%;
+  background-color: var(--shade3Blue);
+  padding: 3em 1.5em 3.5em;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.signin h5 {
+  font-weight: 600;
+  font-size: 1.4em;
+  color: var(--shade5Blue);
+  margin-bottom: 1em;
+}
+
+.signin img {
+  width: 85%;
+}
+
+.signin input {
+  width: 90%;
+  border: none;
+  border-bottom: 1px solid var(--baseBlack);
+  background-color: var(--shade3Blue);
+  padding: 0.5em;
+  margin-top: 1em;
+}
+
+.signin input {
+  border: none;
+  border-bottom: 1px solid var(--baseBlack);
+  outline: none;
+}
+
+.signin button {
+  margin-top: 3em;
+  background-color: var(--shade5Blue);
+  padding: 0.5em 2em;
+}
