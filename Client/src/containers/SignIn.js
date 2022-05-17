@@ -1,5 +1,5 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 export default function SignIn() {
-  return <></>;
+  return <Fragment></Fragment>;
 }

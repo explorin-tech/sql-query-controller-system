@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, Fragment } from 'react';
 import { useTable, useSortBy } from 'react-table';
 
 export default function DbRights() {
@@ -54,7 +54,7 @@ export default function DbRights() {
   } = tableInstance;
 
   return (
-    <>
+    <Fragment>
       <div className="application">
         <div className="buttonDiv">
           <button className="yellowButton">Edit</button>
@@ -111,6 +111,6 @@ export default function DbRights() {
           </table>
         </div>
       </div>
-    </>
+    </Fragment>
   );
 }

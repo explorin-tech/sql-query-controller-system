@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import '../static/css/navBar.css';
 
@@ -7,9 +7,11 @@ import Logo from '../common/Logo';
 
 export default function Navbar() {
   return (
-    <div className="navbar">
-      <Logo />
-      <DropDownMenu />
-    </div>
+    <Fragment>
+      <div className="navbar">
+        <Logo />
+        <DropDownMenu />
+      </div>
+    </Fragment>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useMemo, useState, useEffect, Fragment } from 'react';
 import { useTable, useGlobalFilter, useSortBy } from 'react-table';
 import AddModal from '../common/AddModal';
 
@@ -89,7 +89,7 @@ export default function AddApplication() {
   const { globalFilter } = state;
 
   return (
-    <>
+    <Fragment>
       <div className="application">
         <div className="appTab">
           <div>
@@ -186,6 +186,6 @@ export default function AddApplication() {
           </table>
         </div>
       </div>
-    </>
+    </Fragment>
   );
 }

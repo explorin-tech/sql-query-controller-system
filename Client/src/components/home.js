@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import '../static/css/home.css';
 import Card from '../common/Card';
@@ -25,27 +25,29 @@ const data = [
 
 export default function Home() {
   return (
-    <div className="homePage">
-      <h4>Applications</h4>
-      <div className="row">
-        {data.map((item, index) => {
-          return (
-            <Card
-              key={index}
-              appName={item.applicationName}
-              db={item.database}
-            />
-          );
-        })}
+    <Fragment>
+      <div className="homePage">
+        <h4>Applications</h4>
+        <div className="row">
+          {data.map((item, index) => {
+            return (
+              <Card
+                key={index}
+                appName={item.applicationName}
+                db={item.database}
+              />
+            );
+          })}
+        </div>
+        <h4>Pending for Approval</h4>
+        <div className="row">
+          <Acrdn data="Hi" />
+        </div>
+        <h4>Recent Queries</h4>
+        <div className="row">
+          <Acrdn data="Hi" />
+        </div>
       </div>
-      <h4>Pending for Approval</h4>
-      <div className="row">
-        <Acrdn data="Hi" />
-      </div>
-      <h4>Recent Queries</h4>
-      <div className="row">
-        <Acrdn data="Hi" />
-      </div>
-    </div>
+    </Fragment>
   );
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 
 export const ConditionalLink = ({ to, children, target }) => {
@@ -19,14 +19,16 @@ export const ConditionalLink = ({ to, children, target }) => {
   }
 
   return (
-    <NavLink
-      target={target}
-      rel={(target === '_blank' && 'noreferrer').toString()}
-      activeClassName="active-navbar"
-      to={to}
-      className="text-decoration-none"
-    >
-      {children}
-    </NavLink>
+    <Fragment>
+      <NavLink
+        target={target}
+        rel={(target === '_blank' && 'noreferrer').toString()}
+        activeClassName="active-navbar"
+        to={to}
+        className="text-decoration-none"
+      >
+        {children}
+      </NavLink>
+    </Fragment>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
@@ -12,7 +12,7 @@ export default function AddUser() {
   const [modalShow, setModalShow] = useState(false);
 
   return (
-    <>
+    <Fragment>
       <div className="application">
         <div className="appTab">
           <div>
@@ -91,6 +91,6 @@ export default function AddUser() {
           </div>
         </Tabs>
       </div>
-    </>
+    </Fragment>
   );
 }

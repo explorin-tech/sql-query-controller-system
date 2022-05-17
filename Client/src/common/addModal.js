@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Modal } from 'react-bootstrap';
 
 import '../static/css/addModal.css';
@@ -9,7 +9,7 @@ export default function AddModal({ modalShow, setModalShow, title, ...props }) {
   };
 
   return (
-    <>
+    <Fragment>
       <Modal
         show={modalShow}
         onHide={() => setModalShow(false)}
@@ -31,6 +31,6 @@ export default function AddModal({ modalShow, setModalShow, title, ...props }) {
           </button>
         </Modal.Footer>
       </Modal>
-    </>
+    </Fragment>
   );
 }
