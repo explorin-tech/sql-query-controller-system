@@ -14,6 +14,7 @@
   --shade2Blue: #3FAAD7;
   --shade3Blue: #DBF1F3;
   --shade4Blue: #A1D9DF;
+  --shade5Blue: #0064AF;
   --shade2Gray: #E5E7EB;
   --baseBlack: rgba(14, 14, 18, 0.5);
   --baseWhite: #FFFFFF;
@@ -25,7 +26,6 @@ html,
 body {
   min-height: -webkit-fill-available;
   font-family: 'Roboto Flex', sans-serif;
-  ;
   margin: 0;
 }
 
