@@ -1,66 +1,77 @@
 const pool = require('../db/index');
 const { ApplicationDatabaseMappingQuery } = require('../query');
 
-module.exports.getAllDatabaseTypes = (req, res, next) => {
-  pool.query(
-    ApplicationDatabaseMappingQuery.SELECT_ALL_DATABASE_TYPES,
-    (q_err, q_res) => {
-      return res.json(q_res.rows);
-    }
-  );
+module.exports.getAllDatabaseTypes = async () => {
+  try {
+    const result = await pool.query(
+      ApplicationDatabaseMappingQuery.SELECT_ALL_DATABASE_TYPES
+    );
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
 };
 
-module.exports.getAllDatabases = (req, res, next) => {
-  pool.query(
-    ApplicationDatabaseMappingQuery.SELECT_ALL_MAPPED_DATABASES,
-    (q_err, q_res) => {
-      return res.json(q_res.rows);
-    }
-  );
+module.exports.getAllDatabases = async () => {
+  try {
+    const result = await pool.query(
+      ApplicationDatabaseMappingQuery.SELECT_ALL_MAPPED_DATABASES
+    );
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
 };
 
-module.exports.getDatabaseDetails = (req, res, next, params) => {
-  const database_application_mapping_id =
-    params.database_application_mapping_id;
-  pool.query(
-    ApplicationDatabaseMappingQuery.GET_DATABASE_DETAILS,
-    [database_application_mapping_id],
-    (q_err, q_res) => {
-      return res.json(q_res.rows);
-    }
-  );
+module.exports.getDatabaseDetails = async (params) => {
+  try {
+    const database_application_mapping_id =
+      params.database_application_mapping_id;
+    const result = await pool.query(
+      ApplicationDatabaseMappingQuery.GET_DATABASE_DETAILS,
+      [database_application_mapping_id]
+    );
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
 };
 
-module.exports.addDatabase = (req, res, next, params) => {
-  const values = params.values;
-  pool.query(
-    ApplicationDatabaseMappingQuery.ADD_DATABASE_MAPPING,
-    values,
-    (q_err, q_res) => {
-      return res.json(q_res.rows);
-    }
-  );
+module.exports.addDatabase = async (params) => {
+  try {
+    const values = params.values;
+    const result = await pool.query(
+      ApplicationDatabaseMappingQuery.ADD_DATABASE_MAPPING,
+      values
+    );
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
 };
 
-module.exports.editDatabase = (req, res, next, params) => {
-  const values = params.values;
-  pool.query(
-    ApplicationDatabaseMappingQuery.EDIT_DATABASE_MAPPING,
-    values,
-    (q_err, q_res) => {
-      return res.json(q_res.rows);
-    }
-  );
+module.exports.editDatabase = async (params) => {
+  try {
+    const values = params.values;
+    const result = await pool.query(
+      ApplicationDatabaseMappingQuery.EDIT_DATABASE_MAPPING,
+      values
+    );
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
 };
 
-module.exports.deleteDatabase = (req, res, next, params) => {
-  const database_application_mapping_id =
-    params.database_application_mapping_id;
-  pool.query(
-    ApplicationDatabaseMappingQuery.DELETE_DATABASE_MAPPING,
-    [database_application_mapping_id],
-    (q_err, q_res) => {
-      return res.json(q_res.rows);
-    }
-  );
+module.exports.deleteDatabase = async (params) => {
+  try {
+    const database_application_mapping_id =
+      params.database_application_mapping_id;
+    const result = await pool.query(
+      ApplicationDatabaseMappingQuery.DELETE_DATABASE_MAPPING,
+      [database_application_mapping_id]
+    );
+  } catch (err) {
+    return err;
+  }
 };

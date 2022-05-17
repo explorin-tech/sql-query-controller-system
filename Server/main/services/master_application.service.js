@@ -1,82 +1,133 @@
 const { MasterApplicationDao } = require('../dao/index');
+const { _200, _error } = require('../common/httpHelper');
 
-module.exports.GET_getAllApplications = (req, res, next) => {
-  const response = MasterApplicationDao.getAllApplications(req, res, next);
-  return response;
+module.exports.GET_getAllApplications = async (
+  httpRequest,
+  httpResponse,
+  next
+) => {
+  try {
+    const result = await MasterApplicationDao.getAllApplications();
+    return _200(httpResponse, result);
+  } catch (err) {
+    return _error(httpResponse, {
+      type: 'generic',
+      message: err,
+    });
+  }
 };
 
-module.exports.GET_getAllApplicationsForAnUser = (req, res, next) => {
-  const user_id = req.query.user_id;
-
-  const params = {
-    user_id: user_id,
-  };
-  const response = MasterApplicationDao.getAllApplicationsForAnUser(
-    req,
-    res,
-    next,
-    params
-  );
-  return response;
+module.exports.GET_getAllApplicationsForAnUser = async (
+  httpRequest,
+  httpResponse,
+  next
+) => {
+  try {
+    const user_id = httpRequest.query.user_id;
+    const params = {
+      user_id: user_id,
+    };
+    const result = await MasterApplicationDao.getAllApplicationsForAnUser(
+      params
+    );
+    return _200(httpResponse, result);
+  } catch (err) {
+    return _error(httpResponse, {
+      type: 'generic',
+      message: err,
+    });
+  }
 };
 
-module.exports.GET_getApplicationDetails = (req, res, next) => {
-  const application_id = req.query.application_id;
-  const params = {
-    application_id: application_id,
-  };
-  const response = MasterApplicationDao.getApplicationDetails(
-    req,
-    res,
-    next,
-    params
-  );
-  return response;
+module.exports.GET_getApplicationDetails = async (
+  httpRequest,
+  httpResponse,
+  next
+) => {
+  try {
+    const application_id = httpRequest.query.application_id;
+
+    const params = {
+      application_id: application_id,
+    };
+    const result = await MasterApplicationDao.getApplicationDetails(params);
+    return _200(httpResponse, result);
+  } catch (err) {
+    return _error(httpResponse, {
+      type: 'generic',
+      message: err,
+    });
+  }
 };
 
-module.exports.POST_addApplication = (req, res, next) => {
-  const values = [
-    req.body.application.application_name,
-    req.body.application.owner_1,
-    req.body.application.owner_2,
-    req.body.application.added_by,
-    req.body.application.updated_by,
-  ];
-  const params = {
-    values: values,
-  };
-  const response = MasterApplicationDao.addApplication(req, res, next, params);
-  return response;
+module.exports.POST_addApplication = async (
+  httpRequest,
+  httpResponse,
+  next
+) => {
+  try {
+    const values = [
+      httpRequest.body.application.application_name,
+      httpRequest.body.application.owner_1,
+      httpRequest.body.application.owner_2,
+      httpRequest.body.application.added_by,
+      httpRequest.body.application.updated_by,
+    ];
+    const params = {
+      values: values,
+    };
+    const result = await MasterApplicationDao.addApplication(params);
+    return _200(httpResponse, result);
+  } catch (err) {
+    return _error(httpResponse, {
+      type: 'generic',
+      message: err,
+    });
+  }
 };
 
-module.exports.PUT_editApplication = (req, res, next) => {
-  const values = [
-    req.body.application_id,
-    req.body.application.application_name,
-    req.body.application.owner_1,
-    req.body.application.owner_2,
-    req.body.application.updated_by,
-  ];
-  const params = {
-    values: values,
-  };
-  const response = MasterApplicationDao.editApplication(req, res, next, params);
-  return response;
+module.exports.PUT_editApplication = async (
+  httpRequest,
+  httpResponse,
+  next
+) => {
+  try {
+    const values = [
+      httpRequest.body.application_id,
+      httpRequest.body.application.application_name,
+      httpRequest.body.application.owner_1,
+      httpRequest.body.application.owner_2,
+      httpRequest.body.application.updated_by,
+    ];
+    const params = {
+      values: values,
+    };
+    const result = await MasterApplicationDao.editApplication(params);
+    return _200(httpResponse, result);
+  } catch (err) {
+    return _error(httpResponse, {
+      type: 'generic',
+      message: err,
+    });
+  }
 };
 
-module.exports.DELETE_deleteApplication = (req, res, next) => {
-  //var startTime = new Date()
-  const application_id = req.body.application_id;
-  const params = {
-    application_id: application_id,
-  };
-  const response = MasterApplicationDao.deleteApplication(
-    req,
-    res,
-    next,
-    params
-  );
-  return response;
-  //log.info("method = {}, API = {}, values = {}, request = {}, response = {}, error = {}, cost = {}",
-  //  "deleteNewApplication", MasterApplicationDao.DELETE_AN_APPLICATION, );
+module.exports.DELETE_deleteApplication = async (
+  httpRequest,
+  httpResponse,
+  next
+) => {
+  try {
+    const application_id = httpRequest.body.application_id;
+    const params = {
+      application_id: application_id,
+    };
+    const result = await MasterApplicationDao.deleteApplication(params);
+    return _200(httpResponse, result);
+  } catch (err) {
+    return _error(httpResponse, {
+      type: 'generic',
+      message: err,
+    });
+  }
 };

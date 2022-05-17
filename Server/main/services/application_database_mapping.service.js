@@ -1,104 +1,138 @@
 const { ApplicationDatabaseMappingDao } = require('../dao/index');
+const { _200, _error } = require('../common/httpHelper');
 
-module.exports.GET_getAllDatabaseTypes = (req, res, next) => {
-  const response = ApplicationDatabaseMappingDao.getAllDatabaseTypes(
-    req,
-    res,
-    next
-  );
-  return response;
+module.exports.GET_getAllDatabaseTypes = async (
+  httpRequest,
+  httpResponse,
+  next
+) => {
+  try {
+    const result = await ApplicationDatabaseMappingDao.getAllDatabaseTypes();
+    return _200(httpResponse, result);
+  } catch (err) {
+    return _error(httpResponse, {
+      type: 'generic',
+      message: err,
+    });
+  }
 };
 
-module.exports.GET_getAllDatabases = (req, res, next) => {
-  const response = ApplicationDatabaseMappingDao.getAllDatabases(
-    req,
-    res,
-    next
-  );
-  return response;
+module.exports.GET_getAllDatabases = async (
+  httpRequest,
+  httpResponse,
+  next
+) => {
+  try {
+    const result = await ApplicationDatabaseMappingDao.getAllDatabases();
+    return _200(httpResponse, result);
+  } catch (err) {
+    return _error(httpResponse, {
+      type: 'generic',
+      message: err,
+    });
+  }
 };
 
-module.exports.GET_databaseDetails = (req, res, next) => {
-  const database_application_mapping_id =
-    req.body.database.database_application_mapping_id;
+module.exports.GET_databaseDetails = async (
+  httpRequest,
+  httpResponse,
+  next
+) => {
+  try {
+    const database_application_mapping_id =
+      httpRequest.body.database.database_application_mapping_id;
 
-  const params = {
-    database_application_mapping_id: database_application_mapping_id,
-  };
-  const response = ApplicationDatabaseMappingDao.getDatabaseDetails(
-    req,
-    res,
-    next,
-    params
-  );
-  return response;
+    const params = {
+      database_application_mapping_id: database_application_mapping_id,
+    };
+    const result = await ApplicationDatabaseMappingDao.getDatabaseDetails(
+      params
+    );
+    return _200(httpResponse, result);
+  } catch (err) {
+    return _error(httpResponse, {
+      type: 'generic',
+      message: err,
+    });
+  }
 };
 
-module.exports.POST_addDatabase = (req, res, next) => {
-  const values = [
-    req.body.database.application_id,
-    req.body.database.application_name,
-    req.body.database.database_name,
-    req.body.database.database_type_id,
-    req.body.database.database_type_name,
-    req.body.database.database_connection_string,
-    req.body.database.database_port_number,
-    req.body.database.database_host_name,
-    req.body.database.database_user_name,
-    req.body.database.database_password,
-    req.body.database.added_by,
-    req.body.database.updated_by,
-  ];
-  const params = {
-    values: values,
-  };
-  const response = ApplicationDatabaseMappingDao.addDatabase(
-    req,
-    res,
-    next,
-    params
-  );
-  return response;
+module.exports.POST_addDatabase = async (httpRequest, httpResponse, next) => {
+  try {
+    const values = [
+      httpRequest.body.database.application_id,
+      httpRequest.body.database.application_name,
+      httpRequest.body.database.database_name,
+      httpRequest.body.database.database_type_id,
+      httpRequest.body.database.database_type_name,
+      httpRequest.body.database.database_connection_string,
+      httpRequest.body.database.database_port_number,
+      httpRequest.body.database.database_host_name,
+      httpRequest.body.database.database_user_name,
+      httpRequest.body.database.database_password,
+      httpRequest.body.database.added_by,
+      httpRequest.body.database.updated_by,
+    ];
+    const params = {
+      values: values,
+    };
+    const result = await ApplicationDatabaseMappingDao.addDatabase(params);
+    return _200(httpResponse, result);
+  } catch (err) {
+    return _error(httpResponse, {
+      type: 'generic',
+      message: err,
+    });
+  }
 };
 
-module.exports.PUT_editDatabase = (req, res, next) => {
-  const values = [
-    req.body.database.database_application_mapping_id,
-    req.body.database.application_id,
-    req.body.database.application_name,
-    req.body.database.database_name,
-    req.body.database.database_type_id,
-    req.body.database.database_type_name,
-    req.body.database.database_connection_string,
-    req.body.database.database_port_number,
-    req.body.database.database_host_name,
-    req.body.database.database_user_name,
-    req.body.database.database_password,
-    req.body.database.updated_by,
-  ];
-  const params = {
-    values: values,
-  };
-  const response = ApplicationDatabaseMappingDao.editDatabase(
-    req,
-    res,
-    next,
-    params
-  );
-  return response;
+module.exports.PUT_editDatabase = async (httpRequest, httpResponse, next) => {
+  try {
+    const values = [
+      httpRequest.body.database.database_application_mapping_id,
+      httpRequest.body.database.application_id,
+      httpRequest.body.database.application_name,
+      httpRequest.body.database.database_name,
+      httpRequest.body.database.database_type_id,
+      httpRequest.body.database.database_type_name,
+      httpRequest.body.database.database_connection_string,
+      httpRequest.body.database.database_port_number,
+      httpRequest.body.database.database_host_name,
+      httpRequest.body.database.database_user_name,
+      httpRequest.body.database.database_password,
+      httpRequest.body.database.updated_by,
+    ];
+    const params = {
+      values: values,
+    };
+    const result = await ApplicationDatabaseMappingDao.editDatabase(params);
+    return _200(httpResponse, result);
+  } catch (err) {
+    return _error(httpResponse, {
+      type: 'generic',
+      message: err,
+    });
+  }
 };
 
-module.exports.DELETE_deleteDatabase = (req, res, next) => {
-  const database_application_mapping_id =
-    req.body.database.database_application_mapping_id;
+module.exports.DELETE_deleteDatabase = async (
+  httpRequest,
+  httpResponse,
+  next
+) => {
+  try {
+    const database_application_mapping_id =
+      httpRequest.body.database.database_application_mapping_id;
 
-  const params = {
-    database_application_mapping_id: database_application_mapping_id,
-  };
-  const response = ApplicationDatabaseMappingDao.deleteDatabase(
-    req,
-    res,
-    next,
-    params
-  );
+    const params = {
+      database_application_mapping_id: database_application_mapping_id,
+    };
+    const result = await ApplicationDatabaseMappingDao.deleteDatabase(params);
+    return _200(httpResponse, result);
+  } catch {
+    return _error(httpResponse, {
+      type: 'generic',
+      message: err,
+    });
+  }
 };

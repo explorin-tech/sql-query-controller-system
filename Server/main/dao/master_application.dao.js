@@ -1,71 +1,76 @@
 const pool = require('../db/index');
 const { MasterApplicationQuery } = require('../query');
 
-module.exports.getAllApplications = (req, res, next) => {
-  pool.query(
-    MasterApplicationQuery.SELECT_ALL_MASTER_APPLICATIONS,
-    (q_err, q_res) => {
-      return res.json(q_res.rows);
-    }
-  );
+module.exports.getAllApplications = async () => {
+  try {
+    const result = await pool.query(
+      MasterApplicationQuery.SELECT_ALL_MASTER_APPLICATIONS
+    );
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
 };
 
-module.exports.getAllApplicationsForAnUser = (req, res, next, params) => {
-  pool.query(
-    MasterApplicationQuery.SELECT_ALL_MASTER_APPLICATIONS_FOR_AN_USER,
-    [params.user_id],
-    (q_err, q_res) => {
-      if (q_err) {
-        console.log(q_err);
-      }
-      return res.json(q_res.rows);
-    }
-  );
+module.exports.getAllApplicationsForAnUser = async (params) => {
+  try {
+    const result = await pool.query(
+      MasterApplicationQuery.SELECT_ALL_MASTER_APPLICATIONS_FOR_AN_USER,
+      [params.user_id]
+    );
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
 };
 
-module.exports.getApplicationDetails = (req, res, next, params) => {
-  const application_id = params.application_id;
-  pool.query(
-    MasterApplicationQuery.GET_APPLICATION_DETAILS,
-    [application_id],
-    (q_err, q_res) => {
-      return res.json(q_res.rows);
-    }
-  );
+module.exports.getApplicationDetails = async (params) => {
+  try {
+    const application_id = params.application_id;
+    const result = await pool.query(
+      MasterApplicationQuery.GET_APPLICATION_DETAILS,
+      [application_id]
+    );
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
 };
 
-module.exports.addApplication = (req, res, next, params) => {
-  const values = params.values;
-  pool.query(
-    MasterApplicationQuery.INSERT_NEW_APPLICATION,
-    values,
-    (q_err, q_res) => {
-      return res.json(q_res.rows);
-    }
-  );
+module.exports.addApplication = async (params) => {
+  try {
+    const values = params.values;
+    const result = await pool.query(
+      MasterApplicationQuery.INSERT_NEW_APPLICATION,
+      values
+    );
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
 };
 
-module.exports.editApplication = (req, res, next, params) => {
-  pool.query(
-    MasterApplicationQuery.EDIT_AN_APPLICATION,
-    params,
-    (q_err, q_res) => {
-      return res.json(q_res.rows);
-    }
-  );
+module.exports.editApplication = async (params) => {
+  try {
+    const result = await pool.query(
+      MasterApplicationQuery.EDIT_AN_APPLICATION,
+      params
+    );
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
 };
 
-module.exports.deleteApplication = (req, res, next, params) => {
-  const application_id = params.application_id;
-  pool.query(
-    MasterApplicationQuery.DELETE_AN_APPLICATION,
-    [application_id],
-    (q_err, q_res) => {
-      //var endTime = new Date()
-      //log.info("method = {}, API = {}, values = {}, request = {}, response = {}, error = {}, cost = {}",
-      //  "deleteNewApplication", MasterApplicationDao.DELETE_AN_APPLICATION, );
-      // res = status, rows,
-      return res.json(q_res.rows);
-    }
-  );
+module.exports.deleteApplication = async (params) => {
+  try {
+    const application_id = params.application_id;
+    const result = await pool.query(
+      MasterApplicationQuery.DELETE_AN_APPLICATION,
+      [application_id]
+    );
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
 };

@@ -1,42 +1,60 @@
 const pool = require('../db/index');
 const { UserQuery } = require('../query');
 
-module.exports.getAllUserTypes = (req, res, next) => {
-  pool.query(UserQuery.SELECT_ALL_USER_TYPES, (q_err, q_res) => {
-    return res.json(q_res.rows);
-  });
+module.exports.getAllUserTypes = async () => {
+  try {
+    const result = await pool.query(UserQuery.SELECT_ALL_USER_TYPES);
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
 };
 
-module.exports.getAllUsers = (req, res, next) => {
-  pool.query(UserQuery.SELECT_ALL_USERS, (q_err, q_res) => {
-    return res.json(q_res.rows);
-  });
+module.exports.getAllUsers = async () => {
+  try {
+    const result = await pool.query(UserQuery.SELECT_ALL_USERS);
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
 };
 
-module.exports.getUserDetails = (req, res, next, params) => {
-  const user_id = params.user_id;
-  pool.query(UserQuery.GET_USER_DETAILS, [user_id], (q_err, q_res) => {
-    return res.json(q_res.rows);
-  });
+module.exports.getUserDetails = async (params) => {
+  try {
+    const user_id = params.user_id;
+    const result = await pool.query(UserQuery.GET_USER_DETAILS, [user_id]);
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
 };
 
-module.exports.addUser = (req, res, next, params) => {
-  const values = params.values;
-  pool.query(UserQuery.ADD_NEW_USER, values, (q_err, q_res) => {
-    return res.json(q_res.rows);
-  });
+module.exports.addUser = async (params) => {
+  try {
+    const values = params.values;
+    const result = await pool.query(UserQuery.ADD_NEW_USER, values);
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
 };
 
-module.exports.editUser = (req, res, next, params) => {
-  const values = params.values;
-  pool.query(UserQuery.EDIT_USER_DETAILS, values, (q_err, q_res) => {
-    return res.json(q_res.rows);
-  });
+module.exports.editUser = async (params) => {
+  try {
+    const values = params.values;
+    const result = await pool.query(UserQuery.EDIT_USER_DETAILS, values);
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
 };
 
-module.exports.deleteUser = (req, res, next, params) => {
-  const user_id = params.user_id;
-  pool.query(UserQuery.DELETE_USER, [user_id], (q_err, q_res) => {
-    return res.json(q_res.rows);
-  });
+module.exports.deleteUser = async (params) => {
+  try {
+    const user_id = params.user_id;
+    const result = await pool.query(UserQuery.DELETE_USER, [user_id]);
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
 };
