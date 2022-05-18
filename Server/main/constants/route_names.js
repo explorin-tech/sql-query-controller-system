@@ -1,4 +1,5 @@
 module.exports = Object.freeze({
+  LOGIN: '/post/login',
   GET_ALL_APPLICATIONS: '/get/applications',
   GET_ALL_APPLCIATIONS_FOR_AN_USER: '/get/applications_for_an_user',
   GET_APPLICATION_DETAILS: '/get/application_details',

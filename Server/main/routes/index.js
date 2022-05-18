@@ -4,6 +4,7 @@ const userRouter = require('./user.router');
 const applicationScreenRouter = require('./application_screen.router');
 const applicationScreenRightsMappingRouter = require('./application_screen_rights_mapping.router');
 const userPermissionMappingRouter = require('./user_permission_mapping.router');
+const authRouter = require('./auth.router');
 
 const init = (app) => {
   app.use('/api', masterApplicationRouter);
@@ -12,6 +13,7 @@ const init = (app) => {
   app.use('/api', applicationScreenRouter);
   app.use('/api', applicationScreenRightsMappingRouter);
   app.use('/api', userPermissionMappingRouter);
+  app.use('/api', authRouter);
 };
 
 module.exports = init;
