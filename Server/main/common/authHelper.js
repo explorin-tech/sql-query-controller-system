@@ -11,7 +11,7 @@ module.exports.generateHashedPassword = async (password) => {
 };
 
 module.exports.generateToken = async (userID) => {
-  const token = jwt.sign({ id: userID }, process.env.JWT_CONFIG, {
+  const token = jwt.sign({ UserID: userID }, process.env.JWT_CONFIG_KEY, {
     algorithm: 'HS256',
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
@@ -33,7 +33,7 @@ module.exports.authValidator = async (httpRequest, httpResponse, next) => {
   if (httpRequest.headers && httpRequest.headers.token) {
     const decoded = jwt.verify(
       httpRequest.headers.token,
-      process.env.JWT_CONFIG
+      process.env.JWT_CONFIG_KEY
     );
     httpRequest.headers['decoded'] = decoded;
     const userDetails = await UserDao.getUserDetails({

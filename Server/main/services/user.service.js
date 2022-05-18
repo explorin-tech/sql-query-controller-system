@@ -48,6 +48,8 @@ module.exports.GET_getUserDetails = async (httpRequest, httpResponse, next) => {
 
 module.exports.POST_addNewUser = async (httpRequest, httpResponse, next) => {
   try {
+    const { decoded } = httpRequest.headers;
+    const user_id = decoded.UserID;
     const hashedPassword = await generateHashedPassword(
       httpRequest.body.user.password
     );
@@ -57,8 +59,8 @@ module.exports.POST_addNewUser = async (httpRequest, httpResponse, next) => {
       httpRequest.body.user.email,
       hashedPassword,
       httpRequest.body.user.user_type_id,
-      httpRequest.body.user.added_by,
-      httpRequest.body.user.updated_by,
+      user_id,
+      user_id,
       httpRequest.body.user.is_active,
       httpRequest.body.user.is_active_direct_user,
     ];
@@ -81,14 +83,19 @@ module.exports.PUT_editUserDetails = async (
   next
 ) => {
   try {
+    const { decoded } = httpRequest.headers;
+    const user_id = decoded.UserID;
+    const hashedPassword = await generateHashedPassword(
+      httpRequest.body.user.password
+    );
     const values = [
       httpRequest.body.user.user_id,
       httpRequest.body.user.first_name,
       httpRequest.body.user.last_name,
       httpRequest.body.user.email,
-      httpRequest.body.user.password,
+      hashedPassword,
       httpRequest.body.user.user_type_id,
-      httpRequest.body.user.updated_by,
+      user_id,
       httpRequest.body.user.is_active,
       httpRequest.body.user.is_active_direct_user,
     ];

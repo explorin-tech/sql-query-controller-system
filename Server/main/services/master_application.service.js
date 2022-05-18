@@ -23,7 +23,8 @@ module.exports.GET_getAllApplicationsForAnUser = async (
   next
 ) => {
   try {
-    const user_id = httpRequest.query.user_id;
+    const { decoded } = httpRequest.headers;
+    const user_id = decoded.UserID;
     const params = {
       user_id: user_id,
     };
@@ -66,12 +67,14 @@ module.exports.POST_addApplication = async (
   next
 ) => {
   try {
+    const { decoded } = httpRequest.headers;
+    const user_id = decoded.UserID;
     const values = [
       httpRequest.body.application.application_name,
       httpRequest.body.application.owner_1,
       httpRequest.body.application.owner_2,
-      httpRequest.body.application.added_by,
-      httpRequest.body.application.updated_by,
+      user_id,
+      user_id,
     ];
     const params = {
       values: values,
@@ -92,12 +95,14 @@ module.exports.PUT_editApplication = async (
   next
 ) => {
   try {
+    const { decoded } = httpRequest.headers;
+    const user_id = decoded.UserID;
     const values = [
       httpRequest.body.application_id,
       httpRequest.body.application.application_name,
       httpRequest.body.application.owner_1,
       httpRequest.body.application.owner_2,
-      httpRequest.body.application.updated_by,
+      user_id,
     ];
     const params = {
       values: values,
