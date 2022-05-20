@@ -18,9 +18,9 @@ export default function SignIn() {
     setValues({ ...values, [name]: event.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios
+    await axios
       .post(SIGNIN_URL, {
         user: {
           email: values.email_id,
