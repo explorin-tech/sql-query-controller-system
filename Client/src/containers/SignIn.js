@@ -36,7 +36,7 @@ export default function SignIn() {
               onChange={handleChange("password")}
               value={values.password}
               onKeyPress={handleEnter} /> <br />
-            <button onClick={signinUser(values)}>Continue</button>
+            <button onClick={() => signinUser(values)}>Continue</button>
           </form>
         </div>
       </div>
