@@ -12,7 +12,7 @@
 .signin div:nth-child(2) {
   width: 25%;
   background-color: var(--shade3Blue);
-  padding: 3em 1.5em 3.5em;
+  padding: 3em 1.5em 1em;
   border-radius: 12px;
   text-align: center;
 }
@@ -35,12 +35,8 @@
   background-color: var(--shade3Blue);
   padding: 0.5em;
   margin-top: 1em;
-}
-
-.signin input {
-  border: none;
-  border-bottom: 1px solid var(--baseBlack);
   outline: none;
+
 }
 
 .signin button {

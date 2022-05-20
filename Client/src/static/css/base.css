@@ -53,3 +53,8 @@ button {
 .yellowButton {
   background-color: var(--baseYellow);
 }
+
+.error-message {
+  color: #FF0000;
+  font-size: 16px;
+}
