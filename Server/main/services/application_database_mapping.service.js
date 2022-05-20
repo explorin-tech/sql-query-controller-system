@@ -59,6 +59,8 @@ module.exports.GET_databaseDetails = async (
 
 module.exports.POST_addDatabase = async (httpRequest, httpResponse, next) => {
   try {
+    const { decoded } = httpRequest.headers;
+    const user_id = decoded.UserID;
     const values = [
       httpRequest.body.database.application_id,
       httpRequest.body.database.application_name,
@@ -70,8 +72,8 @@ module.exports.POST_addDatabase = async (httpRequest, httpResponse, next) => {
       httpRequest.body.database.database_host_name,
       httpRequest.body.database.database_user_name,
       httpRequest.body.database.database_password,
-      httpRequest.body.database.added_by,
-      httpRequest.body.database.updated_by,
+      user_id,
+      user_id,
     ];
     const params = {
       values: values,
@@ -88,6 +90,8 @@ module.exports.POST_addDatabase = async (httpRequest, httpResponse, next) => {
 
 module.exports.PUT_editDatabase = async (httpRequest, httpResponse, next) => {
   try {
+    const { decoded } = httpRequest.headers;
+    const user_id = decoded.UserID;
     const values = [
       httpRequest.body.database.database_application_mapping_id,
       httpRequest.body.database.application_id,
@@ -100,7 +104,7 @@ module.exports.PUT_editDatabase = async (httpRequest, httpResponse, next) => {
       httpRequest.body.database.database_host_name,
       httpRequest.body.database.database_user_name,
       httpRequest.body.database.database_password,
-      httpRequest.body.database.updated_by,
+      user_id,
     ];
     const params = {
       values: values,

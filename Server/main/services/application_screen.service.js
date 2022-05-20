@@ -43,11 +43,9 @@ module.exports.POST_addApplicationScreen = async (
   next
 ) => {
   try {
-    const values = [
-      httpRequest.body.screen.screen_name,
-      httpRequest.body.screen.added_by,
-      httpRequest.body.screen.updated_by,
-    ];
+    const { decoded } = httpRequest.headers;
+    const user_id = decoded.UserID;
+    const values = [httpRequest.body.screen.screen_name, user_id, user_id];
     const params = {
       values: values,
     };
@@ -67,10 +65,12 @@ module.exports.PUT_editApplicationScreen = async (
   next
 ) => {
   try {
+    const { decoded } = httpRequest.headers;
+    const user_id = decoded.UserID;
     const values = [
       httpRequest.body.screen.screen_id,
       httpRequest.body.screen.screen_name,
-      httpRequest.body.screen.updated_by,
+      user_id,
     ];
     const params = {
       values: values,

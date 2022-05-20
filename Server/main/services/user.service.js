@@ -1,5 +1,6 @@
 const { UserDao } = require('../dao/index');
 const { _200, _error } = require('../common/httpHelper');
+const { generateHashedPassword } = require('../common/authHelper');
 
 module.exports.GET_getAllUserTypes = async (
   httpRequest,
@@ -7,11 +8,7 @@ module.exports.GET_getAllUserTypes = async (
   next
 ) => {
   try {
-    const result = await UserDao.getAllUserTypes(
-      httpRequest,
-      httpResponse,
-      next
-    );
+    const result = await UserDao.getAllUserTypes();
     return _200(httpResponse, result);
   } catch (err) {
     return _error(httpResponse, {
@@ -23,7 +20,7 @@ module.exports.GET_getAllUserTypes = async (
 
 module.exports.GET_getAllUsers = async (httpRequest, httpResponse, next) => {
   try {
-    const result = await UserDao.getAllUsers(httpRequest, httpResponse, next);
+    const result = await UserDao.getAllUsers();
     return _200(httpResponse, result);
   } catch (err) {
     return _error(httpResponse, {
@@ -39,12 +36,7 @@ module.exports.GET_getUserDetails = async (httpRequest, httpResponse, next) => {
     const params = {
       user_id: user_id,
     };
-    const result = await UserDao.getUserDetails(
-      httpRequest,
-      httpResponse,
-      next,
-      params
-    );
+    const result = await UserDao.getUserDetails(params);
     return _200(httpResponse, result);
   } catch (err) {
     return _error(httpResponse, {
@@ -56,26 +48,26 @@ module.exports.GET_getUserDetails = async (httpRequest, httpResponse, next) => {
 
 module.exports.POST_addNewUser = async (httpRequest, httpResponse, next) => {
   try {
+    const { decoded } = httpRequest.headers;
+    const user_id = decoded.UserID;
+    const hashedPassword = await generateHashedPassword(
+      httpRequest.body.user.password
+    );
     const values = [
       httpRequest.body.user.first_name,
       httpRequest.body.user.last_name,
       httpRequest.body.user.email,
-      httpRequest.body.user.password,
+      hashedPassword,
       httpRequest.body.user.user_type_id,
-      httpRequest.body.user.added_by,
-      httpRequest.body.user.updated_by,
+      user_id,
+      user_id,
       httpRequest.body.user.is_active,
       httpRequest.body.user.is_active_direct_user,
     ];
     const params = {
       values: values,
     };
-    const result = await UserDao.addUser(
-      httpRequest,
-      httpResponse,
-      next,
-      params
-    );
+    const result = await UserDao.addUser(params);
     return _200(httpResponse, result);
   } catch (err) {
     return _error(httpResponse, {
@@ -91,26 +83,26 @@ module.exports.PUT_editUserDetails = async (
   next
 ) => {
   try {
+    const { decoded } = httpRequest.headers;
+    const user_id = decoded.UserID;
+    const hashedPassword = await generateHashedPassword(
+      httpRequest.body.user.password
+    );
     const values = [
       httpRequest.body.user.user_id,
       httpRequest.body.user.first_name,
       httpRequest.body.user.last_name,
       httpRequest.body.user.email,
-      httpRequest.body.user.password,
+      hashedPassword,
       httpRequest.body.user.user_type_id,
-      httpRequest.body.user.updated_by,
+      user_id,
       httpRequest.body.user.is_active,
       httpRequest.body.user.is_active_direct_user,
     ];
     const params = {
       values: values,
     };
-    const result = await UserDao.editUser(
-      httpRequest,
-      httpResponse,
-      next,
-      params
-    );
+    const result = await UserDao.editUser(params);
     return _200(httpResponse, result);
   } catch (err) {
     return _error(httpResponse, {

@@ -29,6 +29,18 @@ module.exports.getUserDetails = async (params) => {
   }
 };
 
+module.exports.getUserDetailsForEmail = async (params) => {
+  try {
+    const email = params.email;
+    const result = await pool.query(UserQuery.GET_USER_DETAILS_FOR_EMAILID, [
+      email,
+    ]);
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
+};
+
 module.exports.addUser = async (params) => {
   try {
     const values = params.values;

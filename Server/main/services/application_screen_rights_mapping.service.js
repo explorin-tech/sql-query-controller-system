@@ -7,7 +7,8 @@ module.exports.GET_getAllScreenRightsMappingForAnUser = async (
   next
 ) => {
   try {
-    const user_id = httpRequest.body.screen_rights.user_id;
+    const { decoded } = httpRequest.headers;
+    const user_id = decoded.UserID;
     const params = {
       user_id: user_id,
     };
@@ -30,7 +31,8 @@ module.exports.GET_getScreenRightsMappingForAnUser = async (
   next
 ) => {
   try {
-    const user_id = httpRequest.body.screen_rights.user_id;
+    const { decoded } = httpRequest.headers;
+    const user_id = decoded.UserID;
     const screen_id = httpRequest.body.screen.screen_id;
     const params = {
       user_id: user_id,
@@ -55,6 +57,8 @@ module.exports.POST_addScreenRightsMappingForAnUser = async (
   next
 ) => {
   try {
+    const { decoded } = httpRequest.headers;
+    const user_id = decoded.UserID;
     const values = [
       httpRequest.body.screen_rights.user_id,
       httpRequest.body.screen_rights.screen_id,
@@ -62,8 +66,8 @@ module.exports.POST_addScreenRightsMappingForAnUser = async (
       httpRequest.body.screen_rights.right_to_add,
       httpRequest.body.screen_rights.right_to_edit,
       httpRequest.body.screen_rights.right_to_delete,
-      httpRequest.body.screen_rights.added_by,
-      httpRequest.body.screen_rights.updated_by,
+      user_id,
+      user_id,
     ];
     const params = {
       values: values,
@@ -87,6 +91,8 @@ module.exports.PUT_editScreenRightsMappingForAnUser = async (
   next
 ) => {
   try {
+    const { decoded } = httpRequest.headers;
+    const user_id = decoded.UserID;
     const values = [
       httpRequest.body.screen_rights.user_id,
       httpRequest.body.screen_rights.screen_id,
@@ -94,7 +100,7 @@ module.exports.PUT_editScreenRightsMappingForAnUser = async (
       httpRequest.body.screen_rights.right_to_add,
       httpRequest.body.screen_rights.right_to_edit,
       httpRequest.body.screen_rights.right_to_delete,
-      httpRequest.body.screen_rights.updated_by,
+      user_id,
     ];
     const params = {
       values: values,
