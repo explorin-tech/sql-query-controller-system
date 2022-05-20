@@ -1,6 +1,8 @@
 import { SIGNIN_URL } from "../utils/BackendUrls";
+import axios from "axios";
 
 export const signinUser = async (values) => {
+  console.log(values);
   axios
     .post(SIGNIN_URL, {
       email: values.email_id,
