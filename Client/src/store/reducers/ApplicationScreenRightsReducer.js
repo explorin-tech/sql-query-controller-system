@@ -6,7 +6,7 @@ export const initialState = {
 
 const ApplicationScreenReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ACTION_TYPES.FETCH_ALL_APPLICATION_SCREEN_RIGHTS:
+    case ACTION_TYPES.SET_ALL_APPLICATION_SCREEN_RIGHTS:
       return {
         screen_rights: action.payload,
       };

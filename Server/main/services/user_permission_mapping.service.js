@@ -7,7 +7,13 @@ module.exports.GET_getAllUserPermissionMappingForAnUser = async (
   next
 ) => {
   try {
-    const user_id = httpRequest.body.user_permission_mapping.user_id;
+    let user_id;
+    if (httpRequest.body.user_permission_mapping) {
+      user_id = httpRequest.body.user_permission_mapping.user_id;
+    } else {
+      const { decoded } = httpRequest.headers;
+      user_id = decoded.UserID;
+    }
     const params = {
       user_id: user_id,
     };

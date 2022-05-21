@@ -80,16 +80,16 @@ export const fetch_application_screens = (screens) => {
   };
 };
 
-export const fetch_application_screen_rights = (screen_rights) => {
+export const set_all_screen_rights_for_an_user = (screen_rights) => {
   return {
-    type: ACTION_TYPES.FETCH_ALL_APPLICATION_SCREEN_RIGHTS,
+    type: ACTION_TYPES.SET_ALL_APPLICATION_SCREEN_RIGHTS,
     payload: screen_rights,
   };
 };
 
-export const fetch_user_permission_rights = (user_permission_rights) => {
+export const set_all_user_permission_rights = (user_permission_rights) => {
   return {
-    type: ACTION_TYPES.FETCH_ALL_USER_PERMISSIONS,
+    type: ACTION_TYPES.SET_ALL_USER_PERMISSIONS,
     payload: user_permission_rights,
   };
 };

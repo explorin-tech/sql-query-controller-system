@@ -6,7 +6,7 @@ export const initialState = {
 
 const UserPermissionReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ACTION_TYPES.FETCH_ALL_USER_PERMISSIONS:
+    case ACTION_TYPES.SET_ALL_USER_PERMISSIONS:
       return {
         user_permissions: action.payload,
       };
