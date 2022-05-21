@@ -9,7 +9,7 @@ export default function Sidebar() {
       <div className="sideBar">
         <div className="sideBarUpper">
           <MenuItem
-            to="/home"
+            to="/"
             image={require('../static/images/dummy.png')}
             title="Home"
           />

@@ -1,6 +1,6 @@
 export const DASHBOARD_PAGE = '/';
 export const SIGN_PAGE = '/signin';
-export const HOME_PAGE = '/home';
+export const HOME_PAGE = '/';
 export const APPLICATION_PAGE = '/application';
 export const DATABASE_PAGE = '/database';
 export const USER_WINDOW = '/user';
