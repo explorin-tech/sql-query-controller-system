@@ -25,10 +25,9 @@ export const set_db_user = (db_user) => {
   };
 };
 
-export const remove_db_user = (db_user) => {
+export const remove_db_user = () => {
   return {
     type: ACTION_TYPES.REMOVE_DB_USER,
-    payload: db_user,
   };
 };
 

@@ -32,7 +32,13 @@ module.exports.GET_getAllUsers = async (httpRequest, httpResponse, next) => {
 
 module.exports.GET_getUserDetails = async (httpRequest, httpResponse, next) => {
   try {
-    const user_id = httpRequest.body.user.user_id;
+    let user_id;
+    if (httpRequest.body.user) {
+      user_id = httpRequest.body.user.user_id;
+    } else {
+      const { decoded } = httpRequest.headers;
+      user_id = decoded.UserID;
+    }
     const params = {
       user_id: user_id,
     };

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
 
 import '../static/css/home.css';
 import Card from '../common/Card';
@@ -23,7 +23,8 @@ const data = [
   },
 ];
 
-export default function Home() {
+export default function Home(props) {
+  const [error, setError] = useState('');
   return (
     <Fragment>
       <div className="homePage">

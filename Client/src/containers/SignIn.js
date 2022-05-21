@@ -1,13 +1,18 @@
 import React, { Fragment, useState } from 'react';
-
 import '../static/css/signIn.css';
 import Image from '../static/images/signIn.png';
+import { useHistory } from 'react-router-dom';
 
-import { SIGNIN_URL } from '../utils/BackendUrls';
+import { connect } from 'react-redux';
+import * as actions from '../store/actions/Actions';
+
+import * as APPLICATION_URLS from '../utils/ApplicationUrls';
+import * as BACKEND_URLS from '../utils/BackendUrls';
 
 import axios from 'axios';
 
-export default function SignIn() {
+function SignIn(props) {
+  const history = useHistory();
   const [values, setValues] = useState({
     email_id: '',
     password: '',
@@ -21,18 +26,21 @@ export default function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios
-      .post(SIGNIN_URL, {
+      .post(BACKEND_URLS.SIGNIN_URL, {
         user: {
           email: values.email_id,
           password: values.password,
         },
       })
       .then((res) => {
-        console.log(res);
         if (res.status === 200) {
+          props.login_success();
+          localStorage.setItem('token', res.data.data);
+          history.push(APPLICATION_URLS.DASHBOARD_PAGE);
         }
       })
       .catch(function (error) {
+        props.login_failed();
         if (error.response) {
           setError(error.response.data.message);
         }
@@ -68,3 +76,10 @@ export default function SignIn() {
     </Fragment>
   );
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  login_success: () => dispatch(actions.login_success()),
+  login_failed: () => dispatch(actions.login_failure()),
+});
+
+export default connect(null, mapDispatchToProps)(SignIn);
