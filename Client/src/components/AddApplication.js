@@ -6,6 +6,11 @@ import axios from 'axios';
 
 import * as BACKEND_URLS from '../utils/BackendUrls';
 
+import * as CONSTANTS from '../utils/AppConstants';
+
+import { connect } from 'react-redux';
+import * as actions from '../store/actions/Actions';
+
 function GlobalFilter({ filter, setFilter }) {
   return (
     <span className="searchTable">
@@ -19,17 +24,51 @@ function GlobalFilter({ filter, setFilter }) {
   );
 }
 
-export default function AddApplication() {
+const PopulateUsers = ({ users }) => {
+  return (
+    <>
+      {users.map((user) => {
+        return (
+          <option
+            key={user[CONSTANTS.USER.U_ID]}
+            value={user[CONSTANTS.USER.U_ID]}
+          >
+            {user[CONSTANTS.USER.U_FirstName]} {user[CONSTANTS.USER.U_LastName]}
+          </option>
+        );
+      })}
+    </>
+  );
+};
+
+function AddApplication(props) {
+  const [values, setValues] = useState({
+    applicationName: '',
+    owner1: null,
+    owner2: null,
+  });
+
+  const handleChange = (name) => (event) => {
+    setValues({ ...values, [name]: event.target.value });
+  };
+
+  const fetchAllUsers = () => {
+    axios
+      .get(BACKEND_URLS.GET_ALL_USERS, {
+        headers: {
+          token: localStorage.getItem('token'),
+        },
+      })
+      .then((res) => {
+        props.set_all_users(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
-    axios({
-      method: 'get',
-      url: BACKEND_URLS.GET_ALL_APPLCIATIONS_FOR_AN_USER,
-      params: {
-        user_id: 1,
-      },
-    }).then(function (response) {
-      console.log(response);
-    });
+    fetchAllUsers();
   }, []);
 
   const [filteredData, setFilteredData] = useState([]);
@@ -90,7 +129,30 @@ export default function AddApplication() {
 
   const handleAddApplication = (e) => {
     e.preventDefault();
-    setModalShow(false);
+    axios
+      .post(
+        BACKEND_URLS.ADD_AN_APPLICATION,
+        {
+          application: {
+            application_name: values.applicationName,
+            owner_1: values.owner1,
+            owner_2: values.owner2,
+          },
+        },
+        {
+          headers: {
+            token: localStorage.getItem('token'),
+          },
+        }
+      )
+      .then((res) => {
+        if (res.status == 200) {
+          setModalShow(false);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -110,24 +172,35 @@ export default function AddApplication() {
                 <tbody>
                   <tr>
                     <td>
-                      <span>Application</span>
-                      <input type="text" />
+                      <span>Application Name</span>
+                      <input
+                        type="text"
+                        onChange={handleChange('applicationName')}
+                      />
                     </td>
                   </tr>
                   <tr>
                     <td>
                       <span>Owner 1</span>
-                      <select>
-                        <option>A</option>
-                        <option>B</option>
+                      <select onChange={handleChange('owner1')}>
+                        <option>-- SELECT USER --</option>
+                        {props.users ? (
+                          <PopulateUsers users={props.users.users} />
+                        ) : null}
                       </select>
+                      <br />
+                      <br />
                     </td>
                     <td>
                       <span>Owner 2</span>
-                      <select>
-                        <option>A</option>
-                        <option>B</option>
+                      <select onChange={handleChange('owner2')}>
+                        <option>-- SELECT USER --</option>
+                        {props.users ? (
+                          <PopulateUsers users={props.users.users} />
+                        ) : null}
                       </select>
+                      <br />
+                      <br />
                     </td>
                   </tr>
                 </tbody>
@@ -197,3 +270,14 @@ export default function AddApplication() {
     </Fragment>
   );
 }
+
+const mapStateToProps = (state) => ({
+  db_user: state.auth,
+  users: state.users,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  set_all_users: (users) => dispatch(actions.set_all_users(users)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddApplication);
