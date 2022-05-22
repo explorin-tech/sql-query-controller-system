@@ -67,8 +67,26 @@ function AddApplication(props) {
       });
   };
 
+  const fetchAllApplicationsForAnUser = () => {
+    axios
+      .get(BACKEND_URLS.GET_ALL_APPLCIATIONS_FOR_AN_USER, {
+        headers: {
+          token: localStorage.getItem('token'),
+        },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          props.set_applications(res.data.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     fetchAllUsers();
+    fetchAllApplicationsForAnUser();
   }, []);
 
   const [filteredData, setFilteredData] = useState([]);
@@ -274,10 +292,13 @@ function AddApplication(props) {
 const mapStateToProps = (state) => ({
   db_user: state.auth,
   users: state.users,
+  applications: state.applications,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   set_all_users: (users) => dispatch(actions.set_all_users(users)),
+  set_applications: (applications) =>
+    dispatch(actions.set_applications(applications)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddApplication);
