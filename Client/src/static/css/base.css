@@ -46,6 +46,11 @@ button {
   background-color: var(--shade2Blue);
 }
 
+.blueButton:disabled {
+  background-color: var(--shade2Blue);
+  opacity: 0.5;
+}
+
 .greenButton {
   background-color: var(--baseGreen);
 }

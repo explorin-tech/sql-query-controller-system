@@ -88,6 +88,11 @@ export default function AddApplication() {
 
   const { globalFilter } = state;
 
+  const handleAddApplication = (e) => {
+    e.preventDefault();
+    setModalShow(false);
+  };
+
   return (
     <Fragment>
       <div className="application">
@@ -100,7 +105,7 @@ export default function AddApplication() {
             setModalShow={setModalShow}
             title="Add Application"
           >
-            <form>
+            <form onSubmit={handleAddApplication}>
               <table>
                 <tbody>
                   <tr>
@@ -127,6 +132,9 @@ export default function AddApplication() {
                   </tr>
                 </tbody>
               </table>
+              <button className="greenButton" type="submit">
+                Save changes
+              </button>
             </form>
           </AddModal>
           <div>

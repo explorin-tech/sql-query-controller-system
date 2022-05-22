@@ -72,6 +72,11 @@ export default function AddDatabase() {
 
   const { globalFilter } = state;
 
+  const handleAddDatabase = (e) => {
+    e.preventDefault();
+    setModalShow(false);
+  };
+
   return (
     <Fragment>
       <div className="application">
@@ -84,7 +89,7 @@ export default function AddDatabase() {
             setModalShow={setModalShow}
             title="Add Database"
           >
-            <form>
+            <form onSubmit={handleAddDatabase}>
               <table>
                 <tbody>
                   <tr>
@@ -131,6 +136,9 @@ export default function AddDatabase() {
                   </tr>
                 </tbody>
               </table>
+              <button className="greenButton" type="submit">
+                Save changes
+              </button>
             </form>
           </AddModal>
           <div>

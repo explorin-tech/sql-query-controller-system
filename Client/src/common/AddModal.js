@@ -4,10 +4,6 @@ import { Modal } from 'react-bootstrap';
 import '../static/css/addModal.css';
 
 export default function AddModal({ modalShow, setModalShow, title, ...props }) {
-  const saveData = () => {
-    setModalShow(false);
-  };
-
   return (
     <Fragment>
       <Modal
@@ -24,12 +20,6 @@ export default function AddModal({ modalShow, setModalShow, title, ...props }) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="body">{props.children}</Modal.Body>
-        <Modal.Footer>
-          <br />
-          <button className="greenButton" onClick={() => saveData()}>
-            Save changes
-          </button>
-        </Modal.Footer>
       </Modal>
     </Fragment>
   );
