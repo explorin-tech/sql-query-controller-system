@@ -35,7 +35,7 @@ function Dashboard(props) {
           })
           .then((res) => {
             if (res.status === 200) {
-              if (props.db_user.is_authentication == false) {
+              if (props.db_user.is_authentication === false) {
                 props.login_success();
               }
 
@@ -51,7 +51,7 @@ function Dashboard(props) {
                   },
                 })
                 .then((res) => {
-                  if (res.status == 200) {
+                  if (res.status === 200) {
                     props.set_all_screen_rights_for_an_user(res.data.data);
 
                     // now fetch user permissions

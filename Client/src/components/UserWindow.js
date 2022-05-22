@@ -3,6 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
 import { connect } from 'react-redux';
+import * as actions from '../store/actions/Actions';
 
 import * as CONSTANTS from '../utils/AppConstants';
 
@@ -29,6 +30,20 @@ const RenderOptionsForUserTypes = ({ userType }) => {
   } else if (userType === CONSTANTS.USER_TYPES.APPLICATION_OWNER) {
     return <option value={CONSTANTS.USER_TYPES.DEV}>Dev</option>;
   }
+};
+
+const PopulateUsers = ({ users }) => {
+  return (
+    <>
+      {users.map((user) => {
+        return (
+          <option key={user[CONSTANTS.USER.U_ID]} value={JSON.stringify(user)}>
+            {user[CONSTANTS.USER.U_FirstName]} {user[CONSTANTS.USER.U_LastName]}
+          </option>
+        );
+      })}
+    </>
+  );
 };
 
 function AddUser(props) {
@@ -71,7 +86,8 @@ function AddUser(props) {
           }
         )
         .then((res) => {
-          if (res.status == 200) {
+          if (res.status === 200) {
+            fetchAllUsers();
             setModalShow(false);
             setValues({
               firstName: '',
@@ -89,17 +105,41 @@ function AddUser(props) {
     }
   };
 
+  const fetchAllUsers = () => {
+    axios
+      .get(BACKEND_URLS.GET_ALL_USERS, {
+        headers: {
+          token: localStorage.getItem('token'),
+        },
+      })
+      .then((res) => {
+        props.set_all_users(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    fetchAllUsers();
+  }, []);
+
+  const handleSelectUser = (e) => {
+    props.set_selected_user(JSON.parse(e.target.value));
+  };
+
   return (
     <Fragment>
       <div className="application">
         <div className="appTab">
           <div>
             <span className="searchTable">
-              <span className="headData"> User </span>{' '}
-              <select>
-                <option>-- Select --</option>
-                <option>A</option>
-                <option>B</option>
+              <span className="headData"> User </span>
+              <select onChange={handleSelectUser} value={'DEFAULT'}>
+                <option value={null}>-- Select User --</option>
+                {props.users ? (
+                  <PopulateUsers users={props.users.users} />
+                ) : null}
               </select>
             </span>
           </div>
@@ -231,8 +271,12 @@ function AddUser(props) {
 
 const mapStateToProps = (state) => ({
   db_user: state.auth,
+  users: state.users,
 });
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+  set_all_users: (users) => dispatch(actions.set_all_users(users)),
+  set_selected_user: (user) => dispatch(actions.set_user(user)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddUser);
