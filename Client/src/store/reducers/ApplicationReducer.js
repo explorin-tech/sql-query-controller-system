@@ -7,7 +7,7 @@ export const initialState = {
 
 const ApplicationReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ACTION_TYPES.FETCH_APPLICATIONS:
+    case ACTION_TYPES.SET_APPLICATIONS:
       return {
         applications: action.payload,
         selected_aplication: null,

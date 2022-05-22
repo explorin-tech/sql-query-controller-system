@@ -7,7 +7,7 @@ export const initialState = {
 
 const UserReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ACTION_TYPES.FETCH_DATABASES:
+    case ACTION_TYPES.SET_DATABASES:
       return {
         databases: action.payload,
         selected_database: null,

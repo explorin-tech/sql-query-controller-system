@@ -31,9 +31,9 @@ export const remove_db_user = () => {
   };
 };
 
-export const fetch_applications = (applications) => {
+export const set_applications = (applications) => {
   return {
-    type: ACTION_TYPES.FETCH_APPLICATIONS,
+    type: ACTION_TYPES.SET_APPLICATIONS,
     payload: applications,
   };
 };
@@ -45,9 +45,9 @@ export const set_aplication = (application) => {
   };
 };
 
-export const fetch_all_users = (users) => {
+export const set_all_users = (users) => {
   return {
-    type: ACTION_TYPES.FETCH_ALL_USERS,
+    type: ACTION_TYPES.SET_ALL_USERS,
     payload: users,
   };
 };
@@ -61,7 +61,7 @@ export const set_user = (user) => {
 
 export const fetch_databases = (databases) => {
   return {
-    type: ACTION_TYPES.FETCH_DATABASES,
+    type: ACTION_TYPES.SET_DATABASES,
     payload: databases,
   };
 };
@@ -75,7 +75,7 @@ export const set_database = (database) => {
 
 export const fetch_application_screens = (screens) => {
   return {
-    type: ACTION_TYPES.FETCH_APPLICATION_SCREENS,
+    type: ACTION_TYPES.SET_APPLICATION_SCREENS,
     payload: screens,
   };
 };

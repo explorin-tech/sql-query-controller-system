@@ -7,7 +7,7 @@ export const initialState = {
 
 const UserReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ACTION_TYPES.FETCH_ALL_USERS:
+    case ACTION_TYPES.SET_ALL_USERS:
       return {
         users: action.payload,
         selected_user: null,

@@ -6,7 +6,7 @@ export const initialState = {
 
 const ApplicationScreenReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ACTION_TYPES.FETCH_APPLICATION_SCREENS:
+    case ACTION_TYPES.SET_APPLICATION_SCREENS:
       return {
         screens: action.payload,
       };
