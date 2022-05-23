@@ -44,7 +44,6 @@ const PopulateApplications = ({ applications }) => {
 
 function AddDatabase(props) {
   const [filteredData, setFilteredData] = useState([]);
-
   const [values, setValues] = useState({
     applicationID: '',
     applicationName: '',
@@ -62,30 +61,35 @@ function AddDatabase(props) {
   const columns = useMemo(
     () => [
       {
-        Header: 'Column 1',
-        accessor: '',
+        Header: 'Application Name',
+        accessor: 'DBAM_MA_Name',
         filterable: true,
       },
       {
-        Header: 'Column 2',
-        accessor: '',
+        Header: 'Database Name',
+        accessor: 'DBAM_DBName',
         filterable: true,
       },
       {
-        Header: 'Column 3',
-        accessor: '',
+        Header: 'Type',
+        accessor: 'DBAM_DBT_Name',
         filterable: true,
       },
       {
-        Header: 'Column 4',
-        accessor: '',
+        Header: 'Host Name',
+        accessor: 'DBAM_DBHostName',
         filterable: true,
       },
       {
-        Header: 'Column 5',
-        accessor: '',
+        Header: 'Port Number',
+        accessor: 'DBAM_DBPortNumber',
         filterable: true,
       },
+      {
+        Header: 'Connection String',
+        accessor: 'DBAM_DBConnectionString',
+        filterable: true,
+      }
     ],
     []
   );
@@ -174,7 +178,8 @@ function AddDatabase(props) {
   useEffect(() => {
     fetchAllApplications();
     fetchAllDatabases();
-  }, []);
+    setFilteredData(props.databases.databases);
+  }, [props.databases.databases]);
 
   const handleAddDatabase = (e) => {
     e.preventDefault();
