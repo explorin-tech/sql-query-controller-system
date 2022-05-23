@@ -1,32 +1,51 @@
-import React, { useMemo, useState, Fragment } from 'react';
+import React, { useMemo, useState, useEffect, Fragment } from 'react';
 import { useTable, useSortBy } from 'react-table';
 
-export default function DbRights() {
+import axios from 'axios';
+
+import * as BACKEND_URLS from '../utils/BackendUrls';
+
+import * as CONSTANTS from '../utils/AppConstants';
+
+import { connect } from 'react-redux';
+import * as actions from '../store/actions/Actions';
+
+function DbRights(props) {
   const [filteredData, setFilteredData] = useState([]);
   const columns = useMemo(
     () => [
       {
-        Header: 'Column 1',
+        Header: 'Application Name',
+        accessor: 'DBAM_MA_Name',
+        filterable: true,
+      },
+      {
+        Header: 'Database Name',
+        accessor: 'DBAM_DBName',
+        filterable: true,
+      },
+      {
+        Header: 'Database Type',
+        accessor: 'DBAM_DBT_Name',
+        filterable: true,
+      },
+      {
+        Header: 'Right to Read',
         accessor: '',
         filterable: true,
       },
       {
-        Header: 'Column 2',
+        Header: 'Right to Create',
         accessor: '',
         filterable: true,
       },
       {
-        Header: 'Column 3',
+        Header: 'Right to Update',
         accessor: '',
         filterable: true,
       },
       {
-        Header: 'Column 4',
-        accessor: '',
-        filterable: true,
-      },
-      {
-        Header: 'Column 5',
+        Header: 'Right to Delete',
         accessor: '',
         filterable: true,
       },
@@ -52,6 +71,31 @@ export default function DbRights() {
     prepareRow,
     state,
   } = tableInstance;
+
+  const fetchAllDatabases = () => {
+    axios
+      .get(BACKEND_URLS.GET_ALL_MAPPED_DATABASES, {
+        headers: {
+          token: localStorage.getItem('token'),
+        },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          props.set_databases(res.data.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    fetchAllDatabases();
+  }, []);
+
+  useEffect(() => {
+    setFilteredData(props.databases.databases);
+  }, [props.databases.databases]);
 
   return (
     <Fragment>
@@ -99,9 +143,7 @@ export default function DbRights() {
                   <tr {...row.getRowProps()} key={row.id}>
                     {row.cells.map((cell) => {
                       return (
-                        <td {...cell.getCellProps()} key={cell.value}>
-                          {cell.render('Cell')}
-                        </td>
+                        <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                       );
                     })}
                   </tr>
@@ -114,3 +156,13 @@ export default function DbRights() {
     </Fragment>
   );
 }
+
+const mapStateToProps = (state) => ({
+  databases: state.databases,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  set_databases: (databases) => dispatch(actions.set_databases(databases)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(DbRights);

@@ -133,9 +133,7 @@ function ScreenRights(props) {
                   <tr {...row.getRowProps()} key={row.id}>
                     {row.cells.map((cell) => {
                       return (
-                        <td {...cell.getCellProps()} key={cell.value}>
-                          {cell.render('Cell')}
-                        </td>
+                        <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                       );
                     })}
                   </tr>

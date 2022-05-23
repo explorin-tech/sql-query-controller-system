@@ -94,7 +94,6 @@ function Dashboard(props) {
         history.push(APPLICATION_URLS.SIGN_PAGE);
       }
     }
-    console.log(props.screen_rights);
   }, []);
 
   return (
