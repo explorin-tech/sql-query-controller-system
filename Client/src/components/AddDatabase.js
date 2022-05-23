@@ -179,6 +179,9 @@ function AddDatabase(props) {
   useEffect(() => {
     fetchAllApplications();
     fetchAllDatabases();
+  }, []);
+
+  useEffect(() => {
     setFilteredData(props.databases.databases);
   }, [props.databases.databases]);
 

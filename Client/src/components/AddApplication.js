@@ -87,8 +87,12 @@ function AddApplication(props) {
   useEffect(() => {
     fetchAllUsers();
     fetchAllApplicationsForAnUser();
+  }, []);
+
+  useEffect(() => {
     setFilteredData(props.applications.applications);
   }, [props.applications.applications]);
+
 
   const [filteredData, setFilteredData] = useState([]);
   const [modalShow, setModalShow] = useState(false);
