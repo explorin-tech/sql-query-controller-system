@@ -166,7 +166,6 @@ function AddDatabase(props) {
         },
       })
       .then((res) => {
-        console.log(res);
         if (res.status === 200) {
           props.set_databases(res.data.data);
         }
