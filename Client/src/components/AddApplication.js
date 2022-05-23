@@ -69,7 +69,7 @@ function AddApplication(props) {
 
   const fetchAllApplicationsForAnUser = () => {
     axios
-      .get(BACKEND_URLS.GET_ALL_APPLCIATIONS_FOR_AN_USER, {
+      .get(BACKEND_URLS.GET_ALL_APPLICATIONS, {
         headers: {
           token: localStorage.getItem('token'),
         },
@@ -165,6 +165,7 @@ function AddApplication(props) {
       )
       .then((res) => {
         if (res.status == 200) {
+          fetchAllApplicationsForAnUser();
           setModalShow(false);
           setValues({
             applicationName: '',

@@ -154,8 +154,27 @@ function AddDatabase(props) {
       });
   };
 
+  const fetchAllDatabases = () => {
+    axios
+      .get(BACKEND_URLS.GET_ALL_MAPPED_DATABASES, {
+        headers: {
+          token: localStorage.getItem('token'),
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          props.set_databases(res.data.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     fetchAllApplications();
+    fetchAllDatabases();
   }, []);
 
   const handleAddDatabase = (e) => {
@@ -185,6 +204,7 @@ function AddDatabase(props) {
       )
       .then((res) => {
         if (res.status == 200) {
+          fetchAllDatabases();
           setModalShow(false);
           setValues({
             applicationID: '',
