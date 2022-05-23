@@ -213,8 +213,6 @@ function AddDatabase(props) {
       });
   };
 
-  console.log(values);
-
   const selectEditDatabase = (database) => {
     setValues({
       databaseApplicationMappingID:
@@ -227,7 +225,7 @@ function AddDatabase(props) {
         database[CONSTANTS.DATABASE_APPLICATION_MAPPING.DBAM_DBHostName],
       databaseConnectionString:
         database[
-          CONSTANTS.DATABASE_APPLICATION_MAPPING.DBAM_DBConnectionString
+        CONSTANTS.DATABASE_APPLICATION_MAPPING.DBAM_DBConnectionString
         ],
       databaseUserName:
         database[CONSTANTS.DATABASE_APPLICATION_MAPPING.DBAM_DBUserName],
@@ -241,7 +239,6 @@ function AddDatabase(props) {
 
   const handleEditDatabase = (e) => {
     e.preventDefault();
-    console.log(values);
     axios
       .put(
         BACKEND_URLS.EDIT_A_DATABASE,
