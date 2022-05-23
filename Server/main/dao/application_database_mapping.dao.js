@@ -40,12 +40,15 @@ module.exports.getDatabaseDetails = async (params) => {
 module.exports.addDatabase = async (params) => {
   try {
     const values = params.values;
+    console.log(values);
     const result = await pool.query(
       ApplicationDatabaseMappingQuery.ADD_DATABASE_MAPPING,
       values
     );
+    console.log(result);
     return result.rows;
   } catch (err) {
+    console.log(err);
     return err;
   }
 };
@@ -53,10 +56,12 @@ module.exports.addDatabase = async (params) => {
 module.exports.editDatabase = async (params) => {
   try {
     const values = params.values;
+    console.log(values);
     const result = await pool.query(
       ApplicationDatabaseMappingQuery.EDIT_DATABASE_MAPPING,
       values
     );
+    console.log(result);
     return result.rows;
   } catch (err) {
     return err;

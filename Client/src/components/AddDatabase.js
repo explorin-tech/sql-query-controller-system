@@ -1,6 +1,7 @@
 import React, { useMemo, useState, Fragment, useEffect } from 'react';
 import { useTable, useGlobalFilter, useSortBy } from 'react-table';
 import AddModal from '../common/AddModal';
+import EditModal from '../common/EditModal';
 
 import axios from 'axios';
 
@@ -31,8 +32,7 @@ const PopulateApplications = ({ applications }) => {
         return (
           <option
             key={application[CONSTANTS.APPLICATION.MA_ID]}
-            data-id={application[CONSTANTS.APPLICATION.MA_ID]}
-            data-name={application[CONSTANTS.APPLICATION.MA_Name]}
+            value={application[CONSTANTS.APPLICATION.MA_ID]}
           >
             {application[CONSTANTS.APPLICATION.MA_Name]}
           </option>
@@ -45,6 +45,7 @@ const PopulateApplications = ({ applications }) => {
 function AddDatabase(props) {
   const [filteredData, setFilteredData] = useState([]);
   const [values, setValues] = useState({
+    databaseApplicationMappingID: '',
     applicationID: '',
     applicationName: '',
     databaseTypeName: '',
@@ -57,12 +58,13 @@ function AddDatabase(props) {
     databasePortNumber: '',
   });
 
-  const [modalShow, setModalShow] = useState(false);
+  const [addModalShow, setAddModalShow] = useState(false);
+  const [editModalShow, setEditModalShow] = useState(false);
   const columns = useMemo(
     () => [
       {
         Header: 'Application Name',
-        accessor: 'DBAM_MA_Name',
+        accessor: 'MA_Name',
         filterable: true,
       },
       {
@@ -72,7 +74,7 @@ function AddDatabase(props) {
       },
       {
         Header: 'Type',
-        accessor: 'DBAM_DBT_Name',
+        accessor: 'DBT_Name',
         filterable: true,
       },
       {
@@ -89,7 +91,7 @@ function AddDatabase(props) {
         Header: 'Connection String',
         accessor: 'DBAM_DBConnectionString',
         filterable: true,
-      }
+      },
     ],
     []
   );
@@ -119,26 +121,6 @@ function AddDatabase(props) {
 
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
-  };
-
-  const handleSelectApplication = () => (event) => {
-    setValues({
-      ...values,
-      applicationID:
-        event.target[event.target.selectedIndex].getAttribute('data-id'),
-      applicationName:
-        event.target[event.target.selectedIndex].getAttribute('data-name'),
-    });
-  };
-
-  const handleSelectDatabaseType = () => (event) => {
-    setValues({
-      ...values,
-      databaseTypeID:
-        event.target[event.target.selectedIndex].getAttribute('data-id'),
-      databaseTypeName:
-        event.target[event.target.selectedIndex].getAttribute('data-name'),
-    });
   };
 
   const fetchAllApplications = () => {
@@ -192,10 +174,8 @@ function AddDatabase(props) {
         {
           database: {
             application_id: values.applicationID,
-            application_name: values.applicationName,
             database_name: values.databaseName,
             database_type_id: values.databaseTypeID,
-            database_type_name: values.databaseTypeName,
             database_connection_string: values.databaseConnectionString,
             database_port_number: values.databasePortNumber,
             database_host_name: values.databaseHostName,
@@ -212,8 +192,9 @@ function AddDatabase(props) {
       .then((res) => {
         if (res.status == 200) {
           fetchAllDatabases();
-          setModalShow(false);
+          setAddModalShow(false);
           setValues({
+            databaseApplicationMappingID: '',
             applicationID: '',
             applicationName: '',
             databaseTypeName: '',
@@ -232,6 +213,82 @@ function AddDatabase(props) {
       });
   };
 
+  console.log(values);
+
+  const selectEditDatabase = (database) => {
+    setValues({
+      databaseApplicationMappingID:
+        database[CONSTANTS.DATABASE_APPLICATION_MAPPING.DBAM_ID],
+      applicationID: database[CONSTANTS.APPLICATION.MA_ID],
+      databaseTypeID: database['DBT_ID'],
+      databaseName:
+        database[CONSTANTS.DATABASE_APPLICATION_MAPPING.DBAM_DBName],
+      databaseHostName:
+        database[CONSTANTS.DATABASE_APPLICATION_MAPPING.DBAM_DBHostName],
+      databaseConnectionString:
+        database[
+          CONSTANTS.DATABASE_APPLICATION_MAPPING.DBAM_DBConnectionString
+        ],
+      databaseUserName:
+        database[CONSTANTS.DATABASE_APPLICATION_MAPPING.DBAM_DBUserName],
+      databasePassword:
+        database[CONSTANTS.DATABASE_APPLICATION_MAPPING.DBAM_DBPassword],
+      databasePortNumber:
+        database[CONSTANTS.DATABASE_APPLICATION_MAPPING.DBAM_DBPortNumber],
+    });
+    setEditModalShow(true);
+  };
+
+  const handleEditDatabase = (e) => {
+    e.preventDefault();
+    console.log(values);
+    axios
+      .put(
+        BACKEND_URLS.EDIT_A_DATABASE,
+        {
+          database: {
+            database_application_mapping_id:
+              values.databaseApplicationMappingID,
+            application_id: values.applicationID,
+            database_name: values.databaseName,
+            database_type_id: values.databaseTypeID,
+            database_connection_string: values.databaseConnectionString,
+            database_port_number: values.databasePortNumber,
+            database_host_name: values.databaseHostName,
+            database_user_name: values.databaseUserName,
+            database_password: values.databasePassword,
+          },
+        },
+        {
+          headers: {
+            token: localStorage.getItem('token'),
+          },
+        }
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          fetchAllDatabases();
+          setEditModalShow(false);
+          setValues({
+            databaseApplicationMappingID: '',
+            applicationID: '',
+            applicationName: '',
+            databaseTypeName: '',
+            databaseTypeID: '',
+            databaseName: '',
+            databaseHostName: '',
+            databaseConnectionString: '',
+            databaseUserName: '',
+            databasePassword: '',
+            databasePortNumber: '',
+          });
+        }
+      })
+      .then((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <Fragment>
       <div className="application">
@@ -240,8 +297,8 @@ function AddDatabase(props) {
             <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
           </div>
           <AddModal
-            modalShow={modalShow}
-            setModalShow={setModalShow}
+            addModalShow={addModalShow}
+            setAddModalShow={setAddModalShow}
             title="Add Database"
           >
             <form onSubmit={handleAddDatabase}>
@@ -251,8 +308,8 @@ function AddDatabase(props) {
                     <td>
                       <span>Application Name</span>
                       <select
-                        onChange={handleSelectApplication()}
-                        value={values.applicationName}
+                        onChange={handleChange('applicationID')}
+                        value={values.applicationID}
                       >
                         <option value={null}> -- SELECT APPLICATION --</option>
                         {props.applications ? (
@@ -275,16 +332,15 @@ function AddDatabase(props) {
                     <td>
                       <span>Database Type</span>
                       <select
-                        onChange={handleSelectDatabaseType()}
-                        value={values.databaseTypeName}
+                        onChange={handleChange('databaseTypeID')}
+                        value={values.databaseTypeID}
                       >
                         <option value={null}>-- SELECT DATABASE TYPE --</option>
                         {CONSTANTS.DATABASE_TYPES.map((databaseTypeObject) => {
                           return (
                             <option
                               key={databaseTypeObject.id}
-                              data-id={databaseTypeObject.id}
-                              data-name={databaseTypeObject.name}
+                              value={databaseTypeObject.id}
                             >
                               {databaseTypeObject.name}
                             </option>
@@ -348,8 +404,134 @@ function AddDatabase(props) {
               </button>
             </form>
           </AddModal>
+          <EditModal
+            editModalShow={editModalShow}
+            setEditModalShow={setEditModalShow}
+            title="Edit Database"
+          >
+            <form onSubmit={handleEditDatabase}>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <span>Application Name</span>
+                      <select
+                        onChange={handleChange('applicationID')}
+                        value={values.applicationID}
+                      >
+                        <option value={null}> -- SELECT APPLICATION --</option>
+                        {props.applications ? (
+                          <PopulateApplications
+                            applications={props.applications.applications}
+                          />
+                        ) : null}
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>Database Name</span>
+                      <input
+                        value={values.databaseName}
+                        type="text"
+                        onChange={handleChange('databaseName')}
+                      />
+                    </td>
+                    <td>
+                      <span>Database Type</span>
+                      <select
+                        onChange={handleChange('databaseTypeID')}
+                        value={values.databaseTypeID}
+                      >
+                        <option value={null}>-- SELECT DATABASE TYPE --</option>
+                        {CONSTANTS.DATABASE_TYPES.map((databaseTypeObject) => {
+                          return (
+                            <option
+                              key={databaseTypeObject.id}
+                              value={databaseTypeObject.id}
+                            >
+                              {databaseTypeObject.name}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>Database Connection String</span>
+                      <input
+                        value={values.databaseConnectionString}
+                        type="text"
+                        onChange={handleChange('databaseConnectionString')}
+                      />
+                    </td>
+                    <td>
+                      <span>Database Host Name</span>
+                      <input
+                        type="text"
+                        value={values.databaseHostName}
+                        onChange={handleChange('databaseHostName')}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>Database User Name</span>
+                      <input
+                        type="text"
+                        value={values.databaseUserName}
+                        onChange={handleChange('databaseUserName')}
+                      />
+                    </td>
+                    <td>
+                      <span>Database Password</span>
+                      <input
+                        type="text"
+                        value={values.databasePassword}
+                        onChange={handleChange('databasePassword')}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>Database Port Number</span>
+                      <input
+                        type="text"
+                        value={values.databasePortNumber}
+                        onChange={handleChange('databasePortNumber')}
+                      />
+                      <br />
+                      <br />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <button className="greenButton" type="submit">
+                Save changes
+              </button>
+            </form>
+          </EditModal>
           <div>
-            <button className="blueButton" onClick={() => setModalShow(true)}>
+            <button
+              className="blueButton"
+              onClick={() => {
+                setAddModalShow(true);
+                setValues({
+                  databaseApplicationMappingID: '',
+                  applicationID: '',
+                  applicationName: '',
+                  databaseTypeName: '',
+                  databaseTypeID: '',
+                  databaseName: '',
+                  databaseHostName: '',
+                  databaseConnectionString: '',
+                  databaseUserName: '',
+                  databasePassword: '',
+                  databasePortNumber: '',
+                });
+              }}
+            >
               <i className="fas fa-plus"></i> Add Database
             </button>
           </div>
@@ -390,7 +572,13 @@ function AddDatabase(props) {
               {rows.map((row) => {
                 prepareRow(row);
                 return (
-                  <tr {...row.getRowProps()} key={row.id}>
+                  <tr
+                    {...row.getRowProps()}
+                    key={row.id}
+                    onClick={() => {
+                      selectEditDatabase(row.original);
+                    }}
+                  >
                     {row.cells.map((cell) => {
                       return (
                         <td {...cell.getCellProps()} key={cell.value}>

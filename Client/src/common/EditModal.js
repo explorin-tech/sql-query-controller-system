@@ -3,17 +3,17 @@ import { Modal } from 'react-bootstrap';
 
 import '../static/css/addModal.css';
 
-export default function AddModal({
-  addModalShow,
-  setAddModalShow,
+export default function EditModal({
+  editModalShow,
+  setEditModalShow,
   title,
   ...props
 }) {
   return (
     <Fragment>
       <Modal
-        show={addModalShow}
-        onHide={() => setAddModalShow(false)}
+        show={editModalShow}
+        onHide={() => setEditModalShow(false)}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered

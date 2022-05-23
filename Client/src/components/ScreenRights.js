@@ -79,13 +79,32 @@ function ScreenRights(props) {
       });
   };
 
+  const fetchScreens = () => {
+    axios
+      .get(BACKEND_URLS.GET_ALL_APPLICATION_SCREENS, {
+        headers: {
+          token: localStorage.getItem('token'),
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          props.set_all_screens(res.data.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     fetchAllScreenRights();
+    fetchScreens();
   }, []);
 
   useEffect(() => {
-    setFilteredData(props.screen_rights.screen_rights);
-  }, [props.screen_rights.screen_rights]);
+    setFilteredData(props.screens.screens);
+  }, [props.screens.screens]);
 
   return (
     <Fragment>
@@ -148,10 +167,13 @@ function ScreenRights(props) {
 }
 
 const mapStateToProps = (state) => ({
+  screens: state.applicationScreens,
   screen_rights: state.applicationScreenRights,
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  set_all_screens: (screens) =>
+    dispatch(actions.fetch_application_screens(screens)),
   set_all_screen_rights_for_an_user: (screen_rights) =>
     dispatch(actions.set_all_screen_rights_for_an_user(screen_rights)),
 });

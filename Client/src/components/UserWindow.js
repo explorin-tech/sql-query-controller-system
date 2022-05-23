@@ -47,7 +47,7 @@ const PopulateUsers = ({ users }) => {
 };
 
 function AddUser(props) {
-  const [modalShow, setModalShow] = useState(false);
+  const [addModalShow, setAddModalShow] = useState(false);
 
   const [values, setValues] = useState({
     firstName: '',
@@ -88,7 +88,7 @@ function AddUser(props) {
         .then((res) => {
           if (res.status === 200) {
             fetchAllUsers();
-            setModalShow(false);
+            setAddModalShow(false);
             setValues({
               firstName: '',
               lastName: '',
@@ -144,8 +144,8 @@ function AddUser(props) {
             </span>
           </div>
           <AddModal
-            modalShow={modalShow}
-            setModalShow={setModalShow}
+            addModalShow={addModalShow}
+            setAddModalShow={setAddModalShow}
             title="Add User"
           >
             <form onSubmit={handleAddUser}>
@@ -239,7 +239,7 @@ function AddUser(props) {
             <div>
               <button
                 className="blueButton"
-                onClick={() => setModalShow(true)}
+                onClick={() => setAddModalShow(true)}
                 disabled={
                   props.db_user.user[CONSTANTS.USER_TYPES_FIELD_NAME] ===
                   CONSTANTS.USER_TYPES.DEV

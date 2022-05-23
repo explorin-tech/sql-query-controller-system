@@ -98,12 +98,13 @@ module.exports.PUT_editApplication = async (
     const { decoded } = httpRequest.headers;
     const user_id = decoded.UserID;
     const values = [
-      httpRequest.body.application_id,
+      httpRequest.body.application.application_id,
       httpRequest.body.application.application_name,
       httpRequest.body.application.owner_1,
       httpRequest.body.application.owner_2,
       user_id,
     ];
+    console.log(values);
     const params = {
       values: values,
     };

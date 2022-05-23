@@ -10,6 +10,7 @@ import * as CONSTANTS from '../utils/AppConstants';
 
 import { connect } from 'react-redux';
 import * as actions from '../store/actions/Actions';
+import EditModal from '../common/EditModal';
 
 function GlobalFilter({ filter, setFilter }) {
   return (
@@ -43,6 +44,7 @@ const PopulateUsers = ({ users }) => {
 
 function AddApplication(props) {
   const [values, setValues] = useState({
+    applicationID: '',
     applicationName: '',
     owner1: '',
     owner2: '',
@@ -93,9 +95,9 @@ function AddApplication(props) {
     setFilteredData(props.applications.applications);
   }, [props.applications.applications]);
 
-
   const [filteredData, setFilteredData] = useState([]);
-  const [modalShow, setModalShow] = useState(false);
+  const [addModalShow, setAddModalShow] = useState(false);
+  const [editModalShow, setEditModalShow] = useState(false);
   const columns = useMemo(
     () => [
       {
@@ -161,8 +163,56 @@ function AddApplication(props) {
       .then((res) => {
         if (res.status == 200) {
           fetchAllApplicationsForAnUser();
-          setModalShow(false);
+          setAddModalShow(false);
           setValues({
+            applicationID: '',
+            applicationName: '',
+            owner1: '',
+            owner2: '',
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const selectEditApplication = (application) => {
+    setValues({
+      applicationID: application[CONSTANTS.APPLICATION.MA_ID],
+      applicationName: application[CONSTANTS.APPLICATION.MA_Name],
+      owner1: application[CONSTANTS.APPLICATION.MA_Owner1],
+      owner2: application[CONSTANTS.APPLICATION.MA_Owner2],
+    });
+    setEditModalShow(true);
+  };
+
+  const handleEditApplication = (e) => {
+    e.preventDefault();
+    axios
+      .put(
+        BACKEND_URLS.EDIT_AN_APPLICATION,
+        {
+          application: {
+            application_id: values.applicationID,
+            application_name: values.applicationName,
+            owner_1: values.owner1,
+            owner_2: values.owner2,
+          },
+        },
+        {
+          headers: {
+            token: localStorage.getItem('token'),
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          fetchAllApplicationsForAnUser();
+          setEditModalShow(false);
+          setValues({
+            applicationID: '',
             applicationName: '',
             owner1: '',
             owner2: '',
@@ -182,8 +232,8 @@ function AddApplication(props) {
             <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
           </div>
           <AddModal
-            modalShow={modalShow}
-            setModalShow={setModalShow}
+            addModalShow={addModalShow}
+            setAddModalShow={setAddModalShow}
             title="Add Application"
           >
             <form onSubmit={handleAddApplication}>
@@ -236,8 +286,74 @@ function AddApplication(props) {
               </button>
             </form>
           </AddModal>
+          <EditModal
+            editModalShow={editModalShow}
+            setEditModalShow={setEditModalShow}
+            title="Edit Application"
+          >
+            <form onSubmit={handleEditApplication}>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <span>Application Name</span>
+                      <input
+                        type="text"
+                        onChange={handleChange('applicationName')}
+                        value={values.applicationName}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>Owner 1</span>
+                      <select
+                        onChange={handleChange('owner1')}
+                        value={values.owner1}
+                      >
+                        <option value={null}>-- SELECT USER --</option>
+                        {props.users ? (
+                          <PopulateUsers users={props.users.users} />
+                        ) : null}
+                      </select>
+                      <br />
+                      <br />
+                    </td>
+                    <td>
+                      <span>Owner 2</span>
+                      <select
+                        onChange={handleChange('owner2')}
+                        value={values.owner2}
+                      >
+                        <option value={null}>-- SELECT USER --</option>
+                        {props.users ? (
+                          <PopulateUsers users={props.users.users} />
+                        ) : null}
+                      </select>
+                      <br />
+                      <br />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <button className="greenButton" type="submit">
+                Save changes
+              </button>
+            </form>
+          </EditModal>
           <div>
-            <button className="blueButton" onClick={() => setModalShow(true)}>
+            <button
+              className="blueButton"
+              onClick={() => {
+                setAddModalShow(true);
+                setValues({
+                  applicationID: '',
+                  applicationName: '',
+                  owner1: '',
+                  owner2: '',
+                });
+              }}
+            >
               <i className="fas fa-plus"></i> Add Application
             </button>
           </div>
@@ -278,12 +394,16 @@ function AddApplication(props) {
               {rows.map((row) => {
                 prepareRow(row);
                 return (
-                  <tr {...row.getRowProps()} key={row.id}>
+                  <tr
+                    {...row.getRowProps()}
+                    key={row.id}
+                    onClick={() => {
+                      selectEditApplication(row.original);
+                    }}
+                  >
                     {row.cells.map((cell) => {
                       return (
-                        <td {...cell.getCellProps()} key={cell.value}>
-                          {cell.render('Cell')}
-                        </td>
+                        <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                       );
                     })}
                   </tr>

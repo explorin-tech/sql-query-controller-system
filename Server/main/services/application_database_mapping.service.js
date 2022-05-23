@@ -40,7 +40,7 @@ module.exports.GET_databaseDetails = async (
 ) => {
   try {
     const database_application_mapping_id =
-      httpRequest.body.database.database_application_mapping_id;
+      httpRequest.query.database_application_mapping_id;
 
     const params = {
       database_application_mapping_id: database_application_mapping_id,
@@ -63,10 +63,8 @@ module.exports.POST_addDatabase = async (httpRequest, httpResponse, next) => {
     const user_id = decoded.UserID;
     const values = [
       httpRequest.body.database.application_id,
-      httpRequest.body.database.application_name,
       httpRequest.body.database.database_name,
       httpRequest.body.database.database_type_id,
-      httpRequest.body.database.database_type_name,
       httpRequest.body.database.database_connection_string,
       httpRequest.body.database.database_port_number,
       httpRequest.body.database.database_host_name,
@@ -95,10 +93,8 @@ module.exports.PUT_editDatabase = async (httpRequest, httpResponse, next) => {
     const values = [
       httpRequest.body.database.database_application_mapping_id,
       httpRequest.body.database.application_id,
-      httpRequest.body.database.application_name,
       httpRequest.body.database.database_name,
       httpRequest.body.database.database_type_id,
-      httpRequest.body.database.database_type_name,
       httpRequest.body.database.database_connection_string,
       httpRequest.body.database.database_port_number,
       httpRequest.body.database.database_host_name,
@@ -106,6 +102,7 @@ module.exports.PUT_editDatabase = async (httpRequest, httpResponse, next) => {
       httpRequest.body.database.database_password,
       user_id,
     ];
+    console.log(values);
     const params = {
       values: values,
     };
