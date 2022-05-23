@@ -41,12 +41,10 @@ module.exports.getApplicationDetails = async (params) => {
 module.exports.addApplication = async (params) => {
   try {
     const values = params.values;
-    console.log(values);
     const result = await pool.query(
       MasterApplicationQuery.INSERT_NEW_APPLICATION,
       values
     );
-    console.log(result);
     return result.rows;
   } catch (err) {
     console.log(err);
@@ -57,12 +55,10 @@ module.exports.addApplication = async (params) => {
 module.exports.editApplication = async (params) => {
   try {
     const values = params.values;
-    console.log(values, 'YES VALUES ARE COMING');
     const result = await pool.query(
       MasterApplicationQuery.EDIT_AN_APPLICATION,
       values
     );
-    console.log(result);
     return result.rows;
   } catch (err) {
     return err;
