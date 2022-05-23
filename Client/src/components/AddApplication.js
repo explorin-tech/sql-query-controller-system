@@ -87,6 +87,7 @@ function AddApplication(props) {
   useEffect(() => {
     fetchAllUsers();
     fetchAllApplicationsForAnUser();
+    setFilteredData(props.applications.applications);
   }, []);
 
   const [filteredData, setFilteredData] = useState([]);
@@ -94,28 +95,18 @@ function AddApplication(props) {
   const columns = useMemo(
     () => [
       {
-        Header: 'Column 1',
-        accessor: '',
+        Header: 'Application Name',
+        accessor: 'MA_Name',
         filterable: true,
       },
       {
-        Header: 'Column 2',
-        accessor: '',
+        Header: 'Owner 1',
+        accessor: 'MA_Owner1',
         filterable: true,
       },
       {
-        Header: 'Column 3',
-        accessor: '',
-        filterable: true,
-      },
-      {
-        Header: 'Column 4',
-        accessor: '',
-        filterable: true,
-      },
-      {
-        Header: 'Column 5',
-        accessor: '',
+        Header: 'Owner 2',
+        accessor: 'MA_Owner2',
         filterable: true,
       },
     ],
