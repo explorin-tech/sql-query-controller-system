@@ -34,6 +34,24 @@ export const APPLICATION = {
   MA_Owner2: 'MA_Owner2',
 };
 
+export const DATABASE_APPLICATION_MAPPING = {
+  DBAM_ID: 'DBAM_ID',
+  DBAM_MA_ID: 'DBAM_MA_ID',
+  DBAM_MA_Name: 'DBAM_MA_Name',
+  DBAM_DBName: 'DBAM_DBName',
+  DBAM_DBT_ID: 'DBAM_DBT_ID',
+  DBAM_DBT_Name: 'DBAM_DBT_Name',
+  DBAM_DBConnectionString: 'DBAM_DBConnectionString',
+  DBAM_DBPortNumber: 'DBAM_DBPortNumber',
+  DBAM_DBHostName: 'DBAM_DBHostName',
+  DBAM_DBUserName: 'DBAM_DBUserName',
+  DBAM_DBPassword: 'DBAM_DBPassword',
+  DBAM_AddedOn: 'DBAM_AddedOn',
+  DBAM_AddedBy: 'DBAM_AddedBy',
+  DBAM_UpdatedOn: 'DBAM_UpdatedOn',
+  DBAM_UpdatedBy: 'DBAM_UpdatedBy',
+};
+
 export const DATABASE_TYPES = [
   {
     id: '1',

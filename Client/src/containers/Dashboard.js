@@ -94,6 +94,7 @@ function Dashboard(props) {
         history.push(APPLICATION_URLS.SIGN_PAGE);
       }
     }
+    console.log(props.screen_rights);
   }, []);
 
   return (
@@ -141,6 +142,7 @@ function Dashboard(props) {
 
 const mapStateToProps = (state) => ({
   db_user: state.auth,
+  screen_rights: state.applicationScreenRights,
 });
 
 const mapDispatchToProps = (dispatch) => ({
