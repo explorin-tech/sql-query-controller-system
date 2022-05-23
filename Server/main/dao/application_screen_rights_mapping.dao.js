@@ -29,6 +29,7 @@ module.exports.getScreenRightsMappingForAnUser = async (params) => {
 module.exports.addScreenRightsMappingForAnUser = async (params) => {
   try {
     const values = params.values;
+    console.log(values);
     const result = await pool.query(
       ApplicationScreenRightsMappingQuery.INSERT_SCREEN_RIGHTS_MAPPING_FOR_AN_USER,
       values
