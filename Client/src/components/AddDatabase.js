@@ -43,7 +43,7 @@ const PopulateApplications = ({ applications }) => {
 };
 
 function AddDatabase(props) {
-  const [filteredData, setFilteredData] = useState(props.databases.databases);
+  const [filteredData, setFilteredData] = useState([]);
   const [values, setValues] = useState({
     applicationID: '',
     applicationName: '',
@@ -93,8 +93,6 @@ function AddDatabase(props) {
     ],
     []
   );
-
-  console.log(props.databases.databases);
 
   const data = useMemo(() => filteredData, [filteredData]);
 
@@ -182,7 +180,7 @@ function AddDatabase(props) {
     fetchAllApplications();
     fetchAllDatabases();
     setFilteredData(props.databases.databases);
-  }, []);
+  }, [props.databases.databases]);
 
   const handleAddDatabase = (e) => {
     e.preventDefault();

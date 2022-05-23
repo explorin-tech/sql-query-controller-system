@@ -88,9 +88,9 @@ function AddApplication(props) {
     fetchAllUsers();
     fetchAllApplicationsForAnUser();
     setFilteredData(props.applications.applications);
-  }, []);
+  }, [props.applications.applications]);
 
-  const [filteredData, setFilteredData] = useState(props.applications.applications);
+  const [filteredData, setFilteredData] = useState([]);
   const [modalShow, setModalShow] = useState(false);
   const columns = useMemo(
     () => [
