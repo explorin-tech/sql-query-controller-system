@@ -107,11 +107,6 @@ function Dashboard(props) {
             <Switch>
               <Route
                 exact
-                path={APPLICATION_URLS.HOME_PAGE}
-                render={(props) => <Home />}
-              />
-              <Route
-                exact
                 path={APPLICATION_URLS.APPLICATION_PAGE}
                 component={AddApplication}
               />
@@ -125,8 +120,6 @@ function Dashboard(props) {
                 path={APPLICATION_URLS.USER_WINDOW}
                 component={AddUser}
               />
-              {/* <Route exact path="/query" component={AddUser} />
-            <Route exact path="/draft" component={AddUser} /> */}
               <Route
                 exact
                 path={APPLICATION_URLS.DASHBOARD_PAGE}

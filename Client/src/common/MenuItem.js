@@ -2,13 +2,12 @@ import React, { Fragment } from 'react';
 
 import { ConditionalLink } from './ConditionalLink';
 
-export const MenuItem = ({ title, to, image, target = '', notification }) => (
+export const MenuItem = ({ title, to, image }) => (
   <Fragment>
-    <ConditionalLink to={to} target={target}>
+    <ConditionalLink to={to}>
       <li aria-hidden="true" className="active-navbar-list">
         <img src={image} alt="icon" />
         <span>{title}</span>
-        <div className="ms-auto">{notification}</div>
       </li>
     </ConditionalLink>
   </Fragment>
