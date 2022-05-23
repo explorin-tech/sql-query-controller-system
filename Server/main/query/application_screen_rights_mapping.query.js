@@ -1,6 +1,6 @@
 module.exports = Object.freeze({
   GET_ALL_SCREEN_RIGHTS_MAPPING_FOR_AN_USER:
-    'SELECT * FROM "ApplicationScreenRightsMapping" WHERE "ASR_U_ID" = $1',
+    'SELECT "ApplicationScreenRightsMapping"."ASR_U_ID", "ApplicationScreen"."AS_Name", "ApplicationScreenRightsMapping"."ASR_RightToView", "ApplicationScreenRightsMapping"."ASR_RightToAdd", "ApplicationScreenRightsMapping"."ASR_RightToEdit", "ApplicationScreenRightsMapping"."ASR_RightToDelete" FROM "ApplicationScreenRightsMapping" LEFT JOIN "ApplicationScreen" ON "ApplicationScreenRightsMapping"."ASR_AS_ID" = "ApplicationScreen"."AS_ID"  WHERE "ASR_U_ID" = $1;',
   GET_SCREEN_RIGHTS_MAPPING_FOR_AN_USER:
     'SELECT * FROM "ApplicationScreenRightsMapping" WHERE "ASR_U_ID" = $1 AND "ASR_AS_ID" = $2 ',
   INSERT_SCREEN_RIGHTS_MAPPING_FOR_AN_USER:

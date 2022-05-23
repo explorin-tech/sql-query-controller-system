@@ -1,33 +1,42 @@
-import React, { useMemo, useState, Fragment } from 'react';
+import React, { useMemo, useState, useEffect, Fragment } from 'react';
 import { useTable, useSortBy } from 'react-table';
 
-export default function ScreenRights() {
+import axios from 'axios';
+
+import * as BACKEND_URLS from '../utils/BackendUrls';
+
+import * as CONSTANTS from '../utils/AppConstants';
+
+import { connect } from 'react-redux';
+import * as actions from '../store/actions/Actions';
+
+function ScreenRights(props) {
   const [filteredData, setFilteredData] = useState([]);
   const columns = useMemo(
     () => [
       {
-        Header: 'Column 1',
-        accessor: '',
+        Header: 'Screen Name',
+        accessor: 'AS_Name',
         filterable: true,
       },
       {
-        Header: 'Column 2',
-        accessor: '',
+        Header: 'Right to View',
+        accessor: 'ASR_RightToView',
         filterable: true,
       },
       {
-        Header: 'Column 3',
-        accessor: '',
+        Header: 'Right to Add',
+        accessor: 'ASR_RightToAdd',
         filterable: true,
       },
       {
-        Header: 'Column 4',
-        accessor: '',
+        Header: 'Right to Edit',
+        accessor: 'ASR_RightToEdit',
         filterable: true,
       },
       {
-        Header: 'Column 5',
-        accessor: '',
+        Header: 'Right to Delete',
+        accessor: 'ASR_RightToDelete',
         filterable: true,
       },
     ],
@@ -52,6 +61,31 @@ export default function ScreenRights() {
     prepareRow,
     state,
   } = tableInstance;
+
+  const fetchAllScreenRights = () => {
+    axios
+      .get(BACKEND_URLS.GET_ALL_SCREEN_RIGHTS_FOR_AN_USER, {
+        headers: {
+          token: localStorage.getItem('token'),
+        },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          props.set_all_screen_rights_for_an_user(res.data.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    fetchAllScreenRights();
+  }, []);
+
+  useEffect(() => {
+    setFilteredData(props.screen_rights.screen_rights);
+  }, [props.screen_rights.screen_rights]);
 
   return (
     <Fragment>
@@ -114,3 +148,14 @@ export default function ScreenRights() {
     </Fragment>
   );
 }
+
+const mapStateToProps = (state) => ({
+  screen_rights: state.applicationScreenRights,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  set_all_screen_rights_for_an_user: (screen_rights) =>
+    dispatch(actions.set_all_screen_rights_for_an_user(screen_rights)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ScreenRights);
