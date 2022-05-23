@@ -59,7 +59,7 @@ export const set_user = (user) => {
   };
 };
 
-export const fetch_databases = (databases) => {
+export const set_databases = (databases) => {
   return {
     type: ACTION_TYPES.SET_DATABASES,
     payload: databases,

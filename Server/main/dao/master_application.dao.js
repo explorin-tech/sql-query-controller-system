@@ -1,5 +1,6 @@
 const pool = require('../db/index');
 const { MasterApplicationQuery } = require('../query');
+const _ = require('underscore');
 
 module.exports.getAllApplications = async () => {
   try {

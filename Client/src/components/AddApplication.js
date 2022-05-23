@@ -166,6 +166,11 @@ function AddApplication(props) {
       .then((res) => {
         if (res.status == 200) {
           setModalShow(false);
+          setValues({
+            applicationName: '',
+            owner1: null,
+            owner2: null,
+          });
         }
       })
       .catch((err) => {
@@ -194,14 +199,18 @@ function AddApplication(props) {
                       <input
                         type="text"
                         onChange={handleChange('applicationName')}
+                        value={values.applicationName}
                       />
                     </td>
                   </tr>
                   <tr>
                     <td>
                       <span>Owner 1</span>
-                      <select onChange={handleChange('owner1')}>
-                        <option>-- SELECT USER --</option>
+                      <select
+                        onChange={handleChange('owner1')}
+                        value={values.owner1}
+                      >
+                        <option value={null}>-- SELECT USER --</option>
                         {props.users ? (
                           <PopulateUsers users={props.users.users} />
                         ) : null}
@@ -211,8 +220,11 @@ function AddApplication(props) {
                     </td>
                     <td>
                       <span>Owner 2</span>
-                      <select onChange={handleChange('owner2')}>
-                        <option>-- SELECT USER --</option>
+                      <select
+                        onChange={handleChange('owner2')}
+                        value={values.owner2}
+                      >
+                        <option value={null}>-- SELECT USER --</option>
                         {props.users ? (
                           <PopulateUsers users={props.users.users} />
                         ) : null}

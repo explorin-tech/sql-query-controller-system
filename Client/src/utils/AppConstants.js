@@ -26,3 +26,33 @@ export const USER = {
   U_IsActive: 'U_IsActive',
   U_IsActDrtUser: 'U_IsActDrtUser',
 };
+
+export const APPLICATION = {
+  MA_ID: 'MA_ID',
+  MA_Name: 'MA_Name',
+  MA_Owner1: 'MA_Owner1',
+  MA_Owner2: 'MA_Owner2',
+};
+
+export const DATABASE_TYPES = [
+  {
+    id: '1',
+    name: 'PRD',
+  },
+  {
+    id: 2,
+    name: 'UAT',
+  },
+  {
+    id: 3,
+    name: 'RND',
+  },
+  {
+    id: 4,
+    name: 'DEV',
+  },
+  {
+    id: 5,
+    name: 'OTH',
+  },
+];
