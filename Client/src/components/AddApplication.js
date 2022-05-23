@@ -44,8 +44,8 @@ const PopulateUsers = ({ users }) => {
 function AddApplication(props) {
   const [values, setValues] = useState({
     applicationName: '',
-    owner1: null,
-    owner2: null,
+    owner1: '',
+    owner2: '',
   });
 
   const handleChange = (name) => (event) => {
@@ -168,8 +168,8 @@ function AddApplication(props) {
           setModalShow(false);
           setValues({
             applicationName: '',
-            owner1: null,
-            owner2: null,
+            owner1: '',
+            owner2: '',
           });
         }
       })

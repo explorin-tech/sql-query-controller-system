@@ -310,6 +310,8 @@ function AddDatabase(props) {
                         value={values.databasePortNumber}
                         onChange={handleChange('databasePortNumber')}
                       />
+                      <br />
+                      <br />
                     </td>
                   </tr>
                 </tbody>
