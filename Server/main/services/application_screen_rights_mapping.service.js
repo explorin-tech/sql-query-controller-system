@@ -130,23 +130,26 @@ module.exports.PUT_editScreenRightsMappingForAnUser = async (
   try {
     const { decoded } = httpRequest.headers;
     const user_id = decoded.UserID;
-    const values = [
-      httpRequest.body.screen_rights.user_id,
-      httpRequest.body.screen_rights.screen_id,
-      httpRequest.body.screen_rights.right_to_view,
-      httpRequest.body.screen_rights.right_to_add,
-      httpRequest.body.screen_rights.right_to_edit,
-      httpRequest.body.screen_rights.right_to_delete,
-      user_id,
-    ];
-    const params = {
-      values: values,
-    };
-    const result =
-      await ApplicationScreenRightsMappingDao.editScreenRightsMappingForAnUser(
-        params
-      );
-    return _200(httpResponse, result);
+    const screen_rights_object = httpRequest.body.screen_rights_mapping_object;
+    screen_rights_object.map((each_screen_right) => {
+      const values = [
+        each_screen_right['ASR_U_ID'],
+        each_screen_right['ASR_AS_ID'],
+        each_screen_right['ASR_RightToView'],
+        each_screen_right['ASR_RightToAdd'],
+        each_screen_right['ASR_RightToEdit'],
+        each_screen_right['ASR_RightToDelete'],
+        user_id,
+      ];
+      const params = {
+        values: values,
+      };
+      const result =
+        ApplicationScreenRightsMappingDao.editScreenRightsMappingForAnUser(
+          params
+        );
+    });
+    return _200(httpResponse, []);
   } catch (err) {
     return _error(httpResponse, {
       type: 'generic',
