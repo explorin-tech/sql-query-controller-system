@@ -44,6 +44,15 @@ function ScreenRights(props) {
     [filteredData]
   );
 
+  const handleChange = (e, row, cell) => {
+    filteredData.map((each_screen_rights_row) => {
+      if (each_screen_rights_row == row) {
+        row[cell.column.id] = e.target.checked;
+      }
+    });
+    setFilteredData(filteredData);
+  };
+
   useEffect(() => {
     fetchScreenRightsForSelectedUser();
   }, [props.users.selected_user]);
@@ -119,12 +128,17 @@ function ScreenRights(props) {
     }
   };
 
+  const handleEditScreenRights = () => {
+    console.log(filteredData, 'FINAL DATA TO BE SENT');
+  };
+
   return (
     <Fragment>
       <div className="application">
         <div className="buttonDiv">
-          <button className="yellowButton">Edit</button>
-          <button className="greenButton">Save Changes</button>
+          <button className="greenButton" onClick={handleEditScreenRights}>
+            Save Changes
+          </button>
         </div>
         <div className="selectTable">
           <table {...getTableProps()}>
@@ -167,6 +181,9 @@ function ScreenRights(props) {
                       return (
                         <td
                           {...cell.getCellProps()}
+                          onClick={(e) => {
+                            handleChange(e, row.original, cell);
+                          }}
                         >
                           {cell.render('Cell')}
                         </td>
