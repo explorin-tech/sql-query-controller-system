@@ -43,8 +43,8 @@ module.exports.GET_getAllScreenRightsMappingForAnUser = async (
             'FALSE',
             'FALSE',
             'FALSE',
-            user_id,
-            user_id,
+            decoded.UserID,
+            decoded.UserID,
           ],
         });
       });

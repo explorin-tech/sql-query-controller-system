@@ -14,5 +14,10 @@ router.get(routeNames.GET_ALL_USER_PERMISSION_MAPPING_FOR_AN_USER, [
   UserPermissionMappingService.GET_getAllUserPermissionMappingForAnUser,
 ]);
 
-// Add permission rights for an user
+// Edit permission rights mapping for an user
+router.put(routeNames.EDIT_USER_PERMISSIONS_MAPPING_FOR_AN_USER, [
+  authValidator,
+  UserPermissionMappingService.PUT_editUserPermissionsMappingForAnUser,
+]);
+
 module.exports = router;
