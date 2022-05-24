@@ -41,7 +41,7 @@ function ScreenRights(props) {
         Cell: (e) => <input type="checkbox" defaultChecked={e.value} />,
       },
     ],
-    []
+    [filteredData]
   );
 
   useEffect(() => {
