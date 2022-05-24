@@ -1,17 +1,15 @@
 import React, { useMemo, useState, useEffect, Fragment } from 'react';
 import { useTable, useSortBy } from 'react-table';
-
+import { connect } from 'react-redux';
 import axios from 'axios';
 
 import * as BACKEND_URLS from '../utils/BackendUrls';
-
-import * as CONSTANTS from '../utils/AppConstants';
-
-import { connect } from 'react-redux';
 import * as actions from '../store/actions/Actions';
 
 function ScreenRights(props) {
   const [filteredData, setFilteredData] = useState([]);
+  const [localData, setLocalData] = useState([]);
+
   const columns = useMemo(
     () => [
       {
@@ -23,21 +21,25 @@ function ScreenRights(props) {
         Header: 'Right to View',
         accessor: 'ASR_RightToView',
         filterable: true,
+        Cell: e => <input type="checkbox" defaultChecked={e.value} />
       },
       {
         Header: 'Right to Add',
         accessor: 'ASR_RightToAdd',
         filterable: true,
+        Cell: e => <input type="checkbox" defaultChecked={e.value} />
       },
       {
         Header: 'Right to Edit',
         accessor: 'ASR_RightToEdit',
         filterable: true,
+        Cell: e => <input type="checkbox" defaultChecked={e.value} />
       },
       {
         Header: 'Right to Delete',
         accessor: 'ASR_RightToDelete',
         filterable: true,
+        Cell: e => <input type="checkbox" defaultChecked={e.value} />
       },
     ],
     []
@@ -84,8 +86,12 @@ function ScreenRights(props) {
   }, []);
 
   useEffect(() => {
-    setFilteredData(props.screen_rights.screen_rights);
+    setLocalData(props.screen_rights.screen_rights);
   }, [props.screen_rights.screen_rights]);
+
+  useEffect(() => {
+    setFilteredData(localData);
+  }, [localData]);
 
   return (
     <Fragment>

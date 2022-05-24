@@ -1,16 +1,13 @@
 import React, { useMemo, useState, Fragment, useEffect } from 'react';
 import { useTable, useGlobalFilter, useSortBy } from 'react-table';
-import AddModal from '../common/AddModal';
-import EditModal from '../common/EditModal';
-
+import { connect } from 'react-redux';
 import axios from 'axios';
 
 import * as BACKEND_URLS from '../utils/BackendUrls';
-
 import * as CONSTANTS from '../utils/AppConstants';
-
-import { connect } from 'react-redux';
 import * as actions from '../store/actions/Actions';
+import AddModal from '../common/AddModal';
+import EditModal from '../common/EditModal';
 
 function GlobalFilter({ filter, setFilter }) {
   return (
