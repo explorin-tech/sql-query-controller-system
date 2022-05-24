@@ -46,15 +46,11 @@ function Home(props) {
                 return (
                   <Card
                     key={index}
-                    appName={
-                      item[CONSTANTS.DATABASE_APPLICATION_MAPPING.DBAM_MA_Name]
-                    }
+                    appName={item[CONSTANTS.APPLICATION.MA_Name]}
                     db={
                       item[CONSTANTS.DATABASE_APPLICATION_MAPPING.DBAM_DBName]
                     }
-                    type={
-                      item[CONSTANTS.DATABASE_APPLICATION_MAPPING.DBAM_DBT_Name]
-                    }
+                    type={item['DBT_Name']}
                   />
                 );
               })

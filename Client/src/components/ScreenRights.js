@@ -21,29 +21,33 @@ function ScreenRights(props) {
         Header: 'Right to View',
         accessor: 'ASR_RightToView',
         filterable: true,
-        Cell: e => <input type="checkbox" defaultChecked={e.value} />
+        Cell: (e) => <input type="checkbox" defaultChecked={e.value} />,
       },
       {
         Header: 'Right to Add',
         accessor: 'ASR_RightToAdd',
         filterable: true,
-        Cell: e => <input type="checkbox" defaultChecked={e.value} />
+        Cell: (e) => <input type="checkbox" defaultChecked={e.value} />,
       },
       {
         Header: 'Right to Edit',
         accessor: 'ASR_RightToEdit',
         filterable: true,
-        Cell: e => <input type="checkbox" defaultChecked={e.value} />
+        Cell: (e) => <input type="checkbox" defaultChecked={e.value} />,
       },
       {
         Header: 'Right to Delete',
         accessor: 'ASR_RightToDelete',
         filterable: true,
-        Cell: e => <input type="checkbox" defaultChecked={e.value} />
+        Cell: (e) => <input type="checkbox" defaultChecked={e.value} />,
       },
     ],
     []
   );
+
+  const handleChange = (id) => {
+    console.log(id);
+  };
 
   const data = useMemo(() => filteredData, [filteredData]);
 
@@ -86,12 +90,12 @@ function ScreenRights(props) {
   }, []);
 
   useEffect(() => {
-    setLocalData(props.screen_rights.screen_rights);
+    setFilteredData(props.screen_rights.screen_rights);
   }, [props.screen_rights.screen_rights]);
 
   useEffect(() => {
-    setFilteredData(localData);
-  }, [localData]);
+    setFilteredData(filteredData);
+  }, [filteredData]);
 
   return (
     <Fragment>
@@ -139,7 +143,15 @@ function ScreenRights(props) {
                   <tr {...row.getRowProps()} key={row.id}>
                     {row.cells.map((cell) => {
                       return (
-                        <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                        <td
+                          onClick={() => {
+                            console.log(cell);
+                            handleChange(row.original);
+                          }}
+                          {...cell.getCellProps()}
+                        >
+                          {cell.render('Cell')}
+                        </td>
                       );
                     })}
                   </tr>

@@ -56,6 +56,7 @@ function AddUser(props) {
     password: '',
     userType: CONSTANTS.USER_TYPES.DEV,
     isActiveDirectUser: 'TRUE',
+    selectedUser: '',
   });
 
   const handleChange = (name) => (event) => {
@@ -124,9 +125,13 @@ function AddUser(props) {
     fetchAllUsers();
   }, []);
 
-  const handleSelectUser = (e) => {
-    props.set_selected_user(JSON.parse(e.target.value));
-  };
+  useEffect(() => {
+    if (values.selectedUser != '') {
+      props.set_selected_user(JSON.parse(values.selectedUser));
+    } else {
+      props.set_selected_user(null);
+    }
+  }, [values.selectedUser]);
 
   return (
     <Fragment>
@@ -135,8 +140,11 @@ function AddUser(props) {
           <div>
             <span className="searchTable">
               <span className="headData"> User </span>
-              <select onChange={handleSelectUser} value={'DEFAULT'}>
-                <option value={null}>-- Select User --</option>
+              <select
+                onChange={handleChange('selectedUser')}
+                value={values.selectedUser}
+              >
+                <option value={''}>-- Select User --</option>
                 {props.users ? (
                   <PopulateUsers users={props.users.users} />
                 ) : null}
