@@ -102,7 +102,6 @@ module.exports.PUT_editDatabase = async (httpRequest, httpResponse, next) => {
       httpRequest.body.database.database_password,
       user_id,
     ];
-    console.log(values);
     const params = {
       values: values,
     };

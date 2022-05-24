@@ -1,5 +1,9 @@
-const { ApplicationScreenRightsMappingDao } = require('../dao/index');
+const {
+  ApplicationScreenDao,
+  ApplicationScreenRightsMappingDao,
+} = require('../dao/index');
 const { _200, _error } = require('../common/httpHelper');
+const _ = require('underscore');
 
 module.exports.GET_getAllScreenRightsMappingForAnUser = async (
   httpRequest,
@@ -12,12 +16,40 @@ module.exports.GET_getAllScreenRightsMappingForAnUser = async (
     const params = {
       user_id: user_id,
     };
-    const result =
+
+    const screens = await ApplicationScreenDao.getAllApplicationScreens();
+    let screenRights;
+    screenRights =
       await ApplicationScreenRightsMappingDao.getAllScreenRightsMappingForAnUser(
         params
       );
-    return _200(httpResponse, result);
-  } catch {
+    const arrayOfScreenIDs = _.pluck(screens, 'AS_ID');
+    const arrayOfScreenIDsInScreenRights = _.pluck(screenRights, 'ASR_AS_ID');
+    const arrayOfScreenIDsForWhichRightsNeedToBeAdded = arrayOfScreenIDs.filter(
+      (x) => arrayOfScreenIDsInScreenRights.indexOf(x) === -1
+    );
+    if (arrayOfScreenIDsForWhichRightsNeedToBeAdded.length >= 1) {
+      arrayOfScreenIDsForWhichRightsNeedToBeAdded.map((each_screen_id) => {
+        ApplicationScreenRightsMappingDao.addScreenRightsMappingForAnUser({
+          values: [
+            user_id,
+            each_screen_id,
+            'FALSE',
+            'FALSE',
+            'FALSE',
+            'FALSE',
+            user_id,
+            user_id,
+          ],
+        });
+      });
+    }
+    screenRights =
+      await ApplicationScreenRightsMappingDao.getAllScreenRightsMappingForAnUser(
+        params
+      );
+    return _200(httpResponse, screenRights);
+  } catch (err) {
     return _error(httpResponse, {
       type: 'generic',
       message: err,
