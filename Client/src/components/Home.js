@@ -16,43 +16,49 @@ import * as actions from '../store/actions/Actions';
 function Home(props) {
   const [error, setError] = useState('');
 
-  const fetchAllDatabases = () => {
+  useEffect(() => {
+    fetchUserPermissions();
+  }, []);
+
+  const fetchUserPermissions = () => {
     axios
-      .get(BACKEND_URLS.GET_ALL_MAPPED_DATABASES, {
+      .get(BACKEND_URLS.GET_ALL_USER_PERMISSION_MAPPING_FOR_AN_USER, {
         headers: {
           token: localStorage.getItem('token'),
         },
       })
       .then((res) => {
         if (res.status === 200) {
-          props.set_databases(res.data.data);
+          // set user permissions in redux
+          props.set_all_user_permission_rights(res.data.data);
         }
       })
       .catch((err) => {
-        console.log(err);
+        if (err.response) {
+          setError(error.response.data.message);
+        }
       });
   };
 
-  useEffect(() => {
-    fetchAllDatabases();
-  }, []);
   return (
     <Fragment>
       <div className="homePage">
         <h4>Applications</h4>
         <div className="row">
-          {props.databases
-            ? props.databases.databases.map((item, index) => {
-                return (
-                  <Card
-                    key={index}
-                    appName={item[CONSTANTS.APPLICATION.MA_Name]}
-                    db={
-                      item[CONSTANTS.DATABASE_APPLICATION_MAPPING.DBAM_DBName]
-                    }
-                    type={item['DBT_Name']}
-                  />
-                );
+          {props.user_permissions
+            ? props.user_permissions.user_permissions.map((item, index) => {
+                if (item['UP_RightToRead']) {
+                  return (
+                    <Card
+                      key={index}
+                      appName={item[CONSTANTS.APPLICATION.MA_Name]}
+                      db={
+                        item[CONSTANTS.DATABASE_APPLICATION_MAPPING.DBAM_DBName]
+                      }
+                      type={item['DBT_Name']}
+                    />
+                  );
+                }
               })
             : null}
         </div>
@@ -69,10 +75,11 @@ function Home(props) {
   );
 }
 const mapStateToProps = (state) => ({
-  databases: state.databases,
+  user_permissions: state.userPermissions,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  set_databases: (databases) => dispatch(actions.set_databases(databases)),
+  set_all_user_permission_rights: (permission_rights) =>
+    dispatch(actions.set_all_user_permission_rights(permission_rights)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

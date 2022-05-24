@@ -29,7 +29,6 @@ function Dashboard(props) {
   useEffect(() => {
     if (props.db_user.user == null) {
       if (localStorage.getItem('token')) {
-        fetchAllScreenRights();
         axios
           .get(BACKEND_URLS.GET_USER_DETAILS, {
             headers: { token: localStorage.getItem('token') },
@@ -54,29 +53,6 @@ function Dashboard(props) {
                 .then((res) => {
                   if (res.status === 200) {
                     props.set_all_screen_rights_for_an_user(res.data.data);
-
-                    // now fetch user permissions
-
-                    axios
-                      .get(
-                        BACKEND_URLS.GET_ALL_USER_PERMISSION_MAPPING_FOR_AN_USER,
-                        {
-                          headers: {
-                            token: localStorage.getItem('token'),
-                          },
-                        }
-                      )
-                      .then((res) => {
-                        if (res.status === 200) {
-                          // set user permissions in redux
-                          props.set_all_user_permission_rights(res.data.data);
-                        }
-                      })
-                      .catch((err) => {
-                        if (err.response) {
-                          setError(error.response.data.message);
-                        }
-                      });
                   }
                 })
                 .catch((err) => {
@@ -96,23 +72,6 @@ function Dashboard(props) {
       }
     }
   }, []);
-
-  const fetchAllScreenRights = () => {
-    axios
-      .get(BACKEND_URLS.GET_ALL_SCREEN_RIGHTS_FOR_AN_USER, {
-        headers: {
-          token: localStorage.getItem('token'),
-        },
-      })
-      .then((res) => {
-        if (res.status === 200) {
-          props.set_all_screen_rights_for_an_user(res.data.data);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   return (
     <Fragment>
@@ -158,8 +117,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   login_success: () => dispatch(actions.login_success()),
   set_db_user: (user) => dispatch(actions.set_db_user(user)),
-  set_all_user_permission_rights: (permission_rights) =>
-    dispatch(actions.set_all_user_permission_rights(permission_rights)),
   set_all_screen_rights_for_an_user: (screen_rights) =>
     dispatch(actions.set_all_screen_rights_for_an_user(screen_rights)),
 });
