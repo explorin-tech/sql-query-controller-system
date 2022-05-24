@@ -29,6 +29,7 @@ function Dashboard(props) {
   useEffect(() => {
     if (props.db_user.user == null) {
       if (localStorage.getItem('token')) {
+        fetchAllScreenRights();
         axios
           .get(BACKEND_URLS.GET_USER_DETAILS, {
             headers: { token: localStorage.getItem('token') },
@@ -95,6 +96,23 @@ function Dashboard(props) {
       }
     }
   }, []);
+
+  const fetchAllScreenRights = () => {
+    axios
+      .get(BACKEND_URLS.GET_ALL_SCREEN_RIGHTS_FOR_AN_USER, {
+        headers: {
+          token: localStorage.getItem('token'),
+        },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          props.set_all_screen_rights_for_an_user(res.data.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <Fragment>
