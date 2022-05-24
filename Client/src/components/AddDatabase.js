@@ -89,6 +89,16 @@ function AddDatabase(props) {
         accessor: 'DBAM_DBConnectionString',
         filterable: true,
       },
+      {
+        Header: 'Database User Name',
+        accessor: 'DBAM_DBUserName',
+        filterable: true,
+      },
+      {
+        Header: 'Database Password',
+        accessor: 'DBAM_DBPassword',
+        filterable: true,
+      },
     ],
     []
   );
