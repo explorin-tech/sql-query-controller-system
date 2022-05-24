@@ -20,7 +20,15 @@ function ScreenRights(props) {
         Header: 'Right to View',
         accessor: 'ASR_RightToView',
         filterable: true,
-        Cell: (e) => <input type="checkbox" defaultChecked={e.value} onClick={() => { e.value = !(e.value) }} />,
+        Cell: (e) => (
+          <input
+            type="checkbox"
+            defaultChecked={e.value}
+            onClick={() => {
+              e.value = !e.value;
+            }}
+          />
+        ),
       },
       {
         Header: 'Right to Add',
@@ -44,16 +52,6 @@ function ScreenRights(props) {
     [filteredData]
   );
 
-  useEffect(() => {
-    fetchScreenRightsForSelectedUser();
-  }, [props.users.selected_user]);
-
-  useEffect(() => {
-    if (props.users.selected_user != null) {
-      setFilteredData(props.screen_rights.screen_rights_for_selected_user);
-    }
-  }, [props.screen_rights.screen_rights_for_selected_user]);
-
   const data = useMemo(() => filteredData, [filteredData]);
 
   const tableInstance = useTable(
@@ -72,6 +70,23 @@ function ScreenRights(props) {
     prepareRow,
     state,
   } = tableInstance;
+
+  const fetchAllScreenRights = () => {
+    axios
+      .get(BACKEND_URLS.GET_ALL_SCREEN_RIGHTS_FOR_AN_USER, {
+        headers: {
+          token: localStorage.getItem('token'),
+        },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          props.set_all_screen_rights_for_an_user(res.data.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const fetchScreenRightsForSelectedUser = () => {
     if (props.users.selected_user) {
@@ -96,6 +111,21 @@ function ScreenRights(props) {
       setFilteredData([]);
     }
   };
+
+  useEffect(() => {
+    fetchScreenRightsForSelectedUser();
+  }, [props.users.selected_user]);
+
+  useEffect(() => {
+    fetchAllScreenRights();
+    fetchScreenRightsForSelectedUser();
+  }, []);
+
+  useEffect(() => {
+    if (props.users.selected_user != null) {
+      setFilteredData(props.screen_rights.screen_rights_for_selected_user);
+    }
+  }, [props.screen_rights.screen_rights_for_selected_user]);
 
   const handleChange = (e, row, cell) => {
     filteredData.map((each_screen_rights_row) => {
