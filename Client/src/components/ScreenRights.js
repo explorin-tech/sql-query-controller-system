@@ -44,15 +44,6 @@ function ScreenRights(props) {
     [filteredData]
   );
 
-  const handleChange = (e, row, cell) => {
-    filteredData.map((each_screen_rights_row) => {
-      if (each_screen_rights_row == row) {
-        row[cell.column.id] = e.target.checked;
-      }
-    });
-    setFilteredData(filteredData);
-  };
-
   useEffect(() => {
     fetchScreenRightsForSelectedUser();
   }, [props.users.selected_user]);
@@ -128,8 +119,36 @@ function ScreenRights(props) {
     }
   };
 
+  const handleChange = (e, row, cell) => {
+    filteredData.map((each_screen_rights_row) => {
+      if (each_screen_rights_row == row) {
+        row[cell.column.id] = e.target.checked;
+      }
+    });
+    setFilteredData(filteredData);
+  };
+
   const handleEditScreenRights = () => {
-    console.log(filteredData, 'FINAL DATA TO BE SENT');
+    axios
+      .put(
+        BACKEND_URLS.EDIT_SCREEN_RIGHTS_MAPPING_FOR_AN_USER,
+        {
+          screen_rights_mapping_object: filteredData,
+        },
+        {
+          headers: {
+            token: localStorage.getItem('token'),
+          },
+        }
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          fetchScreenRightsForSelectedUser();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
