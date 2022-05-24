@@ -224,6 +224,35 @@ function AddApplication(props) {
       });
   };
 
+  const handleDeleteApplication = (e) => {
+    e.preventDefault();
+    axios
+      .delete(BACKEND_URLS.DELETE_AN_APPLICATION, {
+        params: {
+          application_id: values.applicationID,
+        },
+        headers: {
+          token: localStorage.getItem('token'),
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        if (res.status == 200) {
+          fetchAllApplicationsForAnUser();
+          setEditModalShow(false);
+          setValues({
+            applicationID: '',
+            applicationName: '',
+            owner1: '',
+            owner2: '',
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <Fragment>
       <div className="application">
@@ -338,6 +367,9 @@ function AddApplication(props) {
               </table>
               <button className="greenButton" type="submit">
                 Save changes
+              </button>
+              <button className="redButton" onClick={handleDeleteApplication}>
+                Delete
               </button>
             </form>
           </EditModal>

@@ -123,7 +123,7 @@ module.exports.DELETE_deleteApplication = async (
   next
 ) => {
   try {
-    const application_id = httpRequest.body.application_id;
+    const application_id = httpRequest.query.application_id;
     const params = {
       application_id: application_id,
     };

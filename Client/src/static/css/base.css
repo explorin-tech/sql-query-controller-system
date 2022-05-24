@@ -20,6 +20,7 @@
   --baseWhite: #FFFFFF;
   --baseGreen: #3FD77C;
   --baseYellow: #DDC131;
+  --baseRed: #FF0000;
 }
 
 html,
@@ -57,6 +58,11 @@ button {
 
 .yellowButton {
   background-color: var(--baseYellow);
+}
+
+.redButton {
+  background-color: var(--baseRed);
+  margin-left: 10px;
 }
 
 .error-message {

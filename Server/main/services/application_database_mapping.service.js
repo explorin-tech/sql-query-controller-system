@@ -122,7 +122,7 @@ module.exports.DELETE_deleteDatabase = async (
 ) => {
   try {
     const database_application_mapping_id =
-      httpRequest.body.database.database_application_mapping_id;
+      httpRequest.query.database_application_mapping_id;
 
     const params = {
       database_application_mapping_id: database_application_mapping_id,

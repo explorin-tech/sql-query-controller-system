@@ -119,7 +119,13 @@ function ScreenRights(props) {
 
   useEffect(() => {
     if (props.users.selected_user != null) {
+      console.log(filteredData, 'INITIAL FILTEDRED DATA');
+      console.log(
+        props.screen_rights.screen_rights_for_selected_user,
+        'FETCHED FIL'
+      );
       setFilteredData(props.screen_rights.screen_rights_for_selected_user);
+      console.log(filteredData, 'FINAL FILTEDRED DATA');
     }
   }, [props.screen_rights.screen_rights_for_selected_user]);
 

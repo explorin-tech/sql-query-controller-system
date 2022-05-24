@@ -222,7 +222,7 @@ function AddDatabase(props) {
         database[CONSTANTS.DATABASE_APPLICATION_MAPPING.DBAM_DBHostName],
       databaseConnectionString:
         database[
-        CONSTANTS.DATABASE_APPLICATION_MAPPING.DBAM_DBConnectionString
+          CONSTANTS.DATABASE_APPLICATION_MAPPING.DBAM_DBConnectionString
         ],
       databaseUserName:
         database[CONSTANTS.DATABASE_APPLICATION_MAPPING.DBAM_DBUserName],
@@ -279,6 +279,42 @@ function AddDatabase(props) {
         }
       })
       .then((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleDeleteDatabase = (e) => {
+    e.preventDefault();
+    axios
+      .delete(BACKEND_URLS.DELETE_A_DATABASE, {
+        params: {
+          database_application_mapping_id: values.databaseApplicationMappingID,
+        },
+        headers: {
+          token: localStorage.getItem('token'),
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        if (res.status == 200) {
+          fetchAllDatabases();
+          setEditModalShow(false);
+          setValues({
+            databaseApplicationMappingID: '',
+            applicationID: '',
+            applicationName: '',
+            databaseTypeName: '',
+            databaseTypeID: '',
+            databaseName: '',
+            databaseHostName: '',
+            databaseConnectionString: '',
+            databaseUserName: '',
+            databasePassword: '',
+            databasePortNumber: '',
+          });
+        }
+      })
+      .catch((err) => {
         console.log(err);
       });
   };
@@ -503,6 +539,9 @@ function AddDatabase(props) {
               </table>
               <button className="greenButton" type="submit">
                 Save changes
+              </button>
+              <button className="redButton" onClick={handleDeleteDatabase}>
+                Delete
               </button>
             </form>
           </EditModal>
