@@ -44,9 +44,20 @@ function ScreenRights(props) {
     []
   );
 
-  const handleChange = (id) => {
-    console.log(id);
-  };
+  useEffect(() => {
+    fetchScreenRightsForSelectedUser();
+  }, [props.users.selected_user]);
+
+  useEffect(() => {
+    fetchAllScreenRights();
+    fetchScreenRightsForSelectedUser();
+  }, []);
+
+  useEffect(() => {
+    if (props.users.selected_user != null) {
+      setFilteredData(props.screen_rights.screen_rights_for_selected_user);
+    }
+  }, [props.screen_rights.screen_rights_for_selected_user]);
 
   const data = useMemo(() => filteredData, [filteredData]);
 
@@ -108,27 +119,6 @@ function ScreenRights(props) {
     }
   };
 
-  useEffect(() => {
-    fetchScreenRightsForSelectedUser();
-  }, [props.users.selected_user]);
-
-  useEffect(() => {
-    fetchAllScreenRights();
-    fetchScreenRightsForSelectedUser();
-  }, []);
-
-  useEffect(() => {
-    if (props.users.selected_user != null) {
-      console.log(filteredData, 'INITIAL FILTEDRED DATA');
-      console.log(
-        props.screen_rights.screen_rights_for_selected_user,
-        'FETCHED FIL'
-      );
-      setFilteredData(props.screen_rights.screen_rights_for_selected_user);
-      console.log(filteredData, 'FINAL FILTEDRED DATA');
-    }
-  }, [props.screen_rights.screen_rights_for_selected_user]);
-
   return (
     <Fragment>
       <div className="application">
@@ -176,9 +166,6 @@ function ScreenRights(props) {
                     {row.cells.map((cell) => {
                       return (
                         <td
-                          onClick={() => {
-                            handleChange(row.original);
-                          }}
                           {...cell.getCellProps()}
                         >
                           {cell.render('Cell')}
