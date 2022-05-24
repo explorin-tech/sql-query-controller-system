@@ -12,7 +12,12 @@ module.exports.GET_getAllScreenRightsMappingForAnUser = async (
 ) => {
   try {
     const { decoded } = httpRequest.headers;
-    const user_id = decoded.UserID;
+    let user_id;
+    if (httpRequest.query.user_id) {
+      user_id = httpRequest.query.user_id;
+    } else {
+      user_id = decoded.UserID;
+    }
     const params = {
       user_id: user_id,
     };

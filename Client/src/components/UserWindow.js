@@ -56,7 +56,7 @@ function AddUser(props) {
     password: '',
     userType: CONSTANTS.USER_TYPES.DEV,
     isActiveDirectUser: 'TRUE',
-    selectedUser: '',
+    selectedUser: JSON.stringify(props.users.selected_user),
   });
 
   const handleChange = (name) => (event) => {

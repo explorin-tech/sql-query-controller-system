@@ -9,8 +9,8 @@ const UserReducer = (state = initialState, action) => {
   switch (action.type) {
     case ACTION_TYPES.SET_ALL_USERS:
       return {
+        ...state,
         users: action.payload,
-        selected_user: null,
       };
     case ACTION_TYPES.SET_USER:
       return {

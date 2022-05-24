@@ -87,6 +87,13 @@ export const set_all_screen_rights_for_an_user = (screen_rights) => {
   };
 };
 
+export const set_all_screen_rights_for_selected_user = (screen_rights) => {
+  return {
+    type: ACTION_TYPES.SET_ALL_APPLICATION_SCREEN_RIGHTS_FOR_SELECTED_USER,
+    payload: screen_rights,
+  };
+};
+
 export const set_all_user_permission_rights = (user_permission_rights) => {
   return {
     type: ACTION_TYPES.SET_ALL_USER_PERMISSIONS,

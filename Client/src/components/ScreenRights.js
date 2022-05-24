@@ -8,7 +8,6 @@ import * as actions from '../store/actions/Actions';
 
 function ScreenRights(props) {
   const [filteredData, setFilteredData] = useState([]);
-  const [localData, setLocalData] = useState([]);
 
   const columns = useMemo(
     () => [
@@ -85,17 +84,44 @@ function ScreenRights(props) {
       });
   };
 
+  const fetchScreenRightsForSelectedUser = () => {
+    if (props.users.selected_user) {
+      axios
+        .get(BACKEND_URLS.GET_ALL_SCREEN_RIGHTS_FOR_AN_USER, {
+          params: {
+            user_id: props.users.selected_user['U_ID'],
+          },
+          headers: {
+            token: localStorage.getItem('token'),
+          },
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            props.set_all_screen_rights_for_selected_user(res.data.data);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      setFilteredData([]);
+    }
+  };
+
+  useEffect(() => {
+    fetchScreenRightsForSelectedUser();
+  }, [props.users.selected_user]);
+
   useEffect(() => {
     fetchAllScreenRights();
+    fetchScreenRightsForSelectedUser();
   }, []);
 
   useEffect(() => {
-    setFilteredData(props.screen_rights.screen_rights);
-  }, [props.screen_rights.screen_rights]);
-
-  useEffect(() => {
-    setFilteredData(filteredData);
-  }, [filteredData]);
+    if (props.users.selected_user != null) {
+      setFilteredData(props.screen_rights.screen_rights_for_selected_user);
+    }
+  }, [props.screen_rights.screen_rights_for_selected_user]);
 
   return (
     <Fragment>
@@ -145,7 +171,6 @@ function ScreenRights(props) {
                       return (
                         <td
                           onClick={() => {
-                            console.log(cell);
                             handleChange(row.original);
                           }}
                           {...cell.getCellProps()}
@@ -166,12 +191,16 @@ function ScreenRights(props) {
 }
 
 const mapStateToProps = (state) => ({
+  users: state.users,
   screen_rights: state.applicationScreenRights,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   set_all_screen_rights_for_an_user: (screen_rights) =>
     dispatch(actions.set_all_screen_rights_for_an_user(screen_rights)),
+
+  set_all_screen_rights_for_selected_user: (screen_rights) =>
+    dispatch(actions.set_all_screen_rights_for_selected_user(screen_rights)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ScreenRights);
