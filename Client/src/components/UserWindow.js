@@ -238,9 +238,17 @@ function AddUser(props) {
                   </tr>
                 </tbody>
               </table>
-              <button className="greenButton" type="submit">
-                Save changes
-              </button>
+              {props.screen_rights.screen_rights[0] ? (
+                <button
+                  disabled={
+                    !props.screen_rights.screen_rights[0]['ASR_RightToAdd']
+                  }
+                  className="greenButton"
+                  type="submit"
+                >
+                  Save changes
+                </button>
+              ) : null}
             </form>
           </AddModal>
           {props.db_user.user ? (
@@ -265,10 +273,18 @@ function AddUser(props) {
           </TabList>
           <div className="tabPanel">
             <TabPanel>
-              <ScreenRights />
+              {props.screen_rights.screen_rights[4] ? (
+                props.screen_rights.screen_rights[4]['ASR_RightToView'] ? (
+                  <ScreenRights />
+                ) : null
+              ) : null}
             </TabPanel>
             <TabPanel>
-              <DbRights />
+              {props.screen_rights.screen_rights[5] ? (
+                props.screen_rights.screen_rights[5]['ASR_RightToView'] ? (
+                  <DbRights />
+                ) : null
+              ) : null}
             </TabPanel>
           </div>
         </Tabs>
@@ -280,6 +296,7 @@ function AddUser(props) {
 const mapStateToProps = (state) => ({
   db_user: state.auth,
   users: state.users,
+  screen_rights: state.applicationScreenRights,
 });
 
 const mapDispatchToProps = (dispatch) => ({

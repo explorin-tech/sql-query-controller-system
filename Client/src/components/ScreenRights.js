@@ -163,9 +163,17 @@ function ScreenRights(props) {
     <Fragment>
       <div className="application">
         <div className="buttonDiv">
-          <button className="greenButton" onClick={handleEditScreenRights}>
-            Save Changes
-          </button>
+          {props.screen_rights.screen_rights[4] ? (
+            <button
+              className="greenButton"
+              onClick={handleEditScreenRights}
+              disabled={
+                !props.screen_rights.screen_rights[4]['ASR_RightToEdit']
+              }
+            >
+              Save Changes
+            </button>
+          ) : null}
         </div>
         <div className="selectTable">
           <table {...getTableProps()}>
