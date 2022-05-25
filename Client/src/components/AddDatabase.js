@@ -439,9 +439,17 @@ function AddDatabase(props) {
                   </tr>
                 </tbody>
               </table>
-              <button className="greenButton" type="submit">
-                Save changes
-              </button>
+              {props.screen_rights.screen_rights[2] ? (
+                <button
+                  disabled={
+                    !props.screen_rights.screen_rights[2]['ASR_RightToAdd']
+                  }
+                  className="greenButton"
+                  type="submit"
+                >
+                  Save changes
+                </button>
+              ) : null}
             </form>
           </AddModal>
           <EditModal
@@ -547,12 +555,28 @@ function AddDatabase(props) {
                   </tr>
                 </tbody>
               </table>
-              <button className="greenButton" type="submit">
-                Save changes
-              </button>
-              <button className="redButton" onClick={handleDeleteDatabase}>
-                Delete
-              </button>
+              {props.screen_rights.screen_rights[2] ? (
+                <button
+                  disabled={
+                    !props.screen_rights.screen_rights[2]['ASR_RightToEdit']
+                  }
+                  className="greenButton"
+                  type="submit"
+                >
+                  Save changes
+                </button>
+              ) : null}
+              {props.screen_rights.screen_rights[2] ? (
+                <button
+                  disabled={
+                    !props.screen_rights.screen_rights[2]['ASR_RightToDelete']
+                  }
+                  className="redButton"
+                  onClick={handleDeleteDatabase}
+                >
+                  Delete
+                </button>
+              ) : null}
             </form>
           </EditModal>
           <div>
@@ -645,6 +669,7 @@ const mapStateToProps = (state) => ({
   users: state.users,
   applications: state.applications,
   databases: state.databases,
+  screen_rights: state.applicationScreenRights,
 });
 
 const mapDispatchToProps = (dispatch) => ({

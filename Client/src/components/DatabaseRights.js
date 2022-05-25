@@ -189,9 +189,17 @@ function DbRights(props) {
     <Fragment>
       <div className="application">
         <div className="buttonDiv">
-          <button className="greenButton" onClick={handleEditUserPermissions}>
-            Save Changes
-          </button>
+          {props.screen_rights.screen_rights[5] ? (
+            <button
+              className="greenButton"
+              onClick={handleEditUserPermissions}
+              disabled={
+                !props.screen_rights.screen_rights[5]['ASR_RightToEdit']
+              }
+            >
+              Save Changes
+            </button>
+          ) : null}
         </div>
         <div className="selectTable">
           <table {...getTableProps()}>
@@ -257,6 +265,7 @@ const mapStateToProps = (state) => ({
   databases: state.databases,
   users: state.users,
   user_permissions: state.userPermissions,
+  screen_rights: state.applicationScreenRights,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -55,14 +55,28 @@ button {
 .greenButton {
   background-color: var(--baseGreen);
 }
+.greenButton:disabled {
+  background-color: var(--baseGreen);
+  opacity: 0.5;
+}
 
 .yellowButton {
   background-color: var(--baseYellow);
 }
+.yellowButton:disabled {
+  background-color: var(--baseYellow);
+  opacity: 0.5;
+}
+
 
 .redButton {
   background-color: var(--baseRed);
   margin-left: 10px;
+}
+.redButton:disabled {
+  background-color: var(--baseRed);
+  margin-left: 10px;
+  opacity: 0.5;
 }
 
 .error-message {
