@@ -54,7 +54,7 @@ export const DATABASE_APPLICATION_MAPPING = {
 
 export const DATABASE_TYPES = [
   {
-    id: '1',
+    id: 1,
     name: 'PRD',
   },
   {
@@ -72,5 +72,24 @@ export const DATABASE_TYPES = [
   {
     id: 5,
     name: 'OTH',
+  },
+];
+
+export const APPLICATION_SCREENS = [
+  {
+    id: 1,
+    name: 'User Window',
+  },
+  {
+    id: 2,
+    name: 'Master Application Window',
+  },
+  {
+    id: 3,
+    name: 'Database Mapping Window',
+  },
+  {
+    id: 4,
+    name: 'Query Window',
   },
 ];

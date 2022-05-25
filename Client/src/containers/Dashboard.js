@@ -38,28 +38,7 @@ function Dashboard(props) {
               if (props.db_user.is_authentication === false) {
                 props.login_success();
               }
-
-              // set user into redux
               props.set_db_user(res.data.data[0]);
-
-              // set screen rights into redux
-
-              axios
-                .get(BACKEND_URLS.GET_ALL_SCREEN_RIGHTS_FOR_AN_USER, {
-                  headers: {
-                    token: localStorage.getItem('token'),
-                  },
-                })
-                .then((res) => {
-                  if (res.status === 200) {
-                    props.set_all_screen_rights_for_an_user(res.data.data);
-                  }
-                })
-                .catch((err) => {
-                  if (err.response) {
-                    setError(err.response.data.message);
-                  }
-                });
             }
           })
           .catch(function (error) {
@@ -111,14 +90,11 @@ function Dashboard(props) {
 
 const mapStateToProps = (state) => ({
   db_user: state.auth,
-  screen_rights: state.applicationScreenRights,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   login_success: () => dispatch(actions.login_success()),
   set_db_user: (user) => dispatch(actions.set_db_user(user)),
-  set_all_screen_rights_for_an_user: (screen_rights) =>
-    dispatch(actions.set_all_screen_rights_for_an_user(screen_rights)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
