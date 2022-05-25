@@ -25,6 +25,7 @@ export const USER = {
   U_UpdatedBy: 'U_UpdatedBy',
   U_IsActive: 'U_IsActive',
   U_IsActDrtUser: 'U_IsActDrtUser',
+  UT_Name: 'UT_Name',
 };
 
 export const APPLICATION = {

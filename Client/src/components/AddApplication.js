@@ -34,7 +34,8 @@ const PopulateUsers = ({ users }) => {
             key={user[CONSTANTS.USER.U_ID]}
             value={user[CONSTANTS.USER.U_ID]}
           >
-            {user[CONSTANTS.USER.U_FirstName]} {user[CONSTANTS.USER.U_LastName]}
+            {user[CONSTANTS.USER.U_FirstName]} {user[CONSTANTS.USER.U_LastName]}{' '}
+            ({user[CONSTANTS.USER.UT_Name]})
           </option>
         );
       })}

@@ -38,7 +38,8 @@ const PopulateUsers = ({ users }) => {
       {users.map((user) => {
         return (
           <option key={user[CONSTANTS.USER.U_ID]} value={JSON.stringify(user)}>
-            {user[CONSTANTS.USER.U_FirstName]} {user[CONSTANTS.USER.U_LastName]}
+            {user[CONSTANTS.USER.U_FirstName]} {user[CONSTANTS.USER.U_LastName]}{' '}
+            ({user[CONSTANTS.USER.UT_Name]})
           </option>
         );
       })}

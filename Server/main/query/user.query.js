@@ -1,6 +1,7 @@
 module.exports = Object.freeze({
   SELECT_ALL_USER_TYPES: 'SELECT * FROM "UserType";',
-  SELECT_ALL_USERS: 'SELECT * FROM "User" ORDER BY "User"."U_AddedOn" DESC;',
+  SELECT_ALL_USERS:
+    'SELECT * FROM "User" LEFT JOIN "UserType" ON "UserType"."UT_ID" = "User"."U_UT_ID" ORDER BY "User"."U_AddedOn" DESC;',
   GET_USER_DETAILS:
     'SELECT * FROM "User" LEFT JOIN "UserType" ON "User"."U_UT_ID" = "UserType"."UT_ID" WHERE "User"."U_ID" = $1;',
   GET_USER_DETAILS_FOR_EMAILID:
