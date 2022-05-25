@@ -36,54 +36,54 @@ function Sidebar(props) {
     fetchScreenRights();
   }, []);
 
+  const checkRights = (index) => {
+    return props?.screen_rights?.screen_rights?.[index]?.['ASR_RightToView'];
+  }
+
   return (
     <Fragment>
       <div className="sideBar">
         <div className="sideBarUpper">
-          {props.screen_rights.screen_rights[0] ? (
-            <>
-              <MenuItem
-                to="/"
-                image={require('../static/images/dummy.png')}
-                title="Home"
-              />
-              {props.screen_rights.screen_rights[3]['ASR_RightToView'] ? (
-                <MenuItem
-                  to="/query"
-                  image={require('../static/images/dummy.png')}
-                  title="Query Window"
-                />
-              ) : null}
-              {props.screen_rights.screen_rights[1]['ASR_RightToView'] ? (
-                <MenuItem
-                  to="/application"
-                  image={require('../static/images/dummy.png')}
-                  title="Add Application"
-                />
-              ) : null}
-              {props.screen_rights.screen_rights[2]['ASR_RightToView'] ? (
-                <MenuItem
-                  to="/database"
-                  image={require('../static/images/dummy.png')}
-                  title="Add Database"
-                />
-              ) : null}
-              {props.screen_rights.screen_rights[0]['ASR_RightToView'] ? (
-                <MenuItem
-                  to="/user"
-                  image={require('../static/images/dummy.png')}
-                  title="User Window"
-                />
-              ) : null}
-              {props.screen_rights.screen_rights[3]['ASR_RightToView'] ? (
-                <MenuItem
-                  to="/draft"
-                  image={require('../static/images/dummy.png')}
-                  title="Open Draft Queries"
-                />
-              ) : null}
-            </>
-          ) : null}
+          <MenuItem
+            to="/"
+            image={require('../static/images/dummy.png')}
+            title="Home"
+          />
+          {checkRights(3) &&
+            <MenuItem
+              to="/query"
+              image={require('../static/images/dummy.png')}
+              title="Query Window"
+            />
+          }
+          {checkRights(1) &&
+            <MenuItem
+              to="/application"
+              image={require('../static/images/dummy.png')}
+              title="Add Application"
+            />
+          }
+          {checkRights(2) &&
+            <MenuItem
+              to="/database"
+              image={require('../static/images/dummy.png')}
+              title="Add Database"
+            />
+          }
+          {checkRights(0) &&
+            <MenuItem
+              to="/user"
+              image={require('../static/images/dummy.png')}
+              title="User Window"
+            />
+          }
+          {checkRights(3) &&
+            <MenuItem
+              to="/draft"
+              image={require('../static/images/dummy.png')}
+              title="Open Draft Queries"
+            />
+          }
         </div>
       </div>
     </Fragment>
