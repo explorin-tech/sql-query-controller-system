@@ -1,14 +1,12 @@
-import React, { useState, useEffect, Fragment } from 'react';
-import { MenuItem } from '../common/MenuItem';
+import React, { useState, useEffect, Fragment } from "react";
+import { connect } from "react-redux";
+import axios from "axios";
 
-import '../static/css/sideBar.css';
+import { MenuItem } from "../common/MenuItem";
+import * as BACKEND_URLS from "../utils/BackendUrls";
+import * as actions from "../store/actions/Actions";
 
-import axios from 'axios';
-
-import * as BACKEND_URLS from '../utils/BackendUrls';
-
-import { connect } from 'react-redux';
-import * as actions from '../store/actions/Actions';
+import "../static/css/sideBar.css";
 
 function Sidebar(props) {
   const [error, setError] = useState('');
@@ -17,7 +15,7 @@ function Sidebar(props) {
     axios
       .get(BACKEND_URLS.GET_ALL_SCREEN_RIGHTS_FOR_AN_USER, {
         headers: {
-          token: localStorage.getItem('token'),
+          token: localStorage.getItem("token"),
         },
       })
       .then((res) => {
@@ -32,13 +30,13 @@ function Sidebar(props) {
       });
   };
 
+  const checkViewRights = (index) => {
+    return props?.screen_rights?.screen_rights?.[index]?.["ASR_RightToView"];
+  }
+
   useEffect(() => {
     fetchScreenRights();
-  }, []);
-
-  const checkRights = (index) => {
-    return props?.screen_rights?.screen_rights?.[index]?.['ASR_RightToView'];
-  }
+  }, [])
 
   return (
     <Fragment>
@@ -46,41 +44,41 @@ function Sidebar(props) {
         <div className="sideBarUpper">
           <MenuItem
             to="/"
-            image={require('../static/images/dummy.png')}
+            image={require("../static/images/dummy.png")}
             title="Home"
           />
-          {checkRights(3) &&
+          {checkViewRights(3) &&
             <MenuItem
               to="/query"
-              image={require('../static/images/dummy.png')}
+              image={require("../static/images/dummy.png")}
               title="Query Window"
             />
           }
-          {checkRights(1) &&
+          {checkViewRights(1) &&
             <MenuItem
               to="/application"
-              image={require('../static/images/dummy.png')}
+              image={require("../static/images/dummy.png")}
               title="Add Application"
             />
           }
-          {checkRights(2) &&
+          {checkViewRights(2) &&
             <MenuItem
               to="/database"
-              image={require('../static/images/dummy.png')}
+              image={require("../static/images/dummy.png")}
               title="Add Database"
             />
           }
-          {checkRights(0) &&
+          {checkViewRights(0) &&
             <MenuItem
               to="/user"
-              image={require('../static/images/dummy.png')}
+              image={require("../static/images/dummy.png")}
               title="User Window"
             />
           }
-          {checkRights(3) &&
+          {checkViewRights(3) &&
             <MenuItem
               to="/draft"
-              image={require('../static/images/dummy.png')}
+              image={require("../static/images/dummy.png")}
               title="Open Draft Queries"
             />
           }
