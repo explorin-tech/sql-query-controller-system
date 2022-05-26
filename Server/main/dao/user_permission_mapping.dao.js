@@ -14,6 +14,22 @@ module.exports.getAllUserPermissionMappings = async (params) => {
   }
 };
 
+module.exports.getAllUserPermissionMappingsForUserAccordingToAccessRights =
+  async (params, userID) => {
+    try {
+      const user_id = params.user_id;
+      const result = await pool.query(
+        UserPermissionMappingQuery.GET_ALL_USER_PERMISSION_MAPPINGS_FOR_A_USER_ACCORDING_TO_ACCESS_RIGHTS,
+        [user_id, userID]
+      );
+      console.log(result.rows);
+      return result.rows;
+    } catch (err) {
+      console.log(err);
+      return err;
+    }
+  };
+
 module.exports.addUserPermissionRightsMapping = async (params) => {
   try {
     const values = params.values;

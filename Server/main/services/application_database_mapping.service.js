@@ -1,4 +1,4 @@
-const { ApplicationDatabaseMappingDao } = require('../dao/index');
+const { ApplicationDatabaseMappingDao, UserDao } = require('../dao/index');
 const { _200, _error } = require('../common/httpHelper');
 
 module.exports.GET_getAllDatabaseTypes = async (
@@ -23,7 +23,22 @@ module.exports.GET_getAllDatabases = async (
   next
 ) => {
   try {
-    const result = await ApplicationDatabaseMappingDao.getAllDatabases();
+    const { decoded } = httpRequest.headers;
+    const user_id = decoded.UserID;
+    const params = {
+      user_id: user_id,
+    };
+    const user_details = await UserDao.getUserDetails(params);
+    const user_type = user_details[0]['UT_Name'];
+    let result;
+    if (user_type == 'AD') {
+      result = await ApplicationDatabaseMappingDao.getAllDatabases();
+    } else {
+      result =
+        await ApplicationDatabaseMappingDao.getAllDatabasesMappedForAnUser(
+          params
+        );
+    }
     return _200(httpResponse, result);
   } catch (err) {
     return _error(httpResponse, {

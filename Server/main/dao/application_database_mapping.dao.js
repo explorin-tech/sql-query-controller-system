@@ -23,6 +23,19 @@ module.exports.getAllDatabases = async () => {
   }
 };
 
+module.exports.getAllDatabasesMappedForAnUser = async (params) => {
+  try {
+    const user_id = params.user_id;
+    const result = await pool.query(
+      ApplicationDatabaseMappingQuery.GET_APPLICATION_DATABASE_MAPPING_FOR_AN_USER,
+      [user_id]
+    );
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
+};
+
 module.exports.getDatabaseDetails = async (params) => {
   try {
     const database_application_mapping_id =

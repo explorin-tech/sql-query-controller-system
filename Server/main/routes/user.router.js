@@ -28,7 +28,7 @@ router.get(routeNames.GET_USER_DETAILS, [
 
 // Add user
 router.post(routeNames.ADD_AN_USER, [
-  authValidator,
+  // authValidator,
   UserService.POST_addNewUser,
 ]);
 

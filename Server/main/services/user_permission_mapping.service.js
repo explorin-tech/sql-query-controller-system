@@ -1,7 +1,11 @@
 const {
   ApplicationDatabaseMappingDao,
   UserPermissionMappingDao,
+  UserDao,
 } = require('../dao/index');
+const {
+  ApplicationDatabaseMappingService,
+} = require('./application_database_mapping.service');
 const { _200, _error } = require('../common/httpHelper');
 
 const _ = require('underscore');
@@ -22,7 +26,19 @@ module.exports.GET_getAllUserPermissionMappingForAnUser = async (
     const params = {
       user_id: user_id,
     };
-    const databases = await ApplicationDatabaseMappingDao.getAllDatabases();
+    const user_details = await UserDao.getUserDetails({
+      user_id: decoded.UserID,
+    });
+    const user_type = user_details[0]['UT_Name'];
+    let databases;
+    if (user_type == 'AD') {
+      databases = await ApplicationDatabaseMappingDao.getAllDatabases();
+    } else {
+      databases =
+        await ApplicationDatabaseMappingDao.getAllDatabasesMappedForAnUser({
+          user_id: decoded.UserID,
+        });
+    }
     let databasesRights;
     databasesRights =
       await UserPermissionMappingDao.getAllUserPermissionMappings(params);
@@ -53,9 +69,17 @@ module.exports.GET_getAllUserPermissionMappingForAnUser = async (
         }
       );
     }
-    databasesRights =
-      await UserPermissionMappingDao.getAllUserPermissionMappings(params);
-    return _200(httpResponse, databasesRights);
+    if (user_type == 'AD') {
+      databasesRightsToReturn =
+        await UserPermissionMappingDao.getAllUserPermissionMappings(params);
+    } else {
+      databasesRightsToReturn =
+        await UserPermissionMappingDao.getAllUserPermissionMappingsForUserAccordingToAccessRights(
+          params,
+          decoded.UserID
+        );
+    }
+    return _200(httpResponse, databasesRightsToReturn);
   } catch (err) {
     return _error(httpResponse, {
       type: 'generic',
