@@ -127,7 +127,7 @@ function AddUser(props) {
   }, []);
 
   useEffect(() => {
-    if (values.selectedUser != '') {
+    if (values.selectedUser && values.selectedUser != '') {
       props.set_selected_user(JSON.parse(values.selectedUser));
     } else {
       props.set_selected_user(null);
