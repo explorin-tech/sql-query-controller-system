@@ -237,7 +237,6 @@ function AddApplication(props) {
         },
       })
       .then((res) => {
-        console.log(res);
         if (res.status == 200) {
           fetchAllApplicationsForAnUser();
           setEditModalShow(false);

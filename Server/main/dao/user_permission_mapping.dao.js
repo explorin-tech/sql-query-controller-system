@@ -22,7 +22,6 @@ module.exports.getAllUserPermissionMappingsForUserAccordingToAccessRights =
         UserPermissionMappingQuery.GET_ALL_USER_PERMISSION_MAPPINGS_FOR_A_USER_ACCORDING_TO_ACCESS_RIGHTS,
         [user_id, userID]
       );
-      console.log(result.rows);
       return result.rows;
     } catch (err) {
       console.log(err);
@@ -46,7 +45,6 @@ module.exports.addUserPermissionRightsMapping = async (params) => {
 module.exports.editUserPermissionRightsMapping = async (params) => {
   try {
     const values = params.values;
-    console.log(values);
     const result = await pool.query(
       UserPermissionMappingQuery.UPDATE_USER_PERMISSION_RIGHTS_MAPPINGS_FOR_AN_USER,
       values
