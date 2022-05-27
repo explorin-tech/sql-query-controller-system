@@ -10,8 +10,36 @@ import * as CONSTANTS from '../utils/AppConstants';
 import { connect } from 'react-redux';
 import * as actions from '../store/actions/Actions';
 
-function DbRights(props) {
+import 'react-tabs/style/react-tabs.css';
+
+import '../static/css/tabs.css';
+
+const PopulateUsers = ({ users }) => {
+  return (
+    <>
+      {users.map((user) => {
+        return (
+          <option key={user[CONSTANTS.USER.U_ID]} value={JSON.stringify(user)}>
+            {user[CONSTANTS.USER.U_FirstName]} {user[CONSTANTS.USER.U_LastName]}{' '}
+            ({user[CONSTANTS.USER.UT_Name]})
+          </option>
+        );
+      })}
+    </>
+  );
+};
+
+function DatabaseRights(props) {
   const [filteredData, setFilteredData] = useState([]);
+
+  const [values, setValues] = useState({
+    selectedUser: JSON.stringify(props.users.selected_user),
+  });
+
+  const handleChange = (name) => (event) => {
+    setValues({ ...values, [name]: event.target.value });
+  };
+
   const columns = useMemo(
     () => [
       {
@@ -134,9 +162,32 @@ function DbRights(props) {
     }
   };
 
+  const fetchAllUsers = () => {
+    axios
+      .get(BACKEND_URLS.GET_ALL_USERS, {
+        headers: {
+          token: localStorage.getItem('token'),
+        },
+      })
+      .then((res) => {
+        props.set_all_users(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     fetchUserPermissionsForSelectedUser();
   }, [props.users.selected_user]);
+
+  useEffect(() => {
+    if (values.selectedUser && values.selectedUser != '') {
+      props.set_selected_user(JSON.parse(values.selectedUser));
+    } else {
+      props.set_selected_user(null);
+    }
+  }, [values.selectedUser]);
 
   useEffect(() => {
     if (props.users.selected_user != null) {
@@ -147,12 +198,13 @@ function DbRights(props) {
   }, [props.user_permissions.user_permissions_for_selected_user]);
 
   useEffect(() => {
+    fetchAllUsers();
     fetchAllDatabases();
     fetchAllUserPermissions();
     fetchUserPermissionsForSelectedUser();
   }, []);
 
-  const handleChange = (e, row, cell) => {
+  const handleChangeInput = (e, row, cell) => {
     filteredData.map((each_permission_rights_row) => {
       if (each_permission_rights_row == row) {
         row[cell.column.id] = e.target.checked;
@@ -188,6 +240,22 @@ function DbRights(props) {
   return (
     <Fragment>
       <div className="application">
+        <div className="appTab">
+          <div>
+            <span className="searchTable">
+              <span className="headData"> User </span>
+              <select
+                onChange={handleChange('selectedUser')}
+                value={values.selectedUser}
+              >
+                <option value={''}>-- Select User --</option>
+                {props.users ? (
+                  <PopulateUsers users={props.users.users} />
+                ) : null}
+              </select>
+            </span>
+          </div>
+        </div>
         <div className="buttonDiv">
           <button
             className="greenButton"
@@ -253,7 +321,7 @@ function DbRights(props) {
                         <td
                           {...cell.getCellProps()}
                           onClick={(e) => {
-                            handleChange(e, row.original, cell);
+                            handleChangeInput(e, row.original, cell);
                           }}
                         >
                           {cell.render('Cell')}
@@ -276,6 +344,7 @@ const mapStateToProps = (state) => ({
   users: state.users,
   user_permissions: state.userPermissions,
   screen_rights: state.applicationScreenRights,
+  db_user: state.auth,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -288,6 +357,8 @@ const mapDispatchToProps = (dispatch) => ({
         user_permission_rights
       )
     ),
+  set_all_users: (users) => dispatch(actions.set_all_users(users)),
+  set_selected_user: (user) => dispatch(actions.set_user(user)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(DbRights);
+export default connect(mapStateToProps, mapDispatchToProps)(DatabaseRights);

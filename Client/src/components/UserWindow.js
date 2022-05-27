@@ -10,8 +10,6 @@ import * as CONSTANTS from '../utils/AppConstants';
 import * as BACKEND_URLS from '../utils/BackendUrls';
 
 import AddModal from '../common/AddModal';
-import DbRights from './DatabaseRights';
-import ScreenRights from './ScreenRights';
 
 import '../static/css/tabs.css';
 import axios from 'axios';
@@ -32,22 +30,23 @@ const RenderOptionsForUserTypes = ({ userType }) => {
   }
 };
 
-const PopulateUsers = ({ users }) => {
-  return (
-    <>
-      {users.map((user) => {
-        return (
-          <option key={user[CONSTANTS.USER.U_ID]} value={JSON.stringify(user)}>
-            {user[CONSTANTS.USER.U_FirstName]} {user[CONSTANTS.USER.U_LastName]}{' '}
-            ({user[CONSTANTS.USER.UT_Name]})
-          </option>
-        );
-      })}
-    </>
-  );
-};
+// const PopulateUsers = ({ users }) => {
+//   return (
+//     <>
+//       {users.map((user) => {
+//         return (
+//           <option key={user[CONSTANTS.USER.U_ID]} value={JSON.stringify(user)}>
+//             {user[CONSTANTS.USER.U_FirstName]} {user[CONSTANTS.USER.U_LastName]}{' '}
+//             ({user[CONSTANTS.USER.UT_Name]})
+//           </option>
+//         );
+//       })}
+//     </>
+//   );
+// };
 
 function AddUser(props) {
+  console.log('RENDERED');
   const [addModalShow, setAddModalShow] = useState(false);
 
   const [values, setValues] = useState({
@@ -138,7 +137,7 @@ function AddUser(props) {
     <Fragment>
       <div className="application">
         <div className="appTab">
-          <div>
+          {/* <div>
             <span className="searchTable">
               <span className="headData"> User </span>
               <select
@@ -151,7 +150,7 @@ function AddUser(props) {
                 ) : null}
               </select>
             </span>
-          </div>
+          </div> */}
           <AddModal
             addModalShow={addModalShow}
             setAddModalShow={setAddModalShow}
@@ -273,44 +272,6 @@ function AddUser(props) {
             </div>
           ) : null}
         </div>
-        <Tabs>
-          <TabList className="groupTabs">
-            <Tab>Screen Rights</Tab>
-            <Tab>Database Rights</Tab>
-          </TabList>
-          <div className="tabPanel">
-            <TabPanel>
-              {props.screen_rights ? (
-                props.screen_rights.screen_rights[0] ? (
-                  props.screen_rights.screen_rights.find(
-                    (each_screen_right) => {
-                      if (each_screen_right['AS_Name'] === 'Screen Rights') {
-                        return each_screen_right['ASR_RightToView'];
-                      }
-                    }
-                  ) ? (
-                    <ScreenRights />
-                  ) : null
-                ) : null
-              ) : null}
-            </TabPanel>
-            <TabPanel>
-              {props.screen_rights ? (
-                props.screen_rights.screen_rights[0] ? (
-                  props.screen_rights.screen_rights.find(
-                    (each_screen_right) => {
-                      if (each_screen_right['AS_Name'] === 'User Permissions') {
-                        return each_screen_right['ASR_RightToView'];
-                      }
-                    }
-                  ) ? (
-                    <DbRights />
-                  ) : null
-                ) : null
-              ) : null}
-            </TabPanel>
-          </div>
-        </Tabs>
       </div>
     </Fragment>
   );

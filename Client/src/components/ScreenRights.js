@@ -6,8 +6,37 @@ import axios from 'axios';
 import * as BACKEND_URLS from '../utils/BackendUrls';
 import * as actions from '../store/actions/Actions';
 
+import * as CONSTANTS from '../utils/AppConstants';
+
+import 'react-tabs/style/react-tabs.css';
+
+import '../static/css/tabs.css';
+
+const PopulateUsers = ({ users }) => {
+  return (
+    <>
+      {users.map((user) => {
+        return (
+          <option key={user[CONSTANTS.USER.U_ID]} value={JSON.stringify(user)}>
+            {user[CONSTANTS.USER.U_FirstName]} {user[CONSTANTS.USER.U_LastName]}{' '}
+            ({user[CONSTANTS.USER.UT_Name]})
+          </option>
+        );
+      })}
+    </>
+  );
+};
+
 function ScreenRights(props) {
   const [filteredData, setFilteredData] = useState([]);
+
+  const [values, setValues] = useState({
+    selectedUser: JSON.stringify(props.users.selected_user),
+  });
+
+  const handleChange = (name) => (event) => {
+    setValues({ ...values, [name]: event.target.value });
+  };
 
   const columns = useMemo(
     () => [
@@ -112,11 +141,27 @@ function ScreenRights(props) {
     }
   };
 
+  const fetchAllUsers = () => {
+    axios
+      .get(BACKEND_URLS.GET_ALL_USERS, {
+        headers: {
+          token: localStorage.getItem('token'),
+        },
+      })
+      .then((res) => {
+        props.set_all_users(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     fetchScreenRightsForSelectedUser();
   }, [props.users.selected_user]);
 
   useEffect(() => {
+    fetchAllUsers();
     fetchAllScreenRights();
     fetchScreenRightsForSelectedUser();
   }, []);
@@ -127,7 +172,7 @@ function ScreenRights(props) {
     }
   }, [props.screen_rights.screen_rights_for_selected_user]);
 
-  const handleChange = (e, row, cell) => {
+  const handleChangeInput = (e, row, cell) => {
     filteredData.map((each_screen_rights_row) => {
       if (each_screen_rights_row == row) {
         row[cell.column.id] = e.target.checked;
@@ -135,6 +180,14 @@ function ScreenRights(props) {
     });
     setFilteredData(filteredData);
   };
+
+  useEffect(() => {
+    if (values.selectedUser && values.selectedUser != '') {
+      props.set_selected_user(JSON.parse(values.selectedUser));
+    } else {
+      props.set_selected_user(null);
+    }
+  }, [values.selectedUser]);
 
   const handleEditScreenRights = () => {
     axios
@@ -162,6 +215,22 @@ function ScreenRights(props) {
   return (
     <Fragment>
       <div className="application">
+        <div className="appTab">
+          <div>
+            <span className="searchTable">
+              <span className="headData"> User </span>
+              <select
+                onChange={handleChange('selectedUser')}
+                value={values.selectedUser}
+              >
+                <option value={''}>-- Select User --</option>
+                {props.users ? (
+                  <PopulateUsers users={props.users.users} />
+                ) : null}
+              </select>
+            </span>
+          </div>
+        </div>
         <div className="buttonDiv">
           <button
             className="greenButton"
@@ -225,7 +294,7 @@ function ScreenRights(props) {
                         <td
                           {...cell.getCellProps()}
                           onClick={(e) => {
-                            handleChange(e, row.original, cell);
+                            handleChangeInput(e, row.original, cell);
                           }}
                         >
                           {cell.render('Cell')}
@@ -246,12 +315,14 @@ function ScreenRights(props) {
 const mapStateToProps = (state) => ({
   users: state.users,
   screen_rights: state.applicationScreenRights,
+  db_user: state.auth,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   set_all_screen_rights_for_an_user: (screen_rights) =>
     dispatch(actions.set_all_screen_rights_for_an_user(screen_rights)),
-
+  set_all_users: (users) => dispatch(actions.set_all_users(users)),
+  set_selected_user: (user) => dispatch(actions.set_user(user)),
   set_all_screen_rights_for_selected_user: (screen_rights) =>
     dispatch(actions.set_all_screen_rights_for_selected_user(screen_rights)),
 });

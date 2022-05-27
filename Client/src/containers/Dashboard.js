@@ -15,6 +15,8 @@ import AddUser from '../components/UserWindow';
 import Home from '../components/Home';
 import Navbar from '../components/NavBar';
 import Sidebar from '../components/SideBar';
+import ScreenRights from '../components/ScreenRights';
+import DatabaseRights from '../components/DatabaseRights';
 
 import '../static/css/dashboard.css';
 import '../static/css/table.css';
@@ -69,6 +71,16 @@ function Dashboard(props) {
                 exact
                 path={APPLICATION_URLS.DATABASE_PAGE}
                 component={AddDatabase}
+              />
+              <Route
+                exact
+                path={APPLICATION_URLS.SCREEN_RIGHTS}
+                component={ScreenRights}
+              />
+              <Route
+                exact
+                path={APPLICATION_URLS.DB_RIGHTS}
+                component={DatabaseRights}
               />
               <Route
                 exact

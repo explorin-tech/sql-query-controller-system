@@ -5,3 +5,5 @@ export const DATABASE_PAGE = '/database';
 export const USER_WINDOW = '/user';
 export const QUERY_WINDOW = '/query';
 export const DRAFT_QUERIES_WINDOW = '/draft_queries';
+export const SCREEN_RIGHTS = '/screen_rights';
+export const DB_RIGHTS = '/database_rights';

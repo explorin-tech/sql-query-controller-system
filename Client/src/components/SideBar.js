@@ -87,6 +87,30 @@ function Sidebar(props) {
               ) : null}
 
               {props.screen_rights.screen_rights.find((each_screen_right) => {
+                if (each_screen_right['AS_Name'] === 'Screen Rights') {
+                  return each_screen_right['ASR_RightToView'];
+                }
+              }) ? (
+                <MenuItem
+                  to="/screen_rights"
+                  image={require('../static/images/dummy.png')}
+                  title="Screen Rights"
+                />
+              ) : null}
+
+              {props.screen_rights.screen_rights.find((each_screen_right) => {
+                if (each_screen_right['AS_Name'] === 'User Permissions') {
+                  return each_screen_right['ASR_RightToView'];
+                }
+              }) ? (
+                <MenuItem
+                  to="/database_rights"
+                  image={require('../static/images/dummy.png')}
+                  title="Database Rights"
+                />
+              ) : null}
+
+              {props.screen_rights.screen_rights.find((each_screen_right) => {
                 if (each_screen_right['AS_Name'] === 'User Window') {
                   return each_screen_right['ASR_RightToView'];
                 }
