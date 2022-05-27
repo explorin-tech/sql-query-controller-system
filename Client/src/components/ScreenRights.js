@@ -163,17 +163,25 @@ function ScreenRights(props) {
     <Fragment>
       <div className="application">
         <div className="buttonDiv">
-          {props.screen_rights.screen_rights[4] ? (
-            <button
-              className="greenButton"
-              onClick={handleEditScreenRights}
-              disabled={
-                !props.screen_rights.screen_rights[4]['ASR_RightToEdit']
-              }
-            >
-              Save Changes
-            </button>
-          ) : null}
+          <button
+            className="greenButton"
+            onClick={handleEditScreenRights}
+            disabled={
+              props.screen_rights
+                ? props.screen_rights.screen_rights[0]
+                  ? props.screen_rights.screen_rights.find(
+                      (each_screen_right) => {
+                        if (each_screen_right['AS_Name'] === 'Screen Rights') {
+                          return !each_screen_right['ASR_RightToEdit'];
+                        }
+                      }
+                    )
+                  : true
+                : true
+            }
+          >
+            Save Changes
+          </button>
         </div>
         <div className="selectTable">
           <table {...getTableProps()}>

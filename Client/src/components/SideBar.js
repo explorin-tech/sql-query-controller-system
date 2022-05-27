@@ -35,7 +35,6 @@ function Sidebar(props) {
   useEffect(() => {
     fetchScreenRights();
   }, []);
-
   return (
     <Fragment>
       <div className="sideBar">
@@ -47,35 +46,63 @@ function Sidebar(props) {
                 image={require('../static/images/dummy.png')}
                 title="Home"
               />
-              {props.screen_rights.screen_rights[3]['ASR_RightToView'] ? (
+              {props.screen_rights.screen_rights.find((each_screen_right) => {
+                if (each_screen_right['AS_Name'] === 'Query Window') {
+                  return each_screen_right['ASR_RightToView'];
+                }
+              }) ? (
                 <MenuItem
                   to="/query"
                   image={require('../static/images/dummy.png')}
                   title="Query Window"
                 />
               ) : null}
-              {props.screen_rights.screen_rights[1]['ASR_RightToView'] ? (
+
+              {props.screen_rights.screen_rights.find((each_screen_right) => {
+                if (
+                  each_screen_right['AS_Name'] === 'Master Application Window'
+                ) {
+                  return each_screen_right['ASR_RightToView'];
+                }
+              }) ? (
                 <MenuItem
                   to="/application"
                   image={require('../static/images/dummy.png')}
                   title="Add Application"
                 />
               ) : null}
-              {props.screen_rights.screen_rights[2]['ASR_RightToView'] ? (
+
+              {props.screen_rights.screen_rights.find((each_screen_right) => {
+                if (
+                  each_screen_right['AS_Name'] === 'Database Mapping Window'
+                ) {
+                  return each_screen_right['ASR_RightToView'];
+                }
+              }) ? (
                 <MenuItem
                   to="/database"
                   image={require('../static/images/dummy.png')}
                   title="Add Database"
                 />
               ) : null}
-              {props.screen_rights.screen_rights[0]['ASR_RightToView'] ? (
+
+              {props.screen_rights.screen_rights.find((each_screen_right) => {
+                if (each_screen_right['AS_Name'] === 'User Window') {
+                  return each_screen_right['ASR_RightToView'];
+                }
+              }) ? (
                 <MenuItem
                   to="/user"
                   image={require('../static/images/dummy.png')}
                   title="User Window"
                 />
               ) : null}
-              {props.screen_rights.screen_rights[3]['ASR_RightToView'] ? (
+
+              {props.screen_rights.screen_rights.find((each_screen_right) => {
+                if (each_screen_right['AS_Name'] === 'Query Window') {
+                  return each_screen_right['ASR_RightToView'];
+                }
+              }) ? (
                 <MenuItem
                   to="/draft"
                   image={require('../static/images/dummy.png')}

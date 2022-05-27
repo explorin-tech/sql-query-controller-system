@@ -189,17 +189,27 @@ function DbRights(props) {
     <Fragment>
       <div className="application">
         <div className="buttonDiv">
-          {props.screen_rights.screen_rights[5] ? (
-            <button
-              className="greenButton"
-              onClick={handleEditUserPermissions}
-              disabled={
-                !props.screen_rights.screen_rights[5]['ASR_RightToEdit']
-              }
-            >
-              Save Changes
-            </button>
-          ) : null}
+          <button
+            className="greenButton"
+            onClick={handleEditUserPermissions}
+            disabled={
+              props.screen_rights
+                ? props.screen_rights.screen_rights[0]
+                  ? props.screen_rights.screen_rights.find(
+                      (each_screen_right) => {
+                        if (
+                          each_screen_right['AS_Name'] === 'User Permissions'
+                        ) {
+                          return !each_screen_right['ASR_RightToEdit'];
+                        }
+                      }
+                    )
+                  : true
+                : true
+            }
+          >
+            Save Changes
+          </button>
         </div>
         <div className="selectTable">
           <table {...getTableProps()}>
