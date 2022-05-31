@@ -91,15 +91,11 @@ module.exports.PUT_editUserDetails = async (
   try {
     const { decoded } = httpRequest.headers;
     const user_id = decoded.UserID;
-    const hashedPassword = await generateHashedPassword(
-      httpRequest.body.user.password
-    );
     const values = [
       httpRequest.body.user.user_id,
       httpRequest.body.user.first_name,
       httpRequest.body.user.last_name,
       httpRequest.body.user.email,
-      hashedPassword,
       httpRequest.body.user.user_type_id,
       user_id,
       httpRequest.body.user.is_active,
@@ -108,6 +104,7 @@ module.exports.PUT_editUserDetails = async (
     const params = {
       values: values,
     };
+    console.log(params);
     const result = await UserDao.editUser(params);
     return _200(httpResponse, result);
   } catch (err) {

@@ -1,7 +1,6 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import React, { Fragment, useMemo, useState, useEffect } from 'react';
 import 'react-tabs/style/react-tabs.css';
-
+import { useTable, useSortBy } from 'react-table';
 import { connect } from 'react-redux';
 import * as actions from '../store/actions/Actions';
 
@@ -10,7 +9,7 @@ import * as CONSTANTS from '../utils/AppConstants';
 import * as BACKEND_URLS from '../utils/BackendUrls';
 
 import AddModal from '../common/AddModal';
-
+import EditModal from '../common/EditModal';
 import '../static/css/tabs.css';
 import axios from 'axios';
 
@@ -25,29 +24,81 @@ const RenderOptionsForUserTypes = ({ userType }) => {
         <option value={CONSTANTS.USER_TYPES.DEV}>Dev</option>
       </>
     );
-  } else if (userType === CONSTANTS.USER_TYPES.APPLICATION_OWNER) {
-    return <option value={CONSTANTS.USER_TYPES.DEV}>Dev</option>;
+  } else {
+    return (
+      <>
+        <option value={CONSTANTS.USER_TYPES.DEV}>Dev</option>
+      </>
+    );
   }
 };
 
-// const PopulateUsers = ({ users }) => {
-//   return (
-//     <>
-//       {users.map((user) => {
-//         return (
-//           <option key={user[CONSTANTS.USER.U_ID]} value={JSON.stringify(user)}>
-//             {user[CONSTANTS.USER.U_FirstName]} {user[CONSTANTS.USER.U_LastName]}{' '}
-//             ({user[CONSTANTS.USER.UT_Name]})
-//           </option>
-//         );
-//       })}
-//     </>
-//   );
-// };
-
 function AddUser(props) {
-  console.log('RENDERED');
   const [addModalShow, setAddModalShow] = useState(false);
+  const [editModalShow, setEditModalShow] = useState(false);
+
+  const [filteredData, setFilteredData] = useState([]);
+
+  const columns = useMemo(
+    () => [
+      {
+        Header: 'Email',
+        accessor: 'U_Email',
+        filterable: true,
+      },
+      {
+        Header: 'First Name',
+        accessor: 'U_FirstName',
+        filterable: true,
+      },
+      {
+        Header: 'Last Name',
+        accessor: 'U_LastName',
+        filterable: true,
+      },
+      {
+        Header: 'User Type',
+        accessor: 'UT_Name',
+        filterable: true,
+      },
+      {
+        Header: 'Is Active Direct User',
+        accessor: 'U_IsActDrtUser',
+        filterable: true,
+        Cell: (e) => (
+          <input disabled type="checkbox" defaultChecked={e.value} />
+        ),
+      },
+      {
+        Header: 'Is Active',
+        accessor: 'U_IsActive',
+        filterable: true,
+        Cell: (e) => (
+          <input disabled type="checkbox" defaultChecked={e.value} />
+        ),
+      },
+    ],
+    [filteredData]
+  );
+
+  const data = useMemo(() => filteredData, [filteredData]);
+
+  const tableInstance = useTable(
+    {
+      columns,
+      data,
+    },
+    useSortBy
+  );
+
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+    state,
+  } = tableInstance;
 
   const [values, setValues] = useState({
     firstName: '',
@@ -55,8 +106,11 @@ function AddUser(props) {
     email: '',
     password: '',
     userType: CONSTANTS.USER_TYPES.DEV,
-    isActiveDirectUser: 'TRUE',
+    isActive: 'true',
+    isActiveDirectUser: 'true',
     selectedUser: JSON.stringify(props.users.selected_user),
+    userID: '',
+    userTypeID: '',
   });
 
   const handleChange = (name) => (event) => {
@@ -76,7 +130,7 @@ function AddUser(props) {
               email: values.email,
               password: values.password,
               user_type_id: CONSTANTS.USER_TYPE_ID_MAPPING[values.userType],
-              is_active: 'TRUE',
+              is_active: 'true',
               is_active_direct_user: values.isActiveDirectUser,
             },
           },
@@ -96,7 +150,8 @@ function AddUser(props) {
               email: '',
               password: '',
               userType: CONSTANTS.USER_TYPES.DEV,
-              isActiveDirectUser: 'TRUE',
+              isActiveDirectUser: 'true',
+              userTypeID: '',
             });
           }
         })
@@ -122,6 +177,98 @@ function AddUser(props) {
   };
 
   useEffect(() => {
+    setFilteredData(props.users.users);
+  }, [props.users.users]);
+
+  const selectEditUser = (user) => {
+    setValues({
+      userID: user['U_ID'],
+      firstName: user['U_FirstName'],
+      lastName: user['U_LastName'],
+      email: user['U_Email'],
+      password: user['U_Password'],
+      userType: user['UT_Name'],
+      userTypeID: user['U_UT_ID'],
+      isActive: user['U_IsActive'],
+      isActiveDirectUser: user['U_IsActDrtUser'],
+    });
+    setEditModalShow(true);
+  };
+
+  const handleEditUser = (e) => {
+    e.preventDefault();
+    axios
+      .put(
+        BACKEND_URLS.EDIT_USER_DETAILS,
+        {
+          user: {
+            user_id: values.userID,
+            first_name: values.firstName,
+            last_name: values.lastName,
+            email: values.email,
+            user_type_id: values.userTypeID,
+            is_active: values.isActive,
+            is_active_direct_user: values.isActiveDirectUser,
+          },
+        },
+        {
+          headers: {
+            token: localStorage.getItem('token'),
+          },
+        }
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          fetchAllUsers();
+          setEditModalShow(false);
+          setValues({
+            userID: '',
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
+            userType: CONSTANTS.USER_TYPES.DEV,
+            isActive: 'true',
+            isActiveDirectUser: 'true',
+            userTypeID: '',
+          });
+        }
+      });
+  };
+
+  const handleDeleteUser = (e) => {
+    e.preventDefault();
+    axios
+      .delete(BACKEND_URLS.DELETE_AN_USER, {
+        params: {
+          user_id: values.userID,
+        },
+        headers: {
+          token: localStorage.getItem('token'),
+        },
+      })
+      .then((res) => {
+        if (res.status == 200) {
+          fetchAllUsers();
+          setEditModalShow(false);
+          setValues({
+            userID: '',
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
+            userType: CONSTANTS.USER_TYPES.DEV,
+            isActiveDirectUser: 'true',
+            isActive: 'true',
+            userTypeID: '',
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(() => {
     fetchAllUsers();
   }, []);
 
@@ -137,20 +284,6 @@ function AddUser(props) {
     <Fragment>
       <div className="application">
         <div className="appTab">
-          {/* <div>
-            <span className="searchTable">
-              <span className="headData"> User </span>
-              <select
-                onChange={handleChange('selectedUser')}
-                value={values.selectedUser}
-              >
-                <option value={''}>-- Select User --</option>
-                {props.users ? (
-                  <PopulateUsers users={props.users.users} />
-                ) : null}
-              </select>
-            </span>
-          </div> */}
           <AddModal
             addModalShow={addModalShow}
             setAddModalShow={setAddModalShow}
@@ -229,8 +362,8 @@ function AddUser(props) {
                         onChange={handleChange('isActiveDirectUser')}
                         value={values.isActiveDirectUser}
                       >
-                        <option value={'TRUE'}>Yes</option>
-                        <option value={'FALSE'}>No</option>
+                        <option value={'true'}>Yes</option>
+                        <option value={'false'}>No</option>
                       </select>
                       <br />
                       <br />
@@ -257,11 +390,143 @@ function AddUser(props) {
               </button>
             </form>
           </AddModal>
+          <EditModal
+            editModalShow={editModalShow}
+            setEditModalShow={setEditModalShow}
+            title="Edit User"
+          >
+            <form onSubmit={handleEditUser}>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <span>First Name</span>
+                      <input
+                        type="text"
+                        value={values.firstName}
+                        onChange={handleChange('firstName')}
+                      />
+                      <br />
+                      <br />
+                    </td>
+                    <td>
+                      <span>Last Name</span>
+                      <input
+                        type="text"
+                        value={values.lastName}
+                        onChange={handleChange('lastName')}
+                      />
+                      <br />
+                      <br />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>Email</span>
+                      <input
+                        type="email"
+                        value={values.email}
+                        onChange={handleChange('email')}
+                      />
+                      <br />
+                      <br />
+                    </td>
+                    <td>
+                      <span>Is Active</span>
+                      <select
+                        onChange={handleChange('isActive')}
+                        value={values.isActive}
+                      >
+                        <option value={'true'}>Yes</option>
+                        <option value={'false'}>No</option>
+                      </select>
+                      <br />
+                      <br />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>User Role</span>
+                      <select
+                        onChange={handleChange('userType')}
+                        value={values.userType}
+                      >
+                        {props.db_user.user ? (
+                          <RenderOptionsForUserTypes userType="AD" />
+                        ) : null}
+                      </select>
+                      <br />
+                      <br />
+                    </td>
+                    <td>
+                      <span>Is Active Direct User</span>
+                      <select
+                        onChange={handleChange('isActiveDirectUser')}
+                        value={values.isActiveDirectUser}
+                      >
+                        <option value={'true'}>Yes</option>
+                        <option value={'false'}>No</option>
+                      </select>
+                      <br />
+                      <br />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <button
+                type="submit"
+                className="greenButton"
+                disabled={
+                  props.screen_rights
+                    ? props.screen_rights.screen_rights.find(
+                        (each_screen_right) => {
+                          if (each_screen_right['AS_Name'] === 'User Window') {
+                            return !each_screen_right['ASR_RightToEdit'];
+                          }
+                        }
+                      )
+                    : true
+                }
+              >
+                Save Changes
+              </button>
+              <button
+                onClick={handleDeleteUser}
+                className="redButton"
+                disabled={
+                  props.screen_rights
+                    ? props.screen_rights.screen_rights.find(
+                        (each_screen_right) => {
+                          if (each_screen_right['AS_Name'] === 'User Window') {
+                            return !each_screen_right['ASR_RightToDelete'];
+                          }
+                        }
+                      )
+                    : true
+                }
+              >
+                Delete
+              </button>
+            </form>
+          </EditModal>
           {props.db_user.user ? (
             <div>
               <button
                 className="blueButton"
-                onClick={() => setAddModalShow(true)}
+                onClick={() => {
+                  setAddModalShow(true);
+                  setValues({
+                    userID: '',
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    password: '',
+                    userType: CONSTANTS.USER_TYPES.DEV,
+                    isActiveDirectUser: 'true',
+                    isActive: 'true',
+                    userTypeID: '',
+                  });
+                }}
                 disabled={
                   props.db_user.user[CONSTANTS.USER_TYPES_FIELD_NAME] ===
                   CONSTANTS.USER_TYPES.DEV
@@ -271,6 +536,60 @@ function AddUser(props) {
               </button>
             </div>
           ) : null}
+        </div>
+        <div className="selectTable">
+          <table {...getTableProps()}>
+            <thead>
+              {headerGroups.map((headerGroup) => (
+                <tr
+                  key={headerGroup.id}
+                  className="tableHeading"
+                  {...headerGroup.getHeaderGroupProps()}
+                >
+                  {headerGroup.headers.map((column) => (
+                    <th
+                      {...column.getHeaderProps(column.getSortByToggleProps())}
+                      key={column.id}
+                    >
+                      {column.render('Header')}
+                      {/* Add a sort direction indicator */}
+                      <span>
+                        {column.isSorted ? (
+                          column.isSortedDesc ? (
+                            <i className="fas fa-angle-down sortIcon"></i>
+                          ) : (
+                            <i className="fas fa-angle-up sortIcon"></i>
+                          )
+                        ) : (
+                          ''
+                        )}
+                      </span>
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody {...getTableBodyProps()}>
+              {rows.map((row) => {
+                prepareRow(row);
+                return (
+                  <tr
+                    {...row.getRowProps()}
+                    key={row.id}
+                    onClick={() => {
+                      selectEditUser(row.original);
+                    }}
+                  >
+                    {row.cells.map((cell) => {
+                      return (
+                        <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                      );
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       </div>
     </Fragment>

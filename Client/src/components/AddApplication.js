@@ -310,17 +310,26 @@ function AddApplication(props) {
                   </tr>
                 </tbody>
               </table>
-              {props.screen_rights.screen_rights[1] ? (
-                <button
-                  disabled={
-                    !props.screen_rights.screen_rights[1]['ASR_RightToAdd']
-                  }
-                  className="greenButton"
-                  type="submit"
-                >
-                  Save changes
-                </button>
-              ) : null}
+              <button
+                type="submit"
+                className="greenButton"
+                disabled={
+                  props.screen_rights
+                    ? props.screen_rights.screen_rights.find(
+                        (each_screen_right) => {
+                          if (
+                            each_screen_right['AS_Name'] ===
+                            'Master Application Window'
+                          ) {
+                            return !each_screen_right['ASR_RightToAdd'];
+                          }
+                        }
+                      )
+                    : true
+                }
+              >
+                Save Changes
+              </button>
             </form>
           </AddModal>
           <EditModal
@@ -373,28 +382,46 @@ function AddApplication(props) {
                   </tr>
                 </tbody>
               </table>
-              {props.screen_rights.screen_rights[1] ? (
-                <button
-                  disabled={
-                    !props.screen_rights.screen_rights[1]['ASR_RightToEdit']
-                  }
-                  className="greenButton"
-                  type="submit"
-                >
-                  Save changes
-                </button>
-              ) : null}
-              {props.screen_rights.screen_rights[1] ? (
-                <button
-                  disabled={
-                    !props.screen_rights.screen_rights[1]['ASR_RightToDelete']
-                  }
-                  className="redButton"
-                  onClick={handleDeleteApplication}
-                >
-                  Delete
-                </button>
-              ) : null}
+              <button
+                type="submit"
+                className="greenButton"
+                disabled={
+                  props.screen_rights
+                    ? props.screen_rights.screen_rights.find(
+                        (each_screen_right) => {
+                          if (
+                            each_screen_right['AS_Name'] ===
+                            'Master Application Window'
+                          ) {
+                            return !each_screen_right['ASR_RightToEdit'];
+                          }
+                        }
+                      )
+                    : true
+                }
+              >
+                Save Changes
+              </button>
+              <button
+                onClick={handleDeleteApplication}
+                className="redButton"
+                disabled={
+                  props.screen_rights
+                    ? props.screen_rights.screen_rights.find(
+                        (each_screen_right) => {
+                          if (
+                            each_screen_right['AS_Name'] ===
+                            'Master Application Window'
+                          ) {
+                            return !each_screen_right['ASR_RightToDelete'];
+                          }
+                        }
+                      )
+                    : true
+                }
+              >
+                Delete
+              </button>
             </form>
           </EditModal>
           <div>

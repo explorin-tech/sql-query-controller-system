@@ -288,7 +288,7 @@ function AddDatabase(props) {
           });
         }
       })
-      .then((err) => {
+      .catch((err) => {
         console.log(err);
       });
   };
@@ -438,17 +438,26 @@ function AddDatabase(props) {
                   </tr>
                 </tbody>
               </table>
-              {props.screen_rights.screen_rights[2] ? (
-                <button
-                  disabled={
-                    !props.screen_rights.screen_rights[2]['ASR_RightToAdd']
-                  }
-                  className="greenButton"
-                  type="submit"
-                >
-                  Save changes
-                </button>
-              ) : null}
+              <button
+                type="submit"
+                className="greenButton"
+                disabled={
+                  props.screen_rights
+                    ? props.screen_rights.screen_rights.find(
+                        (each_screen_right) => {
+                          if (
+                            each_screen_right['AS_Name'] ===
+                            'Database Mapping Window'
+                          ) {
+                            return !each_screen_right['ASR_RightToAdd'];
+                          }
+                        }
+                      )
+                    : true
+                }
+              >
+                Save Changes
+              </button>
             </form>
           </AddModal>
           <EditModal
@@ -554,28 +563,46 @@ function AddDatabase(props) {
                   </tr>
                 </tbody>
               </table>
-              {props.screen_rights.screen_rights[2] ? (
-                <button
-                  disabled={
-                    !props.screen_rights.screen_rights[2]['ASR_RightToEdit']
-                  }
-                  className="greenButton"
-                  type="submit"
-                >
-                  Save changes
-                </button>
-              ) : null}
-              {props.screen_rights.screen_rights[2] ? (
-                <button
-                  disabled={
-                    !props.screen_rights.screen_rights[2]['ASR_RightToDelete']
-                  }
-                  className="redButton"
-                  onClick={handleDeleteDatabase}
-                >
-                  Delete
-                </button>
-              ) : null}
+              <button
+                type="submit"
+                className="greenButton"
+                disabled={
+                  props.screen_rights
+                    ? props.screen_rights.screen_rights.find(
+                        (each_screen_right) => {
+                          if (
+                            each_screen_right['AS_Name'] ===
+                            'Database Mapping Window'
+                          ) {
+                            return !each_screen_right['ASR_RightToEdit'];
+                          }
+                        }
+                      )
+                    : true
+                }
+              >
+                Save Changes
+              </button>
+              <button
+                onClick={handleDeleteDatabase}
+                className="redButton"
+                disabled={
+                  props.screen_rights
+                    ? props.screen_rights.screen_rights.find(
+                        (each_screen_right) => {
+                          if (
+                            each_screen_right['AS_Name'] ===
+                            'Database Mapping Window'
+                          ) {
+                            return !each_screen_right['ASR_RightToDelete'];
+                          }
+                        }
+                      )
+                    : true
+                }
+              >
+                Delete
+              </button>
             </form>
           </EditModal>
           <div>
@@ -637,6 +664,7 @@ function AddDatabase(props) {
             <tbody {...getTableBodyProps()}>
               {rows.map((row) => {
                 prepareRow(row);
+                console.log(row);
                 return (
                   <tr
                     {...row.getRowProps()}
