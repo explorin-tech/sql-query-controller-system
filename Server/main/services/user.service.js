@@ -104,7 +104,6 @@ module.exports.PUT_editUserDetails = async (
     const params = {
       values: values,
     };
-    console.log(params);
     const result = await UserDao.editUser(params);
     return _200(httpResponse, result);
   } catch (err) {
