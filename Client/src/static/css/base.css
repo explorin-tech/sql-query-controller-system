@@ -47,7 +47,6 @@ button {
 .blueButton {
   background-color: var(--shade2Blue);
 }
-
 .blueButton:disabled {
   background-color: var(--shade2Blue);
   opacity: 0.5;
@@ -61,11 +60,6 @@ button {
   opacity: 0.5;
 }
 
-.greenButton:disabled {
-  background-color: var(--baseGreen);
-  opacity: 0.5;
-}
-
 .yellowButton {
   background-color: var(--baseYellow);
 }
@@ -74,23 +68,10 @@ button {
   opacity: 0.5;
 }
 
-
-.yellowButton:disabled {
-  background-color: var(--baseYellow);
-  opacity: 0.5;
-}
-
-
 .redButton {
   background-color: var(--baseRed);
   margin-left: 10px;
 }
-.redButton:disabled {
-  background-color: var(--baseRed);
-  margin-left: 10px;
-  opacity: 0.5;
-}
-
 .redButton:disabled {
   background-color: var(--baseRed);
   margin-left: 10px;
