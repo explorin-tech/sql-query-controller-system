@@ -56,6 +56,15 @@
   font-size: 0.9em;
 }
 
+.appTab a {
+  color: var(--baseBlack);
+  font-weight: 600;
+}
+
+.appTab a:hover {
+  color: var(--shade5Blue);
+}
+
 .headData {
   font-size: 1.3em;
   font-weight: 700;
@@ -78,4 +87,8 @@
 
 .sortIcon {
   margin-left: 0.3em;
+}
+
+.queryWin {
+  border-top: 5px solid var(--baseWhite);
 }

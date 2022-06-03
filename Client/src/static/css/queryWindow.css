@@ -1,0 +1,125 @@
+.queryWindow {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.queryWindow .makeQueries {
+  max-height: 60%;
+  min-height: 60%;
+  overflow: hidden;
+}
+
+.queryWindow .application {
+  border-top: 5px solid var(--baseWhite);
+  min-height: 40%;
+  max-height: 40%;
+  overflow: auto;
+}
+
+.queryWindow .functionalities {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3em;
+  font-size: 0.9em;
+  background-color: var(--baseWhite);
+}
+
+.queryWindow .functionalities select {
+  border-color: var(--shade2Black);
+  padding: 0.3em 0.5em;
+  color: var(--baseBlack);
+  font-weight: 600;
+}
+
+.queryWindow .functionalities button {
+  border-radius: 0;
+  padding: 0.2em 1em;
+  margin-left: 1em;
+}
+
+.queryWindow .queryRow2 {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5em 0;
+}
+
+.queryWindow .queryRow2 div {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+}
+
+.queryWindow .rawQuery {
+  display: flex;
+  flex-direction: column;
+}
+
+.queryWindow span {
+  font-size: 1em;
+  color: var(--baseBlack);
+  font-weight: 600;
+}
+
+.queryWindow .queryRow1 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5em;
+}
+
+.queryWindow input,
+.queryWindow textarea {
+  background-color: var(--shade3Blue);
+  border: 1.5px dashed var(--baseBlack);
+}
+
+.queryWindow .rawQuery textarea {
+  resize: none;
+  height: 13em;
+  max-height: fit-content;
+}
+
+.queryWindow textarea:focus,
+.queryWindow input:focus,
+.queryWindow .functionalities select:focus {
+  outline: none;
+}
+
+.queryWindow .comments {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.queryWindow .comments textarea {
+  resize: none;
+  width: 85%;
+  margin: 1em 0 0;
+  padding: 0.5em;
+  font-size: 0.9em;
+  height: 5.5em;
+  background-color: var(--baseWhite);
+}
+
+.queryWindow .queryDetails {
+  display: flex;
+  margin: 0.5em 0 0;
+}
+
+.queryWindow .data {
+  width: 75%;
+}
+
+.queryWindow .status {
+  border-radius: 20px;
+  border: 1.5px solid var(--baseRed);
+  padding: 0.1em 2em;
+  font-size: 0.9em;
+  color: var(--baseRed);
+}
+
+.queryWindow .approver {
+  color: var(--baseYellow);
+}

@@ -1,16 +1,16 @@
 import React, { useState, useEffect, Fragment } from 'react';
+import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
+import axios from 'axios';
+
 import { MenuItem } from '../common/MenuItem';
+import * as BACKEND_URLS from '../utils/BackendUrls';
+import * as actions from '../store/actions/Actions';
 
 import '../static/css/sideBar.css';
 
-import axios from 'axios';
-
-import * as BACKEND_URLS from '../utils/BackendUrls';
-
-import { connect } from 'react-redux';
-import * as actions from '../store/actions/Actions';
-
 function Sidebar(props) {
+  const history = useHistory();
   const [error, setError] = useState('');
 
   const fetchScreenRights = () => {
@@ -128,13 +128,21 @@ function Sidebar(props) {
                 }
               }) ? (
                 <MenuItem
-                  to="/draft"
+                  to="/draft_queries"
                   image={require('../static/images/dummy.png')}
                   title="Open Draft Queries"
                 />
               ) : null}
             </>
           ) : null}
+        </div>
+        <div className="sideBarLower">
+          <button
+            className="blueButton"
+            onClick={() => history.push('/history')}
+          >
+            History
+          </button>
         </div>
       </div>
     </Fragment>
