@@ -76,21 +76,11 @@ export const DATABASE_TYPES = [
   },
 ];
 
-export const APPLICATION_SCREENS = [
-  {
-    id: 1,
-    name: 'User Window',
-  },
-  {
-    id: 2,
-    name: 'Master Application Window',
-  },
-  {
-    id: 3,
-    name: 'Database Mapping Window',
-  },
-  {
-    id: 4,
-    name: 'Query Window',
-  },
-];
+export const APPLICATION_SCREENS = {
+  QUERY_WINDOW: 'Query Window',
+  USER_WINDOW: 'User Window',
+  MASTER_APPLICATION_WINDOW: 'Master Application Window',
+  DATABASE_MAPPING_WINDOW: 'Database Mapping Window',
+  SCREEN_RIGHTS_WINDOW: 'Screen Rights',
+  DATABASE_RIGHTS_WINDOW: 'User Permissions',
+};

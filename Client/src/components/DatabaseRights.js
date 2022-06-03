@@ -266,7 +266,8 @@ function DatabaseRights(props) {
                   ? props.screen_rights.screen_rights.find(
                       (each_screen_right) => {
                         if (
-                          each_screen_right['AS_Name'] === 'User Permissions'
+                          each_screen_right['AS_Name'] ===
+                          CONSTANTS.APPLICATION_SCREENS.DATABASE_RIGHTS_WINDOW
                         ) {
                           return !each_screen_right['ASR_RightToEdit'];
                         }

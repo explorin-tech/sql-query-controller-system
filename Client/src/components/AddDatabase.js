@@ -447,7 +447,8 @@ function AddDatabase(props) {
                         (each_screen_right) => {
                           if (
                             each_screen_right['AS_Name'] ===
-                            'Database Mapping Window'
+                            CONSTANTS.APPLICATION_SCREENS
+                              .DATABASE_MAPPING_WINDOW
                           ) {
                             return !each_screen_right['ASR_RightToAdd'];
                           }
@@ -572,7 +573,8 @@ function AddDatabase(props) {
                         (each_screen_right) => {
                           if (
                             each_screen_right['AS_Name'] ===
-                            'Database Mapping Window'
+                            CONSTANTS.APPLICATION_SCREENS
+                              .DATABASE_MAPPING_WINDOW
                           ) {
                             return !each_screen_right['ASR_RightToEdit'];
                           }
@@ -592,7 +594,8 @@ function AddDatabase(props) {
                         (each_screen_right) => {
                           if (
                             each_screen_right['AS_Name'] ===
-                            'Database Mapping Window'
+                            CONSTANTS.APPLICATION_SCREENS
+                              .DATABASE_MAPPING_WINDOW
                           ) {
                             return !each_screen_right['ASR_RightToDelete'];
                           }

@@ -6,6 +6,7 @@ import axios from 'axios';
 import { MenuItem } from '../common/MenuItem';
 import * as BACKEND_URLS from '../utils/BackendUrls';
 import * as APPLICATION_URLS from '../utils/ApplicationUrls';
+import * as CONSTANTS from '../utils/AppConstants';
 import * as actions from '../store/actions/Actions';
 
 import '../static/css/sideBar.css';
@@ -48,7 +49,10 @@ function Sidebar(props) {
                 title="Home"
               />
               {props.screen_rights.screen_rights.find((each_screen_right) => {
-                if (each_screen_right['AS_Name'] === 'Query Window') {
+                if (
+                  each_screen_right['AS_Name'] ===
+                  CONSTANTS.APPLICATION_SCREENS.QUERY_WINDOW
+                ) {
                   return each_screen_right['ASR_RightToView'];
                 }
               }) ? (
@@ -61,7 +65,8 @@ function Sidebar(props) {
 
               {props.screen_rights.screen_rights.find((each_screen_right) => {
                 if (
-                  each_screen_right['AS_Name'] === 'Master Application Window'
+                  each_screen_right['AS_Name'] ===
+                  CONSTANTS.APPLICATION_SCREENS.MASTER_APPLICATION_WINDOW
                 ) {
                   return each_screen_right['ASR_RightToView'];
                 }
@@ -75,7 +80,8 @@ function Sidebar(props) {
 
               {props.screen_rights.screen_rights.find((each_screen_right) => {
                 if (
-                  each_screen_right['AS_Name'] === 'Database Mapping Window'
+                  each_screen_right['AS_Name'] ===
+                  CONSTANTS.APPLICATION_SCREENS.DATABASE_MAPPING_WINDOW
                 ) {
                   return each_screen_right['ASR_RightToView'];
                 }
@@ -88,7 +94,10 @@ function Sidebar(props) {
               ) : null}
 
               {props.screen_rights.screen_rights.find((each_screen_right) => {
-                if (each_screen_right['AS_Name'] === 'Screen Rights') {
+                if (
+                  each_screen_right['AS_Name'] ===
+                  CONSTANTS.APPLICATION_SCREENS.SCREEN_RIGHTS_WINDOW
+                ) {
                   return each_screen_right['ASR_RightToView'];
                 }
               }) ? (
@@ -100,7 +109,10 @@ function Sidebar(props) {
               ) : null}
 
               {props.screen_rights.screen_rights.find((each_screen_right) => {
-                if (each_screen_right['AS_Name'] === 'User Permissions') {
+                if (
+                  each_screen_right['AS_Name'] ===
+                  CONSTANTS.APPLICATION_SCREENS.SCREEN_RIGHTS_WINDOW
+                ) {
                   return each_screen_right['ASR_RightToView'];
                 }
               }) ? (
@@ -112,7 +124,10 @@ function Sidebar(props) {
               ) : null}
 
               {props.screen_rights.screen_rights.find((each_screen_right) => {
-                if (each_screen_right['AS_Name'] === 'User Window') {
+                if (
+                  each_screen_right['AS_Name'] ===
+                  CONSTANTS.APPLICATION_SCREENS.USER_WINDOW
+                ) {
                   return each_screen_right['ASR_RightToView'];
                 }
               }) ? (
@@ -124,7 +139,10 @@ function Sidebar(props) {
               ) : null}
 
               {props.screen_rights.screen_rights.find((each_screen_right) => {
-                if (each_screen_right['AS_Name'] === 'Query Window') {
+                if (
+                  each_screen_right['AS_Name'] ===
+                  CONSTANTS.APPLICATION_SCREENS.QUERY_WINDOW
+                ) {
                   return each_screen_right['ASR_RightToView'];
                 }
               }) ? (
@@ -140,7 +158,7 @@ function Sidebar(props) {
         <div className="sideBarLower">
           <button
             className="blueButton"
-            onClick={() => history.push('/history')}
+            onClick={() => history.push(APPLICATION_URLS.HISTORY_WINDOW)}
           >
             History
           </button>

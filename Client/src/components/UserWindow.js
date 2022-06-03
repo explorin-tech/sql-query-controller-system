@@ -378,7 +378,10 @@ function AddUser(props) {
                   props.screen_rights
                     ? props.screen_rights.screen_rights.find(
                         (each_screen_right) => {
-                          if (each_screen_right['AS_Name'] === 'User Window') {
+                          if (
+                            each_screen_right['AS_Name'] ===
+                            CONSTANTS.APPLICATION_SCREENS.USER_WINDOW
+                          ) {
                             return !each_screen_right['ASR_RightToAdd'];
                           }
                         }
@@ -480,7 +483,10 @@ function AddUser(props) {
                   props.screen_rights
                     ? props.screen_rights.screen_rights.find(
                         (each_screen_right) => {
-                          if (each_screen_right['AS_Name'] === 'User Window') {
+                          if (
+                            each_screen_right['AS_Name'] ===
+                            CONSTANTS.APPLICATION_SCREENS.USER_WINDOW
+                          ) {
                             return !each_screen_right['ASR_RightToEdit'];
                           }
                         }
@@ -497,7 +503,10 @@ function AddUser(props) {
                   props.screen_rights
                     ? props.screen_rights.screen_rights.find(
                         (each_screen_right) => {
-                          if (each_screen_right['AS_Name'] === 'User Window') {
+                          if (
+                            each_screen_right['AS_Name'] ===
+                            CONSTANTS.APPLICATION_SCREENS.USER_WINDOW
+                          ) {
                             return !each_screen_right['ASR_RightToDelete'];
                           }
                         }

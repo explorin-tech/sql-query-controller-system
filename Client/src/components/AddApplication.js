@@ -319,7 +319,8 @@ function AddApplication(props) {
                         (each_screen_right) => {
                           if (
                             each_screen_right['AS_Name'] ===
-                            'Master Application Window'
+                            CONSTANTS.APPLICATION_SCREENS
+                              .MASTER_APPLICATION_WINDOW
                           ) {
                             return !each_screen_right['ASR_RightToAdd'];
                           }
@@ -391,7 +392,8 @@ function AddApplication(props) {
                         (each_screen_right) => {
                           if (
                             each_screen_right['AS_Name'] ===
-                            'Master Application Window'
+                            CONSTANTS.APPLICATION_SCREENS
+                              .MASTER_APPLICATION_WINDOW
                           ) {
                             return !each_screen_right['ASR_RightToEdit'];
                           }
@@ -411,7 +413,8 @@ function AddApplication(props) {
                         (each_screen_right) => {
                           if (
                             each_screen_right['AS_Name'] ===
-                            'Master Application Window'
+                            CONSTANTS.APPLICATION_SCREENS
+                              .MASTER_APPLICATION_WINDOW
                           ) {
                             return !each_screen_right['ASR_RightToDelete'];
                           }
