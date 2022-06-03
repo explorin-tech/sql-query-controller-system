@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import { MenuItem } from '../common/MenuItem';
 import * as BACKEND_URLS from '../utils/BackendUrls';
+import * as APPLICATION_URLS from '../utils/ApplicationUrls';
 import * as actions from '../store/actions/Actions';
 
 import '../static/css/sideBar.css';
@@ -42,7 +43,7 @@ function Sidebar(props) {
           {props.screen_rights.screen_rights[0] ? (
             <>
               <MenuItem
-                to="/"
+                to={APPLICATION_URLS.DASHBOARD_PAGE}
                 image={require('../static/images/dummy.png')}
                 title="Home"
               />
@@ -52,7 +53,7 @@ function Sidebar(props) {
                 }
               }) ? (
                 <MenuItem
-                  to="/query"
+                  to={APPLICATION_URLS.QUERY_WINDOW}
                   image={require('../static/images/dummy.png')}
                   title="Query Window"
                 />
@@ -66,7 +67,7 @@ function Sidebar(props) {
                 }
               }) ? (
                 <MenuItem
-                  to="/applications"
+                  to={APPLICATION_URLS.APPLICATION_PAGE}
                   image={require('../static/images/dummy.png')}
                   title="Add Application"
                 />
@@ -80,7 +81,7 @@ function Sidebar(props) {
                 }
               }) ? (
                 <MenuItem
-                  to="/application-database-mappings"
+                  to={APPLICATION_URLS.DATABASE_PAGE}
                   image={require('../static/images/dummy.png')}
                   title="Add Database"
                 />
@@ -92,7 +93,7 @@ function Sidebar(props) {
                 }
               }) ? (
                 <MenuItem
-                  to="/screen-rights"
+                  to={APPLICATION_URLS.SCREEN_RIGHTS}
                   image={require('../static/images/dummy.png')}
                   title="Screen Rights"
                 />
@@ -104,7 +105,7 @@ function Sidebar(props) {
                 }
               }) ? (
                 <MenuItem
-                  to="/database-rights"
+                  to={APPLICATION_URLS.DB_RIGHTS}
                   image={require('../static/images/dummy.png')}
                   title="Database Rights"
                 />
@@ -116,7 +117,7 @@ function Sidebar(props) {
                 }
               }) ? (
                 <MenuItem
-                  to="/users"
+                  to={APPLICATION_URLS.USER_WINDOW}
                   image={require('../static/images/dummy.png')}
                   title="User Window"
                 />
@@ -128,7 +129,7 @@ function Sidebar(props) {
                 }
               }) ? (
                 <MenuItem
-                  to="/draft-queries"
+                  to={APPLICATION_URLS.DRAFT_QUERIES_WINDOW}
                   image={require('../static/images/dummy.png')}
                   title="Open Draft Queries"
                 />
