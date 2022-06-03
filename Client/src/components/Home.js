@@ -70,6 +70,8 @@ function Home(props) {
         <div className="row">
           <Acrdn data="Hi" />
         </div>
+        <br />
+        <br />
       </div>
     </Fragment>
   );

@@ -5,6 +5,7 @@
   border-right: 1px solid var(--shade2Gray);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .sideBar>div {
@@ -58,4 +59,15 @@
 .active-navbar .active-navbar-list span {
   color: var(--shade2Blue);
   font-weight: 600;
+}
+
+.sideBarLower {
+  width: 100%;
+  padding: 1em 1em;
+  display: flex;
+  justify-content: center;
+}
+
+.sideBarLower button {
+  width: 80%;
 }

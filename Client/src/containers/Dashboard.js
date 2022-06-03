@@ -1,13 +1,8 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 import { connect } from 'react-redux';
-import * as actions from '../store/actions/Actions';
-
 import axios from 'axios';
-
-import * as BACKEND_URLS from '../utils/BackendUrls';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import AddApplication from '../components/AddApplication';
 import AddDatabase from '../components/AddDatabase';
@@ -17,16 +12,19 @@ import Navbar from '../components/NavBar';
 import Sidebar from '../components/SideBar';
 import ScreenRights from '../components/ScreenRights';
 import DatabaseRights from '../components/DatabaseRights';
+import DraftQueries from '../components/DraftQueries';
+import History from '../components/History';
+import QueryWindow from '../components/QueryWindow';
+import * as actions from '../store/actions/Actions';
+import * as BACKEND_URLS from '../utils/BackendUrls';
+import * as APPLICATION_URLS from '../utils/ApplicationUrls';
 
 import '../static/css/dashboard.css';
 import '../static/css/table.css';
 
-import * as APPLICATION_URLS from '../utils/ApplicationUrls';
-
 function Dashboard(props) {
-  const [error, setError] = useState('');
-
   const history = useHistory();
+  const [error, setError] = useState('');
 
   useEffect(() => {
     if (props.db_user.user == null) {
@@ -53,7 +51,6 @@ function Dashboard(props) {
       }
     }
   }, []);
-
   return (
     <Fragment>
       <div className="dashboard">
@@ -62,6 +59,11 @@ function Dashboard(props) {
           <Sidebar />
           <div className="dashboardContent">
             <Switch>
+              <Route
+                exact
+                path={APPLICATION_URLS.QUERY_WINDOW}
+                component={QueryWindow}
+              />
               <Route
                 exact
                 path={APPLICATION_URLS.APPLICATION_PAGE}
@@ -86,6 +88,16 @@ function Dashboard(props) {
                 exact
                 path={APPLICATION_URLS.USER_WINDOW}
                 component={AddUser}
+              />
+              <Route
+                exact
+                path={APPLICATION_URLS.DRAFT_QUERIES_WINDOW}
+                component={DraftQueries}
+              />
+              <Route
+                exact
+                path={APPLICATION_URLS.HISTORY_WINDOW}
+                component={History}
               />
               <Route
                 exact
