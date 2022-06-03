@@ -153,7 +153,7 @@ function QueryWindow(props) {
             </table>
           </div>
         </div>
-        <div className="application queryWin">
+        <div className="application queryWindow">
           <div className="appTab">
             <span className="headData"> Application </span>
             <CSVLink data={data} filename="Result">
@@ -219,18 +219,13 @@ function QueryWindow(props) {
 }
 
 const mapStateToProps = (state) => ({
-  users: state.users,
-  screen_rights: state.applicationScreenRights,
   db_user: state.auth,
+  screen_rights: state.applicationScreenRights,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   set_all_screen_rights_for_an_user: (screen_rights) =>
     dispatch(actions.set_all_screen_rights_for_an_user(screen_rights)),
-  set_all_users: (users) => dispatch(actions.set_all_users(users)),
-  set_selected_user: (user) => dispatch(actions.set_user(user)),
-  set_all_screen_rights_for_selected_user: (screen_rights) =>
-    dispatch(actions.set_all_screen_rights_for_selected_user(screen_rights)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(QueryWindow);

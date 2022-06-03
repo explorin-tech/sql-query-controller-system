@@ -107,10 +107,7 @@ function DraftQueries(props) {
               {rows.map((row) => {
                 prepareRow(row);
                 return (
-                  <tr
-                    {...row.getRowProps()}
-                    key={row.id}
-                  >
+                  <tr {...row.getRowProps()} key={row.id}>
                     {row.cells.map((cell) => {
                       return (
                         <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
@@ -128,18 +125,13 @@ function DraftQueries(props) {
 }
 
 const mapStateToProps = (state) => ({
-  users: state.users,
-  screen_rights: state.applicationScreenRights,
   db_user: state.auth,
+  screen_rights: state.applicationScreenRights,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   set_all_screen_rights_for_an_user: (screen_rights) =>
     dispatch(actions.set_all_screen_rights_for_an_user(screen_rights)),
-  set_all_users: (users) => dispatch(actions.set_all_users(users)),
-  set_selected_user: (user) => dispatch(actions.set_user(user)),
-  set_all_screen_rights_for_selected_user: (screen_rights) =>
-    dispatch(actions.set_all_screen_rights_for_selected_user(screen_rights)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DraftQueries);
