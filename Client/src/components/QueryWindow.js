@@ -1,11 +1,10 @@
-import React, { useMemo, Fragment, useState } from 'react';
+import React, { useMemo, Fragment, useState, useEffect } from 'react';
 import { useTable, useSortBy } from 'react-table';
+import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { CSVLink } from 'react-csv';
 
 import * as actions from '../store/actions/Actions';
-
-import '../static/css/queryWindow.css';
 
 import '../static/css/queryWindow.css';
 

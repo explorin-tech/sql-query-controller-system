@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react';
-import { Route, Switch, useHistory } from 'react-router-dom';
+import { Route, Switch, useHistory, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -61,6 +61,11 @@ function Dashboard(props) {
             <Switch>
               <Route
                 exact
+                path={APPLICATION_URLS.ADD_NEW_QUERY}
+                component={QueryWindow}
+              />
+              <Route
+                exact
                 path={APPLICATION_URLS.QUERY_WINDOW}
                 component={QueryWindow}
               />
@@ -104,6 +109,7 @@ function Dashboard(props) {
                 path={APPLICATION_URLS.DASHBOARD_PAGE}
                 component={Home}
               />
+              <Redirect to={APPLICATION_URLS.DASHBOARD_PAGE} />
             </Switch>
           </div>
         </div>

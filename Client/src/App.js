@@ -1,10 +1,10 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
 import store from './store/ConfigureStore';
 
-import * as URLS from './utils/ApplicationUrls';
+import * as APPLICATION_URLS from './utils/ApplicationUrls';
 
 import { ProtectedRoutes } from './protectedRoutes';
 import SignIn from './containers/SignIn';
@@ -17,8 +17,12 @@ const App = () => {
     <Provider store={store}>
       <BrowserRouter>
         <Switch>
-          <Route path={URLS.SIGN_PAGE} exact component={SignIn} />
-          <ProtectedRoutes path={URLS.DASHBOARD_PAGE} component={Dashboard} />
+          <Route path={APPLICATION_URLS.SIGN_PAGE} exact component={SignIn} />
+          <ProtectedRoutes
+            path={APPLICATION_URLS.DASHBOARD_PAGE}
+            component={Dashboard}
+          />
+          <Redirect to={APPLICATION_URLS.SIGN_PAGE} />
         </Switch>
       </BrowserRouter>
     </Provider>

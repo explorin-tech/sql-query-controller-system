@@ -57,9 +57,9 @@ function Sidebar(props) {
                 }
               }) ? (
                 <MenuItem
-                  to={APPLICATION_URLS.QUERY_WINDOW}
+                  to={APPLICATION_URLS.ADD_NEW_QUERY}
                   image={require('../static/images/dummy.png')}
-                  title="Query Window"
+                  title="Add new Query"
                 />
               ) : null}
 
@@ -89,7 +89,7 @@ function Sidebar(props) {
                 <MenuItem
                   to={APPLICATION_URLS.DATABASE_PAGE}
                   image={require('../static/images/dummy.png')}
-                  title="Add Database"
+                  title="Application-Database Mappings"
                 />
               ) : null}
 
