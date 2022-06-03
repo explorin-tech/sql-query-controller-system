@@ -66,7 +66,7 @@ function Sidebar(props) {
                 }
               }) ? (
                 <MenuItem
-                  to="/application"
+                  to="/applications"
                   image={require('../static/images/dummy.png')}
                   title="Add Application"
                 />
@@ -80,7 +80,7 @@ function Sidebar(props) {
                 }
               }) ? (
                 <MenuItem
-                  to="/database"
+                  to="/application-database-mappings"
                   image={require('../static/images/dummy.png')}
                   title="Add Database"
                 />
@@ -92,7 +92,7 @@ function Sidebar(props) {
                 }
               }) ? (
                 <MenuItem
-                  to="/screen_rights"
+                  to="/screen-rights"
                   image={require('../static/images/dummy.png')}
                   title="Screen Rights"
                 />
@@ -104,7 +104,7 @@ function Sidebar(props) {
                 }
               }) ? (
                 <MenuItem
-                  to="/database_rights"
+                  to="/database-rights"
                   image={require('../static/images/dummy.png')}
                   title="Database Rights"
                 />
@@ -116,7 +116,7 @@ function Sidebar(props) {
                 }
               }) ? (
                 <MenuItem
-                  to="/user"
+                  to="/users"
                   image={require('../static/images/dummy.png')}
                   title="User Window"
                 />
@@ -128,7 +128,7 @@ function Sidebar(props) {
                 }
               }) ? (
                 <MenuItem
-                  to="/draft_queries"
+                  to="/draft-queries"
                   image={require('../static/images/dummy.png')}
                   title="Open Draft Queries"
                 />

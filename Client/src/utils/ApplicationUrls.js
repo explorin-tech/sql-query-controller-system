@@ -1,10 +1,10 @@
 export const DASHBOARD_PAGE = '/';
 export const SIGN_PAGE = '/signin';
-export const APPLICATION_PAGE = '/application';
-export const DATABASE_PAGE = '/database';
-export const USER_WINDOW = '/user';
+export const APPLICATION_PAGE = '/applications';
+export const DATABASE_PAGE = '/application-database-mappings';
+export const USER_WINDOW = '/users';
 export const QUERY_WINDOW = '/query';
-export const DRAFT_QUERIES_WINDOW = '/draft_queries';
-export const SCREEN_RIGHTS = '/screen_rights';
-export const DB_RIGHTS = '/database_rights';
+export const DRAFT_QUERIES_WINDOW = '/draft-queries';
+export const SCREEN_RIGHTS = '/screen-rights';
+export const DB_RIGHTS = '/database-rights';
 export const HISTORY_WINDOW = '/history';
