@@ -34,4 +34,7 @@ module.exports = Object.freeze({
     '/get/user_permission_rights_mappings_for_an_user',
   EDIT_USER_PERMISSIONS_MAPPING_FOR_AN_USER:
     '/put/user_permission_rights_mappings_for_an_user',
+  GET_ALL_MAPPED_DRAFT_QUERIES_FOR_USER: '/get/draft_queries_mapped_to_an_user',
+  GET_ALL_MAPPED_HISTORY_QUERIES_FOR_USER:
+    '/get/history_queries_mapped_to_an_user',
 });

@@ -5,6 +5,7 @@ const ApplicationScreenService = require('./application_screen.service');
 const ApplicationScreenRightsMappingService = require('./application_screen_rights_mapping.service');
 const UserPermissionMappingService = require('./user_permission_mapping.service');
 const AuthService = require('./auth.service');
+const QueryService = require('./query.service');
 module.exports = {
   MasterApplicationService,
   ApplicationDatabaseMappingService,
@@ -13,4 +14,5 @@ module.exports = {
   ApplicationScreenRightsMappingService,
   UserPermissionMappingService,
   AuthService,
+  QueryService,
 };
