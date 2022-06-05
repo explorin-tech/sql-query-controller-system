@@ -224,8 +224,10 @@ function AddDatabase(props) {
     setValues({
       databaseApplicationMappingID:
         database[CONSTANTS.DATABASE_APPLICATION_MAPPING.DBAM_ID],
-      applicationID: database[CONSTANTS.APPLICATION.MA_ID],
-      databaseTypeID: database['DBT_ID'],
+      applicationID:
+        database[CONSTANTS.DATABASE_APPLICATION_MAPPING.DBAM_MA_ID],
+      databaseTypeID:
+        database[CONSTANTS.DATABASE_APPLICATION_MAPPING.DBAM_DBT_ID],
       databaseName:
         database[CONSTANTS.DATABASE_APPLICATION_MAPPING.DBAM_DBName],
       databaseHostName:
