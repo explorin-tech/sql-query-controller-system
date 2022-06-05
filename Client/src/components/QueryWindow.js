@@ -197,6 +197,7 @@ function QueryWindow(props) {
               <button className="greenButton" onClick={handleQueryForApproval}>
                 Set for Approval
               </button>
+              <button className="greenButton">Hold for Approval</button>
               <button
                 disabled={!(values.queryStatus === 'APPROVED')}
                 className="blueButton"
