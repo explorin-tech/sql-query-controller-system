@@ -66,8 +66,22 @@ function QueryWindow(props) {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     tableInstance;
 
-  const [values, setValues] = useState({});
+  const [values, setValues] = useState({
+    queryID: '',
+    databaseMappingID: '',
+    sysDefQueryName: '',
+    userDefQueryName: '',
+    queryStatus: '',
+    queryDescription: '',
+    rawQuery: '',
+    queryApprovedBy: '',
+    queryComments: '',
+  });
   const { query_id } = useParams();
+
+  const handleChange = (name) => (event) => {
+    setValues({ ...values, [name]: event.target.value });
+  };
 
   const fetchUserPermissions = () => {
     axios
@@ -89,6 +103,71 @@ function QueryWindow(props) {
       });
   };
 
+  const identifyQueryType = () => {
+    const wordInString = (s, word) =>
+      new RegExp('\\b' + word + '\\b', 'i').test(s);
+    if (wordInString(values.rawQuery, 'SELECT')) {
+      return 'SELECT';
+    } else if (wordInString(values.rawQuery, 'INSERT')) {
+      return 'INSERT';
+    } else if (wordInString(values.rawQuery, 'UPDATE')) {
+      return 'UPDATE';
+    } else if (wordInString(values.rawQuery, 'DELETE')) {
+      return 'DELETE';
+    }
+  };
+
+  const checkQueryExecutionRight = (
+    query_type,
+    user_permission_array_for_selected_database_mapping
+  ) => {
+    if (query_type === 'SELECT') {
+      if (
+        user_permission_array_for_selected_database_mapping['UP_RightToRead']
+      ) {
+        return true;
+      }
+    } else if (query_type === 'INSERT') {
+      if (
+        user_permission_array_for_selected_database_mapping['UP_RightToCreate']
+      ) {
+        return true;
+      }
+    } else if (query_type === 'UPDATE') {
+      if (
+        user_permission_array_for_selected_database_mapping['UP_RightToUpdate']
+      ) {
+        return true;
+      }
+    } else if (query_type === 'DELETE') {
+      if (
+        user_permission_array_for_selected_database_mapping['UP_RightToDelete']
+      ) {
+        return true;
+      }
+    }
+    return false;
+  };
+
+  const handleQueryForApproval = () => {
+    const query_type = identifyQueryType();
+    const user_permission_array_for_selected_database_mapping =
+      props.user_permissions.user_permissions.filter(
+        (each_permission_array) => {
+          if (each_permission_array['UP_DBAM_ID'] == values.databaseMappingID) {
+            return each_permission_array;
+          }
+        }
+      );
+    const is_allowed_to_execute_query = checkQueryExecutionRight(
+      query_type,
+      user_permission_array_for_selected_database_mapping[0]
+    );
+    if (is_allowed_to_execute_query) {
+      // send the request here
+    }
+  };
+
   useEffect(() => {
     console.log(query_id);
     fetchUserPermissions();
@@ -100,8 +179,13 @@ function QueryWindow(props) {
         <div className="makeQueries">
           <div className="functionalities">
             <div>
-              <select>
-                <option>Application + Database Name</option>
+              <select
+                onChange={handleChange('databaseMappingID')}
+                value={values.databaseMappingID}
+              >
+                <option value={null}>
+                  -- Select Application - Database Name --
+                </option>
                 {props.user_permissions ? (
                   <PopulateDatabaseMappings
                     databases={props.user_permissions.user_permissions}
@@ -110,9 +194,22 @@ function QueryWindow(props) {
               </select>
             </div>
             <div>
-              <button>Set for Approval</button>
-              <button>Execute</button>
-              <button>Save as Draft</button>
+              <button className="greenButton" onClick={handleQueryForApproval}>
+                Set for Approval
+              </button>
+              <button
+                disabled={!(values.queryStatus === 'APPROVED')}
+                className="blueButton"
+              >
+                Execute
+              </button>
+              <button
+                disabled={!(values.queryStatus === 'EXECUTED')}
+                className="redButton"
+              >
+                Finalise
+              </button>
+              <button className="yellowButton">Save as Draft</button>
             </div>
           </div>
           <div>
@@ -120,28 +217,41 @@ function QueryWindow(props) {
               <div className="queryDetails">
                 <div className="data">
                   <div className="queryRow1">
-                    <span>Sys_def_name</span>
-                    <span className="approver">Approved By</span>
-                    <span className="status">Status</span>
+                    <span>Sys_def_name : {values.sysDefQueryName}</span>
+                    <span className="approver">
+                      Approved By: {values.queryApprovedBy}
+                    </span>
+                    <span className="status">
+                      Status : {values.queryStatus}
+                    </span>
                   </div>
                   <div className="queryRow2">
                     <div>
                       <span>Query Name</span>
-                      <input type="text" />
+                      <input
+                        type="text"
+                        onChange={handleChange('userDefQueryName')}
+                      />
                     </div>
                     <div>
                       <span>Query Description</span>
-                      <input type="text" />
+                      <input
+                        type="text"
+                        onChange={handleChange('queryDescription')}
+                      />
                     </div>
                   </div>
                 </div>
                 <div className="comments">
-                  <textarea placeholder="Add Comment" />
+                  <textarea
+                    placeholder="Add Comment"
+                    onChange={handleChange('queryComments')}
+                  />
                 </div>
               </div>
               <div className="rawQuery">
                 <span>Raw Query</span>
-                <textarea />
+                <textarea onChange={handleChange('rawQuery')} />
               </div>
             </form>
           </div>
