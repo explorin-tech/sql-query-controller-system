@@ -26,18 +26,55 @@ function DraftQueries(props) {
   const columns = useMemo(
     () => [
       {
-        Header: 'Drafts Drafts',
-        accessor: '',
+        Header: 'SysDefName',
+        accessor: 'Q_SysDefName',
         filterable: true,
       },
       {
-        Header: 'Column 1',
-        accessor: '',
+        Header: 'UserDefinedName',
+        accessor: 'Q_UserDefName',
         filterable: true,
       },
       {
-        Header: 'Column 2',
-        accessor: '',
+        Header: 'Raw Query',
+        accessor: 'Q_RawQuery',
+        filterable: true,
+      },
+      {
+        Header: 'Query Status',
+        accessor: 'Q_CreatedOn',
+        filterable: true,
+      },
+      {
+        Header: 'Created By',
+        accessor: 'Q_CreatedByName',
+        filterable: true,
+      },
+      {
+        Header: 'Approved By',
+        accessor: 'Q_ApprovedByName',
+        filterable: true,
+      },
+      {
+        Header: 'Is Drafted',
+        accessor: 'Q_IsDrafted',
+        filterable: true,
+        Cell: (e) => <input type="checkbox" defaultChecked={e.value} />,
+      },
+      {
+        Header: 'Is Moved To History',
+        accessor: 'Q_IsMovedToHistory',
+        filterable: true,
+        Cell: (e) => <input type="checkbox" defaultChecked={e.value} />,
+      },
+      {
+        Header: 'Comments',
+        accessor: 'Q_Comments',
+        filterable: true,
+      },
+      {
+        Header: 'Back up table Name',
+        accessor: 'Q_BackupTableName',
         filterable: true,
       },
     ],
@@ -78,7 +115,7 @@ function DraftQueries(props) {
       .then((res) => {
         console.log(res);
         if (res.status == 200) {
-          console.log(res.data.data);
+          setFilteredData(res.data.data);
         }
       })
       .catch((err) => {
