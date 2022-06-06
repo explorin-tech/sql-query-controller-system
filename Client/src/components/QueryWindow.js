@@ -6,7 +6,7 @@ import { CSVLink } from 'react-csv';
 import axios from 'axios';
 
 import * as BACKEND_URLS from '../utils/BackendUrls';
-
+import * as CONSTANTS from '../utils/AppConstants';
 import { connect } from 'react-redux';
 import * as actions from '../store/actions/Actions';
 
@@ -159,12 +159,72 @@ function QueryWindow(props) {
           }
         }
       );
+    console.log(
+      query_type,
+      user_permission_array_for_selected_database_mapping[0]
+    );
     const is_allowed_to_execute_query = checkQueryExecutionRight(
       query_type,
       user_permission_array_for_selected_database_mapping[0]
     );
     if (is_allowed_to_execute_query) {
-      // send the request here
+      console.log('APPROVED');
+      return true;
+    }
+    console.log('NOT APPROVED');
+    return false;
+  };
+
+  const handleSaveAsDraft = () => {
+    setValues({
+      queryStatus: 'HOLD_FOR_APPROVAL',
+    });
+
+    const is_query_approved = handleQueryForApproval();
+    if (is_query_approved) {
+      axios
+        .post(
+          BACKEND_URLS.POST_ADD_NEW_QUERY,
+          {
+            query: {
+              database_application_mapping_id: values.databaseMappingID,
+              query_status_id:
+                CONSTANTS.QUERY_STATUS_ID_MAPPING['HOLD_FOR_APPROVAL'],
+              sys_defined_name: 'SYS_DEFINED_NAME',
+              user_defined_name: values.userDefQueryName,
+              raw_query: values.rawQuery,
+              query_desc: values.queryDescription,
+              query_comments: values.queryComments,
+            },
+          },
+          {
+            headers: {
+              token: localStorage.getItem('token'),
+            },
+          }
+        )
+        .then((res) => {
+          if (res.status == 200) {
+            console.log(res);
+            console.log('SUCCESSFULLY SAVED THE QUERY AS DRAFT');
+            setValues({
+              queryID: '',
+              databaseMappingID: '',
+              sysDefQueryName: '',
+              userDefQueryName: '',
+              queryStatus: '',
+              queryDescription: '',
+              rawQuery: '',
+              queryApprovedBy: '',
+              queryComments: '',
+            });
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      console.log('QUERY NOT APPROVED');
     }
   };
 
@@ -210,7 +270,9 @@ function QueryWindow(props) {
               >
                 Finalise
               </button>
-              <button className="yellowButton">Save as Draft</button>
+              <button className="yellowButton" onClick={handleSaveAsDraft}>
+                Save as Draft
+              </button>
             </div>
           </div>
           <div>
@@ -231,12 +293,14 @@ function QueryWindow(props) {
                       <span>Query Name</span>
                       <input
                         type="text"
+                        value={values.userDefQueryName}
                         onChange={handleChange('userDefQueryName')}
                       />
                     </div>
                     <div>
                       <span>Query Description</span>
                       <input
+                        value={values.queryDescription}
                         type="text"
                         onChange={handleChange('queryDescription')}
                       />
@@ -245,6 +309,7 @@ function QueryWindow(props) {
                 </div>
                 <div className="comments">
                   <textarea
+                    value={values.queryComments}
                     placeholder="Add Comment"
                     onChange={handleChange('queryComments')}
                   />
@@ -252,7 +317,10 @@ function QueryWindow(props) {
               </div>
               <div className="rawQuery">
                 <span>Raw Query</span>
-                <textarea onChange={handleChange('rawQuery')} />
+                <textarea
+                  value={values.rawQuery}
+                  onChange={handleChange('rawQuery')}
+                />
               </div>
             </form>
           </div>

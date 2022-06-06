@@ -37,4 +37,8 @@ module.exports = Object.freeze({
   GET_ALL_MAPPED_DRAFT_QUERIES_FOR_USER: '/get/draft_queries_mapped_to_an_user',
   GET_ALL_MAPPED_HISTORY_QUERIES_FOR_USER:
     '/get/history_queries_mapped_to_an_user',
+  POST_ADD_NEW_QUERY: '/post/query',
+  PUT_EDIT_A_QUERY: '/put/query',
+  PUT_EDIT_QUERY_STATUS: '/put/query_status',
+  EXECUTE_QUERY: '/post/execute_query',
 });

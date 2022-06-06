@@ -35,3 +35,11 @@ export const GET_ALL_USER_PERMISSION_MAPPING_FOR_AN_USER =
   '/api/get/user_permission_rights_mappings_for_an_user';
 export const EDIT_USER_PERMISSIONS_MAPPING_FOR_AN_USER =
   '/api/put/user_permission_rights_mappings_for_an_user';
+export const GET_ALL_MAPPED_DRAFT_QUERIES_FOR_USER =
+  '/api/get/draft_queries_mapped_to_an_user';
+export const GET_ALL_MAPPED_HISTORY_QUERIES_FOR_USER =
+  '/api/get/history_queries_mapped_to_an_user';
+export const POST_ADD_NEW_QUERY = '/api/post/query';
+export const PUT_EDIT_A_QUERY = '/api/put/query';
+export const PUT_EDIT_QUERY_STATUS = '/api/put/query_status';
+export const EXECUTE_QUERY = '/api/post/execute_query';

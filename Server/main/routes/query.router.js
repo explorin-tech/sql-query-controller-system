@@ -19,4 +19,23 @@ router.get(routeNames.GET_ALL_MAPPED_HISTORY_QUERIES_FOR_USER, [
   authValidator,
   QueryService.GET_getAllMappedHistoryQueriesForAnUser,
 ]);
+
+// Add a new query
+router.post(routeNames.POST_ADD_NEW_QUERY, [
+  authValidator,
+  QueryService.POST_addNewQuery,
+]);
+
+// Edit a query
+router.put(routeNames.PUT_EDIT_A_QUERY, [
+  authValidator,
+  QueryService.PUT_editAQuery,
+]);
+
+// Update query status
+router.put(routeNames.PUT_EDIT_QUERY_STATUS, [
+  authValidator,
+  QueryService.PUT_editQueryStatus,
+]);
+
 module.exports = router;

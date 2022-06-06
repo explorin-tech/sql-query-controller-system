@@ -1,8 +1,11 @@
-import React, { useMemo, useState, Fragment } from 'react';
+import React, { useMemo, useState, Fragment, useEffect } from 'react';
 import { useTable, useGlobalFilter, useSortBy } from 'react-table';
 import { connect } from 'react-redux';
 
 import * as actions from '../store/actions/Actions';
+import axios from 'axios';
+
+import * as BACKEND_URLS from '../utils/BackendUrls';
 
 function GlobalFilter({ filter, setFilter }) {
   return (
@@ -38,7 +41,7 @@ function DraftQueries(props) {
         filterable: true,
       },
     ],
-    []
+    [filteredData]
   );
 
   const data = useMemo(() => filteredData, [filteredData]);
@@ -61,6 +64,31 @@ function DraftQueries(props) {
     setGlobalFilter,
     state,
   } = tableInstance;
+
+  const fetchDraftQueries = () => {
+    axios
+      .get(BACKEND_URLS.GET_ALL_MAPPED_DRAFT_QUERIES_FOR_USER, {
+        params: {
+          page: 1,
+        },
+        headers: {
+          token: localStorage.getItem('token'),
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        if (res.status == 200) {
+          console.log(res.data.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    fetchDraftQueries();
+  }, []);
 
   const { globalFilter } = state;
   return (

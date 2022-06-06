@@ -11,7 +11,7 @@ module.exports.GET_getAllMappedDraftQueriesForAnUser = async (
     const user_id = decoded.UserID;
     const params = {
       user_id: user_id,
-      page: httpRequest.headers.page,
+      page: httpRequest.query.page,
     };
     const user_details = await UserDao.getUserDetails({
       user_id: decoded.UserID,
@@ -44,7 +44,7 @@ module.exports.GET_getAllMappedHistoryQueriesForAnUser = async (
     const user_id = decoded.UserID;
     const params = {
       user_id: user_id,
-      page: httpRequest.headers.page,
+      page: httpRequest.query.page,
     };
     const user_details = await UserDao.getUserDetails({
       user_id: decoded.UserID,
@@ -60,6 +60,101 @@ module.exports.GET_getAllMappedHistoryQueriesForAnUser = async (
     }
     return _200(httpResponse, result);
   } catch (err) {
-    return err;
+    return _error(httpResponse, {
+      type: 'generic',
+      message: err,
+    });
+  }
+};
+
+module.exports.POST_addNewQuery = async (httpRequest, httpResponse, next) => {
+  try {
+    const { decoded } = httpRequest.headers;
+    const user_id = decoded.UserID;
+    const values = [
+      httpRequest.body.query.database_application_mapping_id,
+      httpRequest.body.query.query_status_id,
+      httpRequest.body.query.sys_defined_name,
+      httpRequest.body.query.user_defined_name,
+      httpRequest.body.query.raw_query,
+      httpRequest.body.query.query_desc,
+      user_id,
+      user_id,
+      httpRequest.body.query.query_comments,
+    ];
+    const params = {
+      values: values,
+    };
+    const result = await QueryDao.postNewQuery(params);
+    return _200(httpResponse, result);
+  } catch (err) {
+    return _error(httpResponse, {
+      type: 'generic',
+      message: err,
+    });
+  }
+};
+
+module.exports.PUT_editAQuery = async (httpRequest, httpResponse, next) => {
+  try {
+    const { decoded } = httpRequest.headers;
+    const user_id = decoded.UserID;
+    const values = [
+      httpRequest.body.query.query_id,
+      httpRequest.body.query.user_defined_name,
+      httpRequest.body.query.query_desc,
+      user_id,
+      httpRequest.body.query.query_comments,
+    ];
+    const params = {
+      values: values,
+    };
+    const result = await QueryDao.editQueryDetails(params);
+    return _200(httpResponse, result);
+  } catch (err) {
+    return _error(httpResponse, {
+      type: 'generic',
+      message: err,
+    });
+  }
+};
+
+module.exports.PUT_editQueryStatus = async (
+  httpRequest,
+  httpResponse,
+  next
+) => {
+  try {
+    const { decoded } = httpRequest.headers;
+    const user_id = decoded.UserID;
+    let values;
+    if (httpRequest.body.query.is_approved) {
+      values = [
+        httpRequest.body.query.query_id,
+        httpRequest.body.query.query_status_id,
+        user_id,
+        user_id,
+      ];
+      let params = {
+        values: values,
+      };
+      result = await QueryDao.editQueryStatusForApproval(params);
+    } else {
+      values = [
+        httpRequest.body.query.query_id,
+        httpRequest.body.query.query_status_id,
+        user_id,
+      ];
+      let params = {
+        values: values,
+      };
+      result = await QueryDao.editQueryStatusForRejection(params);
+    }
+    return _200(httpResponse, result);
+  } catch (err) {
+    return _error(httpResponse, {
+      type: 'generic',
+      message: err,
+    });
   }
 };

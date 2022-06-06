@@ -82,3 +82,49 @@ module.exports.getAllHistoryQueriesForApplicationOwner = async (params) => {
     return err;
   }
 };
+
+module.exports.postNewQuery = async (params) => {
+  try {
+    const values = params.values;
+    const result = await pool.query(Query.POST_ADD_NEW_QUERY, values);
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
+};
+
+module.exports.editQueryDetails = async (params) => {
+  try {
+    const values = params.values;
+    const result = await pool.query(Query.EDIT_QUERY_DETAILS, values);
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
+};
+
+module.exports.editQueryStatusForApproval = async (params) => {
+  try {
+    const values = params.values;
+    const result = await pool.query(
+      Query.EDIT_QUERY_STATUS_FOR_APPROVAL,
+      values
+    );
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
+};
+
+module.exports.editQueryStatusForRejection = async (params) => {
+  try {
+    const values = params.values;
+    const result = await pool.query(
+      Query.EDIT_QUERY_STATUS_FOR_REJECTION,
+      values
+    );
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
+};
