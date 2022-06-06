@@ -42,7 +42,7 @@ function DraftQueries(props) {
       },
       {
         Header: 'Query Status',
-        accessor: 'Q_CreatedOn',
+        accessor: 'QS_Name',
         filterable: true,
       },
       {
