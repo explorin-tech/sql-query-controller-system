@@ -59,13 +59,17 @@ function DraftQueries(props) {
         Header: 'Is Drafted',
         accessor: 'Q_IsDrafted',
         filterable: true,
-        Cell: (e) => <input type="checkbox" defaultChecked={e.value} />,
+        Cell: (e) => (
+          <input type="checkbox" defaultChecked={e.value} disabled />
+        ),
       },
       {
         Header: 'Is Moved To History',
         accessor: 'Q_IsMovedToHistory',
         filterable: true,
-        Cell: (e) => <input type="checkbox" defaultChecked={e.value} />,
+        Cell: (e) => (
+          <input type="checkbox" defaultChecked={e.value} disabled />
+        ),
       },
       {
         Header: 'Comments',
