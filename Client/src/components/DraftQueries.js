@@ -6,6 +6,7 @@ import * as actions from '../store/actions/Actions';
 import axios from 'axios';
 
 import * as BACKEND_URLS from '../utils/BackendUrls';
+import { useHistory } from 'react-router-dom';
 
 function GlobalFilter({ filter, setFilter }) {
   return (
@@ -22,6 +23,7 @@ function GlobalFilter({ filter, setFilter }) {
 
 function DraftQueries(props) {
   const [filteredData, setFilteredData] = useState([]);
+  const history = useHistory();
 
   const columns = useMemo(
     () => [
@@ -131,6 +133,12 @@ function DraftQueries(props) {
     fetchDraftQueries();
   }, []);
 
+  const handleQuerySelect = (query_id) => {
+    if (query_id) {
+      history.push(`/query/${query_id}`);
+    }
+  };
+
   const { globalFilter } = state;
   return (
     <Fragment>
@@ -176,7 +184,13 @@ function DraftQueries(props) {
               {rows.map((row) => {
                 prepareRow(row);
                 return (
-                  <tr {...row.getRowProps()} key={row.id}>
+                  <tr
+                    {...row.getRowProps()}
+                    key={row.id}
+                    onClick={() => {
+                      handleQuerySelect(row.original['Q_ID']);
+                    }}
+                  >
                     {row.cells.map((cell) => {
                       return (
                         <td {...cell.getCellProps()}>{cell.render('Cell')}</td>

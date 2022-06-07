@@ -76,8 +76,8 @@ function QueryWindow(props) {
     rawQuery: '',
     queryApprovedBy: '',
     queryComments: '',
+    IsQueryExecuted: '',
   });
-  const { query_id } = useParams();
 
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
@@ -159,19 +159,13 @@ function QueryWindow(props) {
           }
         }
       );
-    console.log(
-      query_type,
-      user_permission_array_for_selected_database_mapping[0]
-    );
     const is_allowed_to_execute_query = checkQueryExecutionRight(
       query_type,
       user_permission_array_for_selected_database_mapping[0]
     );
     if (is_allowed_to_execute_query) {
-      console.log('APPROVED');
       return true;
     }
-    console.log('NOT APPROVED');
     return false;
   };
 
@@ -205,8 +199,6 @@ function QueryWindow(props) {
         )
         .then((res) => {
           if (res.status == 200) {
-            console.log(res);
-            console.log('SUCCESSFULLY SAVED THE QUERY AS DRAFT');
             setValues({
               queryID: '',
               databaseMappingID: '',
@@ -217,6 +209,7 @@ function QueryWindow(props) {
               rawQuery: '',
               queryApprovedBy: '',
               queryComments: '',
+              IsQueryExecuted: '',
             });
           }
         })
@@ -228,10 +221,84 @@ function QueryWindow(props) {
     }
   };
 
+  const { query_id } = useParams();
   useEffect(() => {
-    console.log(query_id);
+    if (query_id) {
+      axios
+        .get(BACKEND_URLS.GET_QUERY_DETAILS, {
+          params: {
+            query_id: query_id,
+          },
+          headers: {
+            token: localStorage.getItem('token'),
+          },
+        })
+        .then((res) => {
+          if (res.status == 200) {
+            const queryDetailsObject = res.data.data[0];
+            setValues({
+              queryID: queryDetailsObject['Q_ID'],
+              databaseMappingID: queryDetailsObject['Q_DBAM_ID'],
+              sysDefQueryName: queryDetailsObject['Q_SysDefName'],
+              userDefQueryName: queryDetailsObject['Q_UserDefName'],
+              queryStatus: queryDetailsObject['QS_Name'],
+              queryDescription: queryDetailsObject['Q_QueryDesc'],
+              rawQuery: queryDetailsObject['Q_RawQuery'],
+              queryApprovedBy: queryDetailsObject['Q_ApprovedByName'],
+              queryComments: queryDetailsObject['Q_Comments'],
+              IsQueryExecuted: queryDetailsObject['Q_IsExecuted'],
+            });
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      setValues({
+        queryID: '',
+        databaseMappingID: '',
+        sysDefQueryName: '',
+        userDefQueryName: '',
+        queryStatus: '',
+        queryDescription: '',
+        rawQuery: '',
+        queryApprovedBy: '',
+        queryComments: '',
+        IsQueryExecuted: '',
+      });
+    }
     fetchUserPermissions();
   }, []);
+
+  useEffect(() => {
+    handleExecuteButton();
+  }, [values.queryStatus]);
+
+  console.log(values.queryStatus);
+
+  const IsInputBoxReadOnly = () => {
+    if (
+      values.queryStatus === 'SET_FOR_APPROVAL' ||
+      values.queryStatus === 'APPROVED_FOR_ONCE' ||
+      values.queryStatus === 'APPROVED_FOR_EVER'
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  const handleExecuteButton = () => {
+    if (values.queryStatus === 'APPROVED_FOR_ONCE') {
+      if (values.IsQueryExecuted) {
+        return true;
+      } else {
+        return false;
+      }
+    } else if (values.queryStatus === 'APPROVED_FOR_EVER') {
+      return false;
+    }
+    return true;
+  };
 
   return (
     <Fragment>
@@ -242,6 +309,11 @@ function QueryWindow(props) {
               <select
                 onChange={handleChange('databaseMappingID')}
                 value={values.databaseMappingID}
+                disabled={
+                  values.queryStatus === 'SET_FOR_APPROVAL' ||
+                  values.queryStatus === 'APPROVED_FOR_ONCE' ||
+                  values.queryStatus === 'APPROVED_FOR_EVER'
+                }
               >
                 <option value={null}>
                   -- Select Application - Database Name --
@@ -254,23 +326,42 @@ function QueryWindow(props) {
               </select>
             </div>
             <div>
-              <button className="greenButton" onClick={handleQueryForApproval}>
+              <button
+                className="greenButton"
+                disabled={values.queryStatus != 'HOLD_FOR_APPROVAL'}
+                onClick={handleQueryForApproval}
+              >
                 Set for Approval
               </button>
-              <button className="greenButton">Hold for Approval</button>
               <button
-                disabled={!(values.queryStatus === 'APPROVED')}
+                className="greenButton"
+                disabled={values.queryStatus != 'SET_FOR_APPROVAL'}
+              >
+                Hold for Approval
+              </button>
+              <button
                 className="blueButton"
+                disabled={
+                  !(
+                    values.queryStatus === 'APPROVED_FOR_EVER' ||
+                    (values.queryStatus === 'APPROVED_FOR_ONCE' &&
+                      !values.IsQueryExecuted)
+                  )
+                }
               >
                 Execute
               </button>
               <button
-                disabled={!(values.queryStatus === 'EXECUTED')}
-                className="redButton"
+                className="yellowButton"
+                onClick={handleSaveAsDraft}
+                disabled={
+                  values.databaseMappingID == '' ||
+                  values.databaseMappingID ==
+                    '-- Select Application - Database Name --' ||
+                  values.rawQuery == '' ||
+                  values.userDefQueryName == ''
+                }
               >
-                Finalise
-              </button>
-              <button className="yellowButton" onClick={handleSaveAsDraft}>
                 Save as Draft
               </button>
             </div>
@@ -295,6 +386,11 @@ function QueryWindow(props) {
                         type="text"
                         value={values.userDefQueryName}
                         onChange={handleChange('userDefQueryName')}
+                        readOnly={
+                          values.queryStatus === 'SET_FOR_APPROVAL' ||
+                          values.queryStatus === 'APPROVED_FOR_ONCE' ||
+                          values.queryStatus === 'APPROVED_FOR_EVER'
+                        }
                       />
                     </div>
                     <div>
@@ -303,6 +399,11 @@ function QueryWindow(props) {
                         value={values.queryDescription}
                         type="text"
                         onChange={handleChange('queryDescription')}
+                        readOnly={
+                          values.queryStatus === 'SET_FOR_APPROVAL' ||
+                          values.queryStatus === 'APPROVED_FOR_ONCE' ||
+                          values.queryStatus === 'APPROVED_FOR_EVER'
+                        }
                       />
                     </div>
                   </div>
@@ -312,6 +413,11 @@ function QueryWindow(props) {
                     value={values.queryComments}
                     placeholder="Add Comment"
                     onChange={handleChange('queryComments')}
+                    readOnly={
+                      values.queryStatus === 'SET_FOR_APPROVAL' ||
+                      values.queryStatus === 'APPROVED_FOR_ONCE' ||
+                      values.queryStatus === 'APPROVED_FOR_EVER'
+                    }
                   />
                 </div>
               </div>
@@ -320,6 +426,11 @@ function QueryWindow(props) {
                 <textarea
                   value={values.rawQuery}
                   onChange={handleChange('rawQuery')}
+                  readOnly={
+                    values.queryStatus === 'SET_FOR_APPROVAL' ||
+                    values.queryStatus === 'APPROVED_FOR_ONCE' ||
+                    values.queryStatus === 'APPROVED_FOR_EVER'
+                  }
                 />
               </div>
             </form>
