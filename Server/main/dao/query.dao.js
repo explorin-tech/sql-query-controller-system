@@ -83,6 +83,18 @@ module.exports.getAllHistoryQueriesForApplicationOwner = async (params) => {
   }
 };
 
+module.exports.getQueryDetailsForQueryID = async (params) => {
+  try {
+    const query_id = params.query_id;
+    const result = await pool.query(Query.GET_QUERY_DETAILS_FOR_QUERY_ID, [
+      query_id,
+    ]);
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
+};
+
 module.exports.postNewQuery = async (params) => {
   try {
     const values = params.values;

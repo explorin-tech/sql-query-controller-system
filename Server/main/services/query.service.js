@@ -67,6 +67,28 @@ module.exports.GET_getAllMappedHistoryQueriesForAnUser = async (
   }
 };
 
+module.exports.GET_getQueryDetailsForGivenQueryID = async (
+  httpRequest,
+  httpResponse,
+  next
+) => {
+  try {
+    const { decoded } = httpRequest.headers;
+    const user_id = decoded.UserID;
+    const query_id = httpRequest.query.query_id;
+    const params = {
+      query_id: query_id,
+    };
+    const result = await QueryDao.getQueryDetailsForQueryID(params);
+    return _200(httpResponse, result);
+  } catch (err) {
+    return _error(httpResponse, {
+      type: 'generic',
+      message: err,
+    });
+  }
+};
+
 module.exports.POST_addNewQuery = async (httpRequest, httpResponse, next) => {
   try {
     const { decoded } = httpRequest.headers;

@@ -20,6 +20,12 @@ router.get(routeNames.GET_ALL_MAPPED_HISTORY_QUERIES_FOR_USER, [
   QueryService.GET_getAllMappedHistoryQueriesForAnUser,
 ]);
 
+// Get query details for a given specific query_id
+router.get(routeNames.GET_QUERY_DETAILS, [
+  authValidator,
+  QueryService.GET_getQueryDetailsForGivenQueryID,
+]);
+
 // Add a new query
 router.post(routeNames.POST_ADD_NEW_QUERY, [
   authValidator,
