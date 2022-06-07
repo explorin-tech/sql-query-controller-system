@@ -270,36 +270,6 @@ function QueryWindow(props) {
     fetchUserPermissions();
   }, []);
 
-  useEffect(() => {
-    handleExecuteButton();
-  }, [values.queryStatus]);
-
-  console.log(values.queryStatus);
-
-  const IsInputBoxReadOnly = () => {
-    if (
-      values.queryStatus === 'SET_FOR_APPROVAL' ||
-      values.queryStatus === 'APPROVED_FOR_ONCE' ||
-      values.queryStatus === 'APPROVED_FOR_EVER'
-    ) {
-      return true;
-    }
-    return false;
-  };
-
-  const handleExecuteButton = () => {
-    if (values.queryStatus === 'APPROVED_FOR_ONCE') {
-      if (values.IsQueryExecuted) {
-        return true;
-      } else {
-        return false;
-      }
-    } else if (values.queryStatus === 'APPROVED_FOR_EVER') {
-      return false;
-    }
-    return true;
-  };
-
   return (
     <Fragment>
       <div className="queryWindow">
