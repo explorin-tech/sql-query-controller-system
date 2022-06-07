@@ -1,6 +1,6 @@
 import React, { useMemo, Fragment, useState, useEffect } from 'react';
 import { useTable, useSortBy } from 'react-table';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { CSVLink } from 'react-csv';
 
 import axios from 'axios';
@@ -31,6 +31,7 @@ const PopulateDatabaseMappings = ({ databases }) => {
 
 function QueryWindow(props) {
   const [filteredData, setFilteredData] = useState([]);
+  const history = useHistory();
 
   const columns = useMemo(
     () => [
@@ -149,7 +150,7 @@ function QueryWindow(props) {
     return false;
   };
 
-  const handleQueryForApproval = () => {
+  const checkQueryForApproval = () => {
     const query_type = identifyQueryType();
     const user_permission_array_for_selected_database_mapping =
       props.user_permissions.user_permissions.filter(
@@ -168,60 +169,50 @@ function QueryWindow(props) {
     }
     return false;
   };
-
+  const { query_id } = useParams();
   const handleSaveAsDraft = () => {
-    setValues({
-      queryStatus: 'HOLD_FOR_APPROVAL',
-    });
-
-    const is_query_approved = handleQueryForApproval();
-    if (is_query_approved) {
-      axios
-        .post(
-          BACKEND_URLS.POST_ADD_NEW_QUERY,
-          {
-            query: {
-              database_application_mapping_id: values.databaseMappingID,
-              query_status_id:
-                CONSTANTS.QUERY_STATUS_ID_MAPPING['HOLD_FOR_APPROVAL'],
-              sys_defined_name: 'SYS_DEFINED_NAME',
-              user_defined_name: values.userDefQueryName,
-              raw_query: values.rawQuery,
-              query_desc: values.queryDescription,
-              query_comments: values.queryComments,
+    const is_query_allowed = checkQueryForApproval();
+    if (is_query_allowed) {
+      if (query_id) {
+        // put request to update the query
+      } else {
+        axios
+          .post(
+            BACKEND_URLS.POST_ADD_NEW_QUERY,
+            {
+              query: {
+                database_application_mapping_id: values.databaseMappingID,
+                query_status_id:
+                  CONSTANTS.QUERY_STATUS_ID_MAPPING['HOLD_FOR_APPROVAL'],
+                sys_defined_name: 'SYS_DEFINED_NAME',
+                user_defined_name: values.userDefQueryName,
+                raw_query: values.rawQuery,
+                query_desc: values.queryDescription,
+                query_comments: values.queryComments,
+              },
             },
-          },
-          {
-            headers: {
-              token: localStorage.getItem('token'),
-            },
-          }
-        )
-        .then((res) => {
-          if (res.status == 200) {
-            setValues({
-              queryID: '',
-              databaseMappingID: '',
-              sysDefQueryName: '',
-              userDefQueryName: '',
-              queryStatus: '',
-              queryDescription: '',
-              rawQuery: '',
-              queryApprovedBy: '',
-              queryComments: '',
-              IsQueryExecuted: '',
-            });
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+            {
+              headers: {
+                token: localStorage.getItem('token'),
+              },
+            }
+          )
+          .then((res) => {
+            if (res.status == 200) {
+              history.push(`/query/${res.data.data[0]['Q_ID']}`);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     } else {
       console.log('QUERY NOT APPROVED');
     }
   };
 
-  const { query_id } = useParams();
+  const handleQuerySetForApproval = () => {};
+
   useEffect(() => {
     if (query_id) {
       axios
@@ -234,7 +225,7 @@ function QueryWindow(props) {
           },
         })
         .then((res) => {
-          if (res.status == 200) {
+          if (res.status == 200 && res.data.data[0]) {
             const queryDetailsObject = res.data.data[0];
             setValues({
               queryID: queryDetailsObject['Q_ID'],
@@ -248,10 +239,13 @@ function QueryWindow(props) {
               queryComments: queryDetailsObject['Q_Comments'],
               IsQueryExecuted: queryDetailsObject['Q_IsExecuted'],
             });
+          } else {
+            history.push(`/query`);
           }
         })
         .catch((err) => {
           console.log(err);
+          history.push(`/query`);
         });
     } else {
       setValues({
@@ -268,7 +262,7 @@ function QueryWindow(props) {
       });
     }
     fetchUserPermissions();
-  }, []);
+  }, [props.match.params.query_id]);
 
   return (
     <Fragment>
@@ -299,7 +293,7 @@ function QueryWindow(props) {
               <button
                 className="greenButton"
                 disabled={values.queryStatus != 'HOLD_FOR_APPROVAL'}
-                onClick={handleQueryForApproval}
+                onClick={handleQuerySetForApproval}
               >
                 Set for Approval
               </button>
