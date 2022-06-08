@@ -78,6 +78,7 @@ function QueryWindow(props) {
     queryApprovedBy: '',
     queryComments: '',
     IsQueryExecuted: '',
+    canUserApproveTheQuery: false,
   });
 
   const handleChange = (name) => (event) => {
@@ -115,8 +116,8 @@ function QueryWindow(props) {
         },
       })
       .then((res) => {
-        if (res.status == 200 && res.data.data[0]) {
-          const queryDetailsObject = res.data.data[0];
+        if (res.status == 200 && res.data.data.queryObject[0]) {
+          const queryDetailsObject = res.data.data.queryObject[0];
           setValues({
             queryID: queryDetailsObject['Q_ID'],
             databaseMappingID: queryDetailsObject['Q_DBAM_ID'],
@@ -128,6 +129,7 @@ function QueryWindow(props) {
             queryApprovedBy: queryDetailsObject['Q_ApprovedByName'],
             queryComments: queryDetailsObject['Q_Comments'],
             IsQueryExecuted: queryDetailsObject['Q_IsExecuted'],
+            canUserApproveTheQuery: res.data.data.queryApprovalRight,
           });
         } else {
           history.push(`/query`);
@@ -419,6 +421,7 @@ function QueryWindow(props) {
         queryApprovedBy: '',
         queryComments: '',
         IsQueryExecuted: '',
+        canUserApproveTheQuery: false,
       });
     }
     fetchUserPermissions();
@@ -428,6 +431,16 @@ function QueryWindow(props) {
     <Fragment>
       <div className="queryWindow">
         <div className="makeQueries">
+          {values.queryStatus == 'SET_FOR_APPROVAL' &&
+          values.canUserApproveTheQuery ? (
+            <div className="functionalities">
+              <div>
+                <button className="yellowButton">Approve For Once</button>
+                <button className="greenButton">Approve For Ever</button>
+                <button className="redButton">Reject</button>
+              </div>
+            </div>
+          ) : null}
           <div className="functionalities">
             <div>
               <select

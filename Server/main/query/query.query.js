@@ -19,4 +19,6 @@ module.exports = Object.freeze({
   EDIT_QUERY_STATUS_FOR_APPROVAL: `UPDATE "Query" SET "Q_QS_ID" = $2, "Q_ApprovedBy" = $3, "Q_ApprovedOn" = NOW(), "Q_UpdatedOn" = NOW(), "Q_UpdatedBy" = $4, "Q_IsDrafted" = FALSE, "Q_IsMovedToHistory" = TRUE WHERE "Query"."Q_ID" = $1 RETURNING "Q_ID";`,
   EDIT_QUERY_STATUS_FOR_REJECTION: `UPDATE "Query" SET "Q_QS_ID" = $2, "Q_UpdatedOn" = NOW(),  "Q_UpdatedBy" = $3, "Q_IsDrafted" = FALSE, "Q_IsMovedToHistory" = TRUE WHERE "Query"."Q_ID" = $1 RETURNING "Q_ID";`,
   EDIT_QUERY_STATUS: `UPDATE "Query" SET "Q_QS_ID" = $2, "Q_UpdatedBy" = $3, "Q_UpdatedOn" = NOW() WHERE "Query"."Q_ID" = $1 RETURNING "Q_ID";`,
+  GET_USER_IDS_WHO_ARE_ALLOWED_TO_GIVE_APPROVAL_FOR_QUERY:
+    'SELECT "MA_Owner1", "MA_Owner2" from "MasterApplication" where "MasterApplication"."MA_ID" = (SELECT "DBAM_MA_ID" FROM "DataBaseApplicationMapping" where "DataBaseApplicationMapping"."DBAM_ID" = (SELECT "Q_DBAM_ID" from "Query" where "Q_ID" = $1))',
 });

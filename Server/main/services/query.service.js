@@ -79,8 +79,30 @@ module.exports.GET_getQueryDetailsForGivenQueryID = async (
     const params = {
       query_id: query_id,
     };
-    const result = await QueryDao.getQueryDetailsForQueryID(params);
-    return _200(httpResponse, result);
+    const user_details = await UserDao.getUserDetails({
+      user_id: decoded.UserID,
+    });
+    const user_type = user_details[0]['UT_Name'];
+    const query_object = await QueryDao.getQueryDetailsForQueryID(params);
+    const owner_ids = await QueryDao.getUserIDOfApplicationOwnersOfDBAM(params);
+    let result;
+    if (
+      owner_ids[0]['MA_Owner1'] == user_id ||
+      owner_ids[0]['MA_Owner2'] == user_id ||
+      user_type == 'AD'
+    ) {
+      result = {
+        queryObject: query_object,
+        queryApprovalRight: true,
+      };
+      return _200(httpResponse, result);
+    } else {
+      result = {
+        queryObject: query_object,
+        queryApprovalRight: false,
+      };
+      return _200(httpResponse, result);
+    }
   } catch (err) {
     return _error(httpResponse, {
       type: 'generic',

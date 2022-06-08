@@ -164,3 +164,16 @@ module.exports.editQueryStatus = async (params) => {
     return err;
   }
 };
+
+module.exports.getUserIDOfApplicationOwnersOfDBAM = async (params) => {
+  try {
+    const query_id = params.query_id;
+    const result = await pool.query(
+      Query.GET_USER_IDS_WHO_ARE_ALLOWED_TO_GIVE_APPROVAL_FOR_QUERY,
+      [query_id]
+    );
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
+};

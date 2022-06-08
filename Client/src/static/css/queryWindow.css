@@ -25,6 +25,7 @@
   padding: 0.3em;
   font-size: 0.9em;
   background-color: var(--baseWhite);
+  margin-bottom: 10px;
 }
 
 .queryWindow .functionalities select {
