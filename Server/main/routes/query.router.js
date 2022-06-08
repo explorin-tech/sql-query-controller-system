@@ -38,10 +38,10 @@ router.put(routeNames.EDIT_A_QUERY, [
   QueryService.PUT_editAQuery,
 ]);
 
-// Update query status
-router.put(routeNames.EDIT_QUERY_STATUS, [
+// Update query status for approval/rejection
+router.put(routeNames.EDIT_QUERY_STATUS_FOR_APPROVAL_OR_REJECTION, [
   authValidator,
-  QueryService.PUT_editQueryStatus,
+  QueryService.PUT_editQueryStatusForApprovalOrRejection,
 ]);
 
 // Edit a query in state of hold for approval

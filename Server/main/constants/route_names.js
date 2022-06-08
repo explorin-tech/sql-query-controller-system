@@ -40,7 +40,8 @@ module.exports = Object.freeze({
   GET_QUERY_DETAILS: '/get/query_details',
   POST_ADD_NEW_QUERY: '/post/query',
   EDIT_A_QUERY: '/put/query',
-  EDIT_QUERY_STATUS: '/put/query_status',
+  EDIT_QUERY_STATUS_FOR_APPROVAL_OR_REJECTION:
+    '/put/query_status_for_approval_or_rejection',
   EDIT_A_QUERY_IN_HOLD_FOR_APPROVAL: '/put/query_in_hold_for_approval',
   EXECUTE_QUERY: '/post/execute_query',
 });

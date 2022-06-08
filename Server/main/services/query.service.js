@@ -141,7 +141,7 @@ module.exports.PUT_editAQuery = async (httpRequest, httpResponse, next) => {
   }
 };
 
-module.exports.PUT_editQueryStatus = async (
+module.exports.PUT_editQueryStatusForApprovalOrRejection = async (
   httpRequest,
   httpResponse,
   next
