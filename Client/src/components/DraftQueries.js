@@ -58,6 +58,11 @@ function DraftQueries(props) {
         filterable: true,
       },
       {
+        Header: 'Updated By',
+        accessor: 'Q_UpdatedByName',
+        filterable: true,
+      },
+      {
         Header: 'Is Drafted',
         accessor: 'Q_IsDrafted',
         filterable: true,
