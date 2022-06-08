@@ -406,6 +406,86 @@ function QueryWindow(props) {
       });
   };
 
+  const handleApproveForOnce = () => {
+    axios
+      .put(
+        BACKEND_URLS.EDIT_QUERY_STATUS,
+        {
+          query: {
+            query_id: query_id,
+            query_status_id:
+              CONSTANTS.QUERY_STATUS_ID_MAPPING['APPROVED_FOR_ONCE'],
+          },
+        },
+        {
+          headers: {
+            token: localStorage.getItem('token'),
+          },
+        }
+      )
+      .then((res) => {
+        if (res.status == 200) {
+          fetchQueryDetails(res.data.data[0]['Q_ID']);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleApproveForEver = () => {
+    axios
+      .put(
+        BACKEND_URLS.EDIT_QUERY_STATUS,
+        {
+          query: {
+            query_id: query_id,
+            query_status_id:
+              CONSTANTS.QUERY_STATUS_ID_MAPPING['APPROVED_FOR_EVER'],
+          },
+        },
+        {
+          headers: {
+            token: localStorage.getItem('token'),
+          },
+        }
+      )
+      .then((res) => {
+        if (res.status == 200) {
+          fetchQueryDetails(res.data.data[0]['Q_ID']);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleRejectQuery = () => {
+    axios
+      .put(
+        BACKEND_URLS.EDIT_QUERY_STATUS,
+        {
+          query: {
+            query_id: query_id,
+            query_status_id: CONSTANTS.QUERY_STATUS_ID_MAPPING['REJECTED'],
+          },
+        },
+        {
+          headers: {
+            token: localStorage.getItem('token'),
+          },
+        }
+      )
+      .then((res) => {
+        if (res.status == 200) {
+          fetchQueryDetails(res.data.data[0]['Q_ID']);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     if (query_id) {
       fetchQueryDetails(query_id);
@@ -435,9 +515,15 @@ function QueryWindow(props) {
           values.canUserApproveTheQuery ? (
             <div className="functionalities">
               <div>
-                <button className="yellowButton">Approve For Once</button>
-                <button className="greenButton">Approve For Ever</button>
-                <button className="redButton">Reject</button>
+                <button className="yellowButton" onClick={handleApproveForOnce}>
+                  Approve For Once
+                </button>
+                <button className="greenButton" onClick={handleApproveForEver}>
+                  Approve For Ever
+                </button>
+                <button className="redButton" onClick={handleRejectQuery}>
+                  Reject
+                </button>
               </div>
             </div>
           ) : null}
