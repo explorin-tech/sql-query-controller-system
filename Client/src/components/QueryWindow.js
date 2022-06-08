@@ -104,6 +104,41 @@ function QueryWindow(props) {
       });
   };
 
+  const fetchQueryDetails = (queryID) => {
+    axios
+      .get(BACKEND_URLS.GET_QUERY_DETAILS, {
+        params: {
+          query_id: queryID,
+        },
+        headers: {
+          token: localStorage.getItem('token'),
+        },
+      })
+      .then((res) => {
+        if (res.status == 200 && res.data.data[0]) {
+          const queryDetailsObject = res.data.data[0];
+          setValues({
+            queryID: queryDetailsObject['Q_ID'],
+            databaseMappingID: queryDetailsObject['Q_DBAM_ID'],
+            sysDefQueryName: queryDetailsObject['Q_SysDefName'],
+            userDefQueryName: queryDetailsObject['Q_UserDefName'],
+            queryStatus: queryDetailsObject['QS_Name'],
+            queryDescription: queryDetailsObject['Q_QueryDesc'],
+            rawQuery: queryDetailsObject['Q_RawQuery'],
+            queryApprovedBy: queryDetailsObject['Q_ApprovedByName'],
+            queryComments: queryDetailsObject['Q_Comments'],
+            IsQueryExecuted: queryDetailsObject['Q_IsExecuted'],
+          });
+        } else {
+          history.push(`/query`);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        history.push(`/query`);
+      });
+  };
+
   const identifyQueryType = () => {
     const wordInString = (s, word) =>
       new RegExp('\\b' + word + '\\b', 'i').test(s);
@@ -202,38 +237,7 @@ function QueryWindow(props) {
             )
             .then((res) => {
               if (res.status == 200) {
-                axios
-                  .get(BACKEND_URLS.GET_QUERY_DETAILS, {
-                    params: {
-                      query_id: res.data.data[0]['Q_ID'],
-                    },
-                    headers: {
-                      token: localStorage.getItem('token'),
-                    },
-                  })
-                  .then((res) => {
-                    if (res.status == 200 && res.data.data[0]) {
-                      const queryDetailsObject = res.data.data[0];
-                      setValues({
-                        queryID: queryDetailsObject['Q_ID'],
-                        databaseMappingID: queryDetailsObject['Q_DBAM_ID'],
-                        sysDefQueryName: queryDetailsObject['Q_SysDefName'],
-                        userDefQueryName: queryDetailsObject['Q_UserDefName'],
-                        queryStatus: queryDetailsObject['QS_Name'],
-                        queryDescription: queryDetailsObject['Q_QueryDesc'],
-                        rawQuery: queryDetailsObject['Q_RawQuery'],
-                        queryApprovedBy: queryDetailsObject['Q_ApprovedByName'],
-                        queryComments: queryDetailsObject['Q_Comments'],
-                        IsQueryExecuted: queryDetailsObject['Q_IsExecuted'],
-                      });
-                    } else {
-                      history.push(`/query`);
-                    }
-                  })
-                  .catch((err) => {
-                    console.log(err);
-                    history.push(`/query`);
-                  });
+                fetchQueryDetails(res.data.data[0]['Q_ID']);
               }
             })
             .catch((err) => {
@@ -260,38 +264,7 @@ function QueryWindow(props) {
             )
             .then((res) => {
               if (res.status == 200) {
-                axios
-                  .get(BACKEND_URLS.GET_QUERY_DETAILS, {
-                    params: {
-                      query_id: res.data.data[0]['Q_ID'],
-                    },
-                    headers: {
-                      token: localStorage.getItem('token'),
-                    },
-                  })
-                  .then((res) => {
-                    if (res.status == 200 && res.data.data[0]) {
-                      const queryDetailsObject = res.data.data[0];
-                      setValues({
-                        queryID: queryDetailsObject['Q_ID'],
-                        databaseMappingID: queryDetailsObject['Q_DBAM_ID'],
-                        sysDefQueryName: queryDetailsObject['Q_SysDefName'],
-                        userDefQueryName: queryDetailsObject['Q_UserDefName'],
-                        queryStatus: queryDetailsObject['QS_Name'],
-                        queryDescription: queryDetailsObject['Q_QueryDesc'],
-                        rawQuery: queryDetailsObject['Q_RawQuery'],
-                        queryApprovedBy: queryDetailsObject['Q_ApprovedByName'],
-                        queryComments: queryDetailsObject['Q_Comments'],
-                        IsQueryExecuted: queryDetailsObject['Q_IsExecuted'],
-                      });
-                    } else {
-                      history.push(`/query`);
-                    }
-                  })
-                  .catch((err) => {
-                    console.log(err);
-                    history.push(`/query`);
-                  });
+                fetchQueryDetails(res.data.data[0]['Q_ID']);
               }
             })
             .catch((err) => {
@@ -363,38 +336,7 @@ function QueryWindow(props) {
           )
           .then((res) => {
             if (res.status == 200) {
-              axios
-                .get(BACKEND_URLS.GET_QUERY_DETAILS, {
-                  params: {
-                    query_id: res.data.data[0]['Q_ID'],
-                  },
-                  headers: {
-                    token: localStorage.getItem('token'),
-                  },
-                })
-                .then((res) => {
-                  if (res.status == 200 && res.data.data[0]) {
-                    const queryDetailsObject = res.data.data[0];
-                    setValues({
-                      queryID: queryDetailsObject['Q_ID'],
-                      databaseMappingID: queryDetailsObject['Q_DBAM_ID'],
-                      sysDefQueryName: queryDetailsObject['Q_SysDefName'],
-                      userDefQueryName: queryDetailsObject['Q_UserDefName'],
-                      queryStatus: queryDetailsObject['QS_Name'],
-                      queryDescription: queryDetailsObject['Q_QueryDesc'],
-                      rawQuery: queryDetailsObject['Q_RawQuery'],
-                      queryApprovedBy: queryDetailsObject['Q_ApprovedByName'],
-                      queryComments: queryDetailsObject['Q_Comments'],
-                      IsQueryExecuted: queryDetailsObject['Q_IsExecuted'],
-                    });
-                  } else {
-                    history.push(`/query`);
-                  }
-                })
-                .catch((err) => {
-                  console.log(err);
-                  history.push(`/query`);
-                });
+              fetchQueryDetails(res.data.data[0]['Q_ID']);
             }
           })
           .catch((err) => {
@@ -437,38 +379,7 @@ function QueryWindow(props) {
 
   useEffect(() => {
     if (query_id) {
-      axios
-        .get(BACKEND_URLS.GET_QUERY_DETAILS, {
-          params: {
-            query_id: query_id,
-          },
-          headers: {
-            token: localStorage.getItem('token'),
-          },
-        })
-        .then((res) => {
-          if (res.status == 200 && res.data.data[0]) {
-            const queryDetailsObject = res.data.data[0];
-            setValues({
-              queryID: queryDetailsObject['Q_ID'],
-              databaseMappingID: queryDetailsObject['Q_DBAM_ID'],
-              sysDefQueryName: queryDetailsObject['Q_SysDefName'],
-              userDefQueryName: queryDetailsObject['Q_UserDefName'],
-              queryStatus: queryDetailsObject['QS_Name'],
-              queryDescription: queryDetailsObject['Q_QueryDesc'],
-              rawQuery: queryDetailsObject['Q_RawQuery'],
-              queryApprovedBy: queryDetailsObject['Q_ApprovedByName'],
-              queryComments: queryDetailsObject['Q_Comments'],
-              IsQueryExecuted: queryDetailsObject['Q_IsExecuted'],
-            });
-          } else {
-            history.push(`/query`);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          history.push(`/query`);
-        });
+      fetchQueryDetails(query_id);
     } else {
       setValues({
         queryID: '',
