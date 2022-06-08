@@ -43,6 +43,14 @@ function Home(props) {
   return (
     <Fragment>
       <div className="homePage">
+        <h4>Pending for Approval</h4>
+        <div className="row">
+          <Acrdn data="Hi" />
+        </div>
+        <h4>Recent Queries</h4>
+        <div className="row">
+          <Acrdn data="Hi" />
+        </div>
         <h4>Applications</h4>
         <div className="row">
           {props.user_permissions
@@ -61,14 +69,6 @@ function Home(props) {
                 }
               })
             : null}
-        </div>
-        <h4>Pending for Approval</h4>
-        <div className="row">
-          <Acrdn data="Hi" />
-        </div>
-        <h4>Recent Queries</h4>
-        <div className="row">
-          <Acrdn data="Hi" />
         </div>
         <br />
         <br />
