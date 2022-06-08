@@ -178,6 +178,7 @@ function QueryWindow(props) {
       if (query_id) {
         // put request to update the query
         if (values.queryStatus == 'HOLD_FOR_APPROVAL') {
+          // allow the chagne of even the rawQuery as status = HOLD_FOR_APPROVAL
           axios
             .put(
               BACKEND_URLS.EDIT_A_QUERY_IN_HOLD_FOR_APPROVAL,
@@ -205,6 +206,7 @@ function QueryWindow(props) {
               console.log(err);
             });
         } else {
+          // only allow the user to change the query desc, comments, userDefName
           axios
             .put(
               BACKEND_URLS.EDIT_A_QUERY,
@@ -232,7 +234,7 @@ function QueryWindow(props) {
             });
         }
       } else {
-        // save a new query as draft
+        // save a new query as draft with a status of HOLD_FOR_APPROVAL
         axios
           .post(
             BACKEND_URLS.POST_ADD_NEW_QUERY,
@@ -268,7 +270,16 @@ function QueryWindow(props) {
     }
   };
 
-  const handleQuerySetForApproval = () => {};
+  const handleQuerySetForApproval = () => {
+    const is_query_allowed = checkQueryForApproval();
+    if (is_query_allowed) {
+      if (query_id) {
+        // change the status of inserted query to SET_FOR_APPROVAL.
+      } else {
+        //insert a query directly into table first time with status of set for approval.
+      }
+    }
+  };
 
   useEffect(() => {
     if (query_id) {
