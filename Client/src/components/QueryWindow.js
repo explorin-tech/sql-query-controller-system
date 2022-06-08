@@ -190,6 +190,8 @@ function QueryWindow(props) {
                   query_comments: values.queryComments,
                   raw_query: values.rawQuery,
                   database_application_mapping_id: values.databaseMappingID,
+                  query_status_id:
+                    CONSTANTS.QUERY_STATUS_ID_MAPPING['HOLD_FOR_APPROVAL'],
                 },
               },
               {
@@ -200,7 +202,38 @@ function QueryWindow(props) {
             )
             .then((res) => {
               if (res.status == 200) {
-                history.push(`/query/${res.data.data[0]['Q_ID']}`);
+                axios
+                  .get(BACKEND_URLS.GET_QUERY_DETAILS, {
+                    params: {
+                      query_id: res.data.data[0]['Q_ID'],
+                    },
+                    headers: {
+                      token: localStorage.getItem('token'),
+                    },
+                  })
+                  .then((res) => {
+                    if (res.status == 200 && res.data.data[0]) {
+                      const queryDetailsObject = res.data.data[0];
+                      setValues({
+                        queryID: queryDetailsObject['Q_ID'],
+                        databaseMappingID: queryDetailsObject['Q_DBAM_ID'],
+                        sysDefQueryName: queryDetailsObject['Q_SysDefName'],
+                        userDefQueryName: queryDetailsObject['Q_UserDefName'],
+                        queryStatus: queryDetailsObject['QS_Name'],
+                        queryDescription: queryDetailsObject['Q_QueryDesc'],
+                        rawQuery: queryDetailsObject['Q_RawQuery'],
+                        queryApprovedBy: queryDetailsObject['Q_ApprovedByName'],
+                        queryComments: queryDetailsObject['Q_Comments'],
+                        IsQueryExecuted: queryDetailsObject['Q_IsExecuted'],
+                      });
+                    } else {
+                      history.push(`/query`);
+                    }
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                    history.push(`/query`);
+                  });
               }
             })
             .catch((err) => {
@@ -227,7 +260,38 @@ function QueryWindow(props) {
             )
             .then((res) => {
               if (res.status == 200) {
-                history.push(`/query/${res.data.data[0]['Q_ID']}`);
+                axios
+                  .get(BACKEND_URLS.GET_QUERY_DETAILS, {
+                    params: {
+                      query_id: res.data.data[0]['Q_ID'],
+                    },
+                    headers: {
+                      token: localStorage.getItem('token'),
+                    },
+                  })
+                  .then((res) => {
+                    if (res.status == 200 && res.data.data[0]) {
+                      const queryDetailsObject = res.data.data[0];
+                      setValues({
+                        queryID: queryDetailsObject['Q_ID'],
+                        databaseMappingID: queryDetailsObject['Q_DBAM_ID'],
+                        sysDefQueryName: queryDetailsObject['Q_SysDefName'],
+                        userDefQueryName: queryDetailsObject['Q_UserDefName'],
+                        queryStatus: queryDetailsObject['QS_Name'],
+                        queryDescription: queryDetailsObject['Q_QueryDesc'],
+                        rawQuery: queryDetailsObject['Q_RawQuery'],
+                        queryApprovedBy: queryDetailsObject['Q_ApprovedByName'],
+                        queryComments: queryDetailsObject['Q_Comments'],
+                        IsQueryExecuted: queryDetailsObject['Q_IsExecuted'],
+                      });
+                    } else {
+                      history.push(`/query`);
+                    }
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                    history.push(`/query`);
+                  });
               }
             })
             .catch((err) => {
@@ -276,8 +340,97 @@ function QueryWindow(props) {
     if (is_query_allowed) {
       if (query_id) {
         // change the status of inserted query to SET_FOR_APPROVAL.
+        axios
+          .put(
+            BACKEND_URLS.EDIT_A_QUERY_IN_HOLD_FOR_APPROVAL,
+            {
+              query: {
+                query_id: query_id,
+                user_defined_name: values.userDefQueryName,
+                query_desc: values.queryDescription,
+                query_comments: values.queryComments,
+                raw_query: values.rawQuery,
+                database_application_mapping_id: values.databaseMappingID,
+                query_status_id:
+                  CONSTANTS.QUERY_STATUS_ID_MAPPING['SET_FOR_APPROVAL'],
+              },
+            },
+            {
+              headers: {
+                token: localStorage.getItem('token'),
+              },
+            }
+          )
+          .then((res) => {
+            if (res.status == 200) {
+              axios
+                .get(BACKEND_URLS.GET_QUERY_DETAILS, {
+                  params: {
+                    query_id: res.data.data[0]['Q_ID'],
+                  },
+                  headers: {
+                    token: localStorage.getItem('token'),
+                  },
+                })
+                .then((res) => {
+                  if (res.status == 200 && res.data.data[0]) {
+                    const queryDetailsObject = res.data.data[0];
+                    setValues({
+                      queryID: queryDetailsObject['Q_ID'],
+                      databaseMappingID: queryDetailsObject['Q_DBAM_ID'],
+                      sysDefQueryName: queryDetailsObject['Q_SysDefName'],
+                      userDefQueryName: queryDetailsObject['Q_UserDefName'],
+                      queryStatus: queryDetailsObject['QS_Name'],
+                      queryDescription: queryDetailsObject['Q_QueryDesc'],
+                      rawQuery: queryDetailsObject['Q_RawQuery'],
+                      queryApprovedBy: queryDetailsObject['Q_ApprovedByName'],
+                      queryComments: queryDetailsObject['Q_Comments'],
+                      IsQueryExecuted: queryDetailsObject['Q_IsExecuted'],
+                    });
+                  } else {
+                    history.push(`/query`);
+                  }
+                })
+                .catch((err) => {
+                  console.log(err);
+                  history.push(`/query`);
+                });
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       } else {
-        //insert a query directly into table first time with status of set for approval.
+        // insert a query directly into table first time with status of set for approval.
+        axios
+          .post(
+            BACKEND_URLS.POST_ADD_NEW_QUERY,
+            {
+              query: {
+                database_application_mapping_id: values.databaseMappingID,
+                query_status_id:
+                  CONSTANTS.QUERY_STATUS_ID_MAPPING['SET_FOR_APPROVAL'],
+                sys_defined_name: 'SYS_DEFINED_NAME',
+                user_defined_name: values.userDefQueryName,
+                raw_query: values.rawQuery,
+                query_desc: values.queryDescription,
+                query_comments: values.queryComments,
+              },
+            },
+            {
+              headers: {
+                token: localStorage.getItem('token'),
+              },
+            }
+          )
+          .then((res) => {
+            if (res.status == 200) {
+              history.push(`/query/${res.data.data[0]['Q_ID']}`);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
     }
   };

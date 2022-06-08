@@ -192,6 +192,7 @@ module.exports.PUT_editAQueryInHoldForApproval = async (
     const values = [
       httpRequest.body.query.query_id,
       httpRequest.body.query.database_application_mapping_id,
+      httpRequest.body.query.query_status_id,
       httpRequest.body.query.user_defined_name,
       httpRequest.body.query.query_desc,
       httpRequest.body.query.raw_query,
