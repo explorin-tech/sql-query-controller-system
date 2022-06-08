@@ -140,3 +140,19 @@ module.exports.editQueryStatusForRejection = async (params) => {
     return err;
   }
 };
+
+module.exports.editQueryDetailsInHoldForApproval = async (params) => {
+  try {
+    const values = params.values;
+    console.log(values);
+    const result = await pool.query(
+      Query.EDIT_QUERY_DETAILS_IN_HOLD_FOR_APPROVAL,
+      values
+    );
+    console.log(result);
+    return result.rows;
+  } catch (err) {
+    console.log(err);
+    return err;
+  }
+};

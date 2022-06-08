@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const routeNames = require('../constants/route_names');
-const { QueryService } = require('../services');
+const { QueryService, AuthService } = require('../services');
 const { authValidator } = require('../common/authHelper');
 
 /*
@@ -33,15 +33,21 @@ router.post(routeNames.POST_ADD_NEW_QUERY, [
 ]);
 
 // Edit a query
-router.put(routeNames.PUT_EDIT_A_QUERY, [
+router.put(routeNames.EDIT_A_QUERY, [
   authValidator,
   QueryService.PUT_editAQuery,
 ]);
 
 // Update query status
-router.put(routeNames.PUT_EDIT_QUERY_STATUS, [
+router.put(routeNames.EDIT_QUERY_STATUS, [
   authValidator,
   QueryService.PUT_editQueryStatus,
+]);
+
+// Edit a query in state of hold for approval
+router.put(routeNames.EDIT_A_QUERY_IN_HOLD_FOR_APPROVAL, [
+  authValidator,
+  QueryService.PUT_editAQueryInHoldForApproval,
 ]);
 
 module.exports = router;

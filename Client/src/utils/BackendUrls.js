@@ -41,6 +41,8 @@ export const GET_ALL_MAPPED_HISTORY_QUERIES_FOR_USER =
   '/api/get/history_queries_mapped_to_an_user';
 export const GET_QUERY_DETAILS = '/api/get/query_details';
 export const POST_ADD_NEW_QUERY = '/api/post/query';
-export const PUT_EDIT_A_QUERY = '/api/put/query';
-export const PUT_EDIT_QUERY_STATUS = '/api/put/query_status';
+export const EDIT_A_QUERY = '/api/put/query';
+export const EDIT_QUERY_STATUS = '/api/put/query_status';
+export const EDIT_A_QUERY_IN_HOLD_FOR_APPROVAL =
+  '/api/put/query_in_hold_for_approval';
 export const EXECUTE_QUERY = '/api/post/execute_query';
