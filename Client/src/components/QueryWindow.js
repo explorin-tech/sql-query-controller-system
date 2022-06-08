@@ -377,6 +377,33 @@ function QueryWindow(props) {
     }
   };
 
+  const handleQueryHoldForApproval = () => {
+    axios
+      .put(
+        BACKEND_URLS.EDIT_QUERY_STATUS,
+        {
+          query: {
+            query_id: query_id,
+            query_status_id:
+              CONSTANTS.QUERY_STATUS_ID_MAPPING['HOLD_FOR_APPROVAL'],
+          },
+        },
+        {
+          headers: {
+            token: localStorage.getItem('token'),
+          },
+        }
+      )
+      .then((res) => {
+        if (res.status == 200) {
+          fetchQueryDetails(res.data.data[0]['Q_ID']);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     if (query_id) {
       fetchQueryDetails(query_id);
@@ -433,6 +460,7 @@ function QueryWindow(props) {
               <button
                 className="greenButton"
                 disabled={values.queryStatus != 'SET_FOR_APPROVAL'}
+                onClick={handleQueryHoldForApproval}
               >
                 Hold for Approval
               </button>

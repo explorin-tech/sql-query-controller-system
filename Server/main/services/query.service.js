@@ -212,7 +212,11 @@ module.exports.PUT_editAQueryInHoldForApproval = async (
   }
 };
 
-module.exports.PUT_editQueryStatus = async (params) => {
+module.exports.PUT_editQueryStatus = async (
+  httpRequest,
+  httpResponse,
+  next
+) => {
   try {
     const { decoded } = httpRequest.headers;
     const user_id = decoded.UserID;

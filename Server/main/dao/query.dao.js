@@ -159,6 +159,7 @@ module.exports.editQueryStatus = async (params) => {
   try {
     const values = params.values;
     const result = await pool.query(Query.EDIT_QUERY_STATUS, values);
+    return result.rows;
   } catch (err) {
     return err;
   }
