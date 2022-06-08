@@ -187,11 +187,11 @@ module.exports.PUT_editAQueryInHoldForApproval = async (
   next
 ) => {
   try {
-    console.log('REQUEST CAME HERE');
     const { decoded } = httpRequest.headers;
     const user_id = decoded.UserID;
     const values = [
       httpRequest.body.query.query_id,
+      httpRequest.body.query.database_application_mapping_id,
       httpRequest.body.query.user_defined_name,
       httpRequest.body.query.query_desc,
       httpRequest.body.query.raw_query,
@@ -204,7 +204,6 @@ module.exports.PUT_editAQueryInHoldForApproval = async (
     const result = await QueryDao.editQueryDetailsInHoldForApproval(params);
     return _200(httpResponse, result);
   } catch (err) {
-    console.log(err);
     return _error(httpResponse, {
       type: 'generic',
       message: err,

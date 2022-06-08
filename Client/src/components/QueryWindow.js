@@ -189,6 +189,7 @@ function QueryWindow(props) {
                   query_desc: values.queryDescription,
                   query_comments: values.queryComments,
                   raw_query: values.rawQuery,
+                  database_application_mapping_id: values.databaseMappingID,
                 },
               },
               {
