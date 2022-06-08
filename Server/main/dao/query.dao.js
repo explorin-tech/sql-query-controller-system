@@ -154,3 +154,12 @@ module.exports.editQueryDetailsInHoldForApproval = async (params) => {
     return err;
   }
 };
+
+module.exports.editQueryStatus = async (params) => {
+  try {
+    const values = params.values;
+    const result = await pool.query(Query.EDIT_QUERY_STATUS, values);
+  } catch (err) {
+    return err;
+  }
+};

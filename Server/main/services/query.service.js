@@ -211,3 +211,25 @@ module.exports.PUT_editAQueryInHoldForApproval = async (
     });
   }
 };
+
+module.exports.PUT_editQueryStatus = async (params) => {
+  try {
+    const { decoded } = httpRequest.headers;
+    const user_id = decoded.UserID;
+    const values = [
+      httpRequest.body.query.query_id,
+      httpRequest.body.query.query_status_id,
+      user_id,
+    ];
+    const params = {
+      values: values,
+    };
+    const result = await QueryDao.editQueryStatus(params);
+    return _200(httpResponse, result);
+  } catch (err) {
+    return _error(httpResponse, {
+      type: 'generic',
+      message: err,
+    });
+  }
+};

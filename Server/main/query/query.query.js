@@ -18,4 +18,5 @@ module.exports = Object.freeze({
   EDIT_QUERY_DETAILS_IN_HOLD_FOR_APPROVAL: `UPDATE "Query" SET "Q_DBAM_ID" = $2, "Q_QS_ID"=$3, "Q_UserDefName" = $4, "Q_QueryDesc"= $5, "Q_RawQuery" = $6 ,"Q_UpdatedOn" = NOW(), "Q_UpdatedBy" = $7, "Q_Comments" = $8 WHERE "Query"."Q_ID" = $1 RETURNING "Q_ID";`,
   EDIT_QUERY_STATUS_FOR_APPROVAL: `UPDATE "Query" SET "Q_QS_ID" = $2, "Q_ApprovedBy" = $3, "Q_ApprovedOn" = NOW(), "Q_UpdatedOn" = NOW(), "Q_UpdatedBy" = $4, "Q_IsDrafted" = FALSE, "Q_IsMovedToHistory" = TRUE WHERE "Query"."Q_ID" = $1;`,
   EDIT_QUERY_STATUS_FOR_REJECTION: `UPDATE "Query" SET "Q_QS_ID" = $2, "Q_UpdatedOn" = NOW(),  "Q_UpdatedBy" = $3, "Q_IsDrafted" = FALSE, "Q_IsMovedToHistory" = TRUE WHERE "Query"."Q_ID" = $1;`,
+  EDIT_QUERY_STATUS: `UPDATE "Query" SET "Q_QS_ID" = $2, "Q_UpdatedBy" = $3, "Q_UpdatedOn" = NOW() WHERE "Query"."Q_ID" = $1;`,
 });
