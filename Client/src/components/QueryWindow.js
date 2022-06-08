@@ -216,7 +216,7 @@ function QueryWindow(props) {
           // allow the chagne of even the rawQuery as status = HOLD_FOR_APPROVAL
           axios
             .put(
-              BACKEND_URLS.EDIT_A_QUERY_IN_HOLD_FOR_APPROVAL,
+              BACKEND_URLS.EDIT_QUERY_IN_HOLD_FOR_APPROVAL,
               {
                 query: {
                   query_id: query_id,
@@ -315,7 +315,7 @@ function QueryWindow(props) {
         // change the status of inserted query to SET_FOR_APPROVAL.
         axios
           .put(
-            BACKEND_URLS.EDIT_A_QUERY_IN_HOLD_FOR_APPROVAL,
+            BACKEND_URLS.EDIT_QUERY_IN_HOLD_FOR_APPROVAL,
             {
               query: {
                 query_id: query_id,

@@ -44,6 +44,6 @@ export const POST_ADD_NEW_QUERY = '/api/post/query';
 export const EDIT_A_QUERY = '/api/put/query';
 export const EDIT_QUERY_STATUS_FOR_APPROVAL_OR_REJECTION =
   '/api/put/query_status_for_approval_or_rejection';
-export const EDIT_A_QUERY_IN_HOLD_FOR_APPROVAL =
+export const EDIT_QUERY_IN_HOLD_FOR_APPROVAL =
   '/api/put/query_in_hold_for_approval';
 export const EXECUTE_QUERY = '/api/post/execute_query';

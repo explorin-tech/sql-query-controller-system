@@ -45,7 +45,7 @@ router.put(routeNames.EDIT_QUERY_STATUS_FOR_APPROVAL_OR_REJECTION, [
 ]);
 
 // Edit a query in state of hold for approval
-router.put(routeNames.EDIT_A_QUERY_IN_HOLD_FOR_APPROVAL, [
+router.put(routeNames.EDIT_QUERY_IN_HOLD_FOR_APPROVAL, [
   authValidator,
   QueryService.PUT_editAQueryInHoldForApproval,
 ]);
