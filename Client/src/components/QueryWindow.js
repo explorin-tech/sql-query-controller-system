@@ -452,7 +452,17 @@ function QueryWindow(props) {
             <div>
               <button
                 className="greenButton"
-                disabled={values.queryStatus != 'HOLD_FOR_APPROVAL'}
+                disabled={
+                  values.databaseMappingID == '' ||
+                  values.databaseMappingID ==
+                    '-- Select Application - Database Name --' ||
+                  values.rawQuery == '' ||
+                  values.userDefQueryName == '' ||
+                  values.queryStatus == 'SET_FOR_APPROVAL' ||
+                  values.queryStatus == 'APPROVED_FOR_ONCE' ||
+                  values.queryStatus == 'APPROVED_FOR_EVER' ||
+                  values.queryStatus == 'REJECTED'
+                }
                 onClick={handleQuerySetForApproval}
               >
                 Set for Approval

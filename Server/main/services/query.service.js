@@ -101,7 +101,6 @@ module.exports.POST_addNewQuery = async (httpRequest, httpResponse, next) => {
       httpRequest.body.query.raw_query,
       httpRequest.body.query.query_desc,
       user_id,
-      user_id,
       httpRequest.body.query.query_comments,
     ];
     const params = {
