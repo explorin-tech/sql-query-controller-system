@@ -218,82 +218,48 @@ function QueryWindow(props) {
   const { query_id } = useParams();
 
   const handleSaveAsDraft = () => {
-    const is_query_allowed = checkQueryForApproval();
-    if (is_query_allowed) {
-      if (query_id) {
-        // put request to update the query
-        if (values.queryStatus == 'HOLD_FOR_APPROVAL') {
-          // allow the chagne of even the rawQuery as status = HOLD_FOR_APPROVAL
-          axios
-            .put(
-              BACKEND_URLS.EDIT_QUERY_IN_HOLD_FOR_APPROVAL,
-              {
-                query: {
-                  query_id: query_id,
-                  user_defined_name: values.userDefQueryName,
-                  query_desc: values.queryDescription,
-                  query_comments: values.queryComments,
-                  raw_query: values.rawQuery,
-                  database_application_mapping_id: values.databaseMappingID,
-                  query_status_id:
-                    CONSTANTS.QUERY_STATUS_ID_MAPPING['HOLD_FOR_APPROVAL'],
-                },
-              },
-              {
-                headers: {
-                  token: localStorage.getItem('token'),
-                },
-              }
-            )
-            .then((res) => {
-              if (res.status == 200) {
-                fetchQueryDetails(res.data.data[0]['Q_ID']);
-              }
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        } else {
-          // only allow the user to change the query desc, comments, userDefName
-          axios
-            .put(
-              BACKEND_URLS.EDIT_A_QUERY,
-              {
-                query: {
-                  query_id: query_id,
-                  user_defined_name: values.userDefQueryName,
-                  query_desc: values.queryDescription,
-                  query_comments: values.queryComments,
-                },
-              },
-              {
-                headers: {
-                  token: localStorage.getItem('token'),
-                },
-              }
-            )
-            .then((res) => {
-              if (res.status == 200) {
-                fetchQueryDetails(res.data.data[0]['Q_ID']);
-              }
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        }
-      } else {
-        // save a new query as draft with a status of HOLD_FOR_APPROVAL
+    if (query_id) {
+      // put request to update the query
+      if (values.queryStatus == 'HOLD_FOR_APPROVAL') {
+        // allow the chagne of even the rawQuery as status = HOLD_FOR_APPROVAL
         axios
-          .post(
-            BACKEND_URLS.POST_ADD_NEW_QUERY,
+          .put(
+            BACKEND_URLS.EDIT_QUERY_IN_HOLD_FOR_APPROVAL,
             {
               query: {
+                query_id: query_id,
+                user_defined_name: values.userDefQueryName,
+                query_desc: values.queryDescription,
+                query_comments: values.queryComments,
+                raw_query: values.rawQuery,
                 database_application_mapping_id: values.databaseMappingID,
                 query_status_id:
                   CONSTANTS.QUERY_STATUS_ID_MAPPING['HOLD_FOR_APPROVAL'],
-                sys_defined_name: 'SYS_DEFINED_NAME',
+              },
+            },
+            {
+              headers: {
+                token: localStorage.getItem('token'),
+              },
+            }
+          )
+          .then((res) => {
+            if (res.status == 200) {
+              fetchQueryDetails(res.data.data[0]['Q_ID']);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        // only allow the user to change the query desc, comments, userDefName
+        axios
+          .put(
+            BACKEND_URLS.EDIT_A_QUERY,
+            {
+              query: {
+                query_id: query_id,
                 user_defined_name: values.userDefQueryName,
-                raw_query: values.rawQuery,
                 query_desc: values.queryDescription,
                 query_comments: values.queryComments,
               },
@@ -306,7 +272,7 @@ function QueryWindow(props) {
           )
           .then((res) => {
             if (res.status == 200) {
-              history.push(`/query/${res.data.data[0]['Q_ID']}`);
+              fetchQueryDetails(res.data.data[0]['Q_ID']);
             }
           })
           .catch((err) => {
@@ -314,7 +280,36 @@ function QueryWindow(props) {
           });
       }
     } else {
-      console.log('QUERY NOT APPROVED');
+      // save a new query as draft with a status of HOLD_FOR_APPROVAL
+      axios
+        .post(
+          BACKEND_URLS.POST_ADD_NEW_QUERY,
+          {
+            query: {
+              database_application_mapping_id: values.databaseMappingID,
+              query_status_id:
+                CONSTANTS.QUERY_STATUS_ID_MAPPING['HOLD_FOR_APPROVAL'],
+              sys_defined_name: 'SYS_DEFINED_NAME',
+              user_defined_name: values.userDefQueryName,
+              raw_query: values.rawQuery,
+              query_desc: values.queryDescription,
+              query_comments: values.queryComments,
+            },
+          },
+          {
+            headers: {
+              token: localStorage.getItem('token'),
+            },
+          }
+        )
+        .then((res) => {
+          if (res.status == 200) {
+            history.push(`/query/${res.data.data[0]['Q_ID']}`);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
 
