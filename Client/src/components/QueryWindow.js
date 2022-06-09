@@ -511,6 +511,7 @@ function QueryWindow(props) {
       .then((res) => {
         if (res.status == 200) {
           // display the results now
+          fetchQueryDetails(query_id);
         }
       })
       .catch((err) => {
@@ -626,7 +627,11 @@ function QueryWindow(props) {
                   values.databaseMappingID ==
                     '-- Select Application - Database Name --' ||
                   values.rawQuery == '' ||
-                  values.userDefQueryName == ''
+                  values.userDefQueryName == '' ||
+                  values.queryStatus === 'REJECTED' ||
+                  (values.queryStatus === 'APPROVED_FOR_ONCE' &&
+                    values.IsQueryExecuted) ||
+                  values.queryStatus === 'APPROVED_FOR_EVER'
                 }
               >
                 Save as Draft
