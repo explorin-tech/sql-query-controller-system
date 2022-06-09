@@ -177,3 +177,43 @@ module.exports.getUserIDOfApplicationOwnersOfDBAM = async (params) => {
     return err;
   }
 };
+
+module.exports.getRawQueryDetailsForQueryID = async (params) => {
+  try {
+    const query_id = params.query_id;
+    const result = await pool.query(Query.GET_RAW_QUERY_DETAILS_FOR_QUERY_ID, [
+      query_id,
+    ]);
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
+};
+
+module.exports.executeQuery = async (params) => {
+  try {
+    const rawQueryDetails = params.raw_query_details[0];
+    const { Pool } = require('pg');
+    const new_pool = new Pool({
+      host: rawQueryDetails['DBAM_DBHostName'],
+      user: rawQueryDetails['DBAM_DBUserName'],
+      database: 'postgres',
+      password: rawQueryDetails['DBAM_DBPassword'],
+      port: rawQueryDetails['DBAM_DBPortNumber'],
+    });
+    const result = await new_pool.query(rawQueryDetails['Q_RawQuery']);
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
+};
+
+module.exports.markQueryAsExecuted = async (params) => {
+  try {
+    const query_id = params.query_id;
+    const result = await pool.query(Query.MARK_A_QUERY_AS_EXECUTED, [query_id]);
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
+};

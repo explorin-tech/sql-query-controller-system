@@ -21,4 +21,8 @@ module.exports = Object.freeze({
   EDIT_QUERY_STATUS: `UPDATE "Query" SET "Q_QS_ID" = $2, "Q_UpdatedBy" = $3, "Q_UpdatedOn" = NOW() WHERE "Query"."Q_ID" = $1 RETURNING "Q_ID";`,
   GET_USER_IDS_WHO_ARE_ALLOWED_TO_GIVE_APPROVAL_FOR_QUERY:
     'SELECT "MA_Owner1", "MA_Owner2" from "MasterApplication" where "MasterApplication"."MA_ID" = (SELECT "DBAM_MA_ID" FROM "DataBaseApplicationMapping" where "DataBaseApplicationMapping"."DBAM_ID" = (SELECT "Q_DBAM_ID" from "Query" where "Q_ID" = $1))',
+  GET_RAW_QUERY_DETAILS_FOR_QUERY_ID:
+    'SELECT "DataBaseApplicationMapping".* , "Query"."Q_RawQuery" from "Query" LEFT JOIN "DataBaseApplicationMapping" ON "DataBaseApplicationMapping"."DBAM_ID" = "Query"."Q_DBAM_ID" where "Q_ID" = $1;',
+  MARK_A_QUERY_AS_EXECUTED:
+    'UPDATE "Query" SET "Q_IsExecuted" = TRUE, "Q_IsDrafted" = FALSE, "Q_IsMovedToHistory" = TRUE, "Q_LastExecutedOn" = NOW() WHERE "Query"."Q_ID" = $1 RETURNING "Q_ID";',
 });

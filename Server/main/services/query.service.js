@@ -258,3 +258,33 @@ module.exports.PUT_editQueryStatus = async (
     });
   }
 };
+
+module.exports.POST_executeQuery = async (httpRequest, httpResponse, next) => {
+  try {
+    const { decoded } = httpRequest.headers;
+    const user_id = decoded.UserID;
+    const query_id = httpRequest.body.query.query_id;
+    const raw_query_details = await QueryDao.getRawQueryDetailsForQueryID({
+      query_id: query_id,
+    });
+    const execute_query = await QueryDao.executeQuery({
+      raw_query_details: raw_query_details,
+    });
+    const mark_query_as_executed = await QueryDao.markQueryAsExecuted({
+      query_id: query_id,
+    });
+    if (mark_query_as_executed[0]['Q_ID']) {
+      return _200(httpResponse, execute_query);
+    } else {
+      return _error(httpResponse, {
+        type: 'generic',
+        message: 'Query Failed To Execute',
+      });
+    }
+  } catch (err) {
+    return _error(httpResponse, {
+      type: 'generic',
+      message: err,
+    });
+  }
+};

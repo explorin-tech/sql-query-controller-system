@@ -494,6 +494,32 @@ function QueryWindow(props) {
       });
   };
 
+  const handleExecute = () => {
+    // handle execute button
+    axios
+      .post(
+        BACKEND_URLS.EXECUTE_QUERY,
+        {
+          query: {
+            query_id: query_id,
+          },
+        },
+        {
+          headers: {
+            token: localStorage.getItem('token'),
+          },
+        }
+      )
+      .then((res) => {
+        if (res.status == 200) {
+          // display the results now
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     if (query_id) {
       fetchQueryDetails(query_id);
@@ -590,6 +616,7 @@ function QueryWindow(props) {
                       !values.IsQueryExecuted)
                   )
                 }
+                onClick={handleExecute}
               >
                 Execute
               </button>
