@@ -417,12 +417,13 @@ function QueryWindow(props) {
   const handleApproveForOnce = () => {
     axios
       .put(
-        BACKEND_URLS.EDIT_QUERY_STATUS,
+        BACKEND_URLS.EDIT_QUERY_STATUS_FOR_APPROVAL_OR_REJECTION,
         {
           query: {
             query_id: query_id,
             query_status_id:
               CONSTANTS.QUERY_STATUS_ID_MAPPING['APPROVED_FOR_ONCE'],
+            is_approved: true,
           },
         },
         {
@@ -444,12 +445,13 @@ function QueryWindow(props) {
   const handleApproveForEver = () => {
     axios
       .put(
-        BACKEND_URLS.EDIT_QUERY_STATUS,
+        BACKEND_URLS.EDIT_QUERY_STATUS_FOR_APPROVAL_OR_REJECTION,
         {
           query: {
             query_id: query_id,
             query_status_id:
               CONSTANTS.QUERY_STATUS_ID_MAPPING['APPROVED_FOR_EVER'],
+            is_approved: true,
           },
         },
         {
@@ -471,11 +473,12 @@ function QueryWindow(props) {
   const handleRejectQuery = () => {
     axios
       .put(
-        BACKEND_URLS.EDIT_QUERY_STATUS,
+        BACKEND_URLS.EDIT_QUERY_STATUS_FOR_APPROVAL_OR_REJECTION,
         {
           query: {
             query_id: query_id,
             query_status_id: CONSTANTS.QUERY_STATUS_ID_MAPPING['REJECTED'],
+            is_approved: false,
           },
         },
         {

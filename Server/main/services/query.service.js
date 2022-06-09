@@ -176,7 +176,6 @@ module.exports.PUT_editQueryStatusForApprovalOrRejection = async (
         httpRequest.body.query.query_id,
         httpRequest.body.query.query_status_id,
         user_id,
-        user_id,
       ];
       let params = {
         values: values,
