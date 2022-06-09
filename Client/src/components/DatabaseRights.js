@@ -70,6 +70,12 @@ function DatabaseRights(props) {
         Cell: (e) => <input type="checkbox" defaultChecked={e.value} />,
       },
       {
+        Header: 'Right to Insert',
+        accessor: 'UP_RightToInsert',
+        filterable: true,
+        Cell: (e) => <input type="checkbox" defaultChecked={e.value} />,
+      },
+      {
         Header: 'Right to Update',
         accessor: 'UP_RightToUpdate',
         filterable: true,

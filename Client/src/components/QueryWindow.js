@@ -146,6 +146,8 @@ function QueryWindow(props) {
       new RegExp('\\b' + word + '\\b', 'i').test(s);
     if (wordInString(values.rawQuery, 'SELECT')) {
       return 'SELECT';
+    } else if (wordInString(values.rawQuery, 'CREATE')) {
+      return 'CREATE';
     } else if (wordInString(values.rawQuery, 'INSERT')) {
       return 'INSERT';
     } else if (wordInString(values.rawQuery, 'UPDATE')) {
@@ -165,9 +167,15 @@ function QueryWindow(props) {
       ) {
         return true;
       }
-    } else if (query_type === 'INSERT') {
+    } else if (query_type === 'CREATE') {
       if (
         user_permission_array_for_selected_database_mapping['UP_RightToCreate']
+      ) {
+        return true;
+      }
+    } else if (query_type === 'INSERT') {
+      if (
+        user_permission_array_for_selected_database_mapping['UP_RightToInsert']
       ) {
         return true;
       }

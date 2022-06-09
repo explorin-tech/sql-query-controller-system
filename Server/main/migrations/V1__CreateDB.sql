@@ -82,6 +82,7 @@ CREATE TABLE "UserPermission"(
 	"UP_DBAM_ID" BIGSERIAL REFERENCES "DataBaseApplicationMapping"("DBAM_ID") ON DELETE CASCADE,
 	"UP_RightToRead" BOOLEAN DEFAULT FALSE,
 	"UP_RightToCreate" BOOLEAN DEFAULT FALSE,
+	"UP_RightToInsert" BOOLEAN DEFAULT FALSE,
 	"UP_RightToUpdate" BOOLEAN DEFAULT FALSE,
 	"UP_RightToDelete" BOOLEAN DEFAULT FALSE,
 	"UP_AddedOn" TIMESTAMPTZ NOT NULL,
@@ -174,45 +175,12 @@ INSERT INTO "ApplicationScreen"("AS_Name", "AS_AddedOn" , "AS_AddedBy", "AS_Upda
 
 SELECT * FROM "ApplicationScreen" ORDER BY "AS_AddedOn" DESC;
 
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(1, 1, TRUE, TRUE, TRUE, TRUE, NOW(), 1, NOW(), 1) ON CONFLICT DO NOTHING;
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(1, 2, TRUE, TRUE, TRUE, TRUE, NOW(), 1, NOW(), 1) ON CONFLICT DO NOTHING;
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(1, 3, TRUE, TRUE, TRUE, TRUE, NOW(), 1, NOW(), 1) ON CONFLICT DO NOTHING;
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(1, 4, TRUE, TRUE, TRUE, TRUE, NOW(), 1, NOW(), 1) ON CONFLICT DO NOTHING;
-
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(2, 1, TRUE, TRUE, TRUE, FALSE, NOW(), 1, NOW(), 1) ON CONFLICT DO NOTHING;
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(2, 2, TRUE, TRUE, TRUE, FALSE, NOW(), 1, NOW(), 1) ON CONFLICT DO NOTHING;
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(2, 3, TRUE, TRUE, TRUE, FALSE, NOW(), 1, NOW(), 1) ON CONFLICT DO NOTHING;
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(2, 4, TRUE, TRUE, TRUE, FALSE, NOW(), 1, NOW(), 1) ON CONFLICT DO NOTHING;
-
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(3, 1, TRUE, FALSE, FALSE, FALSE, NOW(), 1, NOW(), 1) ON CONFLICT DO NOTHING;
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(3, 2, TRUE, FALSE, FALSE, FALSE, NOW(), 1, NOW(), 1) ON CONFLICT DO NOTHING;
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(3, 3, TRUE, FALSE, FALSE, FALSE, NOW(), 1, NOW(), 1) ON CONFLICT DO NOTHING;
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(3, 4, TRUE, FALSE, FALSE, FALSE, NOW(), 1, NOW(), 1) ON CONFLICT DO NOTHING;
-
-INSERT INTO "UserPermission"("UP_U_ID" , "UP_DBAM_ID" , "UP_RightToRead", "UP_RightToCreate", "UP_RightToUpdate", "UP_RightToDelete", "UP_AddedOn", "UP_AddedBy", "UP_UpdatedOn", "UP_UpdatedBy") VALUES (1, 3, TRUE, TRUE, TRUE, TRUE, NOW(), 1, NOW(), 1);
-INSERT INTO "UserPermission"("UP_U_ID" , "UP_DBAM_ID" , "UP_RightToRead", "UP_RightToCreate", "UP_RightToUpdate", "UP_RightToDelete", "UP_AddedOn", "UP_AddedBy", "UP_UpdatedOn", "UP_UpdatedBy") VALUES (1, 4, TRUE, TRUE, TRUE, TRUE, NOW(), 1, NOW(), 1);
-INSERT INTO "UserPermission"("UP_U_ID" , "UP_DBAM_ID" , "UP_RightToRead", "UP_RightToCreate", "UP_RightToUpdate", "UP_RightToDelete", "UP_AddedOn", "UP_AddedBy", "UP_UpdatedOn", "UP_UpdatedBy") VALUES (1, 5, TRUE, TRUE, TRUE, TRUE, NOW(), 1, NOW(), 1);
-INSERT INTO "UserPermission"("UP_U_ID" , "UP_DBAM_ID" , "UP_RightToRead", "UP_RightToCreate", "UP_RightToUpdate", "UP_RightToDelete", "UP_AddedOn", "UP_AddedBy", "UP_UpdatedOn", "UP_UpdatedBy") VALUES (1, 6, TRUE, TRUE, TRUE, TRUE, NOW(), 1, NOW(), 1);
-INSERT INTO "UserPermission"("UP_U_ID" , "UP_DBAM_ID" , "UP_RightToRead", "UP_RightToCreate", "UP_RightToUpdate", "UP_RightToDelete", "UP_AddedOn", "UP_AddedBy", "UP_UpdatedOn", "UP_UpdatedBy") VALUES (1, 7, TRUE, TRUE, TRUE, TRUE, NOW(), 1, NOW(), 1);
-
-INSERT INTO "UserPermission"("UP_U_ID" , "UP_DBAM_ID" , "UP_RightToRead", "UP_RightToCreate", "UP_RightToUpdate", "UP_RightToDelete", "UP_AddedOn", "UP_AddedBy", "UP_UpdatedOn", "UP_UpdatedBy") VALUES (2, 3, TRUE, TRUE, TRUE, FALSE, NOW(), 1, NOW(), 1);
-INSERT INTO "UserPermission"("UP_U_ID" , "UP_DBAM_ID" , "UP_RightToRead", "UP_RightToCreate", "UP_RightToUpdate", "UP_RightToDelete", "UP_AddedOn", "UP_AddedBy", "UP_UpdatedOn", "UP_UpdatedBy") VALUES (2, 4, TRUE, TRUE, TRUE, FALSE, NOW(), 1, NOW(), 1);
-INSERT INTO "UserPermission"("UP_U_ID" , "UP_DBAM_ID" , "UP_RightToRead", "UP_RightToCreate", "UP_RightToUpdate", "UP_RightToDelete", "UP_AddedOn", "UP_AddedBy", "UP_UpdatedOn", "UP_UpdatedBy") VALUES (2, 5, TRUE, TRUE, TRUE, FALSE, NOW(), 1, NOW(), 1);
-INSERT INTO "UserPermission"("UP_U_ID" , "UP_DBAM_ID" , "UP_RightToRead", "UP_RightToCreate", "UP_RightToUpdate", "UP_RightToDelete", "UP_AddedOn", "UP_AddedBy", "UP_UpdatedOn", "UP_UpdatedBy") VALUES (2, 6, FALSE, FALSE, FALSE, FALSE, NOW(), 1, NOW(), 1);
-INSERT INTO "UserPermission"("UP_U_ID" , "UP_DBAM_ID" , "UP_RightToRead", "UP_RightToCreate", "UP_RightToUpdate", "UP_RightToDelete", "UP_AddedOn", "UP_AddedBy", "UP_UpdatedOn", "UP_UpdatedBy") VALUES (2, 7, FALSE, FALSE, FALSE, FALSE, NOW(), 1, NOW(), 1);
-
-INSERT INTO "UserPermission"("UP_U_ID" , "UP_DBAM_ID" , "UP_RightToRead", "UP_RightToCreate", "UP_RightToUpdate", "UP_RightToDelete", "UP_AddedOn", "UP_AddedBy", "UP_UpdatedOn", "UP_UpdatedBy") VALUES (3, 3, TRUE, FALSE, FALSE, FALSE, NOW(), 1, NOW(), 1);
-INSERT INTO "UserPermission"("UP_U_ID" , "UP_DBAM_ID" , "UP_RightToRead", "UP_RightToCreate", "UP_RightToUpdate", "UP_RightToDelete", "UP_AddedOn", "UP_AddedBy", "UP_UpdatedOn", "UP_UpdatedBy") VALUES (3, 4, FALSE, FALSE, FALSE, FALSE, NOW(), 1, NOW(), 1);
-INSERT INTO "UserPermission"("UP_U_ID" , "UP_DBAM_ID" , "UP_RightToRead", "UP_RightToCreate", "UP_RightToUpdate", "UP_RightToDelete", "UP_AddedOn", "UP_AddedBy", "UP_UpdatedOn", "UP_UpdatedBy") VALUES (3, 5, FALSE, FALSE, FALSE, FALSE, NOW(), 1, NOW(), 1);
-INSERT INTO "UserPermission"("UP_U_ID" , "UP_DBAM_ID" , "UP_RightToRead", "UP_RightToCreate", "UP_RightToUpdate", "UP_RightToDelete", "UP_AddedOn", "UP_AddedBy", "UP_UpdatedOn", "UP_UpdatedBy") VALUES (3, 6, FALSE, FALSE, FALSE, FALSE, NOW(), 1, NOW(), 1);
-INSERT INTO "UserPermission"("UP_U_ID" , "UP_DBAM_ID" , "UP_RightToRead", "UP_RightToCreate", "UP_RightToUpdate", "UP_RightToDelete", "UP_AddedOn", "UP_AddedBy", "UP_UpdatedOn", "UP_UpdatedBy") VALUES (3, 7, FALSE, FALSE, FALSE, FALSE, NOW(), 1, NOW(), 1);
-
 SELECT * FROM "DataBaseApplicationMapping"
 
 SELECT "UserPermission"."UP_U_ID" , "DataBaseApplicationMapping"."DBAM_MA_ID", 
 "DataBaseApplicationMapping"."DBAM_MA_Name", "DataBaseApplicationMapping"."DBAM_DBT_ID", 
 "DataBaseApplicationMapping"."DBAM_DBT_Name", "DataBaseApplicationMapping"."DBAM_DBName", 
-"UserPermission"."UP_RightToRead", "UserPermission"."UP_RightToCreate", 
+"UserPermission"."UP_RightToRead", "UserPermission"."UP_RightToCreate", "UserPermission"."UP_RightToInsert",
 "UserPermission"."UP_RightToUpdate", "UserPermission"."UP_RightToDelete" 
 FROM "UserPermission" LEFT JOIN "DataBaseApplicationMapping" ON
 "UserPermission"."UP_DBAM_ID" = "DataBaseApplicationMapping"."DBAM_ID" LEFT JOIN "User" ON
