@@ -16,10 +16,6 @@ import * as actions from '../store/actions/Actions';
 function Home(props) {
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    fetchUserPermissions();
-  }, []);
-
   const fetchUserPermissions = () => {
     axios
       .get(BACKEND_URLS.GET_ALL_USER_PERMISSION_MAPPING_FOR_AN_USER, {
@@ -39,6 +35,27 @@ function Home(props) {
         }
       });
   };
+
+  const fetchQueriesAwaitingApprovalFromUser = () => {
+    axios
+      .get(BACKEND_URLS.GET_QUERIES_AWAITING_APPROVAL, {
+        headers: {
+          token: localStorage.getItem('token'),
+        },
+      })
+      .then((res) => {
+        if (res.status == 200) {
+          console.log(res.data.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    fetchUserPermissions();
+  }, []);
 
   return (
     <Fragment>

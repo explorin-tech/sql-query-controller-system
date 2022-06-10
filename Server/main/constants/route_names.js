@@ -45,4 +45,5 @@ module.exports = Object.freeze({
   EDIT_QUERY_IN_HOLD_FOR_APPROVAL: '/put/query_in_hold_for_approval',
   EDIT_QUERY_STATUS: '/put/query_status',
   EXECUTE_QUERY: '/post/execute_query',
+  GET_QUERIES_AWAITING_APPROVAL: '/get/queries_awaiting_approval',
 });

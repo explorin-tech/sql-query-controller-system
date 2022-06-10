@@ -56,9 +56,11 @@ router.put(routeNames.EDIT_QUERY_IN_HOLD_FOR_APPROVAL, [
   QueryService.PUT_editAQueryInHoldForApproval,
 ]);
 
+// execute a query
 router.post(routeNames.EXECUTE_QUERY, [
   authValidator,
   QueryService.POST_executeQuery,
 ]);
 
+// get queries which are awaiting for approval
 module.exports = router;

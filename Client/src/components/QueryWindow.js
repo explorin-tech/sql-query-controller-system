@@ -511,6 +511,7 @@ function QueryWindow(props) {
       .then((res) => {
         if (res.status == 200) {
           // display the results now
+          console.log(res.data.data);
           fetchQueryDetails(query_id);
         }
       })

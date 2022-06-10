@@ -48,3 +48,5 @@ export const EDIT_QUERY_IN_HOLD_FOR_APPROVAL =
   '/api/put/query_in_hold_for_approval';
 export const EDIT_QUERY_STATUS = '/api/put/query_status';
 export const EXECUTE_QUERY = '/api/post/execute_query';
+export const GET_QUERIES_AWAITING_APPROVAL =
+  '/api/get/queries_awaiting_approval';
