@@ -85,6 +85,7 @@ CREATE TABLE "UserPermission"(
 	"UP_RightToInsert" BOOLEAN DEFAULT FALSE,
 	"UP_RightToUpdate" BOOLEAN DEFAULT FALSE,
 	"UP_RightToDelete" BOOLEAN DEFAULT FALSE,
+	"UP_ApprovalNotRequired" BOOLEAN DEFAULT FALSE,
 	"UP_AddedOn" TIMESTAMPTZ NOT NULL,
 	"UP_AddedBy" BIGSERIAL REFERENCES "User" ("U_ID") NOT NULL,
 	"UP_UpdatedOn" TIMESTAMPTZ NOT NULL,
@@ -181,7 +182,7 @@ SELECT "UserPermission"."UP_U_ID" , "DataBaseApplicationMapping"."DBAM_MA_ID",
 "DataBaseApplicationMapping"."DBAM_MA_Name", "DataBaseApplicationMapping"."DBAM_DBT_ID", 
 "DataBaseApplicationMapping"."DBAM_DBT_Name", "DataBaseApplicationMapping"."DBAM_DBName", 
 "UserPermission"."UP_RightToRead", "UserPermission"."UP_RightToCreate", "UserPermission"."UP_RightToInsert",
-"UserPermission"."UP_RightToUpdate", "UserPermission"."UP_RightToDelete" 
+"UserPermission"."UP_RightToUpdate", "UserPermission"."UP_RightToDelete", "UserPermission"."UP_ApprovalNotRequired"
 FROM "UserPermission" LEFT JOIN "DataBaseApplicationMapping" ON
 "UserPermission"."UP_DBAM_ID" = "DataBaseApplicationMapping"."DBAM_ID" LEFT JOIN "User" ON
 "UserPermission"."UP_U_ID" = "User"."U_ID" WHERE "UserPermission"."UP_U_ID" = 1 AND "UserPermission"."UP_RightToRead" = TRUE;

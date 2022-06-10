@@ -87,6 +87,12 @@ function DatabaseRights(props) {
         filterable: true,
         Cell: (e) => <input type="checkbox" defaultChecked={e.value} />,
       },
+      {
+        Header: 'Approval not Required',
+        accessor: 'UP_ApprovalNotRequired',
+        filterable: true,
+        Cell: (e) => <input type="checkbox" defaultChecked={e.value} />,
+      },
     ],
     [filteredData]
   );

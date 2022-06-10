@@ -63,6 +63,7 @@ module.exports.GET_getAllUserPermissionMappingForAnUser = async (
               'FALSE',
               'FALSE',
               'FALSE',
+              'FALSE',
               decoded.UserID,
               decoded.UserID,
             ],
@@ -109,6 +110,7 @@ module.exports.PUT_editUserPermissionsMappingForAnUser = async (
         each_permission_right['UP_RightToInsert'],
         each_permission_right['UP_RightToUpdate'],
         each_permission_right['UP_RightToDelete'],
+        each_permission_right['UP_ApprovalNotRequired'],
         user_id,
       ];
       const params = {

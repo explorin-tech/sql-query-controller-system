@@ -81,6 +81,7 @@ CREATE TABLE "UserPermission"(
 	"UP_RightToRead" BOOLEAN DEFAULT FALSE,
 	"UP_RightToCreate" BOOLEAN DEFAULT FALSE,
 	"UP_RightToInsert" BOOLEAN DEFAULT FALSE,
+	"UP_ApprovalNotRequired" BOOLEAN DEFAULT FALSE,
 	"UP_RightToUpdate" BOOLEAN DEFAULT FALSE,
 	"UP_RightToDelete" BOOLEAN DEFAULT FALSE,
 	"UP_AddedOn" TIMESTAMPTZ NOT NULL,
@@ -196,7 +197,7 @@ SELECT "UserPermission"."UP_U_ID" , "DataBaseApplicationMapping"."DBAM_MA_ID",
 "DataBaseApplicationMapping"."DBAM_MA_Name", "DataBaseApplicationMapping"."DBAM_DBT_ID", 
 "DataBaseApplicationMapping"."DBAM_DBT_Name", "DataBaseApplicationMapping"."DBAM_DBName", 
 "UserPermission"."UP_RightToRead", "UserPermission"."UP_RightToCreate", "UserPermission"."UP_RightToInsert",
-"UserPermission"."UP_RightToUpdate", "UserPermission"."UP_RightToDelete" 
+"UserPermission"."UP_RightToUpdate", "UserPermission"."UP_RightToDelete", "UserPermission"."UP_ApprovalNotRequired" 
 FROM "UserPermission" LEFT JOIN "DataBaseApplicationMapping" ON
 "UserPermission"."UP_DBAM_ID" = "DataBaseApplicationMapping"."DBAM_ID" LEFT JOIN "User" ON
 "UserPermission"."UP_U_ID" = "User"."U_ID" WHERE "UserPermission"."UP_U_ID" = 1 AND "UserPermission"."UP_RightToRead" = TRUE;
@@ -305,6 +306,7 @@ CREATE TABLE "UserPermission"(
 	"UP_RightToInsert" BOOLEAN DEFAULT FALSE,
 	"UP_RightToUpdate" BOOLEAN DEFAULT FALSE,
 	"UP_RightToDelete" BOOLEAN DEFAULT FALSE,
+	"UP_ApprovalNotRequired" BOOLEAN DEFAULT FALSE,
 	"UP_AddedOn" TIMESTAMPTZ NOT NULL,
 	"UP_AddedBy" BIGSERIAL REFERENCES "User" ("U_ID") NOT NULL,
 	"UP_UpdatedOn" TIMESTAMPTZ NOT NULL,
@@ -404,150 +406,3 @@ INSERT INTO "ApplicationScreen"("AS_Name", "AS_AddedOn" , "AS_AddedBy", "AS_Upda
 INSERT INTO "ApplicationScreen"("AS_Name", "AS_AddedOn" , "AS_AddedBy", "AS_UpdatedOn", "AS_UpdatedBy") VALUES('Query Window', NOW(), 12, NOW(), 12 ) ON CONFLICT DO NOTHING;
 INSERT INTO "ApplicationScreen"("AS_Name", "AS_AddedOn" , "AS_AddedBy", "AS_UpdatedOn", "AS_UpdatedBy") VALUES('Screen Rights', NOW(), 12, NOW(), 12 ) ON CONFLICT DO NOTHING;
 INSERT INTO "ApplicationScreen"("AS_Name", "AS_AddedOn" , "AS_AddedBy", "AS_UpdatedOn", "AS_UpdatedBy") VALUES('User Permissions', NOW(), 12, NOW(), 12 ) ON CONFLICT DO NOTHING;
-
-SELECT * FROM "User" LEFT JOIN "UserType" ON "UserType"."UT_ID" = "User"."U_UT_ID" ORDER BY "User"."U_AddedOn" DESC;
-
-SELECT * FROM "ApplicationScreen" ORDER BY "AS_AddedOn" DESC;
-
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(12, 8, TRUE, TRUE, TRUE, TRUE, NOW(), 12, NOW(), 12) ON CONFLICT DO NOTHING;
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(12, 9, TRUE, TRUE, TRUE, TRUE, NOW(), 12, NOW(), 12) ON CONFLICT DO NOTHING;
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(12, 10, TRUE, TRUE, TRUE, TRUE, NOW(), 12, NOW(), 12) ON CONFLICT DO NOTHING;
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(12, 11, TRUE, TRUE, TRUE, TRUE, NOW(), 12, NOW(), 12) ON CONFLICT DO NOTHING;
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(12, 12, TRUE, TRUE, TRUE, TRUE, NOW(), 12, NOW(), 12) ON CONFLICT DO NOTHING;
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(12, 13, TRUE, TRUE, TRUE, TRUE, NOW(), 12, NOW(), 12) ON CONFLICT DO NOTHING;
-
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(2, 1, TRUE, TRUE, TRUE, FALSE, NOW(), 1, NOW(), 1) ON CONFLICT DO NOTHING;
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(2, 2, TRUE, TRUE, TRUE, FALSE, NOW(), 1, NOW(), 1) ON CONFLICT DO NOTHING;
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(2, 3, TRUE, TRUE, TRUE, FALSE, NOW(), 1, NOW(), 1) ON CONFLICT DO NOTHING;
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(2, 4, TRUE, TRUE, TRUE, FALSE, NOW(), 1, NOW(), 1) ON CONFLICT DO NOTHING;
-
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(3, 1, TRUE, FALSE, FALSE, FALSE, NOW(), 1, NOW(), 1) ON CONFLICT DO NOTHING;
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(3, 2, TRUE, FALSE, FALSE, FALSE, NOW(), 1, NOW(), 1) ON CONFLICT DO NOTHING;
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(3, 3, TRUE, FALSE, FALSE, FALSE, NOW(), 1, NOW(), 1) ON CONFLICT DO NOTHING;
-INSERT INTO "ApplicationScreenRightsMapping"("ASR_U_ID", "ASR_AS_ID", "ASR_RightToView","ASR_RightToAdd" ,"ASR_RightToEdit" ,"ASR_RightToDelete" ,"ASR_AddedOn" ,"ASR_AddedBy" ,"ASR_UpdatedOn","ASR_UpdatedBy") VALUES(3, 4, TRUE, FALSE, FALSE, FALSE, NOW(), 1, NOW(), 1) ON CONFLICT DO NOTHING;
-
-SELECT * FROM "DataBaseApplicationMapping"
-
-
-SELECT * FROM "UserPermission" LEFT JOIN "DataBaseApplicationMapping" ON "DataBaseApplicationMapping"."DBAM_ID" = "UserPermission"."UP_DBAM_ID"  LEFT JOIN "MasterApplication" ON "DataBaseApplicationMapping"."DBAM_MA_ID" = "MasterApplication"."MA_ID" LEFT JOIN "DataBaseType" ON "DataBaseType"."DBT_ID" = "DBAM_DBT_ID" WHERE "UserPermission"."UP_U_ID" = 1 ORDER BY "UserPermission"."UP_AddedOn" DESC
-
-UPDATE "UserPermission" SET "UP_RightToRead" = TRUE, "UP_RightToCreate" = TRUE, "UP_RightToInsert" = TRUE, "UP_RightToUpdate" = TRUE, "UP_RightToDelete" = TRUE, "UP_UpdatedOn" = NOW() , "ASR_UpdatedBy" = 1 WHERE "UserPermission"."UP_U_ID"=1 AND "UserPermission"."UP_DBAM_ID"=2;
-
-
-
-
-SELECT * FROM "User"
-
-SELECT * FROM "ApplicationScreenRightsMapping" left join "ApplicationScreen" WHERE "ASR_U_ID" = $1
-
-DELETE FROM
-
-UPDATE "ApplicationScreenRightsMapping" SET 
-
-UPDATE "ApplicationScreenRightsMapping" SET "ASR_RightToView" = TRUE, "ASR_RightToAdd" = FALSE, "ASR_RightToEdit" = FALSE, "ASR_RightToDelete" = FALSE, "ASR_UpdatedOn" = NOW() , "ASR_UpdatedBy" = 1 WHERE "ApplicationScreenRightsMapping"."ASR_U_ID"=1 AND "ApplicationScreenRightsMapping"."ASR_AS_ID"=1
-
-UPDATE "ApplicationScreenRightsMapping" SET "ASR_RightToView" = TRUE, "ASR_RightToAdd" = TRUE, "ASR_RightToEdit" = TRUE, "ASR_RightToDelete" = TRUE, "ASR_UpdatedOn" = NOW() , "ASR_UpdatedBy" = 1 WHERE "ApplicationScreenRightsMapping"."ASR_U_ID"=1 AND "ApplicationScreenRightsMapping"."ASR_AS_ID"=2
-
-
-
-UPDATE "ApplicationScreenRightsMapping" SET "ASR_RightToView" = $3, "ASR_RightToAdd" = $4, "ASR_RightToEdit" = $5, "ASR_RightToDelete" = $6, "ASR_UpdatedOn" = NOW() , "ASR_UpdatedBy" = $7 WHERE "ApplicationScreenRightsMapping"."ASR_U_ID"=$1 AND "ApplicationScreenRightsMapping"."ASR_AS_ID"=$2
-
-DELETE FROM "ApplicationScreenRightsMapping" WHERE "ApplicationScreenRightsMapping"."ASR_U_ID" = 1
-
-SELECT * FROM "User" LEFT JOIN "UserType" ON "User"."U_UT_ID" = "UserType"."UT_ID" WHERE "User"."U_ID" = 1;
-
-SELECT * FROM "User"
-
-DELETE FROM "User" WHERE "User"."U_ID" IN (14)
-
-SELECT "UserPermission"."UP_U_ID" , "DataBaseApplicationMapping"."DBAM_MA_ID", "DataBaseApplicationMapping"."DBAM_DBT_ID",  "DataBaseApplicationMapping"."DBAM_DBName", 
-"UserPermission"."UP_RightToRead", "UserPermission"."UP_RightToCreate", "UserPermission"."UP_RightToInsert",
-"UserPermission"."UP_RightToUpdate", "UserPermission"."UP_RightToDelete" 
-FROM "UserPermission" LEFT JOIN "DataBaseApplicationMapping" ON
-"UserPermission"."UP_DBAM_ID" = "DataBaseApplicationMapping"."DBAM_ID" LEFT JOIN "User" ON
-"UserPermission"."UP_U_ID" = "User"."U_ID" WHERE "UserPermission"."UP_U_ID" = 12 AND "UserPermission"."UP_RightToRead" = TRUE;
-
-
-delete from "UserPermission" where "UserPermission"."UP_U_ID" in (12, 13, 14, 15, 16, 17, 18)
-
-select * from "UserPermission"
-SELECT "ApplicationScreenRightsMapping"."ASR_U_ID", "ApplicationScreen"."AS_Name",
-"ApplicationScreenRightsMapping"."ASR_RightToView", "ApplicationScreenRightsMapping"."ASR_RightToAdd", 
-"ApplicationScreenRightsMapping"."ASR_RightToEdit", "ApplicationScreenRightsMapping"."ASR_RightToDelete" 
-FROM "ApplicationScreenRightsMapping" LEFT JOIN "ApplicationScreen" ON 
-"ApplicationScreenRightsMapping"."ASR_AS_ID" = "ApplicationScreen"."AS_ID"  WHERE "ASR_U_ID" = 12;
-
-SELECT * FROM "User" LEFT JOIN "UserType" ON "User"."U_UT_ID" = "UserType"."UT_ID" WHERE "User"."U_ID" = 1;
-
-SELECT * FROM "User" ORDER BY "User"."U_AddedOn" DESC;
-UPDATE "MasterApplication" SET "MA_NAME" = $2, "MA_Owner1" = $3, "MA_Owner2" = $4, "MA_UpdatedOn"=NOW(), "MA_UpdatedBy"=$5 WHERE "MA_ID"=$1;
-
-UPDATE "User" SET "User"."U_FirstName" = 'Jai' , "User"."U_LastName" = 'SONI' , "User"."U_Email" = 'sjai260260@gmail.com', "User"."U_Password" = 'jai', "User"."U_UT_ID" = $6, "User"."U_UpdatedOn" = NOW(), "User"."U_UpdatedBy" = $7, "User"."U_IsActive" = $8, "User"."U_IsActDrtUser" = $9 WHERE "User"."U_ID" = $1;
-
-UPDATE "MasterApplication" SET "MA_Name" = 'TEst APPLICATION', "MA_Owner1" = 1, "MA_Owner2" = 1, "MA_UpdatedOn"=NOW(), "MA_UpdatedBy"=1 WHERE "MasterApplication"."MA_ID"=11;
-
-UPDATE "DataBaseApplicationMapping" SET "DBAM_MA_ID" = 2 , "DBAM_MA_Name" = 'E-wealth Management', "DBAM_DBName" = 'DB_2', "DBAM_DBT_ID"=2, "DBAM_DBT_Name"='UAT', "DBAM_DBConnectionString"= 'test-db.c7csrrpjyten.ap-south-1.rds.amazonaws.com', "DBAM_DBPortNumber"='testpass' , "DBAM_DBHostName"= 'test-db.c7csrrpjyten.ap-south-1.rds.amazonaws.com', "DBAM_DBUserName"= $10 , "DBAM_DBPassword" = $11, "DBAM_UpdatedOn"= NOW(), "DBAM_UpdatedBy"=$12 WHERE "DataBaseApplicationMapping"."DBAM_ID"=$1;
-
-UPDATE "MasterApplication" SET "MA_Name" = 'Test Application 123', "MA_Owner1" = 1, "MA_Owner2" = 2, "MA_UpdatedOn"=NOW(), "MA_UpdatedBy"=1 WHERE "MA_ID"=12;
-
-SELECT * FROM "DataBaseApplicationMapping" LEFT JOIN "MasterApplication" ON "MasterApplication"."MA_ID" = "DataBaseApplicationMapping"."DBAM_MA_ID" LEFT JOIN "DataBaseType" ON "DataBaseType"."DBT_ID" = "DataBaseApplicationMapping"."DBAM_DBT_ID"  ORDER BY "DataBaseApplicationMapping"."DBAM_AddedOn" DESC
-
-UPDATE "MasterApplication" SET "MA_Name" = 'OKKOK', "MA_Owner1" = 1, "MA_Owner2" = 1, "MA_UpdatedOn"=NOW(), "MA_UpdatedBy"=1 WHERE "MA_ID"=11;
-
-SELECT * FROM "MasterApplication" WHERE "MA_ID" = 1;
-SELECT * FROM "User" LEFT JOIN "UserType" ON "User"."U_UT_ID" = "UserType"."UT_ID" WHERE "User"."U_ID" = 1;
-SELECT * FROM "UserPermission" WHERE "UserPermission"."UP_U_ID" = 1 ORDER BY "UserPermission"."UP_AddedOn" DESC
-SELECT * FROM "User" ORDER BY "User"."U_AddedOn" DESC;
-DELETE FROM "User" WHERE "User"."U_ID" = 11;
-UPDATE "MasterApplication" SET "MA_Name" = 'New Application 1', "MA_Owner1" = 1, "MA_Owner2" = 1, "MA_UpdatedOn"=NOW(), "MA_UpdatedBy"=1 WHERE "MA_ID"=13;
-
-INSERT INTO "DataBaseApplicationMapping"("DBAM_MA_ID", "DBAM_DBName", "DBAM_DBT_ID",  "DBAM_DBConnectionString", "DBAM_DBPortNumber", "DBAM_DBHostName", "DBAM_DBUserName" ,"DBAM_DBPassword", "DBAM_AddedOn", "DBAM_AddedBy", "DBAM_UpdatedOn", "DBAM_UpdatedBy") VALUES(
-	'3',
-  	'DB_1',
-  	'3',
-  	'connnection',
-  	'7777',
-  	'host',
-  	'user',
-  	'pass',
-	NOW(),
-  	'1',
-	NOW(),
-  	'1'
-  ) ON CONFLICT DO NOTHING;
-
-SELECT * FROM "MasterApplication" JOIN "User" ON "User"."U_ID" = "MasterApplication"."MA_Owner1" JOIN "User" ON "User"."U_ID" = "MasterApplication"."MA_Owner2"
-
-SELECT * FROM "ApplicationScreen";
-
-select cust.customer_id,
-      cust.firstname,
-      cust.lastname,
-      cust.birthdate,
-      cust.residence_city_id,
-      cust.notice_city_id,
-      residence_city.name as residence_city_name,
-      notice_city.name as notice_city_name
-from customer cust
-join city residence_city
-on cust.residence_city_id=residence_city.city_id
-join city notice_city
-on cust.notice_city_id=notice_city.city_id;
-
-select * from "ApplicationScreen"
-delete from "ApplicationScreenRightsMapping" where "ApplicationScreenRightsMapping"."ASR_U_ID" = 12
-
-select * from "MasterApplication"
-
-select * from "DataBaseApplicationMapping"
-
-select * from "User"
-
-select * from "UserPermission"
-
-select * from "ApplicationScreenRightsMapping"
-
-select * from "DataBaseType"
-
-DELETE FROM "User" WHERE "User"."U_ID" IN (1,2,3, 4, 5, 6, 7, 8, 9, 10, 11)
-select * from "UserType"
