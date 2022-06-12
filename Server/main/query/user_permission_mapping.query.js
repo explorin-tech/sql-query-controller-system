@@ -7,4 +7,6 @@ module.exports = Object.freeze({
     'INSERT INTO "UserPermission"("UP_U_ID" , "UP_DBAM_ID" , "UP_RightToRead", "UP_RightToCreate", "UP_RightToInsert", "UP_RightToUpdate", "UP_RightToDelete", "UP_ApprovalNotRequired", "UP_AddedOn", "UP_AddedBy", "UP_UpdatedOn", "UP_UpdatedBy") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, NOW(), $9, NOW(), $10);',
   UPDATE_USER_PERMISSION_RIGHTS_MAPPINGS_FOR_AN_USER:
     'UPDATE "UserPermission" SET "UP_RightToRead" = $3, "UP_RightToCreate" = $4, "UP_RightToInsert" = $5, "UP_RightToUpdate" = $6, "UP_RightToDelete" = $7, "UP_ApprovalNotRequired" = $8, "UP_UpdatedOn" = NOW() , "UP_UpdatedBy" = $9 WHERE "UserPermission"."UP_U_ID"=$1 AND "UserPermission"."UP_DBAM_ID"=$2;',
+  GET_USER_PERMISSION_MAPPING_ARRAY:
+    'SELECT * from "UserPermission" WHERE "UserPermission"."UP_U_ID" = $1 AND "UserPermission"."UP_DBAM_ID" = $2;',
 });

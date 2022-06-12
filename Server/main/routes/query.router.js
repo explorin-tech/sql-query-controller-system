@@ -32,29 +32,14 @@ router.post(routeNames.POST_ADD_NEW_QUERY, [
   QueryService.POST_addNewQuery,
 ]);
 
-// Edit a query
-router.put(routeNames.EDIT_A_QUERY, [
-  authValidator,
-  QueryService.PUT_editAQuery,
-]);
-
 // Update query status for approval/rejection
 router.put(routeNames.EDIT_QUERY_STATUS_FOR_APPROVAL_OR_REJECTION, [
   authValidator,
   QueryService.PUT_editQueryStatusForApprovalOrRejection,
 ]);
 
-// Update query status
-router.put(routeNames.EDIT_QUERY_STATUS, [
-  authValidator,
-  QueryService.PUT_editQueryStatus,
-]);
-
-// Edit a query in state of hold for approval
-router.put(routeNames.EDIT_QUERY_IN_HOLD_FOR_APPROVAL, [
-  authValidator,
-  QueryService.PUT_editAQueryInHoldForApproval,
-]);
+// Edit a query
+router.put(routeNames.EDIT_QUERY, [authValidator, QueryService.PUT_editQuery]);
 
 // execute a query
 router.post(routeNames.EXECUTE_QUERY, [

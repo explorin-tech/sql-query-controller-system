@@ -14,11 +14,9 @@ module.exports = Object.freeze({
   GET_QUERY_DETAILS_FOR_QUERY_ID:
     'SELECT "Query".* , "U2"."U_FirstName" AS "Q_ApprovedByName", "QS_Name" FROM "Query" LEFT JOIN "User" "U2" ON "Query"."Q_ApprovedBy" = "U2"."U_ID" LEFT JOIN "QueryStatus" ON "Query"."Q_QS_ID" = "QueryStatus"."QS_ID" WHERE "Query"."Q_ID" = $1;',
   POST_ADD_NEW_QUERY: `INSERT INTO "Query"("Q_DBAM_ID", "Q_QS_ID", "Q_SysDefName", "Q_UserDefName", "Q_RawQuery", "Q_QueryDesc", "Q_CreatedOn", "Q_CreatedBy", "Q_UpdatedOn", "Q_UpdatedBy", "Q_IsDrafted", "Q_IsMovedToHistory", "Q_Comments") VALUES ($1, $2, $3, $4, $5, $6, NOW(), $7, NOW(), $7, TRUE, FALSE, $8) RETURNING "Q_ID";`,
-  EDIT_QUERY_DETAILS: `UPDATE "Query" SET "Q_UserDefName" = $2, "Q_QueryDesc"= $3, "Q_UpdatedOn" = NOW(), "Q_UpdatedBy" = $4, "Q_Comments" = $5 WHERE "Query"."Q_ID" = $1 RETURNING "Q_ID";`,
-  EDIT_QUERY_DETAILS_IN_HOLD_FOR_APPROVAL: `UPDATE "Query" SET "Q_DBAM_ID" = $2, "Q_QS_ID"=$3, "Q_UserDefName" = $4, "Q_QueryDesc"= $5, "Q_RawQuery" = $6 ,"Q_UpdatedOn" = NOW(), "Q_UpdatedBy" = $7, "Q_Comments" = $8 WHERE "Query"."Q_ID" = $1 RETURNING "Q_ID";`,
+  EDIT_QUERY_DETAILS: `UPDATE "Query" SET "Q_DBAM_ID" = $2, "Q_QS_ID"=$3, "Q_UserDefName" = $4, "Q_QueryDesc"= $5, "Q_RawQuery" = $6 ,"Q_UpdatedOn" = NOW(), "Q_UpdatedBy" = $7, "Q_Comments" = $8, "Q_ApprovedBy" = NULL, "Q_IsApproved" = FALSE, "Q_ApprovedOn" = NULL WHERE "Query"."Q_ID" = $1 RETURNING "Q_ID";`,
   EDIT_QUERY_STATUS_FOR_APPROVAL: `UPDATE "Query" SET "Q_QS_ID" = $2, "Q_ApprovedBy" = $3, "Q_ApprovedOn" = NOW(), "Q_UpdatedOn" = NOW(), "Q_UpdatedBy" = $3 WHERE "Query"."Q_ID" = $1 RETURNING "Q_ID";`,
   EDIT_QUERY_STATUS_FOR_REJECTION: `UPDATE "Query" SET "Q_QS_ID" = $2, "Q_UpdatedOn" = NOW(),  "Q_UpdatedBy" = $3, "Q_IsDrafted" = FALSE, "Q_IsMovedToHistory" = TRUE WHERE "Query"."Q_ID" = $1 RETURNING "Q_ID";`,
-  EDIT_QUERY_STATUS: `UPDATE "Query" SET "Q_QS_ID" = $2, "Q_UpdatedBy" = $3, "Q_UpdatedOn" = NOW() WHERE "Query"."Q_ID" = $1 RETURNING "Q_ID";`,
   GET_USER_IDS_WHO_ARE_ALLOWED_TO_GIVE_APPROVAL_FOR_QUERY:
     'SELECT "MA_Owner1", "MA_Owner2" from "MasterApplication" where "MasterApplication"."MA_ID" = (SELECT "DBAM_MA_ID" FROM "DataBaseApplicationMapping" where "DataBaseApplicationMapping"."DBAM_ID" = (SELECT "Q_DBAM_ID" from "Query" where "Q_ID" = $1))',
   GET_RAW_QUERY_DETAILS_FOR_QUERY_ID:

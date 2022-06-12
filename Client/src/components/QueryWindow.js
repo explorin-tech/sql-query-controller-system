@@ -75,15 +75,19 @@ function QueryWindow(props) {
     queryStatus: '',
     queryDescription: '',
     rawQuery: '',
+    fetchedRawQuery: '',
     queryApprovedBy: '',
     queryComments: '',
     IsQueryExecuted: '',
     canUserApproveTheQuery: false,
+    approvalNotRequired: false,
+    queryTypeIsApproved: false,
   });
 
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
   };
+  const { query_id } = useParams();
 
   const fetchUserPermissions = () => {
     axios
@@ -116,7 +120,7 @@ function QueryWindow(props) {
         },
       })
       .then((res) => {
-        if (res.status == 200 && res.data.data.queryObject[0]) {
+        if (res.status === 200 && res.data.data.queryObject[0]) {
           const queryDetailsObject = res.data.data.queryObject[0];
           setValues({
             queryID: queryDetailsObject['Q_ID'],
@@ -126,10 +130,13 @@ function QueryWindow(props) {
             queryStatus: queryDetailsObject['QS_Name'],
             queryDescription: queryDetailsObject['Q_QueryDesc'],
             rawQuery: queryDetailsObject['Q_RawQuery'],
+            fetchedRawQuery: queryDetailsObject['Q_RawQuery'],
             queryApprovedBy: queryDetailsObject['Q_ApprovedByName'],
             queryComments: queryDetailsObject['Q_Comments'],
             IsQueryExecuted: queryDetailsObject['Q_IsExecuted'],
             canUserApproveTheQuery: res.data.data.queryApprovalRight,
+            approvalNotRequired: res.data.data.approvalNotRequired,
+            queryTypeIsApproved: res.data.data.queryTypeIsApproved,
           });
         } else {
           history.push(`/query`);
@@ -141,18 +148,37 @@ function QueryWindow(props) {
       });
   };
 
-  const identifyQueryType = () => {
+  const checkForApprovalNotRequired = (databaseMappingID) => {
+    const user_permission_array_for_selected_database_mapping =
+      props.user_permissions.user_permissions.filter(
+        (each_permission_array) => {
+          if (each_permission_array['UP_DBAM_ID'] === databaseMappingID) {
+            return each_permission_array;
+          }
+        }
+      );
+    if (
+      user_permission_array_for_selected_database_mapping[0][
+        'UP_ApprovalNotRequired'
+      ]
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  const identifyQueryType = (rawQuery) => {
     const wordInString = (s, word) =>
       new RegExp('\\b' + word + '\\b', 'i').test(s);
-    if (wordInString(values.rawQuery, 'SELECT')) {
+    if (wordInString(rawQuery, 'SELECT')) {
       return 'SELECT';
-    } else if (wordInString(values.rawQuery, 'CREATE')) {
+    } else if (wordInString(rawQuery, 'CREATE')) {
       return 'CREATE';
-    } else if (wordInString(values.rawQuery, 'INSERT')) {
+    } else if (wordInString(rawQuery, 'INSERT')) {
       return 'INSERT';
-    } else if (wordInString(values.rawQuery, 'UPDATE')) {
+    } else if (wordInString(rawQuery, 'UPDATE')) {
       return 'UPDATE';
-    } else if (wordInString(values.rawQuery, 'DELETE')) {
+    } else if (wordInString(rawQuery, 'DELETE')) {
       return 'DELETE';
     }
   };
@@ -195,12 +221,12 @@ function QueryWindow(props) {
     return false;
   };
 
-  const checkQueryForApproval = () => {
-    const query_type = identifyQueryType();
+  const checkIsQueryAllowed = (rawQuery, databaseID) => {
+    const query_type = identifyQueryType(rawQuery);
     const user_permission_array_for_selected_database_mapping =
       props.user_permissions.user_permissions.filter(
         (each_permission_array) => {
-          if (each_permission_array['UP_DBAM_ID'] == values.databaseMappingID) {
+          if (each_permission_array['UP_DBAM_ID'] === databaseID) {
             return each_permission_array;
           }
         }
@@ -215,70 +241,38 @@ function QueryWindow(props) {
     return false;
   };
 
-  const { query_id } = useParams();
-
   const handleSaveAsDraft = () => {
     if (query_id) {
       // put request to update the query
-      if (values.queryStatus == 'HOLD_FOR_APPROVAL') {
-        // allow the chagne of even the rawQuery as status = HOLD_FOR_APPROVAL
-        axios
-          .put(
-            BACKEND_URLS.EDIT_QUERY_IN_HOLD_FOR_APPROVAL,
-            {
-              query: {
-                query_id: query_id,
-                user_defined_name: values.userDefQueryName,
-                query_desc: values.queryDescription,
-                query_comments: values.queryComments,
-                raw_query: values.rawQuery,
-                database_application_mapping_id: values.databaseMappingID,
-                query_status_id:
-                  CONSTANTS.QUERY_STATUS_ID_MAPPING['HOLD_FOR_APPROVAL'],
-              },
+      axios
+        .put(
+          BACKEND_URLS.EDIT_QUERY,
+          {
+            query: {
+              query_id: query_id,
+              user_defined_name: values.userDefQueryName,
+              query_desc: values.queryDescription,
+              query_comments: values.queryComments,
+              raw_query: values.rawQuery,
+              database_application_mapping_id: values.databaseMappingID,
+              query_status_id:
+                CONSTANTS.QUERY_STATUS_ID_MAPPING[values.queryStatus],
             },
-            {
-              headers: {
-                token: localStorage.getItem('token'),
-              },
-            }
-          )
-          .then((res) => {
-            if (res.status == 200) {
-              fetchQueryDetails(res.data.data[0]['Q_ID']);
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      } else {
-        // only allow the user to change the query desc, comments, userDefName
-        axios
-          .put(
-            BACKEND_URLS.EDIT_A_QUERY,
-            {
-              query: {
-                query_id: query_id,
-                user_defined_name: values.userDefQueryName,
-                query_desc: values.queryDescription,
-                query_comments: values.queryComments,
-              },
+          },
+          {
+            headers: {
+              token: localStorage.getItem('token'),
             },
-            {
-              headers: {
-                token: localStorage.getItem('token'),
-              },
-            }
-          )
-          .then((res) => {
-            if (res.status == 200) {
-              fetchQueryDetails(res.data.data[0]['Q_ID']);
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }
+          }
+        )
+        .then((res) => {
+          if (res.status === 200) {
+            fetchQueryDetails(res.data.data[0]['Q_ID']);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     } else {
       // save a new query as draft with a status of HOLD_FOR_APPROVAL
       axios
@@ -303,7 +297,7 @@ function QueryWindow(props) {
           }
         )
         .then((res) => {
-          if (res.status == 200) {
+          if (res.status === 200) {
             history.push(`/query/${res.data.data[0]['Q_ID']}`);
           }
         })
@@ -314,13 +308,16 @@ function QueryWindow(props) {
   };
 
   const handleQuerySetForApproval = () => {
-    const is_query_allowed = checkQueryForApproval();
+    const is_query_allowed = checkIsQueryAllowed(
+      values.rawQuery,
+      values.databaseMappingID
+    );
     if (is_query_allowed) {
       if (query_id) {
         // change the status of inserted query to SET_FOR_APPROVAL.
         axios
           .put(
-            BACKEND_URLS.EDIT_QUERY_IN_HOLD_FOR_APPROVAL,
+            BACKEND_URLS.EDIT_QUERY,
             {
               query: {
                 query_id: query_id,
@@ -340,7 +337,7 @@ function QueryWindow(props) {
             }
           )
           .then((res) => {
-            if (res.status == 200) {
+            if (res.status === 200) {
               fetchQueryDetails(res.data.data[0]['Q_ID']);
             }
           })
@@ -371,7 +368,7 @@ function QueryWindow(props) {
             }
           )
           .then((res) => {
-            if (res.status == 200) {
+            if (res.status === 200) {
               history.push(`/query/${res.data.data[0]['Q_ID']}`);
             }
           })
@@ -380,33 +377,6 @@ function QueryWindow(props) {
           });
       }
     }
-  };
-
-  const handleQueryHoldForApproval = () => {
-    axios
-      .put(
-        BACKEND_URLS.EDIT_QUERY_STATUS,
-        {
-          query: {
-            query_id: query_id,
-            query_status_id:
-              CONSTANTS.QUERY_STATUS_ID_MAPPING['HOLD_FOR_APPROVAL'],
-          },
-        },
-        {
-          headers: {
-            token: localStorage.getItem('token'),
-          },
-        }
-      )
-      .then((res) => {
-        if (res.status == 200) {
-          fetchQueryDetails(res.data.data[0]['Q_ID']);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   };
 
   const handleApproveForOnce = () => {
@@ -428,7 +398,7 @@ function QueryWindow(props) {
         }
       )
       .then((res) => {
-        if (res.status == 200) {
+        if (res.status === 200) {
           fetchQueryDetails(res.data.data[0]['Q_ID']);
         }
       })
@@ -456,7 +426,7 @@ function QueryWindow(props) {
         }
       )
       .then((res) => {
-        if (res.status == 200) {
+        if (res.status === 200) {
           fetchQueryDetails(res.data.data[0]['Q_ID']);
         }
       })
@@ -483,7 +453,7 @@ function QueryWindow(props) {
         }
       )
       .then((res) => {
-        if (res.status == 200) {
+        if (res.status === 200) {
           fetchQueryDetails(res.data.data[0]['Q_ID']);
         }
       })
@@ -494,58 +464,292 @@ function QueryWindow(props) {
 
   const handleExecute = () => {
     // handle execute button
-    axios
-      .post(
-        BACKEND_URLS.EXECUTE_QUERY,
-        {
-          query: {
-            query_id: query_id,
+    if (query_id) {
+      axios
+        .post(
+          BACKEND_URLS.EXECUTE_QUERY,
+          {
+            query: {
+              query_id: query_id,
+            },
           },
-        },
-        {
-          headers: {
-            token: localStorage.getItem('token'),
+          {
+            headers: {
+              token: localStorage.getItem('token'),
+            },
+          }
+        )
+        .then((res) => {
+          if (res.status === 200) {
+            // display the results now
+            console.log(res.data.data);
+            fetchQueryDetails(query_id);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      axios
+        .post(
+          BACKEND_URLS.POST_ADD_NEW_QUERY,
+          {
+            query: {
+              database_application_mapping_id: values.databaseMappingID,
+              query_status_id:
+                CONSTANTS.QUERY_STATUS_ID_MAPPING['APPROVED_FOR_EVER'],
+              sys_defined_name: 'SYS_DEFINED_NAME',
+              user_defined_name: values.userDefQueryName,
+              raw_query: values.rawQuery,
+              query_desc: values.queryDescription,
+              query_comments: values.queryComments,
+            },
           },
-        }
-      )
-      .then((res) => {
-        if (res.status == 200) {
-          // display the results now
-          console.log(res.data.data);
-          fetchQueryDetails(query_id);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+          {
+            headers: {
+              token: localStorage.getItem('token'),
+            },
+          }
+        )
+        .then((res) => {
+          if (res.status === 200) {
+            const postedQueryID = res.data.data[0]['Q_ID'];
+            axios
+              .post(
+                BACKEND_URLS.EXECUTE_QUERY,
+                {
+                  query: {
+                    query_id: postedQueryID,
+                  },
+                },
+                {
+                  headers: {
+                    token: localStorage.getItem('token'),
+                  },
+                }
+              )
+              .then((res) => {
+                if (res.status === 200) {
+                  // display the results now
+                  console.log(res.data.data);
+                  history.push(`/query/${postedQueryID}`);
+                }
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   useEffect(() => {
     if (query_id) {
       fetchQueryDetails(query_id);
     } else {
-      setValues({
-        queryID: '',
-        databaseMappingID: '',
-        sysDefQueryName: '',
-        userDefQueryName: '',
-        queryStatus: '',
-        queryDescription: '',
-        rawQuery: '',
-        queryApprovedBy: '',
-        queryComments: '',
-        IsQueryExecuted: '',
-        canUserApproveTheQuery: false,
-      });
+      if (props.location.state) {
+        const copiedQueryDetails = props.location.state;
+        setValues({
+          queryID: '',
+          databaseMappingID: copiedQueryDetails.databaseMappingID,
+          sysDefQueryName: '',
+          userDefQueryName: copiedQueryDetails.userDefQueryName,
+          queryStatus: '',
+          queryDescription: copiedQueryDetails.queryDescription,
+          rawQuery: copiedQueryDetails.rawQuery,
+          fetchedRawQuery: copiedQueryDetails.fetchedRawQuery,
+          queryApprovedBy: '',
+          queryComments: copiedQueryDetails.queryComments,
+          IsQueryExecuted: '',
+          canUserApproveTheQuery: copiedQueryDetails.canUserApproveTheQuery,
+          approvalNotRequired: copiedQueryDetails.approvalNotRequired,
+          queryTypeIsApproved: copiedQueryDetails.queryTypeIsApproved,
+        });
+      } else {
+        setValues({
+          queryID: '',
+          databaseMappingID: '',
+          sysDefQueryName: '',
+          userDefQueryName: '',
+          queryStatus: '',
+          queryDescription: '',
+          rawQuery: '',
+          fetchedRawQuery: '',
+          queryApprovedBy: '',
+          queryComments: '',
+          IsQueryExecuted: '',
+          canUserApproveTheQuery: false,
+          approvalNotRequired: false,
+        });
+      }
     }
     fetchUserPermissions();
   }, [props.match.params.query_id]);
+
+  const handleChangeInDatabaseDropdown = (e) => {
+    let isDifferentDatabaseChosen = false;
+    if (
+      e.target.value != '-- Select Application - Database Name --' &&
+      e.target.value != ''
+    ) {
+      if (e.target.value != values.databaseMappingID) {
+        isDifferentDatabaseChosen = true;
+      }
+      if (checkForApprovalNotRequired(e.target.value)) {
+        setValues({
+          ...values,
+          ['databaseMappingID']: e.target.value,
+          ['approvalNotRequired']: true,
+        });
+      } else {
+        setValues({
+          ...values,
+          ['databaseMappingID']: e.target.value,
+          ['approvalNotRequired']: false,
+        });
+      }
+    } else {
+      setValues({
+        ...values,
+        ['databaseMappingID']: e.target.value,
+        ['approvalNotRequired']: false,
+      });
+    }
+    if (
+      (values.queryStatus === 'SET_FOR_APPROVAL' ||
+        values.queryStatus === 'APPROVED_FOR_ONCE' ||
+        values.queryStatus === 'APPROVED_FOR_EVER' ||
+        values.queryStatus === 'REJECTED') &&
+      !values.IsQueryExecuted &&
+      isDifferentDatabaseChosen
+    ) {
+      axios
+        .put(
+          BACKEND_URLS.EDIT_QUERY,
+          {
+            query: {
+              query_id: query_id,
+              user_defined_name: values.userDefQueryName,
+              query_desc: values.queryDescription,
+              query_comments: values.queryComments,
+              raw_query: values.rawQuery,
+              database_application_mapping_id: e.target.value,
+              query_status_id:
+                CONSTANTS.QUERY_STATUS_ID_MAPPING['HOLD_FOR_APPROVAL'],
+            },
+          },
+          {
+            headers: {
+              token: localStorage.getItem('token'),
+            },
+          }
+        )
+        .then((res) => {
+          if (res.status === 200) {
+            fetchQueryDetails(res.data.data[0]['Q_ID']);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
+  const handleRawQueryChange = (e) => {
+    if (
+      values.databaseMappingID != '-- Select Application - Database Name --' &&
+      values.databaseMappingID != ''
+    ) {
+      const is_query_executable = checkIsQueryAllowed(
+        values.rawQuery,
+        values.databaseMappingID
+      );
+      if (is_query_executable) {
+        setValues({
+          ...values,
+          ['queryTypeIsApproved']: true,
+        });
+      } else {
+        setValues({
+          ...values,
+          ['queryTypeIsApproved']: false,
+        });
+      }
+    } else {
+      setValues({
+        ...values,
+        ['queryTypeIsApproved']: false,
+      });
+    }
+
+    if (
+      (values.queryStatus === 'SET_FOR_APPROVAL' ||
+        values.queryStatus === 'APPROVED_FOR_ONCE' ||
+        values.queryStatus === 'APPROVED_FOR_EVER' ||
+        values.queryStatus === 'REJECTED') &&
+      !values.IsQueryExecuted &&
+      values.fetchedRawQuery != values.rawQuery
+    ) {
+      axios
+        .put(
+          BACKEND_URLS.EDIT_QUERY,
+          {
+            query: {
+              query_id: query_id,
+              user_defined_name: values.userDefQueryName,
+              query_desc: values.queryDescription,
+              query_comments: values.queryComments,
+              raw_query: values.rawQuery,
+              database_application_mapping_id: values.databaseMappingID,
+              query_status_id:
+                CONSTANTS.QUERY_STATUS_ID_MAPPING['HOLD_FOR_APPROVAL'],
+            },
+          },
+          {
+            headers: {
+              token: localStorage.getItem('token'),
+            },
+          }
+        )
+        .then((res) => {
+          if (res.status === 200) {
+            fetchQueryDetails(res.data.data[0]['Q_ID']);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
+  const handleMakeCopy = () => {
+    if (query_id) {
+      const queryDetails = {
+        canUserApproveTheQuery: values.canUserApproveTheQuery,
+        databaseMappingID: values.databaseMappingID,
+        fetchedRawQuery: values.fetchedRawQuery,
+        queryComments: values.queryComments,
+        queryDescription: values.queryDescription,
+        rawQuery: values.rawQuery,
+        userDefQueryName: values.userDefQueryName,
+        approvalNotRequired: values.approvalNotRequired,
+        queryTypeIsApproved: values.queryTypeIsApproved,
+      };
+      history.push({
+        pathname: '/query',
+        state: queryDetails,
+      });
+    }
+  };
 
   return (
     <Fragment>
       <div className="queryWindow">
         <div className="makeQueries">
-          {values.queryStatus == 'SET_FOR_APPROVAL' &&
+          {values.queryStatus === 'SET_FOR_APPROVAL' &&
           values.canUserApproveTheQuery ? (
             <div className="functionalities">
               <div>
@@ -564,13 +768,11 @@ function QueryWindow(props) {
           <div className="functionalities">
             <div>
               <select
-                onChange={handleChange('databaseMappingID')}
+                onChange={(e) => {
+                  handleChangeInDatabaseDropdown(e);
+                }}
                 value={values.databaseMappingID}
-                disabled={
-                  values.queryStatus === 'SET_FOR_APPROVAL' ||
-                  values.queryStatus === 'APPROVED_FOR_ONCE' ||
-                  values.queryStatus === 'APPROVED_FOR_EVER'
-                }
+                disabled={values.IsQueryExecuted}
               >
                 <option value={null}>
                   -- Select Application - Database Name --
@@ -586,49 +788,60 @@ function QueryWindow(props) {
               <button
                 className="greenButton"
                 disabled={
-                  values.databaseMappingID == '' ||
-                  values.databaseMappingID ==
+                  values.databaseMappingID === '' ||
+                  values.databaseMappingID ===
                     '-- Select Application - Database Name --' ||
-                  values.rawQuery == '' ||
-                  values.userDefQueryName == '' ||
-                  values.queryStatus == 'SET_FOR_APPROVAL' ||
-                  values.queryStatus == 'APPROVED_FOR_ONCE' ||
-                  values.queryStatus == 'APPROVED_FOR_EVER' ||
-                  values.queryStatus == 'REJECTED'
+                  values.rawQuery === '' ||
+                  values.userDefQueryName === '' ||
+                  values.queryStatus === 'SET_FOR_APPROVAL' ||
+                  values.queryStatus === 'APPROVED_FOR_ONCE' ||
+                  values.queryStatus === 'APPROVED_FOR_EVER' ||
+                  values.queryStatus === 'REJECTED'
                 }
                 onClick={handleQuerySetForApproval}
               >
                 Set for Approval
               </button>
-              <button
-                className="greenButton"
-                disabled={values.queryStatus != 'SET_FOR_APPROVAL'}
-                onClick={handleQueryHoldForApproval}
-              >
-                Hold for Approval
-              </button>
-              <button
-                className="blueButton"
-                disabled={
-                  !(
-                    values.queryStatus === 'APPROVED_FOR_EVER' ||
+
+              {(values.approvalNotRequired && values.queryTypeIsApproved) ||
+              (values.queryStatus === 'APPROVED_FOR_ONCE' &&
+                !values.IsQueryExecuted) ||
+              values.queryStatus === 'REJECTED' ? (
+                <button
+                  className="blueButton"
+                  disabled={
+                    values.databaseMappingID === '' ||
+                    values.databaseMappingID ===
+                      '-- Select Application - Database Name --' ||
+                    values.rawQuery === '' ||
+                    values.userDefQueryName === '' ||
                     (values.queryStatus === 'APPROVED_FOR_ONCE' &&
-                      !values.IsQueryExecuted)
-                  )
-                }
-                onClick={handleExecute}
-              >
-                Execute
-              </button>
+                      values.IsQueryExecuted) ||
+                    values.queryStatus === 'REJECTED'
+                  }
+                  onClick={handleExecute}
+                >
+                  Execute
+                </button>
+              ) : (
+                <button
+                  className="blueButton"
+                  disabled={true}
+                  onClick={handleExecute}
+                >
+                  Execute
+                </button>
+              )}
+
               <button
                 className="yellowButton"
                 onClick={handleSaveAsDraft}
                 disabled={
-                  values.databaseMappingID == '' ||
-                  values.databaseMappingID ==
+                  values.databaseMappingID === '' ||
+                  values.databaseMappingID ===
                     '-- Select Application - Database Name --' ||
-                  values.rawQuery == '' ||
-                  values.userDefQueryName == '' ||
+                  values.rawQuery === '' ||
+                  values.userDefQueryName === '' ||
                   values.queryStatus === 'REJECTED' ||
                   (values.queryStatus === 'APPROVED_FOR_ONCE' &&
                     values.IsQueryExecuted) ||
@@ -636,6 +849,15 @@ function QueryWindow(props) {
                 }
               >
                 Save as Draft
+              </button>
+              <button
+                className="yellowButton"
+                disabled={
+                  !(values.IsQueryExecuted || values.queryStatus === 'REJECTED')
+                }
+                onClick={handleMakeCopy}
+              >
+                Make a Copy
               </button>
             </div>
           </div>
@@ -659,11 +881,7 @@ function QueryWindow(props) {
                         type="text"
                         value={values.userDefQueryName}
                         onChange={handleChange('userDefQueryName')}
-                        readOnly={
-                          values.queryStatus === 'SET_FOR_APPROVAL' ||
-                          values.queryStatus === 'APPROVED_FOR_ONCE' ||
-                          values.queryStatus === 'APPROVED_FOR_EVER'
-                        }
+                        readOnly={values.IsQueryExecuted}
                       />
                     </div>
                     <div>
@@ -672,11 +890,7 @@ function QueryWindow(props) {
                         value={values.queryDescription}
                         type="text"
                         onChange={handleChange('queryDescription')}
-                        readOnly={
-                          values.queryStatus === 'SET_FOR_APPROVAL' ||
-                          values.queryStatus === 'APPROVED_FOR_ONCE' ||
-                          values.queryStatus === 'APPROVED_FOR_EVER'
-                        }
+                        readOnly={values.IsQueryExecuted}
                       />
                     </div>
                   </div>
@@ -686,11 +900,7 @@ function QueryWindow(props) {
                     value={values.queryComments}
                     placeholder="Add Comment"
                     onChange={handleChange('queryComments')}
-                    readOnly={
-                      values.queryStatus === 'SET_FOR_APPROVAL' ||
-                      values.queryStatus === 'APPROVED_FOR_ONCE' ||
-                      values.queryStatus === 'APPROVED_FOR_EVER'
-                    }
+                    readOnly={values.IsQueryExecuted}
                   />
                 </div>
               </div>
@@ -699,11 +909,13 @@ function QueryWindow(props) {
                 <textarea
                   value={values.rawQuery}
                   onChange={handleChange('rawQuery')}
-                  readOnly={
-                    values.queryStatus === 'SET_FOR_APPROVAL' ||
-                    values.queryStatus === 'APPROVED_FOR_ONCE' ||
-                    values.queryStatus === 'APPROVED_FOR_EVER'
-                  }
+                  onFocus={(e) => {
+                    handleRawQueryChange(e);
+                  }}
+                  onBlur={(e) => {
+                    handleRawQueryChange(e);
+                  }}
+                  readOnly={values.IsQueryExecuted}
                 />
               </div>
             </form>

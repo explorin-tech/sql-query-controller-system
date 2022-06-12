@@ -54,3 +54,17 @@ module.exports.editUserPermissionRightsMapping = async (params) => {
     return err;
   }
 };
+
+module.exports.getUserPermissionMappingArray = async (params) => {
+  try {
+    const user_id = params.user_id;
+    const database_id = params.database_id;
+    const result = await pool.query(
+      UserPermissionMappingQuery.GET_USER_PERMISSION_MAPPING_ARRAY,
+      [user_id, database_id]
+    );
+    return result.rows;
+  } catch (err) {
+    return err;
+  }
+};

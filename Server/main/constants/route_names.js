@@ -39,11 +39,9 @@ module.exports = Object.freeze({
     '/get/history_queries_mapped_to_an_user',
   GET_QUERY_DETAILS: '/get/query_details',
   POST_ADD_NEW_QUERY: '/post/query',
-  EDIT_A_QUERY: '/put/query',
   EDIT_QUERY_STATUS_FOR_APPROVAL_OR_REJECTION:
     '/put/query_status_for_approval_or_rejection',
-  EDIT_QUERY_IN_HOLD_FOR_APPROVAL: '/put/query_in_hold_for_approval',
-  EDIT_QUERY_STATUS: '/put/query_status',
+  EDIT_QUERY: '/put/query_in_set_for_approval',
   EXECUTE_QUERY: '/post/execute_query',
   GET_QUERIES_AWAITING_APPROVAL: '/get/queries_awaiting_approval',
 });

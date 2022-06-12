@@ -1,5 +1,9 @@
-const { UserDao, QueryDao } = require('../dao/index');
+const { UserDao, QueryDao, UserPermissionMappingDao } = require('../dao/index');
 const { _200, _error } = require('../common/httpHelper');
+const {
+  identifyQueryType,
+  checkQueryExecutionRight,
+} = require('../common/queryHelper');
 
 module.exports.GET_getAllMappedDraftQueriesForAnUser = async (
   httpRequest,
@@ -85,6 +89,29 @@ module.exports.GET_getQueryDetailsForGivenQueryID = async (
     const user_type = user_details[0]['UT_Name'];
     const query_object = await QueryDao.getQueryDetailsForQueryID(params);
     const owner_ids = await QueryDao.getUserIDOfApplicationOwnersOfDBAM(params);
+    let approval_not_required = false;
+    let query_type_is_approved = false;
+    let user_permission_mapping_array_for_query_db_id =
+      await UserPermissionMappingDao.getUserPermissionMappingArray({
+        user_id: user_id,
+        database_id: query_object[0]['Q_DBAM_ID'],
+      });
+
+    let query_type = identifyQueryType(query_object[0]['Q_RawQuery']);
+    if (query_type) {
+      query_type_is_approved = checkQueryExecutionRight(
+        query_type,
+        user_permission_mapping_array_for_query_db_id[0]
+      );
+    } else {
+      query_type_is_approved = false;
+    }
+    if (
+      user_permission_mapping_array_for_query_db_id[0]['UP_ApprovalNotRequired']
+    ) {
+      approval_not_required = true;
+    }
+
     let result;
     if (
       owner_ids[0]['MA_Owner1'] == user_id ||
@@ -94,12 +121,16 @@ module.exports.GET_getQueryDetailsForGivenQueryID = async (
       result = {
         queryObject: query_object,
         queryApprovalRight: true,
+        queryTypeIsApproved: query_type_is_approved,
+        approvalNotRequired: approval_not_required,
       };
       return _200(httpResponse, result);
     } else {
       result = {
         queryObject: query_object,
         queryApprovalRight: false,
+        queryTypeIsApproved: query_type_is_approved,
+        approvalNotRequired: approval_not_required,
       };
       return _200(httpResponse, result);
     }
@@ -129,30 +160,6 @@ module.exports.POST_addNewQuery = async (httpRequest, httpResponse, next) => {
       values: values,
     };
     const result = await QueryDao.postNewQuery(params);
-    return _200(httpResponse, result);
-  } catch (err) {
-    return _error(httpResponse, {
-      type: 'generic',
-      message: err,
-    });
-  }
-};
-
-module.exports.PUT_editAQuery = async (httpRequest, httpResponse, next) => {
-  try {
-    const { decoded } = httpRequest.headers;
-    const user_id = decoded.UserID;
-    const values = [
-      httpRequest.body.query.query_id,
-      httpRequest.body.query.user_defined_name,
-      httpRequest.body.query.query_desc,
-      user_id,
-      httpRequest.body.query.query_comments,
-    ];
-    const params = {
-      values: values,
-    };
-    const result = await QueryDao.editQueryDetails(params);
     return _200(httpResponse, result);
   } catch (err) {
     return _error(httpResponse, {
@@ -201,11 +208,7 @@ module.exports.PUT_editQueryStatusForApprovalOrRejection = async (
   }
 };
 
-module.exports.PUT_editAQueryInHoldForApproval = async (
-  httpRequest,
-  httpResponse,
-  next
-) => {
+module.exports.PUT_editQuery = async (httpRequest, httpResponse, next) => {
   try {
     const { decoded } = httpRequest.headers;
     const user_id = decoded.UserID;
@@ -222,33 +225,7 @@ module.exports.PUT_editAQueryInHoldForApproval = async (
     const params = {
       values: values,
     };
-    const result = await QueryDao.editQueryDetailsInHoldForApproval(params);
-    return _200(httpResponse, result);
-  } catch (err) {
-    return _error(httpResponse, {
-      type: 'generic',
-      message: err,
-    });
-  }
-};
-
-module.exports.PUT_editQueryStatus = async (
-  httpRequest,
-  httpResponse,
-  next
-) => {
-  try {
-    const { decoded } = httpRequest.headers;
-    const user_id = decoded.UserID;
-    const values = [
-      httpRequest.body.query.query_id,
-      httpRequest.body.query.query_status_id,
-      user_id,
-    ];
-    const params = {
-      values: values,
-    };
-    const result = await QueryDao.editQueryStatus(params);
+    const result = await QueryDao.editQueryDetails(params);
     return _200(httpResponse, result);
   } catch (err) {
     return _error(httpResponse, {

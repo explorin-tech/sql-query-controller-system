@@ -105,16 +105,6 @@ module.exports.postNewQuery = async (params) => {
   }
 };
 
-module.exports.editQueryDetails = async (params) => {
-  try {
-    const values = params.values;
-    const result = await pool.query(Query.EDIT_QUERY_DETAILS, values);
-    return result.rows;
-  } catch (err) {
-    return err;
-  }
-};
-
 module.exports.editQueryStatusForApproval = async (params) => {
   try {
     const values = params.values;
@@ -141,26 +131,13 @@ module.exports.editQueryStatusForRejection = async (params) => {
   }
 };
 
-module.exports.editQueryDetailsInHoldForApproval = async (params) => {
+module.exports.editQueryDetails = async (params) => {
   try {
     const values = params.values;
-    const result = await pool.query(
-      Query.EDIT_QUERY_DETAILS_IN_HOLD_FOR_APPROVAL,
-      values
-    );
+    const result = await pool.query(Query.EDIT_QUERY_DETAILS, values);
     return result.rows;
   } catch (err) {
     console.log(err);
-    return err;
-  }
-};
-
-module.exports.editQueryStatus = async (params) => {
-  try {
-    const values = params.values;
-    const result = await pool.query(Query.EDIT_QUERY_STATUS, values);
-    return result.rows;
-  } catch (err) {
     return err;
   }
 };
