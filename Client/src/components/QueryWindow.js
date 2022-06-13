@@ -1,5 +1,4 @@
-import React, { useMemo, Fragment, useState, useEffect } from 'react';
-import { useTable, useSortBy } from 'react-table';
+import React, { Fragment, useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { CSVLink } from 'react-csv';
 
@@ -29,43 +28,52 @@ const PopulateDatabaseMappings = ({ databases }) => {
   );
 };
 
+const DisplayResult = ({ result }) => {
+  let keys = [];
+  if (result[0]) {
+    keys = Object.keys(result[0]);
+  }
+
+  return (
+    <div className="application">
+      {result ? (
+        <>
+          <div className="appTab">
+            <span className="headData"> Result </span>
+            <CSVLink data={result} filename="Result">
+              <i className="fas fa-download download"></i> Download
+            </CSVLink>
+          </div>
+          <div className="selectTable">
+            <table>
+              <thead>
+                <tr className="tableHeading">
+                  {keys?.map((each_heading) => {
+                    return <th key={each_heading}>{each_heading}</th>;
+                  })}
+                </tr>
+              </thead>
+              <tbody>
+                {result.map((each_row, idx) => {
+                  return (
+                    <tr key={idx}>
+                      {Object.values(each_row).map((each_data, index) => {
+                        return <td key={index}>{each_data}</td>;
+                      })}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </>
+      ) : null}
+    </div>
+  );
+};
+
 function QueryWindow(props) {
-  const [filteredData, setFilteredData] = useState([]);
   const history = useHistory();
-
-  const columns = useMemo(
-    () => [
-      {
-        Header: 'Column Column',
-        accessor: '',
-        filterable: true,
-      },
-      {
-        Header: 'Column 1',
-        accessor: '',
-        filterable: true,
-      },
-      {
-        Header: 'Column 2',
-        accessor: '',
-        filterable: true,
-      },
-    ],
-    []
-  );
-
-  const data = useMemo(() => filteredData, [filteredData]);
-
-  const tableInstance = useTable(
-    {
-      columns,
-      data,
-    },
-    useSortBy
-  );
-
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    tableInstance;
 
   const [values, setValues] = useState({
     queryID: '',
@@ -84,6 +92,7 @@ function QueryWindow(props) {
     queryTypeIsApproved: false,
   });
 
+  const [queryResult, setQueryResult] = useState([]);
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
   };
@@ -377,6 +386,8 @@ function QueryWindow(props) {
           });
       }
     }
+    // display this message
+    console.log('QUERY IS NOT ALLOWED');
   };
 
   const handleApproveForOnce = () => {
@@ -482,6 +493,9 @@ function QueryWindow(props) {
         .then((res) => {
           if (res.status === 200) {
             // display the results now
+            setQueryResult(res.data.data);
+            // display this message
+            console.log('QUERY IS EXECUTED SUCCESSFULLY');
             console.log(res.data.data);
             fetchQueryDetails(query_id);
           }
@@ -531,7 +545,10 @@ function QueryWindow(props) {
               .then((res) => {
                 if (res.status === 200) {
                   // display the results now
+                  // display this message
+                  console.log('QUERY IS EXECUTED SUCCESSFULLY');
                   console.log(res.data.data);
+                  setQueryResult(res.data.data);
                   history.push(`/query/${postedQueryID}`);
                 }
               })
@@ -806,7 +823,8 @@ function QueryWindow(props) {
               {(values.approvalNotRequired && values.queryTypeIsApproved) ||
               (values.queryStatus === 'APPROVED_FOR_ONCE' &&
                 !values.IsQueryExecuted) ||
-              values.queryStatus === 'REJECTED' ? (
+              values.queryStatus === 'REJECTED' ||
+              values.queryStatus === 'APPROVED_FOR_EVER' ? (
                 <button
                   className="blueButton"
                   disabled={
@@ -921,67 +939,9 @@ function QueryWindow(props) {
             </form>
           </div>
         </div>
-        <div className="application">
-          <div className="appTab">
-            <span className="headData"> Result </span>
-            <CSVLink data={data} filename="Result">
-              <i className="fas fa-download download"></i> Download
-            </CSVLink>
-          </div>
-          <div className="selectTable">
-            <table {...getTableProps()}>
-              <thead>
-                {headerGroups.map((headerGroup) => (
-                  <tr
-                    key={headerGroup.id}
-                    className="tableHeading"
-                    {...headerGroup.getHeaderGroupProps()}
-                  >
-                    {headerGroup.headers.map((column) => (
-                      <th
-                        {...column.getHeaderProps(
-                          column.getSortByToggleProps()
-                        )}
-                        key={column.id}
-                      >
-                        {column.render('Header')}
-                        {/* Add a sort direction indicator */}
-                        <span>
-                          {column.isSorted ? (
-                            column.isSortedDesc ? (
-                              <i className="fas fa-angle-down sortIcon"></i>
-                            ) : (
-                              <i className="fas fa-angle-up sortIcon"></i>
-                            )
-                          ) : (
-                            ''
-                          )}
-                        </span>
-                      </th>
-                    ))}
-                  </tr>
-                ))}
-              </thead>
-              <tbody {...getTableBodyProps()}>
-                {rows.map((row) => {
-                  prepareRow(row);
-                  return (
-                    <tr {...row.getRowProps()} key={row.id}>
-                      {row.cells.map((cell) => {
-                        return (
-                          <td {...cell.getCellProps()}>
-                            {cell.render('Cell')}
-                          </td>
-                        );
-                      })}
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div className="application queryWindow">
+        <DisplayResult result={queryResult} />
+
+        {/* <div className="application queryWindow">
           <div className="appTab">
             <span className="headData"> Application </span>
             <CSVLink data={data} filename="Result">
@@ -1006,7 +966,7 @@ function QueryWindow(props) {
                       >
                         {column.render('Header')}
                         {/* Add a sort direction indicator */}
-                        <span>
+        {/* <span>
                           {column.isSorted ? (
                             column.isSortedDesc ? (
                               <i className="fas fa-angle-down sortIcon"></i>
@@ -1021,8 +981,8 @@ function QueryWindow(props) {
                     ))}
                   </tr>
                 ))}
-              </thead>
-              <tbody {...getTableBodyProps()}>
+              </thead> */}
+        {/* <tbody {...getTableBodyProps()}>
                 {rows.map((row) => {
                   prepareRow(row);
                   return (
@@ -1039,8 +999,8 @@ function QueryWindow(props) {
                 })}
               </tbody>
             </table>
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
       </div>
     </Fragment>
   );
