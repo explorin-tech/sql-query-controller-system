@@ -6,6 +6,9 @@ import * as actions from '../store/actions/Actions';
 
 import axios from 'axios';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import * as BACKEND_URLS from '../utils/BackendUrls';
 import { useHistory } from 'react-router-dom';
 
@@ -23,6 +26,7 @@ function GlobalFilter({ filter, setFilter }) {
 }
 
 function History(props) {
+  toast.configure();
   const [filteredData, setFilteredData] = useState([]);
   const history = useHistory();
 
@@ -132,13 +136,18 @@ function History(props) {
         },
       })
       .then((res) => {
-        console.log(res);
         if (res.status == 200) {
+          toast.success(`Successfully fetched history queries.`, {
+            autoClose: 2000,
+          });
           setFilteredData(res.data.data);
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(
+          `Error while fetching history queries, please try again. ${err.response.data.message}`,
+          { autoClose: 2000 }
+        );
       });
   };
 
