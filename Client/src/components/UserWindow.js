@@ -4,6 +4,9 @@ import { useTable, useSortBy } from 'react-table';
 import { connect } from 'react-redux';
 import * as actions from '../store/actions/Actions';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import * as CONSTANTS from '../utils/AppConstants';
 
 import * as BACKEND_URLS from '../utils/BackendUrls';
@@ -34,6 +37,7 @@ const RenderOptionsForUserTypes = ({ userType }) => {
 };
 
 function AddUser(props) {
+  toast.configure();
   const [addModalShow, setAddModalShow] = useState(false);
   const [editModalShow, setEditModalShow] = useState(false);
 
@@ -142,6 +146,7 @@ function AddUser(props) {
         )
         .then((res) => {
           if (res.status === 200) {
+            toast.success(`Successfully added new user.`, { autoClose: 2000 });
             fetchAllUsers();
             setAddModalShow(false);
             setValues({
@@ -156,7 +161,9 @@ function AddUser(props) {
           }
         })
         .catch((err) => {
-          console.log(err);
+          toast.error(`Failed to add new user. ${err.response.data.message}`, {
+            autoClose: 2000,
+          });
         });
     }
   };
@@ -172,7 +179,12 @@ function AddUser(props) {
         props.set_all_users(res.data.data);
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(
+          `Failed to fetch list of all users. ${err.response.data.message}`,
+          {
+            autoClose: 2000,
+          }
+        );
       });
   };
 
@@ -219,6 +231,9 @@ function AddUser(props) {
       )
       .then((res) => {
         if (res.status === 200) {
+          toast.success(`Successfully edited the user details.`, {
+            autoClose: 2000,
+          });
           fetchAllUsers();
           setEditModalShow(false);
           setValues({
@@ -233,6 +248,14 @@ function AddUser(props) {
             userTypeID: '',
           });
         }
+      })
+      .catch((err) => {
+        toast.error(
+          `Failed to edit user details, please try again. ${err.response.data.message}`,
+          {
+            autoClose: 2000,
+          }
+        );
       });
   };
 
@@ -249,6 +272,9 @@ function AddUser(props) {
       })
       .then((res) => {
         if (res.status == 200) {
+          toast.success(`Successfully deleted the user.`, {
+            autoClose: 2000,
+          });
           fetchAllUsers();
           setEditModalShow(false);
           setValues({
@@ -265,7 +291,12 @@ function AddUser(props) {
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(
+          `Failed to delete the user, please try again. ${err.response.data.message}`,
+          {
+            autoClose: 2000,
+          }
+        );
       });
   };
   useEffect(() => {
