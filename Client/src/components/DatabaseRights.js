@@ -3,6 +3,9 @@ import { useTable, useSortBy } from 'react-table';
 
 import axios from 'axios';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import * as BACKEND_URLS from '../utils/BackendUrls';
 
 import * as CONSTANTS from '../utils/AppConstants';
@@ -30,6 +33,7 @@ const PopulateUsers = ({ users }) => {
 };
 
 function DatabaseRights(props) {
+  toast.configure();
   const [filteredData, setFilteredData] = useState([]);
 
   const [values, setValues] = useState({
@@ -146,7 +150,10 @@ function DatabaseRights(props) {
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(
+          `Error while fetching user permissions rights, please try again. ${err.response.data.message}`,
+          { autoClose: 2000 }
+        );
       });
   };
 
@@ -163,11 +170,17 @@ function DatabaseRights(props) {
         })
         .then((res) => {
           if (res.status === 200) {
+            toast.success(`Successfully fetched the user permission rights.`, {
+              autoClose: 2000,
+            });
             props.set_user_permissions_for_selected_user(res.data.data);
           }
         })
         .catch((err) => {
-          console.log(err);
+          toast.error(
+            `Error while fetching user permissions rights for the selected user, please try again. ${err.response.data.message}`,
+            { autoClose: 2000 }
+          );
         });
     } else {
       setFilteredData([]);
@@ -185,7 +198,10 @@ function DatabaseRights(props) {
         props.set_all_users(res.data.data);
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(
+          `Failed to fetch list of all users. ${err.response.data.message}`,
+          { autoClose: 2000 }
+        );
       });
   };
 
@@ -240,12 +256,23 @@ function DatabaseRights(props) {
       )
       .then((res) => {
         if (res.status === 200) {
+          toast.success(
+            `Successfully edited user permissions rights for selected user.`,
+            {
+              autoClose: 2000,
+            }
+          );
           fetchAllUserPermissions();
           fetchUserPermissionsForSelectedUser();
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.err(
+          `FAiled to edit screen rights for selected user, please try again. ${err.response.data.message}`,
+          {
+            autoClose: 2000,
+          }
+        );
       });
   };
 
