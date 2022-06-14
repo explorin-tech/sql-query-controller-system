@@ -194,3 +194,15 @@ module.exports.markQueryAsExecuted = async (params) => {
     throw err;
   }
 };
+
+module.exports.getQueriesAwaitingForApproval = async (params) => {
+  try {
+    const user_id = params.user_id;
+    const result = await pool.query(Query.GET_QUERIES_AWAITING_APPROVAL, [
+      user_id,
+    ]);
+    return result.rows;
+  } catch (err) {
+    throw err;
+  }
+};

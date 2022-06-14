@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import '../static/css/home.css';
 import Card from '../common/Card';
@@ -18,6 +19,8 @@ import * as actions from '../store/actions/Actions';
 
 function Home(props) {
   toast.configure();
+  const [queriesAwaitingApproval, setQueriesAwaitingApproval] = useState([]);
+  const history = useHistory();
 
   const fetchUserPermissions = () => {
     axios
@@ -51,7 +54,10 @@ function Home(props) {
       })
       .then((res) => {
         if (res.status == 200) {
-          console.log(res.data.data);
+          setQueriesAwaitingApproval(res.data.data);
+          if (res.data.data.length == 1) {
+            history.push(`/query/${res.data.data[0]['Q_ID']}`);
+          }
         }
       })
       .catch((err) => {
@@ -64,18 +70,20 @@ function Home(props) {
 
   useEffect(() => {
     fetchUserPermissions();
+    fetchQueriesAwaitingApprovalFromUser();
   }, []);
 
   return (
     <Fragment>
       <div className="homePage">
-        <h4>Pending for Approval</h4>
         <div className="row">
-          <Acrdn data="Hi" />
+          <Acrdn
+            data={queriesAwaitingApproval}
+            heading={'Queries Pending for Approval'}
+          />
         </div>
-        <h4>Recent Queries</h4>
         <div className="row">
-          <Acrdn data="Hi" />
+          <Acrdn data={queriesAwaitingApproval} heading={'Recent Queries'} />
         </div>
         <h4>Applications</h4>
         <div className="row">

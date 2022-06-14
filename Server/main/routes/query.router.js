@@ -48,4 +48,8 @@ router.post(routeNames.EXECUTE_QUERY, [
 ]);
 
 // get queries which are awaiting for approval
+router.get(routeNames.GET_QUERIES_AWAITING_APPROVAL, [
+  authValidator,
+  QueryService.GET_queriesAwaitingForApproval,
+]);
 module.exports = router;

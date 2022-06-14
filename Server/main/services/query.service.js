@@ -264,3 +264,32 @@ module.exports.POST_executeQuery = async (httpRequest, httpResponse, next) => {
     });
   }
 };
+
+module.exports.GET_queriesAwaitingForApproval = async (
+  httpRequest,
+  httpResponse,
+  next
+) => {
+  try {
+    const { decoded } = httpRequest.headers;
+    const user_id = decoded.UserID;
+    const params = {
+      user_id: user_id,
+    };
+    const user_details = await UserDao.getUserDetails({
+      user_id: decoded.UserID,
+    });
+    const user_type = user_details[0]['UT_Name'];
+    if (user_type === 'RA') {
+      const result = await QueryDao.getQueriesAwaitingForApproval(params);
+      return _200(httpResponse, result);
+    } else {
+      return _200(httpResponse, []);
+    }
+  } catch (err) {
+    return _error(httpResponse, {
+      type: 'generic',
+      message: err,
+    });
+  }
+};

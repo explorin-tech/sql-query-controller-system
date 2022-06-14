@@ -42,3 +42,14 @@
 .homePage .accordion-button::after {
   color: var(--baseBlack);
 }
+
+.homePage .queryListItem {
+  border: 1px solid var(--shade2Blue);
+  margin: 5px;
+  padding: 5px;
+  cursor: pointer;
+  list-style-type: none;
+  background-color: var(--shade4Blue);
+  color: var(--baseBlack);
+  font-weight: 500;
+}
