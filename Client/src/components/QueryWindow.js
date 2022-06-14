@@ -4,6 +4,9 @@ import { CSVLink } from 'react-csv';
 
 import axios from 'axios';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import * as BACKEND_URLS from '../utils/BackendUrls';
 import * as CONSTANTS from '../utils/AppConstants';
 import { connect } from 'react-redux';
@@ -74,6 +77,7 @@ const DisplayResult = ({ result }) => {
 
 function QueryWindow(props) {
   const history = useHistory();
+  toast.configure();
 
   const [values, setValues] = useState({
     queryID: '',
@@ -113,12 +117,16 @@ function QueryWindow(props) {
       })
       .catch((err) => {
         if (err.response) {
-          console.log(err);
+          toast.error(
+            'Error while fetching user permissions, please try again by refreshing.',
+            { autoClose: 2000 }
+          );
         }
       });
   };
 
   const fetchQueryDetails = (queryID) => {
+    toast.info('Fetching Query Details', { autoClose: 1000 });
     axios
       .get(BACKEND_URLS.GET_QUERY_DETAILS, {
         params: {
@@ -130,6 +138,9 @@ function QueryWindow(props) {
       })
       .then((res) => {
         if (res.status === 200 && res.data.data.queryObject[0]) {
+          toast.success('Query Details Fetched Successfully', {
+            autoClose: 1000,
+          });
           const queryDetailsObject = res.data.data.queryObject[0];
           setValues({
             queryID: queryDetailsObject['Q_ID'],
@@ -152,7 +163,10 @@ function QueryWindow(props) {
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(
+          'Error while fetching such query details, please try again.',
+          { autoClose: 1000 }
+        );
         history.push(`/query`);
       });
   };
@@ -251,6 +265,7 @@ function QueryWindow(props) {
   };
 
   const handleSaveAsDraft = () => {
+    toast.info('Saving query as draft', { autoClose: 1000 });
     if (query_id) {
       // put request to update the query
       axios
@@ -276,11 +291,16 @@ function QueryWindow(props) {
         )
         .then((res) => {
           if (res.status === 200) {
+            toast.success('Query successfully saved query as draft', {
+              autoClose: 1000,
+            });
             fetchQueryDetails(res.data.data[0]['Q_ID']);
           }
         })
         .catch((err) => {
-          console.log(err);
+          toast.error('Failed to save query as draft, please try again', {
+            autoClose: 1000,
+          });
         });
     } else {
       // save a new query as draft with a status of HOLD_FOR_APPROVAL
@@ -307,11 +327,19 @@ function QueryWindow(props) {
         )
         .then((res) => {
           if (res.status === 200) {
+            toast.success('Query successfully saved as draft.', {
+              autoClose: 1000,
+            });
             history.push(`/query/${res.data.data[0]['Q_ID']}`);
           }
         })
         .catch((err) => {
-          console.log(err);
+          toast.error(
+            `Failed to save query as draft, please try again : ${err}`,
+            {
+              autoClose: 1000,
+            }
+          );
         });
     }
   };
@@ -347,11 +375,16 @@ function QueryWindow(props) {
           )
           .then((res) => {
             if (res.status === 200) {
+              toast.success('Query set query as SET_FOR_APPROVAL.', {
+                autoClose: 1000,
+              });
               fetchQueryDetails(res.data.data[0]['Q_ID']);
             }
           })
           .catch((err) => {
-            console.log(err);
+            toast.error(`Failed to set query for approval : ${err}`, {
+              autoClose: 1000,
+            });
           });
       } else {
         // insert a query directly into table first time with status of set for approval.
@@ -378,16 +411,27 @@ function QueryWindow(props) {
           )
           .then((res) => {
             if (res.status === 200) {
+              toast.success('Query set query as SET_FOR_APPROVAL.', {
+                autoClose: 1000,
+              });
               history.push(`/query/${res.data.data[0]['Q_ID']}`);
             }
           })
           .catch((err) => {
-            console.log(err);
+            toast.error(`Failed to set query for approval : ${err}`, {
+              autoClose: 1000,
+            });
           });
       }
+    } else {
+      toast.error(
+        'Permission to execute this type of query is not given. Please contact owner of the application.',
+        {
+          autoClose: 1000,
+        }
+      );
     }
     // display this message
-    console.log('QUERY IS NOT ALLOWED');
   };
 
   const handleApproveForOnce = () => {
@@ -410,11 +454,16 @@ function QueryWindow(props) {
       )
       .then((res) => {
         if (res.status === 200) {
+          toast.success('Successfully set query as APPROVED_FOR_ONCE', {
+            autoClose: 1000,
+          });
           fetchQueryDetails(res.data.data[0]['Q_ID']);
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(`Failed to set query as APPROVED_FOR_ONCE : ${err}`, {
+          autoClose: 1000,
+        });
       });
   };
 
@@ -438,11 +487,16 @@ function QueryWindow(props) {
       )
       .then((res) => {
         if (res.status === 200) {
+          toast.success(`Successfully set query as APPROVED_FOR_EVER`, {
+            autoClose: 1000,
+          });
           fetchQueryDetails(res.data.data[0]['Q_ID']);
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(`Failed to set query as APPROVED_FOR_EVER : ${err}`, {
+          autoClose: 1000,
+        });
       });
   };
 
@@ -465,11 +519,16 @@ function QueryWindow(props) {
       )
       .then((res) => {
         if (res.status === 200) {
+          toast.success(`Successfully set query as REJECTED`, {
+            autoClose: 1000,
+          });
           fetchQueryDetails(res.data.data[0]['Q_ID']);
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.success(`Failed to set query as REJECTED : ${err}`, {
+          autoClose: 1000,
+        });
       });
   };
 
@@ -495,13 +554,16 @@ function QueryWindow(props) {
             // display the results now
             setQueryResult(res.data.data);
             // display this message
-            console.log('QUERY IS EXECUTED SUCCESSFULLY');
-            console.log(res.data.data);
+            toast.success(`Successfully executed the query.`, {
+              autoClose: 1000,
+            });
             fetchQueryDetails(query_id);
           }
         })
         .catch((err) => {
-          console.log(err);
+          toast.error(`Failed to execute the query. : ${err}`, {
+            autoClose: 1000,
+          });
         });
     } else {
       axios
@@ -544,21 +606,24 @@ function QueryWindow(props) {
               )
               .then((res) => {
                 if (res.status === 200) {
-                  // display the results now
-                  // display this message
-                  console.log('QUERY IS EXECUTED SUCCESSFULLY');
-                  console.log(res.data.data);
+                  toast.success(`Successfully executed the query.`, {
+                    autoClose: 1000,
+                  });
                   setQueryResult(res.data.data);
                   history.push(`/query/${postedQueryID}`);
                 }
               })
               .catch((err) => {
-                console.log(err);
+                toast.error(`Failed to execute the query. : ${err}`, {
+                  autoClose: 1000,
+                });
               });
           }
         })
         .catch((err) => {
-          console.log(err);
+          toast.error(`Failed to execute the query. : ${err}`, {
+            autoClose: 1000,
+          });
         });
     }
   };
@@ -666,11 +731,19 @@ function QueryWindow(props) {
         )
         .then((res) => {
           if (res.status === 200) {
+            toast.success(`Successfully set the query as HOLD_FOR_APPROVAL`, {
+              autoClose: 1000,
+            });
             fetchQueryDetails(res.data.data[0]['Q_ID']);
           }
         })
         .catch((err) => {
-          console.log(err);
+          toast.error(
+            `Failed to set query as HOLD_FOR_APPROVAL and reflect the changes made.`,
+            {
+              autoClose: 1000,
+            }
+          );
         });
     }
   };
@@ -733,11 +806,19 @@ function QueryWindow(props) {
         )
         .then((res) => {
           if (res.status === 200) {
+            toast.success(`Successfully set the query as HOLD_FOR_APPROVAL`, {
+              autoClose: 1000,
+            });
             fetchQueryDetails(res.data.data[0]['Q_ID']);
           }
         })
         .catch((err) => {
-          console.log(err);
+          toast.error(
+            `Failed to set query as HOLD_FOR_APPROVAL and reflect the changes made.`,
+            {
+              autoClose: 1000,
+            }
+          );
         });
     }
   };
@@ -755,6 +836,9 @@ function QueryWindow(props) {
         approvalNotRequired: values.approvalNotRequired,
         queryTypeIsApproved: values.queryTypeIsApproved,
       };
+      toast.success(`Successfully copied query details to new query window.`, {
+        autoClose: 1000,
+      });
       history.push({
         pathname: '/query',
         state: queryDetails,
@@ -940,67 +1024,6 @@ function QueryWindow(props) {
           </div>
         </div>
         <DisplayResult result={queryResult} />
-
-        {/* <div className="application queryWindow">
-          <div className="appTab">
-            <span className="headData"> Application </span>
-            <CSVLink data={data} filename="Result">
-              <i className="fas fa-download download"></i> Download
-            </CSVLink>
-          </div>
-          <div className="selectTable">
-            <table {...getTableProps()}>
-              <thead>
-                {headerGroups.map((headerGroup) => (
-                  <tr
-                    key={headerGroup.id}
-                    className="tableHeading"
-                    {...headerGroup.getHeaderGroupProps()}
-                  >
-                    {headerGroup.headers.map((column) => (
-                      <th
-                        {...column.getHeaderProps(
-                          column.getSortByToggleProps()
-                        )}
-                        key={column.id}
-                      >
-                        {column.render('Header')}
-                        {/* Add a sort direction indicator */}
-        {/* <span>
-                          {column.isSorted ? (
-                            column.isSortedDesc ? (
-                              <i className="fas fa-angle-down sortIcon"></i>
-                            ) : (
-                              <i className="fas fa-angle-up sortIcon"></i>
-                            )
-                          ) : (
-                            ''
-                          )}
-                        </span>
-                      </th>
-                    ))}
-                  </tr>
-                ))}
-              </thead> */}
-        {/* <tbody {...getTableBodyProps()}>
-                {rows.map((row) => {
-                  prepareRow(row);
-                  return (
-                    <tr {...row.getRowProps()} key={row.id}>
-                      {row.cells.map((cell) => {
-                        return (
-                          <td {...cell.getCellProps()}>
-                            {cell.render('Cell')}
-                          </td>
-                        );
-                      })}
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div> */}
-        {/* </div> */}
       </div>
     </Fragment>
   );
