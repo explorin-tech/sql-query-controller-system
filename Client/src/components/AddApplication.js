@@ -4,6 +4,9 @@ import AddModal from '../common/AddModal';
 
 import axios from 'axios';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import * as BACKEND_URLS from '../utils/BackendUrls';
 
 import * as CONSTANTS from '../utils/AppConstants';
@@ -44,6 +47,7 @@ const PopulateUsers = ({ users }) => {
 };
 
 function AddApplication(props) {
+  toast.configure();
   const [values, setValues] = useState({
     applicationID: '',
     applicationName: '',
@@ -66,7 +70,10 @@ function AddApplication(props) {
         props.set_all_users(res.data.data);
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(
+          `Error while fetching list of all users, please try again. ${err.response.data.message}`,
+          { autoClose: 2000 }
+        );
       });
   };
 
@@ -83,7 +90,10 @@ function AddApplication(props) {
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(
+          `Error while fetching list of all applications, please try again. ${err.response.data.message}`,
+          { autoClose: 2000 }
+        );
       });
   };
 
@@ -163,6 +173,9 @@ function AddApplication(props) {
       )
       .then((res) => {
         if (res.status == 200) {
+          toast.success(`Successfully added an new application.`, {
+            autoClose: 2000,
+          });
           fetchAllApplicationsForAnUser();
           setAddModalShow(false);
           setValues({
@@ -174,7 +187,10 @@ function AddApplication(props) {
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(
+          `Failed to add an new application, please try again. ${err.response.data.message}`,
+          { autoClose: 2000 }
+        );
       });
   };
 
@@ -208,7 +224,9 @@ function AddApplication(props) {
         }
       )
       .then((res) => {
-        console.log(res);
+        toast.success(`Successfully edited the application details.`, {
+          autoClose: 2000,
+        });
         if (res.status === 200) {
           fetchAllApplicationsForAnUser();
           setEditModalShow(false);
@@ -221,7 +239,10 @@ function AddApplication(props) {
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(
+          `Failed to edit the application details, please try again. ${err.response.data.message}`,
+          { autoClose: 2000 }
+        );
       });
   };
 
@@ -238,6 +259,9 @@ function AddApplication(props) {
       })
       .then((res) => {
         if (res.status == 200) {
+          toast.success(`Successfully deleted the application.`, {
+            autoClose: 2000,
+          });
           fetchAllApplicationsForAnUser();
           setEditModalShow(false);
           setValues({
@@ -249,7 +273,10 @@ function AddApplication(props) {
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(
+          `Falied to delete the application, please try again. ${err.response.data.message}`,
+          { autoClose: 2000 }
+        );
       });
   };
 
