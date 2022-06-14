@@ -3,6 +3,9 @@ import { useTable, useGlobalFilter, useSortBy } from 'react-table';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import * as BACKEND_URLS from '../utils/BackendUrls';
 import * as CONSTANTS from '../utils/AppConstants';
 import * as actions from '../store/actions/Actions';
@@ -40,6 +43,7 @@ const PopulateApplications = ({ applications }) => {
 };
 
 function AddDatabase(props) {
+  toast.configure();
   const [filteredData, setFilteredData] = useState([]);
   const [values, setValues] = useState({
     databaseApplicationMappingID: '',
@@ -143,7 +147,10 @@ function AddDatabase(props) {
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(
+          `Error while fetching list of all applications, please try again. ${err.response.data.message}`,
+          { autoClose: 2000 }
+        );
       });
   };
 
@@ -160,7 +167,10 @@ function AddDatabase(props) {
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(
+          `Error while fetching list of all databases, please try again. ${err.response.data.message}`,
+          { autoClose: 2000 }
+        );
       });
   };
 
@@ -198,6 +208,9 @@ function AddDatabase(props) {
       )
       .then((res) => {
         if (res.status == 200) {
+          toast.success(`Successfully added the new database.`, {
+            autoClose: 2000,
+          });
           fetchAllDatabases();
           setAddModalShow(false);
           setValues({
@@ -216,7 +229,10 @@ function AddDatabase(props) {
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(
+          `Failed to add the new database, please try again. ${err.response.data.message}`,
+          { autoClose: 2000 }
+        );
       });
   };
 
@@ -273,6 +289,9 @@ function AddDatabase(props) {
       )
       .then((res) => {
         if (res.status === 200) {
+          toast.success(`Successfully edited the database details.`, {
+            autoClose: 2000,
+          });
           fetchAllDatabases();
           setEditModalShow(false);
           setValues({
@@ -291,7 +310,10 @@ function AddDatabase(props) {
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(
+          `Failed to edit the database details, please try again. ${err.response.data.message}`,
+          { autoClose: 2000 }
+        );
       });
   };
 
@@ -308,6 +330,9 @@ function AddDatabase(props) {
       })
       .then((res) => {
         if (res.status == 200) {
+          toast.success(`Successfully deleted the database.`, {
+            autoClose: 2000,
+          });
           fetchAllDatabases();
           setEditModalShow(false);
           setValues({
@@ -326,7 +351,10 @@ function AddDatabase(props) {
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(
+          `Failed to delete the database, please try again. ${err.response.data.message}`,
+          { autoClose: 2000 }
+        );
       });
   };
 
