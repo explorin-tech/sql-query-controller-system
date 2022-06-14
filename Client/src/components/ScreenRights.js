@@ -3,6 +3,9 @@ import { useTable, useSortBy } from 'react-table';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import * as BACKEND_URLS from '../utils/BackendUrls';
 import * as actions from '../store/actions/Actions';
 
@@ -28,6 +31,7 @@ const PopulateUsers = ({ users }) => {
 };
 
 function ScreenRights(props) {
+  toast.configure();
   const [filteredData, setFilteredData] = useState([]);
 
   const [values, setValues] = useState({
@@ -113,7 +117,10 @@ function ScreenRights(props) {
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(
+          `Error while fetching user screen rights, please try again. ${err.response.data.message}`,
+          { autoClose: 2000 }
+        );
       });
   };
 
@@ -130,11 +137,18 @@ function ScreenRights(props) {
         })
         .then((res) => {
           if (res.status === 200) {
+            toast.success(
+              `Successfully fetched screen rights for selected user.`,
+              { autoClose: 2000 }
+            );
             props.set_all_screen_rights_for_selected_user(res.data.data);
           }
         })
         .catch((err) => {
-          console.log(err);
+          toast.error(
+            `Error while fetching screen rights for selected user, please try again. ${err.response.data.message}`,
+            { autoClose: 2000 }
+          );
         });
     } else {
       setFilteredData([]);
@@ -152,7 +166,12 @@ function ScreenRights(props) {
         props.set_all_users(res.data.data);
       })
       .catch((err) => {
-        console.log(err);
+        toast.err(
+          `Error while fetching list of users to populate user dropdown. ${err.response.data.message}`,
+          {
+            autoClose: 2000,
+          }
+        );
       });
   };
 
@@ -204,11 +223,22 @@ function ScreenRights(props) {
       )
       .then((res) => {
         if (res.status === 200) {
+          toast.success(
+            `Successfully edited screen rights for selected user.`,
+            {
+              autoClose: 2000,
+            }
+          );
           fetchScreenRightsForSelectedUser();
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.err(
+          `FAiled to edit screen rights for selected user, please try again. ${err.response.data.message}`,
+          {
+            autoClose: 2000,
+          }
+        );
       });
   };
 
