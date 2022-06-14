@@ -6,6 +6,9 @@ import Acrdn from '../common/Accordion';
 
 import axios from 'axios';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import * as BACKEND_URLS from '../utils/BackendUrls';
 
 import * as CONSTANTS from '../utils/AppConstants';
@@ -14,7 +17,7 @@ import { connect } from 'react-redux';
 import * as actions from '../store/actions/Actions';
 
 function Home(props) {
-  const [error, setError] = useState('');
+  toast.configure();
 
   const fetchUserPermissions = () => {
     axios
@@ -31,7 +34,10 @@ function Home(props) {
       })
       .catch((err) => {
         if (err.response) {
-          setError(error.response.data.message);
+          toast.error(
+            `Error while fetching user permissions rights, please try again. ${err.response.data.message}`,
+            { autoClose: 2000 }
+          );
         }
       });
   };
@@ -49,7 +55,10 @@ function Home(props) {
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(
+          `Error while fetching queries awaiting for your approval :  ${err.response.data.message}`,
+          { autoClose: 2000 }
+        );
       });
   };
 
