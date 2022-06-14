@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import AddApplication from '../components/AddApplication';
 import AddDatabase from '../components/AddDatabase';
 import AddUser from '../components/UserWindow';
@@ -23,8 +26,8 @@ import '../static/css/dashboard.css';
 import '../static/css/table.css';
 
 function Dashboard(props) {
+  toast.configure();
   const history = useHistory();
-  const [error, setError] = useState('');
 
   useEffect(() => {
     if (props.db_user.user == null) {
@@ -41,9 +44,12 @@ function Dashboard(props) {
               props.set_db_user(res.data.data[0]);
             }
           })
-          .catch(function (error) {
-            if (error.response) {
-              setError(error.response.data.message);
+          .catch((err) => {
+            if (err.response) {
+              toast.error(
+                `Failed to fetch loggedIn user details, please try again ${err.response.data.message}`,
+                { autoClose: 2000 }
+              );
             }
           });
       } else {
