@@ -3,6 +3,10 @@ import { useTable, useGlobalFilter, useSortBy } from 'react-table';
 import { connect } from 'react-redux';
 
 import * as actions from '../store/actions/Actions';
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import axios from 'axios';
 
 import * as BACKEND_URLS from '../utils/BackendUrls';
@@ -22,6 +26,7 @@ function GlobalFilter({ filter, setFilter }) {
 }
 
 function DraftQueries(props) {
+  toast.configure();
   const [filteredData, setFilteredData] = useState([]);
   const history = useHistory();
 
@@ -124,12 +129,18 @@ function DraftQueries(props) {
         },
       })
       .then((res) => {
-        console.log(res);
         if (res.status == 200) {
+          toast.success(`Successfully fetched draft queries.`, {
+            autoClose: 2000,
+          });
           setFilteredData(res.data.data);
         }
       })
       .catch((err) => {
+        toast.error(
+          `Error while fetching draft queries, please try again. ${err.response.data.message}`,
+          { autoClose: 2000 }
+        );
         console.log(err);
       });
   };
