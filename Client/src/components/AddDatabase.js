@@ -705,9 +705,9 @@ function AddDatabase(props) {
                       selectEditDatabase(row.original);
                     }}
                   >
-                    {row.cells.map((cell) => {
+                    {row.cells.map((cell, index) => {
                       return (
-                        <td {...cell.getCellProps()} key={cell.value}>
+                        <td {...cell.getCellProps()} key={index}>
                           {cell.render('Cell')}
                         </td>
                       );
