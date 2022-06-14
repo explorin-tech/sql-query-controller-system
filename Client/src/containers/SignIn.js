@@ -6,18 +6,22 @@ import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../store/actions/Actions';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import * as APPLICATION_URLS from '../utils/ApplicationUrls';
 import * as BACKEND_URLS from '../utils/BackendUrls';
 
 import axios from 'axios';
 
 function SignIn(props) {
+  toast.configure();
+
   const history = useHistory();
   const [values, setValues] = useState({
     email_id: '',
     password: '',
   });
-  const [error, setError] = useState('');
 
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
@@ -35,14 +39,18 @@ function SignIn(props) {
       .then((res) => {
         if (res.status === 200) {
           props.login_success();
+          toast.success(`User loggedIn successfully.`, { autoClose: 2000 });
           localStorage.setItem('token', res.data.data);
           history.push(APPLICATION_URLS.DASHBOARD_PAGE);
         }
       })
-      .catch(function (error) {
+      .catch((err) => {
         props.login_failed();
-        if (error.response) {
-          setError(error.response.data.message);
+        if (err.response) {
+          toast.error(
+            `Failed to login, please try again : ${err.response.data.message}`,
+            { autoClose: 2000 }
+          );
         }
       });
   };
@@ -69,7 +77,6 @@ function SignIn(props) {
               value={values.password}
             />
             <button type="submit">Continue</button>
-            <p className="error-message">{error}</p>
           </form>
         </div>
       </div>
