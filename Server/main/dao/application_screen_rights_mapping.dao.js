@@ -10,7 +10,7 @@ module.exports.getAllScreenRightsMappingForAnUser = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -22,7 +22,7 @@ module.exports.getScreenRightsMappingForAnUser = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -35,7 +35,7 @@ module.exports.addScreenRightsMappingForAnUser = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -48,7 +48,7 @@ module.exports.editScreenRightsMappingForAnUser = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -61,6 +61,6 @@ module.exports.deleteScreenRightsMappingsForAnUser = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };

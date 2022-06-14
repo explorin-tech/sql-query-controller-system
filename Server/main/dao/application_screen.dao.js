@@ -8,7 +8,7 @@ module.exports.getAllApplicationScreens = async () => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -20,7 +20,7 @@ module.exports.getScreenDetails = async (params) => {
     ]);
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -33,7 +33,7 @@ module.exports.addApplicationScreen = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -46,7 +46,7 @@ module.exports.editApplicationScreen = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -58,6 +58,6 @@ module.exports.deleteScreen = async (params) => {
     ]);
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };

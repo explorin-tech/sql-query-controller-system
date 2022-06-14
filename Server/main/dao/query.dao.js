@@ -10,7 +10,7 @@ module.exports.getAllDraftQueriesForAdmin = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -23,7 +23,7 @@ module.exports.getAllHistoryQueriesForAdmin = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -37,7 +37,7 @@ module.exports.getAllDraftQueriesForDev = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -51,7 +51,7 @@ module.exports.getAllHistoryQueriesForDev = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -65,7 +65,7 @@ module.exports.getAllDraftQueriesForApplicationOwner = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -79,7 +79,7 @@ module.exports.getAllHistoryQueriesForApplicationOwner = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -91,7 +91,7 @@ module.exports.getQueryDetailsForQueryID = async (params) => {
     ]);
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -101,7 +101,7 @@ module.exports.postNewQuery = async (params) => {
     const result = await pool.query(Query.POST_ADD_NEW_QUERY, values);
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -114,7 +114,7 @@ module.exports.editQueryStatusForApproval = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -127,7 +127,7 @@ module.exports.editQueryStatusForRejection = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -138,7 +138,7 @@ module.exports.editQueryDetails = async (params) => {
     return result.rows;
   } catch (err) {
     console.log(err);
-    return err;
+    throw err;
   }
 };
 
@@ -151,7 +151,7 @@ module.exports.getUserIDOfApplicationOwnersOfDBAM = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -163,7 +163,7 @@ module.exports.getRawQueryDetailsForQueryID = async (params) => {
     ]);
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -181,7 +181,7 @@ module.exports.executeQuery = async (params) => {
     const result = await new_pool.query(rawQueryDetails['Q_RawQuery']);
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -191,6 +191,6 @@ module.exports.markQueryAsExecuted = async (params) => {
     const result = await pool.query(Query.MARK_A_QUERY_AS_EXECUTED, [query_id]);
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };

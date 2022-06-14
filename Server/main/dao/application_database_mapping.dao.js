@@ -8,7 +8,7 @@ module.exports.getAllDatabaseTypes = async () => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -19,7 +19,7 @@ module.exports.getAllDatabases = async () => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -32,7 +32,7 @@ module.exports.getAllDatabasesMappedForAnUser = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -46,7 +46,7 @@ module.exports.getDatabaseDetails = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -59,8 +59,7 @@ module.exports.addDatabase = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    console.log(err);
-    return err;
+    throw err;
   }
 };
 
@@ -73,7 +72,7 @@ module.exports.editDatabase = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -86,6 +85,6 @@ module.exports.deleteDatabase = async (params) => {
       [database_application_mapping_id]
     );
   } catch (err) {
-    return err;
+    throw err;
   }
 };

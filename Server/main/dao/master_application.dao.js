@@ -34,7 +34,7 @@ module.exports.getApplicationDetails = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -47,8 +47,7 @@ module.exports.addApplication = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    console.log(err);
-    return err;
+    throw err;
   }
 };
 
@@ -61,7 +60,7 @@ module.exports.editApplication = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -74,6 +73,6 @@ module.exports.deleteApplication = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };

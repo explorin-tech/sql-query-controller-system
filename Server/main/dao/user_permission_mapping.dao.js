@@ -10,7 +10,7 @@ module.exports.getAllUserPermissionMappings = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -24,8 +24,7 @@ module.exports.getAllUserPermissionMappingsForUserAccordingToAccessRights =
       );
       return result.rows;
     } catch (err) {
-      console.log(err);
-      return err;
+      throw err;
     }
   };
 
@@ -38,7 +37,7 @@ module.exports.addUserPermissionRightsMapping = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -51,7 +50,7 @@ module.exports.editUserPermissionRightsMapping = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -65,6 +64,6 @@ module.exports.getUserPermissionMappingArray = async (params) => {
     );
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };

@@ -6,7 +6,7 @@ module.exports.getAllUserTypes = async () => {
     const result = await pool.query(UserQuery.SELECT_ALL_USER_TYPES);
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -15,7 +15,7 @@ module.exports.getAllUsers = async () => {
     const result = await pool.query(UserQuery.SELECT_ALL_USERS);
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -25,7 +25,7 @@ module.exports.getUserDetails = async (params) => {
     const result = await pool.query(UserQuery.GET_USER_DETAILS, [user_id]);
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -37,7 +37,7 @@ module.exports.getUserDetailsForEmail = async (params) => {
     ]);
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -47,7 +47,7 @@ module.exports.addUser = async (params) => {
     const result = await pool.query(UserQuery.ADD_NEW_USER, values);
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
@@ -67,6 +67,6 @@ module.exports.deleteUser = async (params) => {
     const result = await pool.query(UserQuery.DELETE_USER, [user_id]);
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
