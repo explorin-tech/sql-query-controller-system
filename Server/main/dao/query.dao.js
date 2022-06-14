@@ -206,3 +206,13 @@ module.exports.getQueriesAwaitingForApproval = async (params) => {
     throw err;
   }
 };
+
+module.exports.getRecentQueries = async (params) => {
+  try {
+    const user_id = params.user_id;
+    const result = await pool.query(Query.GET_RECENT_QUERIES, [user_id]);
+    return result.rows;
+  } catch (err) {
+    throw err;
+  }
+};

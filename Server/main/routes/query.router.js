@@ -52,4 +52,10 @@ router.get(routeNames.GET_QUERIES_AWAITING_APPROVAL, [
   authValidator,
   QueryService.GET_queriesAwaitingForApproval,
 ]);
+
+// get queries which have recent been executed by the user
+router.get(routeNames.GET_RECENT_QUERIES, [
+  authValidator,
+  QueryService.GET_RecentQueries,
+]);
 module.exports = router;

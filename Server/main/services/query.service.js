@@ -293,3 +293,20 @@ module.exports.GET_queriesAwaitingForApproval = async (
     });
   }
 };
+
+module.exports.GET_RecentQueries = async (httpRequest, httpResponse, next) => {
+  try {
+    const { decoded } = httpRequest.headers;
+    const user_id = decoded.UserID;
+    const params = {
+      user_id: user_id,
+    };
+    const result = await QueryDao.getRecentQueries(params);
+    return _200(httpResponse, result);
+  } catch (err) {
+    return _error(httpResponse, {
+      type: 'generic',
+      message: err,
+    });
+  }
+};

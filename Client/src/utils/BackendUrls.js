@@ -47,3 +47,4 @@ export const EDIT_QUERY = '/api/put/query_in_set_for_approval';
 export const EXECUTE_QUERY = '/api/post/execute_query';
 export const GET_QUERIES_AWAITING_APPROVAL =
   '/api/get/queries_awaiting_approval';
+export const GET_RECENT_QUERIES = '/api/get/recent_queries';

@@ -16,7 +16,7 @@ export default function Acrdn({ data, heading }) {
           <Accordion.Body>
             <div>
               <div>
-                {data.map((each_query) => {
+                {data?.map((each_query) => {
                   return (
                     <li
                       key={each_query['Q_ID']}

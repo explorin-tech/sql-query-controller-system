@@ -20,6 +20,7 @@ import * as actions from '../store/actions/Actions';
 function Home(props) {
   toast.configure();
   const [queriesAwaitingApproval, setQueriesAwaitingApproval] = useState([]);
+  const [recentQueries, setRecentQueries] = useState([]);
   const history = useHistory();
 
   const fetchUserPermissions = () => {
@@ -68,9 +69,30 @@ function Home(props) {
       });
   };
 
+  const fetchRecentQueries = () => {
+    axios
+      .get(BACKEND_URLS.GET_RECENT_QUERIES, {
+        headers: {
+          token: localStorage.getItem('token'),
+        },
+      })
+      .then((res) => {
+        if (res.status == 200) {
+          setRecentQueries(res.data.data);
+        }
+      })
+      .catch((err) => {
+        toast.error(
+          `Error while fetching recent queries :  ${err.response.data.message}`,
+          { autoClose: 2000 }
+        );
+      });
+  };
+
   useEffect(() => {
     fetchUserPermissions();
     fetchQueriesAwaitingApprovalFromUser();
+    fetchRecentQueries();
   }, []);
 
   return (
@@ -83,7 +105,7 @@ function Home(props) {
           />
         </div>
         <div className="row">
-          <Acrdn data={queriesAwaitingApproval} heading={'Recent Queries'} />
+          <Acrdn data={recentQueries} heading={'Recent Queries'} />
         </div>
         <h4>Applications</h4>
         <div className="row">
