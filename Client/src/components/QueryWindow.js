@@ -20,7 +20,17 @@ const PopulateDatabaseMappings = ({ databases }) => {
       {databases.map((database) => {
         if (database['UP_RightToRead']) {
           return (
-            <option key={database['UP_DBAM_ID']} value={database['UP_DBAM_ID']}>
+            <option
+              key={database['UP_DBAM_ID']}
+              value={database['UP_DBAM_ID']}
+              name={
+                database['MA_Name'] +
+                '_' +
+                database['DBAM_DBName'] +
+                '_' +
+                database['DBT_Name']
+              }
+            >
               {database['MA_Name']} - {database['DBAM_DBName']} -{' '}
               {database['DBT_Name']}
             </option>
@@ -32,52 +42,69 @@ const PopulateDatabaseMappings = ({ databases }) => {
 };
 
 const DisplayResult = ({ result }) => {
-  let keys = [];
-  if (result[0]) {
-    keys = Object.keys(result[0]);
-  }
+  const is_result_an_array = Array.isArray(result);
+  if (is_result_an_array) {
+    let keys = [];
+    if (result[0]) {
+      keys = Object.keys(result[0]);
+    }
 
-  return (
-    <div className="application">
-      {result ? (
-        <>
-          <div className="appTab">
-            <span className="headData"> Result </span>
-            <CSVLink data={result} filename="Result">
-              <i className="fas fa-download download"></i> Download
-            </CSVLink>
-          </div>
-          <div className="selectTable">
-            <table>
-              <thead>
-                <tr className="tableHeading">
-                  {keys?.map((each_heading) => {
-                    return <th key={each_heading}>{each_heading}</th>;
+    return (
+      <div className="application">
+        {result ? (
+          <>
+            <div className="appTab">
+              <span className="headData"> Result </span>
+              <CSVLink data={result} filename="Result">
+                <i className="fas fa-download download"></i> Download
+              </CSVLink>
+            </div>
+            <div className="selectTable">
+              <table>
+                <thead>
+                  <tr className="tableHeading">
+                    {keys?.map((each_heading) => {
+                      return <th key={each_heading}>{each_heading}</th>;
+                    })}
+                  </tr>
+                </thead>
+                <tbody>
+                  {result?.map((each_row, idx) => {
+                    return (
+                      <tr key={idx}>
+                        {Object.values(each_row).map((each_data, index) => {
+                          return <td key={index}>{each_data}</td>;
+                        })}
+                      </tr>
+                    );
                   })}
-                </tr>
-              </thead>
-              <tbody>
-                {result.map((each_row, idx) => {
-                  return (
-                    <tr key={idx}>
-                      {Object.values(each_row).map((each_data, index) => {
-                        return <td key={index}>{each_data}</td>;
-                      })}
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        </>
-      ) : null}
-    </div>
-  );
+                </tbody>
+              </table>
+            </div>
+          </>
+        ) : null}
+      </div>
+    );
+  } else {
+    return (
+      <div className="application">
+        {result ? (
+          <>
+            <div className="appTab">
+              <span className="headData"> Result </span>
+            </div>
+            <div className="selectTable">Query Executed Successfully</div>
+          </>
+        ) : null}
+      </div>
+    );
+  }
 };
 
 function QueryWindow(props) {
   const history = useHistory();
   toast.configure();
+  const current_date = new Date();
 
   const [values, setValues] = useState({
     queryID: '',
@@ -96,7 +123,32 @@ function QueryWindow(props) {
     queryTypeIsApproved: false,
   });
 
+  const getDatabaseNameForID = (databaseMappingID) => {
+    let name = '';
+    if (
+      props.user_permissions.user_permissions[0]
+        ? (name = props.user_permissions.user_permissions.filter(
+            (each_permission_array) => {
+              if (each_permission_array['UP_DBAM_ID'] == databaseMappingID) {
+                console.log(each_permission_array);
+                return each_permission_array;
+              }
+            }
+          ))
+        : null
+    )
+      return (
+        name[0]['MA_Name'] +
+        '_' +
+        name[0]['DBAM_DBName'] +
+        '_' +
+        name[0]['DBT_Name']
+      );
+  };
+
   const [queryResult, setQueryResult] = useState([]);
+
+  console.log(queryResult, 'QUERY RESULT');
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
   };
@@ -312,7 +364,14 @@ function QueryWindow(props) {
               database_application_mapping_id: values.databaseMappingID,
               query_status_id:
                 CONSTANTS.QUERY_STATUS_ID_MAPPING['HOLD_FOR_APPROVAL'],
-              sys_defined_name: 'SYS_DEFINED_NAME',
+              sys_defined_name:
+                values.userDefQueryName +
+                '_' +
+                getDatabaseNameForID(values.databaseMappingID) +
+                '_' +
+                current_date.getFullYear() +
+                current_date.getMonth() +
+                current_date.getDate(),
               user_defined_name: values.userDefQueryName,
               raw_query: values.rawQuery,
               query_desc: values.queryDescription,
@@ -396,7 +455,14 @@ function QueryWindow(props) {
                 database_application_mapping_id: values.databaseMappingID,
                 query_status_id:
                   CONSTANTS.QUERY_STATUS_ID_MAPPING['SET_FOR_APPROVAL'],
-                sys_defined_name: 'SYS_DEFINED_NAME',
+                sys_defined_name:
+                  values.userDefQueryName +
+                  '_' +
+                  getDatabaseNameForID(values.databaseMappingID) +
+                  '_' +
+                  current_date.getFullYear() +
+                  current_date.getMonth() +
+                  current_date.getDate(),
                 user_defined_name: values.userDefQueryName,
                 raw_query: values.rawQuery,
                 query_desc: values.queryDescription,
@@ -574,7 +640,14 @@ function QueryWindow(props) {
               database_application_mapping_id: values.databaseMappingID,
               query_status_id:
                 CONSTANTS.QUERY_STATUS_ID_MAPPING['APPROVED_FOR_EVER'],
-              sys_defined_name: 'SYS_DEFINED_NAME',
+              sys_defined_name:
+                values.userDefQueryName +
+                '_' +
+                getDatabaseNameForID(values.databaseMappingID) +
+                '_' +
+                current_date.getFullYear() +
+                current_date.getMonth() +
+                current_date.getDate(),
               user_defined_name: values.userDefQueryName,
               raw_query: values.rawQuery,
               query_desc: values.queryDescription,

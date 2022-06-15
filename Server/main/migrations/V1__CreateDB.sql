@@ -101,10 +101,10 @@ CREATE TABLE "Query"(
 	"Q_ID" BIGSERIAL PRIMARY KEY,
 	"Q_DBAM_ID" BIGSERIAL REFERENCES "DataBaseApplicationMapping"("DBAM_ID") ON DELETE CASCADE,
 	"Q_QS_ID" SERIAL REFERENCES "QueryStatus"("QS_ID"),
-	"Q_SysDefName" VARCHAR(200) UNIQUE NOT NULL,
-	"Q_UserDefName" VARCHAR(200) UNIQUE NOT NULL,
-	"Q_RawQuery" VARCHAR(1000) NOT NULL,
-	"Q_QueryDesc" VARCHAR(500) NOT NULL,
+	"Q_SysDefName" VARCHAR(10000) UNIQUE NOT NULL,
+	"Q_UserDefName" VARCHAR(10000) UNIQUE NOT NULL,
+	"Q_RawQuery" VARCHAR(100000) NOT NULL,
+	"Q_QueryDesc" VARCHAR(10000) NOT NULL,
 	"Q_IsExecuted" BOOLEAN DEFAULT FALSE,
 	"Q_LastExecutedOn" TIMESTAMPTZ,
 	"Q_CreatedOn" TIMESTAMPTZ,
@@ -116,8 +116,8 @@ CREATE TABLE "Query"(
 	"Q_IsApproved" BOOLEAN DEFAULT FALSE,
 	"Q_ApprovedOn" TIMESTAMPTZ,
 	"Q_ApprovedBy" BIGINT,
-	"Q_Comments" VARCHAR(1000),
-	"Q_BackupTableName" VARCHAR(1000)
+	"Q_Comments" VARCHAR(10000),
+	"Q_BackupTableName" VARCHAR(10000)
 );
 
 INSERT INTO "UserType"("UT_Name") VALUES('AD') ON CONFLICT DO NOTHING;
@@ -149,3 +149,9 @@ We now need to assign an admin user --
 	}
 }
 
+INSERT INTO "ApplicationScreen"("AS_Name", "AS_AddedOn" , "AS_AddedBy", "AS_UpdatedOn", "AS_UpdatedBy") VALUES('User Window', NOW(), 1, NOW(), 1 ) ON CONFLICT DO NOTHING;
+INSERT INTO "ApplicationScreen"("AS_Name", "AS_AddedOn" , "AS_AddedBy", "AS_UpdatedOn", "AS_UpdatedBy") VALUES('Master Application Window', NOW(), 1, NOW(), 1 ) ON CONFLICT DO NOTHING;
+INSERT INTO "ApplicationScreen"("AS_Name", "AS_AddedOn" , "AS_AddedBy", "AS_UpdatedOn", "AS_UpdatedBy") VALUES('Database Mapping Window', NOW(), 1, NOW(), 1 ) ON CONFLICT DO NOTHING;
+INSERT INTO "ApplicationScreen"("AS_Name", "AS_AddedOn" , "AS_AddedBy", "AS_UpdatedOn", "AS_UpdatedBy") VALUES('Screen Rights', NOW(), 1, NOW(), 1 ) ON CONFLICT DO NOTHING;
+INSERT INTO "ApplicationScreen"("AS_Name", "AS_AddedOn" , "AS_AddedBy", "AS_UpdatedOn", "AS_UpdatedBy") VALUES('User Permissions', NOW(), 1, NOW(), 1 ) ON CONFLICT DO NOTHING;
+INSERT INTO "ApplicationScreen"("AS_Name", "AS_AddedOn" , "AS_AddedBy", "AS_UpdatedOn", "AS_UpdatedBy") VALUES('Query Window', NOW(), 1, NOW(), 1 ) ON CONFLICT DO NOTHING;

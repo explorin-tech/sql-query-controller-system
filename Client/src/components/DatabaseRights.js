@@ -177,10 +177,7 @@ function DatabaseRights(props) {
           }
         })
         .catch((err) => {
-          toast.error(
-            `Error while fetching user permissions rights for the selected user, please try again. ${err}`,
-            { autoClose: 2000 }
-          );
+          console.log(err);
         });
     } else {
       setFilteredData([]);

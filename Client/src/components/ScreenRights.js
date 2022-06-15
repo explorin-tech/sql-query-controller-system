@@ -137,10 +137,7 @@ function ScreenRights(props) {
           }
         })
         .catch((err) => {
-          // toast.error(
-          //   `Error while fetching screen rights for selected user, please try again. ${err}`,
-          //   { autoClose: 2000 }
-          // );
+          console.log(err);
         });
     } else {
       setFilteredData([]);
