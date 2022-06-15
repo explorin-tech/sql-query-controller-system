@@ -161,7 +161,7 @@ function AddUser(props) {
           }
         })
         .catch((err) => {
-          toast.error(`Failed to add new user. ${err.response.data.message}`, {
+          toast.error(`Failed to add new user. ${err.detail}`, {
             autoClose: 2000,
           });
         });
@@ -179,12 +179,9 @@ function AddUser(props) {
         props.set_all_users(res.data.data);
       })
       .catch((err) => {
-        toast.error(
-          `Failed to fetch list of all users. ${err.response.data.message}`,
-          {
-            autoClose: 2000,
-          }
-        );
+        toast.error(`Failed to fetch list of all users. ${err}`, {
+          autoClose: 2000,
+        });
       });
   };
 
@@ -218,7 +215,7 @@ function AddUser(props) {
             first_name: values.firstName,
             last_name: values.lastName,
             email: values.email,
-            user_type_id: values.userTypeID,
+            user_type_id: CONSTANTS.USER_TYPE_ID_MAPPING[values.userType],
             is_active: values.isActive,
             is_active_direct_user: values.isActiveDirectUser,
           },
@@ -250,12 +247,9 @@ function AddUser(props) {
         }
       })
       .catch((err) => {
-        toast.error(
-          `Failed to edit user details, please try again. ${err.response.data.message}`,
-          {
-            autoClose: 2000,
-          }
-        );
+        toast.error(`Failed to edit user details, please try again. ${err}`, {
+          autoClose: 2000,
+        });
       });
   };
 
@@ -291,12 +285,9 @@ function AddUser(props) {
         }
       })
       .catch((err) => {
-        toast.error(
-          `Failed to delete the user, please try again. ${err.response.data.message}`,
-          {
-            autoClose: 2000,
-          }
-        );
+        toast.error(`Failed to delete the user, please try again. ${err}`, {
+          autoClose: 2000,
+        });
       });
   };
   useEffect(() => {
@@ -330,6 +321,7 @@ function AddUser(props) {
                         type="text"
                         value={values.firstName}
                         onChange={handleChange('firstName')}
+                        required
                       />
                       <br />
                       <br />
@@ -352,6 +344,7 @@ function AddUser(props) {
                         type="email"
                         value={values.email}
                         onChange={handleChange('email')}
+                        required
                       />
                       <br />
                       <br />
@@ -362,6 +355,7 @@ function AddUser(props) {
                         type="password"
                         value={values.password}
                         onChange={handleChange('password')}
+                        required
                       />
                       <br />
                       <br />
@@ -439,6 +433,7 @@ function AddUser(props) {
                         type="text"
                         value={values.firstName}
                         onChange={handleChange('firstName')}
+                        required
                       />
                       <br />
                       <br />
@@ -461,6 +456,7 @@ function AddUser(props) {
                         type="email"
                         value={values.email}
                         onChange={handleChange('email')}
+                        required
                       />
                       <br />
                       <br />
@@ -486,7 +482,13 @@ function AddUser(props) {
                         value={values.userType}
                       >
                         {props.db_user.user ? (
-                          <RenderOptionsForUserTypes userType="AD" />
+                          <RenderOptionsForUserTypes
+                            userType={
+                              props.db_user.user[
+                                CONSTANTS.USER_TYPES_FIELD_NAME
+                              ]
+                            }
+                          />
                         ) : null}
                       </select>
                       <br />

@@ -148,7 +148,7 @@ function AddDatabase(props) {
       })
       .catch((err) => {
         toast.error(
-          `Error while fetching list of all applications, please try again. ${err.response.data.message}`,
+          `Error while fetching list of all applications, please try again. ${err}`,
           { autoClose: 2000 }
         );
       });
@@ -168,7 +168,7 @@ function AddDatabase(props) {
       })
       .catch((err) => {
         toast.error(
-          `Error while fetching list of all databases, please try again. ${err.response.data.message}`,
+          `Error while fetching list of all databases, please try again. ${err}`,
           { autoClose: 2000 }
         );
       });
@@ -230,7 +230,7 @@ function AddDatabase(props) {
       })
       .catch((err) => {
         toast.error(
-          `Failed to add the new database, please try again. ${err.response.data.message}`,
+          `Failed to add the new database, please try again. ${err}`,
           { autoClose: 2000 }
         );
       });
@@ -311,7 +311,7 @@ function AddDatabase(props) {
       })
       .catch((err) => {
         toast.error(
-          `Failed to edit the database details, please try again. ${err.response.data.message}`,
+          `Failed to edit the database details, please try again. ${err}`,
           { autoClose: 2000 }
         );
       });
@@ -351,10 +351,9 @@ function AddDatabase(props) {
         }
       })
       .catch((err) => {
-        toast.error(
-          `Failed to delete the database, please try again. ${err.response.data.message}`,
-          { autoClose: 2000 }
-        );
+        toast.error(`Failed to delete the database, please try again. ${err}`, {
+          autoClose: 2000,
+        });
       });
   };
 

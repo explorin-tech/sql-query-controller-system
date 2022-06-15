@@ -47,10 +47,9 @@ function SignIn(props) {
       .catch((err) => {
         props.login_failed();
         if (err.response) {
-          toast.error(
-            `Failed to login, please try again : ${err.response.data.message}`,
-            { autoClose: 2000 }
-          );
+          toast.error(`Failed to login, please try again : ${err}`, {
+            autoClose: 2000,
+          });
         }
       });
   };

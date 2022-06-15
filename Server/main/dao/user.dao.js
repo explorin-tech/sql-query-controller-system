@@ -45,6 +45,7 @@ module.exports.addUser = async (params) => {
   try {
     const values = params.values;
     const result = await pool.query(UserQuery.ADD_NEW_USER, values);
+    console.log(result);
     return result.rows;
   } catch (err) {
     throw err;

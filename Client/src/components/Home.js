@@ -39,7 +39,7 @@ function Home(props) {
       .catch((err) => {
         if (err.response) {
           toast.error(
-            `Error while fetching user permissions rights, please try again. ${err.response.data.message}`,
+            `Error while fetching user permissions rights, please try again. ${err}`,
             { autoClose: 2000 }
           );
         }
@@ -63,7 +63,7 @@ function Home(props) {
       })
       .catch((err) => {
         toast.error(
-          `Error while fetching queries awaiting for your approval :  ${err.response.data.message}`,
+          `Error while fetching queries awaiting for your approval :  ${err}`,
           { autoClose: 2000 }
         );
       });
@@ -82,10 +82,9 @@ function Home(props) {
         }
       })
       .catch((err) => {
-        toast.error(
-          `Error while fetching recent queries :  ${err.response.data.message}`,
-          { autoClose: 2000 }
-        );
+        toast.error(`Error while fetching recent queries :  ${err}`, {
+          autoClose: 2000,
+        });
       });
   };
 

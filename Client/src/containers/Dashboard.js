@@ -47,7 +47,7 @@ function Dashboard(props) {
           .catch((err) => {
             if (err.response) {
               toast.error(
-                `Failed to fetch loggedIn user details, please try again ${err.response.data.message}`,
+                `Failed to fetch loggedIn user details, please try again ${err}`,
                 { autoClose: 2000 }
               );
             }

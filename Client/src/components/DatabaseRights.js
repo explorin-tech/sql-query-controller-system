@@ -151,7 +151,7 @@ function DatabaseRights(props) {
       })
       .catch((err) => {
         toast.error(
-          `Error while fetching user permissions rights, please try again. ${err.response.data.message}`,
+          `Error while fetching user permissions rights, please try again. ${err}`,
           { autoClose: 2000 }
         );
       });
@@ -178,7 +178,7 @@ function DatabaseRights(props) {
         })
         .catch((err) => {
           toast.error(
-            `Error while fetching user permissions rights for the selected user, please try again. ${err.response.data.message}`,
+            `Error while fetching user permissions rights for the selected user, please try again. ${err}`,
             { autoClose: 2000 }
           );
         });
@@ -198,10 +198,9 @@ function DatabaseRights(props) {
         props.set_all_users(res.data.data);
       })
       .catch((err) => {
-        toast.error(
-          `Failed to fetch list of all users. ${err.response.data.message}`,
-          { autoClose: 2000 }
-        );
+        toast.error(`Failed to fetch list of all users. ${err}`, {
+          autoClose: 2000,
+        });
       });
   };
 
@@ -268,7 +267,7 @@ function DatabaseRights(props) {
       })
       .catch((err) => {
         toast.err(
-          `FAiled to edit screen rights for selected user, please try again. ${err.response.data.message}`,
+          `FAiled to edit screen rights for selected user, please try again. ${err}`,
           {
             autoClose: 2000,
           }

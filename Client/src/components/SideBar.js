@@ -29,7 +29,7 @@ function Sidebar(props) {
       })
       .catch((err) => {
         if (err.response) {
-          setError(err.response.data.message);
+          setError(err);
         }
       });
   };
@@ -40,121 +40,194 @@ function Sidebar(props) {
   return (
     <Fragment>
       <div className="sideBar">
-        <div className="sideBarUpper">
-          {props.screen_rights.screen_rights[0] ? (
-            <>
-              <MenuItem
-                to={APPLICATION_URLS.DASHBOARD_PAGE}
-                image={require('../static/images/dummy.png')}
-                title="Home"
-              />
-              {props.screen_rights.screen_rights.find((each_screen_right) => {
-                if (
-                  each_screen_right['AS_Name'] ===
-                  CONSTANTS.APPLICATION_SCREENS.QUERY_WINDOW
-                ) {
-                  return each_screen_right['ASR_RightToView'];
-                }
-              }) ? (
-                <MenuItem
-                  to={APPLICATION_URLS.ADD_NEW_QUERY}
-                  image={require('../static/images/dummy.png')}
-                  title="Add new Query"
-                />
-              ) : null}
+        {props.db_user.user ? (
+          props.db_user.user['UT_Name'] == 'AD' ? (
+            <div className="sideBarUpper">
+              {props.screen_rights.screen_rights[0] ? (
+                <>
+                  <MenuItem
+                    to={APPLICATION_URLS.DASHBOARD_PAGE}
+                    image={require('../static/images/dummy.png')}
+                    title="Home"
+                  />
 
-              {props.screen_rights.screen_rights.find((each_screen_right) => {
-                if (
-                  each_screen_right['AS_Name'] ===
-                  CONSTANTS.APPLICATION_SCREENS.MASTER_APPLICATION_WINDOW
-                ) {
-                  return each_screen_right['ASR_RightToView'];
-                }
-              }) ? (
-                <MenuItem
-                  to={APPLICATION_URLS.APPLICATION_PAGE}
-                  image={require('../static/images/dummy.png')}
-                  title="Add Application"
-                />
-              ) : null}
+                  <MenuItem
+                    to={APPLICATION_URLS.ADD_NEW_QUERY}
+                    image={require('../static/images/dummy.png')}
+                    title="Add new Query"
+                  />
 
-              {props.screen_rights.screen_rights.find((each_screen_right) => {
-                if (
-                  each_screen_right['AS_Name'] ===
-                  CONSTANTS.APPLICATION_SCREENS.DATABASE_MAPPING_WINDOW
-                ) {
-                  return each_screen_right['ASR_RightToView'];
-                }
-              }) ? (
-                <MenuItem
-                  to={APPLICATION_URLS.DATABASE_PAGE}
-                  image={require('../static/images/dummy.png')}
-                  title="Application-Database Mappings"
-                />
-              ) : null}
+                  <MenuItem
+                    to={APPLICATION_URLS.APPLICATION_PAGE}
+                    image={require('../static/images/dummy.png')}
+                    title="Add Application"
+                  />
 
-              {props.screen_rights.screen_rights.find((each_screen_right) => {
-                if (
-                  each_screen_right['AS_Name'] ===
-                  CONSTANTS.APPLICATION_SCREENS.SCREEN_RIGHTS_WINDOW
-                ) {
-                  return each_screen_right['ASR_RightToView'];
-                }
-              }) ? (
-                <MenuItem
-                  to={APPLICATION_URLS.SCREEN_RIGHTS}
-                  image={require('../static/images/dummy.png')}
-                  title="Screen Rights"
-                />
-              ) : null}
+                  <MenuItem
+                    to={APPLICATION_URLS.DATABASE_PAGE}
+                    image={require('../static/images/dummy.png')}
+                    title="Application-Database Mappings"
+                  />
 
-              {props.screen_rights.screen_rights.find((each_screen_right) => {
-                if (
-                  each_screen_right['AS_Name'] ===
-                  CONSTANTS.APPLICATION_SCREENS.SCREEN_RIGHTS_WINDOW
-                ) {
-                  return each_screen_right['ASR_RightToView'];
-                }
-              }) ? (
-                <MenuItem
-                  to={APPLICATION_URLS.DB_RIGHTS}
-                  image={require('../static/images/dummy.png')}
-                  title="Database Rights"
-                />
-              ) : null}
+                  <MenuItem
+                    to={APPLICATION_URLS.SCREEN_RIGHTS}
+                    image={require('../static/images/dummy.png')}
+                    title="Screen Rights"
+                  />
 
-              {props.screen_rights.screen_rights.find((each_screen_right) => {
-                if (
-                  each_screen_right['AS_Name'] ===
-                  CONSTANTS.APPLICATION_SCREENS.USER_WINDOW
-                ) {
-                  return each_screen_right['ASR_RightToView'];
-                }
-              }) ? (
-                <MenuItem
-                  to={APPLICATION_URLS.USER_WINDOW}
-                  image={require('../static/images/dummy.png')}
-                  title="User Window"
-                />
-              ) : null}
+                  <MenuItem
+                    to={APPLICATION_URLS.DB_RIGHTS}
+                    image={require('../static/images/dummy.png')}
+                    title="Database Rights"
+                  />
 
-              {props.screen_rights.screen_rights.find((each_screen_right) => {
-                if (
-                  each_screen_right['AS_Name'] ===
-                  CONSTANTS.APPLICATION_SCREENS.QUERY_WINDOW
-                ) {
-                  return each_screen_right['ASR_RightToView'];
-                }
-              }) ? (
-                <MenuItem
-                  to={APPLICATION_URLS.DRAFT_QUERIES_WINDOW}
-                  image={require('../static/images/dummy.png')}
-                  title="Open Draft Queries"
-                />
+                  <MenuItem
+                    to={APPLICATION_URLS.USER_WINDOW}
+                    image={require('../static/images/dummy.png')}
+                    title="User Window"
+                  />
+
+                  <MenuItem
+                    to={APPLICATION_URLS.DRAFT_QUERIES_WINDOW}
+                    image={require('../static/images/dummy.png')}
+                    title="Open Draft Queries"
+                  />
+                </>
               ) : null}
-            </>
-          ) : null}
-        </div>
+            </div>
+          ) : (
+            <div className="sideBarUpper">
+              {props.screen_rights.screen_rights[0] ? (
+                <>
+                  <MenuItem
+                    to={APPLICATION_URLS.DASHBOARD_PAGE}
+                    image={require('../static/images/dummy.png')}
+                    title="Home"
+                  />
+                  {props.screen_rights.screen_rights.find(
+                    (each_screen_right) => {
+                      if (
+                        each_screen_right['AS_Name'] ===
+                        CONSTANTS.APPLICATION_SCREENS.QUERY_WINDOW
+                      ) {
+                        return each_screen_right['ASR_RightToView'];
+                      }
+                    }
+                  ) ? (
+                    <MenuItem
+                      to={APPLICATION_URLS.ADD_NEW_QUERY}
+                      image={require('../static/images/dummy.png')}
+                      title="Add new Query"
+                    />
+                  ) : null}
+
+                  {props.screen_rights.screen_rights.find(
+                    (each_screen_right) => {
+                      if (
+                        each_screen_right['AS_Name'] ===
+                        CONSTANTS.APPLICATION_SCREENS.MASTER_APPLICATION_WINDOW
+                      ) {
+                        return each_screen_right['ASR_RightToView'];
+                      }
+                    }
+                  ) ? (
+                    <MenuItem
+                      to={APPLICATION_URLS.APPLICATION_PAGE}
+                      image={require('../static/images/dummy.png')}
+                      title="Add Application"
+                    />
+                  ) : null}
+
+                  {props.screen_rights.screen_rights.find(
+                    (each_screen_right) => {
+                      if (
+                        each_screen_right['AS_Name'] ===
+                        CONSTANTS.APPLICATION_SCREENS.DATABASE_MAPPING_WINDOW
+                      ) {
+                        return each_screen_right['ASR_RightToView'];
+                      }
+                    }
+                  ) ? (
+                    <MenuItem
+                      to={APPLICATION_URLS.DATABASE_PAGE}
+                      image={require('../static/images/dummy.png')}
+                      title="Application-Database Mappings"
+                    />
+                  ) : null}
+
+                  {props.screen_rights.screen_rights.find(
+                    (each_screen_right) => {
+                      if (
+                        each_screen_right['AS_Name'] ===
+                        CONSTANTS.APPLICATION_SCREENS.SCREEN_RIGHTS_WINDOW
+                      ) {
+                        return each_screen_right['ASR_RightToView'];
+                      }
+                    }
+                  ) ? (
+                    <MenuItem
+                      to={APPLICATION_URLS.SCREEN_RIGHTS}
+                      image={require('../static/images/dummy.png')}
+                      title="Screen Rights"
+                    />
+                  ) : null}
+
+                  {props.screen_rights.screen_rights.find(
+                    (each_screen_right) => {
+                      if (
+                        each_screen_right['AS_Name'] ===
+                        CONSTANTS.APPLICATION_SCREENS.SCREEN_RIGHTS_WINDOW
+                      ) {
+                        return each_screen_right['ASR_RightToView'];
+                      }
+                    }
+                  ) ? (
+                    <MenuItem
+                      to={APPLICATION_URLS.DB_RIGHTS}
+                      image={require('../static/images/dummy.png')}
+                      title="Database Rights"
+                    />
+                  ) : null}
+
+                  {props.screen_rights.screen_rights.find(
+                    (each_screen_right) => {
+                      if (
+                        each_screen_right['AS_Name'] ===
+                        CONSTANTS.APPLICATION_SCREENS.USER_WINDOW
+                      ) {
+                        return each_screen_right['ASR_RightToView'];
+                      }
+                    }
+                  ) ? (
+                    <MenuItem
+                      to={APPLICATION_URLS.USER_WINDOW}
+                      image={require('../static/images/dummy.png')}
+                      title="User Window"
+                    />
+                  ) : null}
+
+                  {props.screen_rights.screen_rights.find(
+                    (each_screen_right) => {
+                      if (
+                        each_screen_right['AS_Name'] ===
+                        CONSTANTS.APPLICATION_SCREENS.QUERY_WINDOW
+                      ) {
+                        return each_screen_right['ASR_RightToView'];
+                      }
+                    }
+                  ) ? (
+                    <MenuItem
+                      to={APPLICATION_URLS.DRAFT_QUERIES_WINDOW}
+                      image={require('../static/images/dummy.png')}
+                      title="Open Draft Queries"
+                    />
+                  ) : null}
+                </>
+              ) : null}
+            </div>
+          )
+        ) : null}
+
         <div className="sideBarLower">
           <button
             className="blueButton"

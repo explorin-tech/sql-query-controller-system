@@ -53,15 +53,7 @@ function ScreenRights(props) {
         Header: 'Right to View',
         accessor: 'ASR_RightToView',
         filterable: true,
-        Cell: (e) => (
-          <input
-            type="checkbox"
-            defaultChecked={e.value}
-            onClick={() => {
-              e.value = !e.value;
-            }}
-          />
-        ),
+        Cell: (e) => <input type="checkbox" defaultChecked={e.value} />,
       },
       {
         Header: 'Right to Add',
@@ -118,7 +110,7 @@ function ScreenRights(props) {
       })
       .catch((err) => {
         toast.error(
-          `Error while fetching user screen rights, please try again. ${err.response.data.message}`,
+          `Error while fetching user screen rights, please try again. ${err}`,
           { autoClose: 2000 }
         );
       });
@@ -145,10 +137,10 @@ function ScreenRights(props) {
           }
         })
         .catch((err) => {
-          toast.error(
-            `Error while fetching screen rights for selected user, please try again. ${err.response.data.message}`,
-            { autoClose: 2000 }
-          );
+          // toast.error(
+          //   `Error while fetching screen rights for selected user, please try again. ${err}`,
+          //   { autoClose: 2000 }
+          // );
         });
     } else {
       setFilteredData([]);
@@ -167,7 +159,7 @@ function ScreenRights(props) {
       })
       .catch((err) => {
         toast.err(
-          `Error while fetching list of users to populate user dropdown. ${err.response.data.message}`,
+          `Error while fetching list of users to populate user dropdown. ${err}`,
           {
             autoClose: 2000,
           }
@@ -234,7 +226,7 @@ function ScreenRights(props) {
       })
       .catch((err) => {
         toast.err(
-          `FAiled to edit screen rights for selected user, please try again. ${err.response.data.message}`,
+          `FAiled to edit screen rights for selected user, please try again. ${err}`,
           {
             autoClose: 2000,
           }
@@ -262,28 +254,36 @@ function ScreenRights(props) {
           </div>
         </div>
         <div className="buttonDiv">
-          <button
-            className="greenButton"
-            onClick={handleEditScreenRights}
-            disabled={
-              props.screen_rights
-                ? props.screen_rights.screen_rights[0]
-                  ? props.screen_rights.screen_rights.find(
-                      (each_screen_right) => {
-                        if (
-                          each_screen_right['AS_Name'] ===
-                          CONSTANTS.APPLICATION_SCREENS.SCREEN_RIGHTS_WINDOW
-                        ) {
-                          return !each_screen_right['ASR_RightToEdit'];
+          {props.db_user.user ? (
+            props.db_user.user['UT_Name'] === 'AD' ? (
+              <button className="greenButton" onClick={handleEditScreenRights}>
+                Save Changes
+              </button>
+            ) : null
+          ) : (
+            <button
+              className="greenButton"
+              onClick={handleEditScreenRights}
+              disabled={
+                props.screen_rights
+                  ? props.screen_rights.screen_rights[0]
+                    ? props.screen_rights.screen_rights.find(
+                        (each_screen_right) => {
+                          if (
+                            each_screen_right['AS_Name'] ===
+                            CONSTANTS.APPLICATION_SCREENS.SCREEN_RIGHTS_WINDOW
+                          ) {
+                            return !each_screen_right['ASR_RightToEdit'];
+                          }
                         }
-                      }
-                    )
+                      )
+                    : true
                   : true
-                : true
-            }
-          >
-            Save Changes
-          </button>
+              }
+            >
+              Save Changes
+            </button>
+          )}
         </div>
         <div className="selectTable">
           <table {...getTableProps()}>

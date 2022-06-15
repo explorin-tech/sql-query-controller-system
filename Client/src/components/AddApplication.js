@@ -71,7 +71,7 @@ function AddApplication(props) {
       })
       .catch((err) => {
         toast.error(
-          `Error while fetching list of all users, please try again. ${err.response.data.message}`,
+          `Error while fetching list of all users, please try again. ${err}`,
           { autoClose: 2000 }
         );
       });
@@ -91,7 +91,7 @@ function AddApplication(props) {
       })
       .catch((err) => {
         toast.error(
-          `Error while fetching list of all applications, please try again. ${err.response.data.message}`,
+          `Error while fetching list of all applications, please try again. ${err}`,
           { autoClose: 2000 }
         );
       });
@@ -188,7 +188,7 @@ function AddApplication(props) {
       })
       .catch((err) => {
         toast.error(
-          `Failed to add an new application, please try again. ${err.response.data.message}`,
+          `Failed to add an new application, please try again. ${err}`,
           { autoClose: 2000 }
         );
       });
@@ -240,7 +240,7 @@ function AddApplication(props) {
       })
       .catch((err) => {
         toast.error(
-          `Failed to edit the application details, please try again. ${err.response.data.message}`,
+          `Failed to edit the application details, please try again. ${err}`,
           { autoClose: 2000 }
         );
       });
@@ -274,7 +274,7 @@ function AddApplication(props) {
       })
       .catch((err) => {
         toast.error(
-          `Falied to delete the application, please try again. ${err.response.data.message}`,
+          `Falied to delete the application, please try again. ${err}`,
           { autoClose: 2000 }
         );
       });
@@ -302,6 +302,7 @@ function AddApplication(props) {
                         type="text"
                         onChange={handleChange('applicationName')}
                         value={values.applicationName}
+                        required
                       />
                     </td>
                   </tr>
@@ -311,6 +312,7 @@ function AddApplication(props) {
                       <select
                         onChange={handleChange('owner1')}
                         value={values.owner1}
+                        required
                       >
                         <option value={null}>-- SELECT USER --</option>
                         {props.users ? (
@@ -325,6 +327,7 @@ function AddApplication(props) {
                       <select
                         onChange={handleChange('owner2')}
                         value={values.owner2}
+                        required
                       >
                         <option value={null}>-- SELECT USER --</option>
                         {props.users ? (
@@ -375,6 +378,7 @@ function AddApplication(props) {
                         type="text"
                         onChange={handleChange('applicationName')}
                         value={values.applicationName}
+                        required
                       />
                     </td>
                   </tr>
@@ -384,6 +388,7 @@ function AddApplication(props) {
                       <select
                         onChange={handleChange('owner1')}
                         value={values.owner1}
+                        required
                       >
                         <option value={null}>-- SELECT USER --</option>
                         {props.users ? (
@@ -396,6 +401,7 @@ function AddApplication(props) {
                     <td>
                       <span>Owner 2</span>
                       <select
+                        required
                         onChange={handleChange('owner2')}
                         value={values.owner2}
                       >
