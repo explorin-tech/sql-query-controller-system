@@ -4,15 +4,16 @@ const {
   identifyQueryType,
   checkQueryExecutionRight,
 } = require('../common/queryHelper');
+const logger = require('../common/logger');
 
 module.exports.GET_getAllMappedDraftQueriesForAnUser = async (
   httpRequest,
   httpResponse,
   next
 ) => {
+  const { decoded } = httpRequest.headers;
+  const user_id = decoded.UserID;
   try {
-    const { decoded } = httpRequest.headers;
-    const user_id = decoded.UserID;
     const params = {
       user_id: user_id,
       page: httpRequest.query.page,
@@ -29,8 +30,14 @@ module.exports.GET_getAllMappedDraftQueriesForAnUser = async (
     } else if (user_type == 'RA') {
       result = await QueryDao.getAllDraftQueriesForApplicationOwner(params);
     }
+    logger.info(
+      `GET: All Mapped Draft Queries for an user | user_id: ${user_id}`
+    );
     return _200(httpResponse, result);
   } catch (err) {
+    logger.error(
+      `GET: All Mapped Draft Queries for an user | user_id: ${user_id} | ${err}`
+    );
     return _error(httpResponse, {
       type: 'generic',
       message: err,
@@ -43,9 +50,9 @@ module.exports.GET_getAllMappedHistoryQueriesForAnUser = async (
   httpResponse,
   next
 ) => {
+  const { decoded } = httpRequest.headers;
+  const user_id = decoded.UserID;
   try {
-    const { decoded } = httpRequest.headers;
-    const user_id = decoded.UserID;
     const params = {
       user_id: user_id,
       page: httpRequest.query.page,
@@ -62,8 +69,14 @@ module.exports.GET_getAllMappedHistoryQueriesForAnUser = async (
     } else if (user_type == 'RA') {
       result = await QueryDao.getAllHistoryQueriesForApplicationOwner(params);
     }
+    logger.info(
+      `GET: All Mapped History Queries for an user | user_id: ${user_id}`
+    );
     return _200(httpResponse, result);
   } catch (err) {
+    logger.error(
+      `GET: All Mapped History Queries for an user | user_id: ${user_id} | ${err}`
+    );
     return _error(httpResponse, {
       type: 'generic',
       message: err,
@@ -76,9 +89,9 @@ module.exports.GET_getQueryDetailsForGivenQueryID = async (
   httpResponse,
   next
 ) => {
+  const { decoded } = httpRequest.headers;
+  const user_id = decoded.UserID;
   try {
-    const { decoded } = httpRequest.headers;
-    const user_id = decoded.UserID;
     const query_id = httpRequest.query.query_id;
     const params = {
       query_id: query_id,
@@ -113,6 +126,9 @@ module.exports.GET_getQueryDetailsForGivenQueryID = async (
     }
 
     let result;
+    logger.info(
+      `GET: Query Details for given query ID | user_id: ${user_id} | query_id: ${query_id}`
+    );
     if (
       owner_ids[0]['MA_Owner1'] == user_id ||
       owner_ids[0]['MA_Owner2'] == user_id ||
@@ -135,6 +151,9 @@ module.exports.GET_getQueryDetailsForGivenQueryID = async (
       return _200(httpResponse, result);
     }
   } catch (err) {
+    logger.error(
+      `GET: Query Details for given query ID | user_id: ${user_id} |  ${err}`
+    );
     return _error(httpResponse, {
       type: 'generic',
       message: err,
@@ -143,9 +162,9 @@ module.exports.GET_getQueryDetailsForGivenQueryID = async (
 };
 
 module.exports.POST_addNewQuery = async (httpRequest, httpResponse, next) => {
+  const { decoded } = httpRequest.headers;
+  const user_id = decoded.UserID;
   try {
-    const { decoded } = httpRequest.headers;
-    const user_id = decoded.UserID;
     const values = [
       httpRequest.body.query.database_application_mapping_id,
       httpRequest.body.query.query_status_id,
@@ -160,8 +179,14 @@ module.exports.POST_addNewQuery = async (httpRequest, httpResponse, next) => {
       values: values,
     };
     const result = await QueryDao.postNewQuery(params);
+    logger.info(
+      `POST: Add new query | user_id: ${user_id} | query_id: ${result}`
+    );
     return _200(httpResponse, result);
   } catch (err) {
+    logger.error(
+      `GET: Query Details for given query ID | user_id: ${user_id} | ${err}`
+    );
     return _error(httpResponse, {
       type: 'generic',
       message: err,
@@ -174,9 +199,9 @@ module.exports.PUT_editQueryStatusForApprovalOrRejection = async (
   httpResponse,
   next
 ) => {
+  const { decoded } = httpRequest.headers;
+  const user_id = decoded.UserID;
   try {
-    const { decoded } = httpRequest.headers;
-    const user_id = decoded.UserID;
     let values;
     if (httpRequest.body.query.is_approved) {
       values = [
@@ -199,8 +224,12 @@ module.exports.PUT_editQueryStatusForApprovalOrRejection = async (
       };
       result = await QueryDao.editQueryStatusForRejection(params);
     }
+    logger.info(
+      `PUT: Edit query details| user_id: ${user_id} | query_id: ${result}`
+    );
     return _200(httpResponse, result);
   } catch (err) {
+    logger.error(`PUT: Edit query details| user_id: ${user_id} | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
       message: err,
@@ -209,9 +238,9 @@ module.exports.PUT_editQueryStatusForApprovalOrRejection = async (
 };
 
 module.exports.PUT_editQuery = async (httpRequest, httpResponse, next) => {
+  const { decoded } = httpRequest.headers;
+  const user_id = decoded.UserID;
   try {
-    const { decoded } = httpRequest.headers;
-    const user_id = decoded.UserID;
     const values = [
       httpRequest.body.query.query_id,
       httpRequest.body.query.database_application_mapping_id,
@@ -226,8 +255,12 @@ module.exports.PUT_editQuery = async (httpRequest, httpResponse, next) => {
       values: values,
     };
     const result = await QueryDao.editQueryDetails(params);
+    logger.info(
+      `PUT: Edit query details| user_id: ${user_id} | query_id: ${result}`
+    );
     return _200(httpResponse, result);
   } catch (err) {
+    logger.error(`PUT: Edit query details| user_id: ${user_id} | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
       message: err,
@@ -236,9 +269,9 @@ module.exports.PUT_editQuery = async (httpRequest, httpResponse, next) => {
 };
 
 module.exports.POST_executeQuery = async (httpRequest, httpResponse, next) => {
+  const { decoded } = httpRequest.headers;
+  const user_id = decoded.UserID;
   try {
-    const { decoded } = httpRequest.headers;
-    const user_id = decoded.UserID;
     const query_id = httpRequest.body.query.query_id;
     const raw_query_details = await QueryDao.getRawQueryDetailsForQueryID({
       query_id: query_id,
@@ -250,14 +283,21 @@ module.exports.POST_executeQuery = async (httpRequest, httpResponse, next) => {
       query_id: query_id,
     });
     if (mark_query_as_executed[0]['Q_ID']) {
+      logger.info(
+        `POST: Execute Query | user_id: ${user_id} | query_id: ${query_id}`
+      );
       return _200(httpResponse, execute_query);
     } else {
+      logger.error(
+        `POST: Execute Query | user_id: ${user_id} |    Query Failed To Execute`
+      );
       return _error(httpResponse, {
         type: 'generic',
         message: 'Query Failed To Execute',
       });
     }
   } catch (err) {
+    logger.error(`POST: Execute Query | user_id: ${user_id} | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
       message: err,
@@ -270,9 +310,9 @@ module.exports.GET_queriesAwaitingForApproval = async (
   httpResponse,
   next
 ) => {
+  const { decoded } = httpRequest.headers;
+  const user_id = decoded.UserID;
   try {
-    const { decoded } = httpRequest.headers;
-    const user_id = decoded.UserID;
     const params = {
       user_id: user_id,
     };
@@ -280,6 +320,7 @@ module.exports.GET_queriesAwaitingForApproval = async (
       user_id: decoded.UserID,
     });
     const user_type = user_details[0]['UT_Name'];
+    logger.info(`GET: Queries awaiting for Approval | user_id: ${user_id}`);
     if (user_type === 'RA') {
       const result = await QueryDao.getQueriesAwaitingForApproval(params);
       return _200(httpResponse, result);
@@ -287,6 +328,9 @@ module.exports.GET_queriesAwaitingForApproval = async (
       return _200(httpResponse, []);
     }
   } catch (err) {
+    logger.error(
+      `GET: Queries awaiting for Approval | user_id: ${user_id} | ${err}`
+    );
     return _error(httpResponse, {
       type: 'generic',
       message: err,
@@ -295,15 +339,17 @@ module.exports.GET_queriesAwaitingForApproval = async (
 };
 
 module.exports.GET_RecentQueries = async (httpRequest, httpResponse, next) => {
+  const { decoded } = httpRequest.headers;
+  const user_id = decoded.UserID;
   try {
-    const { decoded } = httpRequest.headers;
-    const user_id = decoded.UserID;
     const params = {
       user_id: user_id,
     };
     const result = await QueryDao.getRecentQueries(params);
+    logger.info(`GET: Recent Queries | user_id: ${user_id}`);
     return _200(httpResponse, result);
   } catch (err) {
+    logger.error(`GET: Recent Queries | user_id: ${user_id} | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
       message: err,

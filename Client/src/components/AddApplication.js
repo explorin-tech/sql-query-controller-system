@@ -188,7 +188,7 @@ function AddApplication(props) {
       })
       .catch((err) => {
         toast.error(
-          `Failed to add an new application, please try again. ${err}`,
+          `Failed to add an new application, please try again. ${err.response.data.message.detail}`,
           { autoClose: 2000 }
         );
       });
@@ -240,7 +240,7 @@ function AddApplication(props) {
       })
       .catch((err) => {
         toast.error(
-          `Failed to edit the application details, please try again. ${err}`,
+          `Failed to edit the application details, please try again. ${err.response.data.message.detail}`,
           { autoClose: 2000 }
         );
       });

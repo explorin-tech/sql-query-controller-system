@@ -150,10 +150,7 @@ function DatabaseRights(props) {
         }
       })
       .catch((err) => {
-        toast.error(
-          `Error while fetching user permissions rights, please try again. ${err}`,
-          { autoClose: 2000 }
-        );
+        console.log(err);
       });
   };
 
@@ -264,7 +261,7 @@ function DatabaseRights(props) {
       })
       .catch((err) => {
         toast.err(
-          `FAiled to edit screen rights for selected user, please try again. ${err}`,
+          `Failed to edit screen rights for selected user, please try again. ${err}`,
           {
             autoClose: 2000,
           }

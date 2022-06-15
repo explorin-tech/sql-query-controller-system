@@ -3,10 +3,8 @@ const {
   UserPermissionMappingDao,
   UserDao,
 } = require('../dao/index');
-const {
-  ApplicationDatabaseMappingService,
-} = require('./application_database_mapping.service');
 const { _200, _error } = require('../common/httpHelper');
+const logger = require('../common/logger');
 
 const _ = require('underscore');
 
@@ -15,6 +13,7 @@ module.exports.GET_getAllUserPermissionMappingForAnUser = async (
   httpResponse,
   next
 ) => {
+  const { decoded } = httpRequest.headers;
   try {
     const { decoded } = httpRequest.headers;
     let user_id;
@@ -71,6 +70,15 @@ module.exports.GET_getAllUserPermissionMappingForAnUser = async (
         }
       );
     }
+    if (httpRequest.query.user_id) {
+      logger.info(
+        `GET: User permissions for an user with user_id : ${httpRequest.query.user_id} | by user_id: ${decoded.UserID}`
+      );
+    } else {
+      logger.info(
+        `GET: User permissions for an user with user_id : ${user_id} | by user_id: ${decoded.UserID}`
+      );
+    }
     if (user_type == 'AD') {
       databasesRightsToReturn =
         await UserPermissionMappingDao.getAllUserPermissionMappings(params);
@@ -83,6 +91,9 @@ module.exports.GET_getAllUserPermissionMappingForAnUser = async (
     }
     return _200(httpResponse, databasesRightsToReturn);
   } catch (err) {
+    logger.error(
+      `GET: User permissions for an user | user_id: ${decoded.UserID} | ${err}`
+    );
     return _error(httpResponse, {
       type: 'generic',
       message: err,
@@ -95,9 +106,9 @@ module.exports.PUT_editUserPermissionsMappingForAnUser = async (
   httpResponse,
   next
 ) => {
+  const { decoded } = httpRequest.headers;
+  const user_id = decoded.UserID;
   try {
-    const { decoded } = httpRequest.headers;
-    const user_id = decoded.UserID;
     const user_permissions_rights_mapping_object =
       httpRequest.body.user_permissions_mapping_object;
 
@@ -119,8 +130,12 @@ module.exports.PUT_editUserPermissionsMappingForAnUser = async (
       const result =
         UserPermissionMappingDao.editUserPermissionRightsMapping(params);
     });
+    logger.info(`PUT: User permissions for an user | user_id: ${user_id}`);
     return _200(httpResponse, []);
   } catch (err) {
+    logger.error(
+      `PUT: User permissions for an user | user_id: ${user_id} | ${err}`
+    );
     return _error(httpResponse, {
       type: 'generic',
       message: err,

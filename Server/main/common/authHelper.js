@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const { _error } = require('./httpHelper');
 const { UserDao } = require('../dao/index');
 const bcrypt = require('bcryptjs');
+const logger = require('./logger');
 
 module.exports.generateHashedPassword = async (password) => {
   const salt = await bcrypt.genSalt(10);
@@ -40,14 +41,19 @@ module.exports.authValidator = async (httpRequest, httpResponse, next) => {
       user_id: decoded.UserID,
     });
     if (userDetails.length > 0) {
+      logger.info(`POST: Auth validation`);
       return next();
     } else {
+      logger.error(
+        `POST: Auth validation | error : User not Found with given Token`
+      );
       return _error(httpResponse, {
         type: 'generic',
         message: 'User not Found',
       });
     }
   } else {
+    logger.error(`POST: Auth validation | error : Token is required`);
     return _error(httpResponse, {
       type: 'validation',
       message: 'Token is required',

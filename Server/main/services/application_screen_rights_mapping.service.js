@@ -4,6 +4,7 @@ const {
 } = require('../dao/index');
 const { _200, _error } = require('../common/httpHelper');
 const _ = require('underscore');
+const logger = require('../common/logger');
 
 module.exports.GET_getAllScreenRightsMappingForAnUser = async (
   httpRequest,
@@ -53,8 +54,10 @@ module.exports.GET_getAllScreenRightsMappingForAnUser = async (
       await ApplicationScreenRightsMappingDao.getAllScreenRightsMappingForAnUser(
         params
       );
+    logger.info(`GET: All application screens rights | user_id: ${user_id}`);
     return _200(httpResponse, screenRights);
   } catch (err) {
+    logger.error(`GET: All application screens rights | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
       message: err,
@@ -67,9 +70,9 @@ module.exports.GET_getScreenRightsMappingForAnUser = async (
   httpResponse,
   next
 ) => {
+  const { decoded } = httpRequest.headers;
+  const user_id = decoded.UserID;
   try {
-    const { decoded } = httpRequest.headers;
-    const user_id = decoded.UserID;
     const screen_id = httpRequest.body.screen.screen_id;
     const params = {
       user_id: user_id,
@@ -79,8 +82,12 @@ module.exports.GET_getScreenRightsMappingForAnUser = async (
       await ApplicationScreenRightsMappingDao.getScreenRightsMappingForAnUser(
         params
       );
+    logger.info(
+      `GET: Screens rights mapping for an user | user_id: ${user_id}`
+    );
     return _200(httpResponse, result);
   } catch (err) {
+    logger.error(`GET: Screens rights mapping for an user | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
       message: err,
@@ -93,9 +100,9 @@ module.exports.POST_addScreenRightsMappingForAnUser = async (
   httpResponse,
   next
 ) => {
+  const { decoded } = httpRequest.headers;
+  const user_id = decoded.UserID;
   try {
-    const { decoded } = httpRequest.headers;
-    const user_id = decoded.UserID;
     const values = [
       httpRequest.body.screen_rights.user_id,
       httpRequest.body.screen_rights.screen_id,
@@ -113,8 +120,12 @@ module.exports.POST_addScreenRightsMappingForAnUser = async (
       await ApplicationScreenRightsMappingDao.addScreenRightsMappingForAnUser(
         params
       );
+    logger.info(
+      `POST: Screens rights mapping for an user | user_id: ${user_id}`
+    );
     return _200(httpResponse, result);
   } catch (err) {
+    logger.error(`POST: Screens rights mapping for an user | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
       message: err,
@@ -127,9 +138,9 @@ module.exports.PUT_editScreenRightsMappingForAnUser = async (
   httpResponse,
   next
 ) => {
+  const { decoded } = httpRequest.headers;
+  const user_id = decoded.UserID;
   try {
-    const { decoded } = httpRequest.headers;
-    const user_id = decoded.UserID;
     const screen_rights_object = httpRequest.body.screen_rights_mapping_object;
     screen_rights_object.map((each_screen_right) => {
       const values = [
@@ -149,31 +160,12 @@ module.exports.PUT_editScreenRightsMappingForAnUser = async (
           params
         );
     });
+    logger.info(
+      `PUT: Screens rights mapping for an user with user_id: ${screen_rights_object[0]['ASR_U_ID']} | by user_id: ${user_id}`
+    );
     return _200(httpResponse, []);
   } catch (err) {
-    return _error(httpResponse, {
-      type: 'generic',
-      message: err,
-    });
-  }
-};
-
-module.exports.DELETE_deleteScreenRightsMappingsForAnUser = async (
-  httpRequest,
-  httpResponse,
-  next
-) => {
-  try {
-    const user_id = httpRequest.body.screen_rights.user_id;
-    const params = {
-      user_id: user_id,
-    };
-    const result =
-      await ApplicationScreenRightsMappingDao.deleteScreenRightsMappingsForAnUser(
-        params
-      );
-    return _200(httpResponse, result);
-  } catch (err) {
+    logger.error(`PUT: Screens rights mapping for an user | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
       message: err,

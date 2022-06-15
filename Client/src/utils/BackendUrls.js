@@ -29,8 +29,6 @@ export const ADD_SCREEN_RIGHTS_MAPPING_FOR_AN_USER =
   '/api/post/screen_rights_mapping_for_an_user';
 export const EDIT_SCREEN_RIGHTS_MAPPING_FOR_AN_USER =
   '/api/put/screen_rights_mapping_for_an_user';
-export const DELETE_SCREEN_RIGHTS_MAPPING_FOR_AN_USER =
-  '/api/delete/screen_rights_mapping_for_an_user';
 export const GET_ALL_USER_PERMISSION_MAPPING_FOR_AN_USER =
   '/api/get/user_permission_rights_mappings_for_an_user';
 export const EDIT_USER_PERMISSIONS_MAPPING_FOR_AN_USER =

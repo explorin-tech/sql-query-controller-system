@@ -26,9 +26,4 @@ router.put(routeNames.EDIT_SCREEN_RIGHTS_MAPPING_FOR_AN_USER, [
   ApplicationScreenRightsMappingService.PUT_editScreenRightsMappingForAnUser,
 ]);
 
-// Delete screen rights mapping for a user.
-router.delete(routeNames.DELETE_SCREEN_RIGHTS_MAPPING_FOR_AN_USER, [
-  authValidator,
-  ApplicationScreenRightsMappingService.DELETE_deleteScreenRightsMappingsForAnUser,
-]);
 module.exports = router;

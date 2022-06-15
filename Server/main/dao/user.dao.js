@@ -45,7 +45,6 @@ module.exports.addUser = async (params) => {
   try {
     const values = params.values;
     const result = await pool.query(UserQuery.ADD_NEW_USER, values);
-    console.log(result);
     return result.rows;
   } catch (err) {
     throw err;
@@ -58,7 +57,7 @@ module.exports.editUser = async (params) => {
     const result = await pool.query(UserQuery.EDIT_USER_DETAILS, values);
     return result.rows;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 

@@ -229,8 +229,9 @@ function AddDatabase(props) {
         }
       })
       .catch((err) => {
+        console.log(err);
         toast.error(
-          `Failed to add the new database, please try again. ${err}`,
+          `Failed to add the new database, please try again. ${err.response.data.message.detail}`,
           { autoClose: 2000 }
         );
       });
@@ -310,8 +311,9 @@ function AddDatabase(props) {
         }
       })
       .catch((err) => {
+        console.log(err);
         toast.error(
-          `Failed to edit the database details, please try again. ${err}`,
+          `Failed to edit the database details, please try again. ${err.response.data.message.detail}`,
           { autoClose: 2000 }
         );
       });
@@ -351,9 +353,12 @@ function AddDatabase(props) {
         }
       })
       .catch((err) => {
-        toast.error(`Failed to delete the database, please try again. ${err}`, {
-          autoClose: 2000,
-        });
+        toast.error(
+          `Failed to delete the database, please try again. ${err.response.data.message.detail}`,
+          {
+            autoClose: 2000,
+          }
+        );
       });
   };
 

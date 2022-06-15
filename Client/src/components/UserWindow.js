@@ -161,9 +161,12 @@ function AddUser(props) {
           }
         })
         .catch((err) => {
-          toast.error(`Failed to add new user. ${err.detail}`, {
-            autoClose: 2000,
-          });
+          toast.error(
+            `Failed to add new user. ${err.response.data.message.detail}`,
+            {
+              autoClose: 2000,
+            }
+          );
         });
     }
   };
@@ -247,9 +250,12 @@ function AddUser(props) {
         }
       })
       .catch((err) => {
-        toast.error(`Failed to edit user details, please try again. ${err}`, {
-          autoClose: 2000,
-        });
+        toast.error(
+          `Failed to edit user details, please try again. ${err.response.data.message.detail}`,
+          {
+            autoClose: 2000,
+          }
+        );
       });
   };
 

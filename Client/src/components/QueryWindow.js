@@ -130,7 +130,6 @@ function QueryWindow(props) {
         ? (name = props.user_permissions.user_permissions.filter(
             (each_permission_array) => {
               if (each_permission_array['UP_DBAM_ID'] == databaseMappingID) {
-                console.log(each_permission_array);
                 return each_permission_array;
               }
             }
@@ -148,7 +147,6 @@ function QueryWindow(props) {
 
   const [queryResult, setQueryResult] = useState([]);
 
-  console.log(queryResult, 'QUERY RESULT');
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
   };

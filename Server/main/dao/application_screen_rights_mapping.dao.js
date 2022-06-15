@@ -51,16 +51,3 @@ module.exports.editScreenRightsMappingForAnUser = async (params) => {
     throw err;
   }
 };
-
-module.exports.deleteScreenRightsMappingsForAnUser = async (params) => {
-  try {
-    const user_id = params.user_id;
-    const result = await pool.query(
-      ApplicationScreenRightsMappingQuery.DELETE_SCREEN_RIGHTS_MAPPING_FOR_AN_USER,
-      [user_id]
-    );
-    return result.rows;
-  } catch (err) {
-    throw err;
-  }
-};
