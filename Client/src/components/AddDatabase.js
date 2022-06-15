@@ -378,6 +378,7 @@ function AddDatabase(props) {
                       <select
                         onChange={handleChange('applicationID')}
                         value={values.applicationID}
+                        required
                       >
                         <option value={null}> -- SELECT APPLICATION --</option>
                         {props.applications ? (
@@ -395,6 +396,7 @@ function AddDatabase(props) {
                         value={values.databaseName}
                         type="text"
                         onChange={handleChange('databaseName')}
+                        required
                       />
                     </td>
                     <td>
@@ -402,6 +404,7 @@ function AddDatabase(props) {
                       <select
                         onChange={handleChange('databaseTypeID')}
                         value={values.databaseTypeID}
+                        required
                       >
                         <option value={null}>-- SELECT DATABASE TYPE --</option>
                         {CONSTANTS.DATABASE_TYPES.map((databaseTypeObject) => {
@@ -424,6 +427,7 @@ function AddDatabase(props) {
                         value={values.databaseConnectionString}
                         type="text"
                         onChange={handleChange('databaseConnectionString')}
+                        required
                       />
                     </td>
                     <td>
@@ -432,6 +436,7 @@ function AddDatabase(props) {
                         type="text"
                         value={values.databaseHostName}
                         onChange={handleChange('databaseHostName')}
+                        required
                       />
                     </td>
                   </tr>
@@ -442,6 +447,7 @@ function AddDatabase(props) {
                         type="text"
                         value={values.databaseUserName}
                         onChange={handleChange('databaseUserName')}
+                        required
                       />
                     </td>
                     <td>
@@ -450,6 +456,7 @@ function AddDatabase(props) {
                         type="text"
                         value={values.databasePassword}
                         onChange={handleChange('databasePassword')}
+                        required
                       />
                     </td>
                   </tr>
@@ -460,6 +467,7 @@ function AddDatabase(props) {
                         type="text"
                         value={values.databasePortNumber}
                         onChange={handleChange('databasePortNumber')}
+                        required
                       />
                       <br />
                       <br />
@@ -521,6 +529,7 @@ function AddDatabase(props) {
                         value={values.databaseName}
                         type="text"
                         onChange={handleChange('databaseName')}
+                        required
                       />
                     </td>
                     <td>
@@ -528,6 +537,7 @@ function AddDatabase(props) {
                       <select
                         onChange={handleChange('databaseTypeID')}
                         value={values.databaseTypeID}
+                        required
                       >
                         <option value={null}>-- SELECT DATABASE TYPE --</option>
                         {CONSTANTS.DATABASE_TYPES.map((databaseTypeObject) => {
@@ -550,6 +560,7 @@ function AddDatabase(props) {
                         value={values.databaseConnectionString}
                         type="text"
                         onChange={handleChange('databaseConnectionString')}
+                        required
                       />
                     </td>
                     <td>
@@ -558,6 +569,7 @@ function AddDatabase(props) {
                         type="text"
                         value={values.databaseHostName}
                         onChange={handleChange('databaseHostName')}
+                        required
                       />
                     </td>
                   </tr>
@@ -568,6 +580,7 @@ function AddDatabase(props) {
                         type="text"
                         value={values.databaseUserName}
                         onChange={handleChange('databaseUserName')}
+                        required
                       />
                     </td>
                     <td>
@@ -576,6 +589,7 @@ function AddDatabase(props) {
                         type="text"
                         value={values.databasePassword}
                         onChange={handleChange('databasePassword')}
+                        required
                       />
                     </td>
                   </tr>
@@ -586,6 +600,7 @@ function AddDatabase(props) {
                         type="text"
                         value={values.databasePortNumber}
                         onChange={handleChange('databasePortNumber')}
+                        required
                       />
                       <br />
                       <br />
