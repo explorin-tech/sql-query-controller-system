@@ -1,0 +1,42 @@
+error: Jun-16-2022 13:26:20: 	POST: Login | Error: connect ENETUNREACH 3.111.172.88:5432
+error: Jun-16-2022 13:26:39: 	POST: Login | User tried to login with email - (sjai260260@gmail.com) which doesn't exist.
+info: Jun-16-2022 13:28:07: 	POST: Auth validation
+info: Jun-16-2022 13:28:07: 	GET: All application screens rights | user_id: 1
+info: Jun-16-2022 13:28:07: 	POST: Auth validation
+info: Jun-16-2022 13:28:07: 	POST: Auth validation
+info: Jun-16-2022 13:28:07: 	POST: Auth validation
+info: Jun-16-2022 13:28:07: 	POST: Auth validation
+info: Jun-16-2022 13:28:07: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jun-16-2022 13:28:07: 	GET: Recent Queries | user_id: 1
+info: Jun-16-2022 13:28:07: 	GET: User details | of user_id: 1
+info: Jun-16-2022 13:28:07: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-16-2022 13:34:50: 	POST: Auth validation
+info: Jun-16-2022 13:34:50: 	POST: Auth validation
+info: Jun-16-2022 13:34:50: 	POST: Auth validation
+info: Jun-16-2022 13:34:50: 	GET: All application screens rights | user_id: 1
+info: Jun-16-2022 13:34:50: 	POST: Auth validation
+info: Jun-16-2022 13:34:50: 	POST: Auth validation
+info: Jun-16-2022 13:34:50: 	GET: User details | of user_id: 1
+info: Jun-16-2022 13:34:50: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jun-16-2022 13:34:50: 	GET: Recent Queries | user_id: 1
+info: Jun-16-2022 13:34:50: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-16-2022 13:40:33: 	POST: Auth validation
+info: Jun-16-2022 13:40:33: 	POST: Auth validation
+info: Jun-16-2022 13:40:33: 	POST: Auth validation
+info: Jun-16-2022 13:40:34: 	POST: Auth validation
+info: Jun-16-2022 13:40:34: 	POST: Auth validation
+info: Jun-16-2022 13:40:34: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jun-16-2022 13:40:34: 	GET: User details | of user_id: 1
+info: Jun-16-2022 13:40:34: 	GET: Recent Queries | user_id: 1
+info: Jun-16-2022 13:40:34: 	GET: All application screens rights | user_id: 1
+info: Jun-16-2022 13:40:34: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-16-2022 14:33:42: 	POST: Auth validation
+info: Jun-16-2022 14:33:42: 	POST: Auth validation
+info: Jun-16-2022 14:33:42: 	POST: Auth validation
+info: Jun-16-2022 14:33:42: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-16-2022 14:33:42: 	POST: Auth validation
+info: Jun-16-2022 14:33:42: 	POST: Auth validation
+info: Jun-16-2022 14:33:42: 	GET: Recent Queries | user_id: 1
+info: Jun-16-2022 14:33:42: 	GET: User details | of user_id: 1
+info: Jun-16-2022 14:33:42: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jun-16-2022 14:33:42: 	GET: All application screens rights | user_id: 1
