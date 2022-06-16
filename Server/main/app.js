@@ -13,4 +13,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 routes(app);
 
+// Service checking method
+app.get('/api/sample', function (req, res) {
+  res
+    .status(200)
+    .json({ Success: true, Message: 'Welcome Hello ', Data: null });
+});
 module.exports = app;
