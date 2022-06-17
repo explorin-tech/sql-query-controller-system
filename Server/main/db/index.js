@@ -1,11 +1,11 @@
 require('dotenv').config();
 const { Pool } = require('pg');
 const pool = new Pool({
-  host: process.env.RDS_HOSTNAME,
-  user: process.env.RDS_USERNAME,
-  database: process.env.RDS_DATABASE,
-  password: process.env.RDS_PASSWORD,
-  port: process.env.RDS_PORT,
+  host: 'cobranding-db.cwaupinwoyhl.ap-south-1.rds.amazonaws.com',
+  user: 'pravin',
+  database: 'SQLQCS',
+  password: 'India-123',
+  port: 5432,
 });
 
 module.exports = pool;
