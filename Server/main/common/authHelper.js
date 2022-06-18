@@ -14,7 +14,7 @@ module.exports.generateHashedPassword = async (password) => {
 module.exports.generateToken = async (userID) => {
   const token = jwt.sign({ UserID: userID },"MulLCrD3XqXBDYo65DCkCOe7IwDsiyFiPDzfk6SuVp7Bh3g1rc6qtz0Yiu5XYhr", {
     algorithm: 'HS256',
-    expiresIn: process.env.JWT_EXPIRES_IN,
+    expiresIn: "1d",
   });
   return token;
 };
