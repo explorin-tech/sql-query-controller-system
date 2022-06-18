@@ -44,4 +44,9 @@ router.delete(routeNames.DELETE_AN_USER, [
   UserService.POST_deleteUser,
 ]);
 
+//check db connection
+router.get('/get/user_types_for_db_connection', [
+  UserService.GET_UserTypesForDBConnection,
+]);
+
 module.exports = router;

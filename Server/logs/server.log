@@ -1,0 +1,15 @@
+info: Jun-17-2022 20:49:53: 	POST: Auth validation
+info: Jun-17-2022 20:49:53: 	GET: All application screens rights | user_id: 1
+info: Jun-17-2022 20:49:53: 	POST: Auth validation
+info: Jun-17-2022 20:49:53: 	POST: Auth validation
+info: Jun-17-2022 20:49:53: 	POST: Auth validation
+info: Jun-17-2022 20:49:53: 	POST: Auth validation
+info: Jun-17-2022 20:49:53: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jun-17-2022 20:49:53: 	GET: Recent Queries | user_id: 1
+info: Jun-17-2022 20:49:53: 	GET: User details | of user_id: 1
+info: Jun-17-2022 20:49:53: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+error: Jun-18-2022 14:59:10: 	POST: Auth validation | error : Token is required
+error: Jun-18-2022 14:59:36: 	POST: Auth validation | error : Token is required
+error: Jun-18-2022 15:00:21: 	POST: Auth validation | error : Token is required
+error: Jun-18-2022 15:01:59: 	POST: Auth validation | error : Token is required
+error: Jun-18-2022 15:02:20: 	POST: Auth validation | error : Token is required

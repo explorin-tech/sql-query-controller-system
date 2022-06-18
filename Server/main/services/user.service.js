@@ -151,3 +151,20 @@ module.exports.POST_deleteUser = async (httpRequest, httpResponse, next) => {
     });
   }
 };
+
+module.exports.GET_UserTypesForDBConnection = async (
+  httpRequest,
+  httpResponse,
+  next
+) => {
+  try {
+    console.log('REQUESTED');
+    const result = await UserDao.getAllUserTypesForDBConnection();
+    return _200(httpResponse, result);
+  } catch (err) {
+    return _error(httpResponse, {
+      type: 'generic',
+      message: err,
+    });
+  }
+};

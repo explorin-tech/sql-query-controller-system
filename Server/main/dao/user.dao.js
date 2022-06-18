@@ -70,3 +70,12 @@ module.exports.deleteUser = async (params) => {
     throw err;
   }
 };
+
+module.exports.getAllUserTypesForDBConnection = async () => {
+  try {
+    const result = await pool.query('SELECT * FROM "UserType"');
+    return result.rows;
+  } catch (err) {
+    throw err;
+  }
+};
