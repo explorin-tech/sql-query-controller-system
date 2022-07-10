@@ -53,7 +53,7 @@ function DatabaseRights(props) {
       },
       {
         Header: 'Database Name',
-        accessor: 'DBAM_DBName',
+        accessor: 'MD_DBName',
         filterable: true,
       },
       {
@@ -120,16 +120,16 @@ function DatabaseRights(props) {
     state,
   } = tableInstance;
 
-  const fetchAllDatabases = () => {
+  const fetchAllDatabaseApplicationMappings = () => {
     axios
-      .get(BACKEND_URLS.GET_ALL_MAPPED_DATABASES, {
+      .get(BACKEND_URLS.GET_ALL_DATABASE_APPLICATION_MAPPINGS, {
         headers: {
           token: localStorage.getItem('token'),
         },
       })
       .then((res) => {
         if (res.status === 200) {
-          props.set_databases(res.data.data);
+          props.set_database_application_mappings(res.data.data);
         }
       })
       .catch((err) => {
@@ -223,7 +223,7 @@ function DatabaseRights(props) {
 
   useEffect(() => {
     fetchAllUsers();
-    fetchAllDatabases();
+    fetchAllDatabaseApplicationMappings();
     fetchAllUserPermissions();
     fetchUserPermissionsForSelectedUser();
   }, []);
@@ -374,7 +374,7 @@ function DatabaseRights(props) {
 }
 
 const mapStateToProps = (state) => ({
-  databases: state.databases,
+  database_application_mappings: state.database_application_mappings,
   users: state.users,
   user_permissions: state.userPermissions,
   screen_rights: state.applicationScreenRights,
@@ -382,7 +382,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  set_databases: (databases) => dispatch(actions.set_databases(databases)),
+  set_database_application_mappings: (database_application_mappings) =>
+    dispatch(
+      actions.set_database_application_mappings(database_application_mappings)
+    ),
   set_user_permissions: (user_permissions) =>
     dispatch(actions.set_all_user_permission_rights(user_permissions)),
   set_user_permissions_for_selected_user: (user_permission_rights) =>

@@ -73,6 +73,24 @@ export const set_database = (database) => {
   };
 };
 
+export const set_database_application_mappings = (
+  database_application_mappings
+) => {
+  return {
+    type: ACTION_TYPES.SET_DATABASE_APPLICATION_MAPPINGS,
+    payload: database_application_mappings,
+  };
+};
+
+export const set_database_application_mapping = (
+  database_application_mapping
+) => {
+  return {
+    type: ACTION_TYPES.SET_DATABASE_APPLICATION_MAPPING,
+    payload: database_application_mapping,
+  };
+};
+
 export const fetch_application_screens = (screens) => {
   return {
     type: ACTION_TYPES.SET_APPLICATION_SCREENS,

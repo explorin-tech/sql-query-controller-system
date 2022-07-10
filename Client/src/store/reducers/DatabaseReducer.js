@@ -5,7 +5,7 @@ export const initialState = {
   selected_database: null,
 };
 
-const UserReducer = (state = initialState, action) => {
+const DatabaseReducer = (state = initialState, action) => {
   switch (action.type) {
     case ACTION_TYPES.SET_DATABASES:
       return {
@@ -22,4 +22,4 @@ const UserReducer = (state = initialState, action) => {
   }
 };
 
-export default UserReducer;
+export default DatabaseReducer;

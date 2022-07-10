@@ -158,7 +158,6 @@ module.exports.GET_UserTypesForDBConnection = async (
   next
 ) => {
   try {
-    console.log('REQUESTED');
     const result = await UserDao.getAllUserTypesForDBConnection();
     return _200(httpResponse, result);
   } catch (err) {

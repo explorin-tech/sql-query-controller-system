@@ -760,3 +760,619 @@ info: Jul-10-2022 15:11:33: 	POST: Auth validation
 info: Jul-10-2022 15:11:33: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
 info: Jul-10-2022 15:11:34: 	POST: Auth validation
 info: Jul-10-2022 15:11:34: 	GET: Query Details for given query ID | user_id: 1 | query_id: 12
+info: Jul-11-2022 03:11:10: 	POST: Auth validation
+info: Jul-11-2022 03:11:10: 	POST: Auth validation
+info: Jul-11-2022 03:11:10: 	POST: Auth validation
+info: Jul-11-2022 03:11:10: 	POST: Auth validation
+info: Jul-11-2022 03:11:10: 	GET: User details | of user_id: 1
+error: Jul-11-2022 03:11:10: 	GET: Query Details for given query ID | user_id: 1 |  TypeError: Cannot read properties of undefined (reading 'Q_DBAM_ID')
+error: Jul-11-2022 03:11:10: 	GET: User permissions for an user | user_id: 1 | error: column "DBAM_DBT_ID" does not exist
+info: Jul-11-2022 03:11:10: 	POST: Auth validation
+info: Jul-11-2022 03:11:11: 	GET: All application screens rights | user_id: 1
+error: Jul-11-2022 03:11:11: 	GET: User permissions for an user | user_id: 1 | error: column "DBAM_DBT_ID" does not exist
+info: Jul-11-2022 03:11:21: 	POST: Auth validation
+info: Jul-11-2022 03:11:21: 	POST: Auth validation
+info: Jul-11-2022 03:11:21: 	POST: Auth validation
+info: Jul-11-2022 03:11:21: 	GET: User details | of user_id: 1
+error: Jul-11-2022 03:11:21: 	GET: User permissions for an user | user_id: 1 | error: column "DBAM_DBT_ID" does not exist
+info: Jul-11-2022 03:11:21: 	GET: All application screens rights | user_id: 1
+info: Jul-11-2022 03:13:30: 	POST: Auth validation
+info: Jul-11-2022 03:13:30: 	POST: Auth validation
+info: Jul-11-2022 03:13:30: 	POST: Auth validation
+info: Jul-11-2022 03:13:30: 	GET: User details | of user_id: 1
+info: Jul-11-2022 03:13:30: 	GET: All application screens rights | user_id: 1
+info: Jul-11-2022 03:13:30: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 03:13:34: 	POST: Auth validation
+info: Jul-11-2022 03:13:34: 	POST: Auth validation
+info: Jul-11-2022 03:13:34: 	POST: Auth validation
+info: Jul-11-2022 03:13:34: 	GET: Recent Queries | user_id: 1
+info: Jul-11-2022 03:13:34: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jul-11-2022 03:13:35: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 03:13:38: 	POST: Auth validation
+info: Jul-11-2022 03:13:38: 	POST: Auth validation
+info: Jul-11-2022 03:13:38: 	GET: All users | user_id: 1
+info: Jul-11-2022 03:13:38: 	GET: All Applications | user_id: 1
+info: Jul-11-2022 03:13:39: 	POST: Auth validation
+info: Jul-11-2022 03:13:39: 	POST: Auth validation
+info: Jul-11-2022 03:13:39: 	POST: Auth validation
+info: Jul-11-2022 03:13:39: 	GET: All Applications | user_id: 1
+info: Jul-11-2022 03:13:39: 	GET: All Database Application Mappings | user_id: 1
+info: Jul-11-2022 03:13:40: 	POST: Auth validation
+info: Jul-11-2022 03:14:40: 	POST: Auth validation
+info: Jul-11-2022 03:14:40: 	POST: Auth validation
+info: Jul-11-2022 03:14:40: 	GET: All users | user_id: 1
+info: Jul-11-2022 03:14:40: 	GET: All application screens rights | user_id: 1
+info: Jul-11-2022 03:14:45: 	POST: Auth validation
+info: Jul-11-2022 03:14:45: 	GET: All application screens rights | user_id: 1
+info: Jul-11-2022 03:15:10: 	POST: Auth validation
+info: Jul-11-2022 03:15:10: 	PUT: Screens rights mapping for an user with user_id: 1 | by user_id: 1
+info: Jul-11-2022 03:15:10: 	POST: Auth validation
+info: Jul-11-2022 03:15:11: 	GET: All application screens rights | user_id: 1
+info: Jul-11-2022 03:15:14: 	POST: Auth validation
+info: Jul-11-2022 03:15:15: 	GET: All application screens rights | user_id: 2
+info: Jul-11-2022 03:15:17: 	POST: Auth validation
+info: Jul-11-2022 03:15:17: 	GET: All application screens rights | user_id: 13
+info: Jul-11-2022 03:15:19: 	POST: Auth validation
+info: Jul-11-2022 03:15:19: 	GET: All application screens rights | user_id: 2
+info: Jul-11-2022 03:15:22: 	POST: Auth validation
+info: Jul-11-2022 03:15:22: 	GET: All application screens rights | user_id: 13
+info: Jul-11-2022 03:15:23: 	POST: Auth validation
+info: Jul-11-2022 03:15:24: 	GET: All application screens rights | user_id: 15
+info: Jul-11-2022 03:15:25: 	POST: Auth validation
+info: Jul-11-2022 03:15:25: 	GET: All application screens rights | user_id: 16
+info: Jul-11-2022 03:15:27: 	POST: Auth validation
+info: Jul-11-2022 03:15:27: 	GET: All application screens rights | user_id: 15
+info: Jul-11-2022 03:15:28: 	POST: Auth validation
+info: Jul-11-2022 03:15:28: 	GET: All application screens rights | user_id: 14
+info: Jul-11-2022 03:15:29: 	POST: Auth validation
+info: Jul-11-2022 03:15:30: 	GET: All application screens rights | user_id: 2
+info: Jul-11-2022 03:15:31: 	POST: Auth validation
+info: Jul-11-2022 03:15:32: 	GET: All application screens rights | user_id: 13
+info: Jul-11-2022 03:15:33: 	POST: Auth validation
+info: Jul-11-2022 03:15:33: 	GET: All application screens rights | user_id: 16
+info: Jul-11-2022 03:15:34: 	POST: Auth validation
+info: Jul-11-2022 03:15:35: 	GET: All application screens rights | user_id: 17
+info: Jul-11-2022 03:15:36: 	POST: Auth validation
+info: Jul-11-2022 03:15:36: 	POST: Auth validation
+info: Jul-11-2022 03:15:36: 	POST: Auth validation
+info: Jul-11-2022 03:15:36: 	GET: All users | user_id: 1
+info: Jul-11-2022 03:15:36: 	GET: User details | of user_id: 1
+info: Jul-11-2022 03:15:36: 	GET: All application screens rights | user_id: 1
+info: Jul-11-2022 03:15:36: 	POST: Auth validation
+info: Jul-11-2022 03:15:37: 	GET: All application screens rights | user_id: 1
+info: Jul-11-2022 03:15:38: 	POST: Auth validation
+info: Jul-11-2022 03:15:39: 	GET: All application screens rights | user_id: 17
+info: Jul-11-2022 03:15:41: 	POST: Auth validation
+info: Jul-11-2022 03:15:41: 	GET: All application screens rights | user_id: 16
+info: Jul-11-2022 03:15:42: 	POST: Auth validation
+info: Jul-11-2022 03:15:42: 	GET: All application screens rights | user_id: 15
+info: Jul-11-2022 03:15:43: 	POST: Auth validation
+info: Jul-11-2022 03:15:43: 	GET: All application screens rights | user_id: 14
+info: Jul-11-2022 03:15:44: 	POST: Auth validation
+info: Jul-11-2022 03:15:44: 	GET: All application screens rights | user_id: 13
+info: Jul-11-2022 03:15:45: 	POST: Auth validation
+info: Jul-11-2022 03:15:45: 	GET: All application screens rights | user_id: 2
+info: Jul-11-2022 03:15:46: 	POST: Auth validation
+info: Jul-11-2022 03:15:46: 	GET: All application screens rights | user_id: 1
+info: Jul-11-2022 03:15:50: 	POST: Auth validation
+info: Jul-11-2022 03:16:13: 	POST: Auth validation
+info: Jul-11-2022 03:16:13: 	POST: Database | user_id: 1 | database_details: [object Object]
+info: Jul-11-2022 03:16:13: 	POST: Auth validation
+info: Jul-11-2022 03:16:21: 	POST: Auth validation
+info: Jul-11-2022 03:16:21: 	PUT: Database details | user_id: 1 | database_id: 1
+info: Jul-11-2022 03:16:21: 	POST: Auth validation
+info: Jul-11-2022 03:16:24: 	POST: Auth validation
+info: Jul-11-2022 03:16:24: 	PUT: Database details | user_id: 1 | database_id: 1
+info: Jul-11-2022 03:16:24: 	POST: Auth validation
+info: Jul-11-2022 03:16:31: 	POST: Auth validation
+error: Jul-11-2022 03:16:31: 	PUT: Database details | user_id: 1 | error: invalid input syntax for type integer: "-- SELECT DATABASE TYPE --"
+info: Jul-11-2022 03:16:36: 	POST: Auth validation
+info: Jul-11-2022 03:16:36: 	PUT: Database details | user_id: 1 | database_id: 1
+info: Jul-11-2022 03:16:37: 	POST: Auth validation
+info: Jul-11-2022 03:16:40: 	POST: Auth validation
+info: Jul-11-2022 03:16:40: 	PUT: Database details | user_id: 1 | database_id: 1
+info: Jul-11-2022 03:16:40: 	POST: Auth validation
+info: Jul-11-2022 03:16:45: 	POST: Auth validation
+info: Jul-11-2022 03:16:45: 	PUT: Database details | user_id: 1 | database_id: 1
+info: Jul-11-2022 03:16:45: 	POST: Auth validation
+info: Jul-11-2022 03:16:50: 	POST: Auth validation
+info: Jul-11-2022 03:16:50: 	GET: All users | user_id: 1
+info: Jul-11-2022 03:16:50: 	POST: Auth validation
+info: Jul-11-2022 03:16:50: 	GET: All Applications | user_id: 1
+info: Jul-11-2022 03:17:01: 	POST: Auth validation
+info: Jul-11-2022 03:17:01: 	POST : Add new Application | user_id: 1 | application_id: 1
+info: Jul-11-2022 03:17:01: 	POST: Auth validation
+info: Jul-11-2022 03:17:02: 	GET: All Applications | user_id: 1
+info: Jul-11-2022 03:17:06: 	POST: Auth validation
+info: Jul-11-2022 03:17:06: 	GET: All Applications | user_id: 1
+info: Jul-11-2022 03:17:06: 	POST: Auth validation
+info: Jul-11-2022 03:17:06: 	POST: Auth validation
+info: Jul-11-2022 03:17:06: 	GET: All Database Application Mappings | user_id: 1
+info: Jul-11-2022 03:17:14: 	POST: Auth validation
+info: Jul-11-2022 03:17:14: 	POST : Add new Database Application Mapping | user_id: 1
+info: Jul-11-2022 03:17:14: 	POST: Auth validation
+info: Jul-11-2022 03:17:14: 	GET: All Database Application Mappings | user_id: 1
+info: Jul-11-2022 03:20:26: 	POST: Auth validation
+info: Jul-11-2022 03:20:26: 	POST: Auth validation
+info: Jul-11-2022 03:20:26: 	POST: Auth validation
+info: Jul-11-2022 03:20:26: 	POST: Auth validation
+info: Jul-11-2022 03:20:26: 	POST: Auth validation
+info: Jul-11-2022 03:20:26: 	GET: User details | of user_id: 1
+info: Jul-11-2022 03:20:26: 	GET: All Database Application Mappings | user_id: 1
+info: Jul-11-2022 03:20:26: 	GET: All Applications | user_id: 1
+info: Jul-11-2022 03:20:26: 	GET: All application screens rights | user_id: 1
+info: Jul-11-2022 03:20:38: 	POST: Auth validation
+info: Jul-11-2022 03:20:39: 	DELETE : Delete Database Application Mapping | user_id: 1 | database_application_mapping_id: 1
+info: Jul-11-2022 03:20:39: 	POST: Auth validation
+info: Jul-11-2022 03:20:39: 	GET: All Database Application Mappings | user_id: 1
+info: Jul-11-2022 03:20:45: 	POST: Auth validation
+info: Jul-11-2022 03:20:45: 	POST : Add new Database Application Mapping | user_id: 1
+info: Jul-11-2022 03:20:45: 	POST: Auth validation
+info: Jul-11-2022 03:20:46: 	GET: All Database Application Mappings | user_id: 1
+info: Jul-11-2022 03:20:52: 	POST: Auth validation
+info: Jul-11-2022 03:20:52: 	GET: All application screens rights | user_id: 1
+info: Jul-11-2022 03:20:52: 	POST: Auth validation
+info: Jul-11-2022 03:20:52: 	GET: All users | user_id: 1
+info: Jul-11-2022 03:20:53: 	POST: Auth validation
+info: Jul-11-2022 03:20:53: 	POST: Auth validation
+info: Jul-11-2022 03:20:53: 	GET: All users | user_id: 1
+info: Jul-11-2022 03:20:53: 	GET: All Database Application Mappings | user_id: 1
+info: Jul-11-2022 03:20:53: 	POST: Auth validation
+info: Jul-11-2022 03:20:53: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 03:20:57: 	POST: Auth validation
+info: Jul-11-2022 03:20:57: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 03:21:09: 	POST: Auth validation
+info: Jul-11-2022 03:21:09: 	PUT: User permissions for an user | user_id: 1
+info: Jul-11-2022 03:21:09: 	POST: Auth validation
+info: Jul-11-2022 03:21:09: 	POST: Auth validation
+info: Jul-11-2022 03:21:09: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 03:21:09: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 03:21:12: 	POST: Auth validation
+info: Jul-11-2022 03:21:12: 	GET: User permissions for an user with user_id : 2 | by user_id: 1
+info: Jul-11-2022 03:21:14: 	POST: Auth validation
+info: Jul-11-2022 03:21:15: 	GET: User permissions for an user with user_id : 14 | by user_id: 1
+info: Jul-11-2022 03:21:19: 	POST: Auth validation
+info: Jul-11-2022 03:21:19: 	GET: User permissions for an user with user_id : 15 | by user_id: 1
+info: Jul-11-2022 03:21:21: 	POST: Auth validation
+info: Jul-11-2022 03:21:21: 	GET: User permissions for an user with user_id : 14 | by user_id: 1
+info: Jul-11-2022 03:21:22: 	POST: Auth validation
+info: Jul-11-2022 03:21:22: 	GET: All users | user_id: 1
+info: Jul-11-2022 03:21:24: 	POST: Auth validation
+info: Jul-11-2022 03:21:24: 	GET: All Mapped Draft Queries for an user | user_id: 1
+info: Jul-11-2022 03:21:25: 	POST: Auth validation
+info: Jul-11-2022 03:21:26: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 03:21:29: 	POST: Auth validation
+info: Jul-11-2022 03:21:29: 	POST: Auth validation
+info: Jul-11-2022 03:21:30: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jul-11-2022 03:21:30: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 03:21:30: 	POST: Auth validation
+info: Jul-11-2022 03:21:30: 	GET: Recent Queries | user_id: 1
+info: Jul-11-2022 03:21:30: 	POST: Auth validation
+info: Jul-11-2022 03:21:30: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 03:21:31: 	POST: Auth validation
+info: Jul-11-2022 03:21:31: 	POST: Auth validation
+info: Jul-11-2022 03:21:31: 	GET: All Applications | user_id: 1
+info: Jul-11-2022 03:21:31: 	GET: All users | user_id: 1
+info: Jul-11-2022 03:21:31: 	POST: Auth validation
+info: Jul-11-2022 03:21:32: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 03:21:32: 	POST: Auth validation
+info: Jul-11-2022 03:21:32: 	POST: Auth validation
+info: Jul-11-2022 03:21:32: 	POST: Auth validation
+info: Jul-11-2022 03:21:32: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jul-11-2022 03:21:32: 	GET: Recent Queries | user_id: 1
+info: Jul-11-2022 03:21:32: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 03:21:35: 	POST: Auth validation
+info: Jul-11-2022 03:21:35: 	POST: Auth validation
+info: Jul-11-2022 03:21:35: 	POST: Auth validation
+info: Jul-11-2022 03:21:35: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 03:21:35: 	GET: All Applications | user_id: 1
+info: Jul-11-2022 03:21:35: 	GET: All users | user_id: 1
+info: Jul-11-2022 03:21:36: 	POST: Auth validation
+info: Jul-11-2022 03:21:36: 	POST: Auth validation
+info: Jul-11-2022 03:21:36: 	POST: Auth validation
+info: Jul-11-2022 03:21:36: 	POST: Auth validation
+info: Jul-11-2022 03:21:36: 	GET: All Database Application Mappings | user_id: 1
+info: Jul-11-2022 03:21:36: 	GET: All Applications | user_id: 1
+info: Jul-11-2022 03:21:37: 	POST: Auth validation
+info: Jul-11-2022 03:21:37: 	POST: Auth validation
+info: Jul-11-2022 03:21:37: 	POST: Auth validation
+info: Jul-11-2022 03:21:37: 	GET: All users | user_id: 1
+info: Jul-11-2022 03:21:38: 	GET: All application screens rights | user_id: 14
+info: Jul-11-2022 03:21:38: 	GET: All application screens rights | user_id: 1
+info: Jul-11-2022 03:21:38: 	POST: Auth validation
+info: Jul-11-2022 03:21:38: 	GET: All application screens rights | user_id: 14
+info: Jul-11-2022 03:21:38: 	POST: Auth validation
+info: Jul-11-2022 03:21:38: 	POST: Auth validation
+info: Jul-11-2022 03:21:38: 	POST: Auth validation
+info: Jul-11-2022 03:21:38: 	GET: All users | user_id: 1
+info: Jul-11-2022 03:21:38: 	GET: All Database Application Mappings | user_id: 1
+info: Jul-11-2022 03:21:38: 	GET: All application screens rights | user_id: 14
+info: Jul-11-2022 03:21:38: 	POST: Auth validation
+info: Jul-11-2022 03:21:38: 	POST: Auth validation
+info: Jul-11-2022 03:21:38: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 03:21:38: 	GET: User permissions for an user with user_id : 14 | by user_id: 1
+info: Jul-11-2022 03:21:38: 	POST: Auth validation
+info: Jul-11-2022 03:21:39: 	GET: User permissions for an user with user_id : 14 | by user_id: 1
+info: Jul-11-2022 03:21:39: 	POST: Auth validation
+info: Jul-11-2022 03:21:39: 	POST: Auth validation
+info: Jul-11-2022 03:21:39: 	GET: All users | user_id: 1
+info: Jul-11-2022 03:21:39: 	GET: User permissions for an user with user_id : 14 | by user_id: 1
+info: Jul-11-2022 03:21:40: 	POST: Auth validation
+info: Jul-11-2022 03:21:40: 	GET: All Mapped Draft Queries for an user | user_id: 1
+info: Jul-11-2022 03:21:55: 	POST: Auth validation
+info: Jul-11-2022 03:21:55: 	POST: Auth validation
+info: Jul-11-2022 03:21:55: 	GET: All Applications | user_id: 1
+info: Jul-11-2022 03:21:55: 	GET: All users | user_id: 1
+info: Jul-11-2022 03:21:56: 	POST: Auth validation
+info: Jul-11-2022 03:21:58: 	POST: Auth validation
+info: Jul-11-2022 03:21:58: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 03:29:51: 	POST: Auth validation
+info: Jul-11-2022 03:29:51: 	POST: Add new query | user_id: 1 | query_id: [object Object]
+info: Jul-11-2022 03:29:51: 	POST: Auth validation
+info: Jul-11-2022 03:29:52: 	POST: Auth validation
+info: Jul-11-2022 03:29:52: 	POST: Auth validation
+info: Jul-11-2022 03:29:52: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 03:29:53: 	POST: Execute Query | user_id: 1 | query_id: 1
+info: Jul-11-2022 03:29:53: 	GET: Query Details for given query ID | user_id: 1 | query_id: 1
+info: Jul-11-2022 03:30:08: 	POST: Auth validation
+info: Jul-11-2022 03:30:08: 	GET: All Mapped Draft Queries for an user | user_id: 1
+info: Jul-11-2022 03:30:10: 	POST: Auth validation
+info: Jul-11-2022 03:30:10: 	GET: All Mapped History Queries for an user | user_id: 1
+info: Jul-11-2022 03:30:13: 	POST: Auth validation
+info: Jul-11-2022 03:30:13: 	POST: Auth validation
+info: Jul-11-2022 03:30:13: 	GET: Query Details for given query ID | user_id: 1 | query_id: 1
+info: Jul-11-2022 03:30:14: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 03:30:17: 	POST: Auth validation
+info: Jul-11-2022 03:30:17: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 03:30:21: 	POST: Auth validation
+error: Jul-11-2022 03:30:22: 	GET: Query Details for given query ID | user_id: 1 | error: duplicate key value violates unique constraint "Query_Q_SysDefName_key"
+info: Jul-11-2022 03:30:26: 	POST: Auth validation
+error: Jul-11-2022 03:30:26: 	GET: Query Details for given query ID | user_id: 1 | error: duplicate key value violates unique constraint "Query_Q_SysDefName_key"
+info: Jul-11-2022 03:30:29: 	POST: Auth validation
+error: Jul-11-2022 03:30:29: 	GET: Query Details for given query ID | user_id: 1 | error: duplicate key value violates unique constraint "Query_Q_SysDefName_key"
+info: Jul-11-2022 03:30:39: 	POST: Auth validation
+info: Jul-11-2022 03:30:39: 	POST: Add new query | user_id: 1 | query_id: [object Object]
+info: Jul-11-2022 03:30:39: 	POST: Auth validation
+info: Jul-11-2022 03:30:39: 	POST: Auth validation
+info: Jul-11-2022 03:30:39: 	POST: Auth validation
+error: Jul-11-2022 03:30:39: 	POST: Execute Query | user_id: 1 | error: relation "QueryStatus12" does not exist
+info: Jul-11-2022 03:30:40: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 03:30:40: 	GET: Query Details for given query ID | user_id: 1 | query_id: 5
+info: Jul-11-2022 03:30:49: 	POST: Auth validation
+info: Jul-11-2022 03:30:50: 	GET: All Mapped Draft Queries for an user | user_id: 1
+info: Jul-11-2022 03:30:58: 	POST: Auth validation
+info: Jul-11-2022 03:30:58: 	POST: Auth validation
+info: Jul-11-2022 03:30:58: 	GET: Query Details for given query ID | user_id: 1 | query_id: 5
+info: Jul-11-2022 03:30:58: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 03:41:15: 	POST: Auth validation
+info: Jul-11-2022 03:41:15: 	POST: Auth validation
+info: Jul-11-2022 03:41:15: 	POST: Auth validation
+info: Jul-11-2022 03:41:15: 	GET: All users | user_id: 1
+info: Jul-11-2022 03:41:15: 	GET: All application screens rights | user_id: 1
+info: Jul-11-2022 03:41:15: 	GET: All application screens rights | user_id: 14
+info: Jul-11-2022 03:41:15: 	POST: Auth validation
+info: Jul-11-2022 03:41:15: 	GET: All application screens rights | user_id: 14
+info: Jul-11-2022 03:41:15: 	POST: Auth validation
+info: Jul-11-2022 03:41:15: 	GET: All application screens rights | user_id: 14
+info: Jul-11-2022 03:41:17: 	POST: Auth validation
+info: Jul-11-2022 03:41:17: 	GET: All application screens rights | user_id: 2
+info: Jul-11-2022 03:41:42: 	POST: Auth validation
+info: Jul-11-2022 03:41:42: 	PUT: Screens rights mapping for an user with user_id: 2 | by user_id: 1
+info: Jul-11-2022 03:41:42: 	POST: Auth validation
+info: Jul-11-2022 03:41:43: 	GET: All application screens rights | user_id: 2
+info: Jul-11-2022 03:41:57: 	POST: Auth validation
+info: Jul-11-2022 03:41:57: 	GET: All application screens rights | user_id: 2
+info: Jul-11-2022 03:41:57: 	POST: Auth validation
+info: Jul-11-2022 03:41:57: 	POST: Auth validation
+info: Jul-11-2022 03:41:57: 	POST: Auth validation
+info: Jul-11-2022 03:41:57: 	POST: Auth validation
+info: Jul-11-2022 03:41:57: 	GET: Recent Queries | user_id: 2
+info: Jul-11-2022 03:41:57: 	GET: Queries awaiting for Approval | user_id: 2
+info: Jul-11-2022 03:41:57: 	GET: User details | of user_id: 2
+info: Jul-11-2022 03:41:58: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 03:42:00: 	POST: Auth validation
+info: Jul-11-2022 03:42:00: 	POST: Auth validation
+info: Jul-11-2022 03:42:00: 	GET: All Applications | user_id: 2
+info: Jul-11-2022 03:42:00: 	GET: All users | user_id: 2
+info: Jul-11-2022 03:42:10: 	POST: Auth validation
+info: Jul-11-2022 03:42:10: 	POST : Add new Application | user_id: 2 | application_id: 2
+info: Jul-11-2022 03:42:10: 	POST: Auth validation
+info: Jul-11-2022 03:42:10: 	GET: All Applications | user_id: 2
+info: Jul-11-2022 03:42:13: 	POST: Auth validation
+info: Jul-11-2022 03:42:18: 	POST: Auth validation
+info: Jul-11-2022 03:42:18: 	GET: All Applications | user_id: 2
+info: Jul-11-2022 03:42:19: 	POST: Auth validation
+info: Jul-11-2022 03:42:19: 	POST: Auth validation
+info: Jul-11-2022 03:42:19: 	GET: All Database Application Mappings | user_id: 2
+info: Jul-11-2022 03:42:23: 	POST: Auth validation
+info: Jul-11-2022 03:42:23: 	POST : Add new Database Application Mapping | user_id: 2
+info: Jul-11-2022 03:42:23: 	POST: Auth validation
+info: Jul-11-2022 03:42:23: 	GET: All Database Application Mappings | user_id: 2
+info: Jul-11-2022 03:42:29: 	POST: Auth validation
+info: Jul-11-2022 03:42:29: 	GET: All users | user_id: 2
+info: Jul-11-2022 03:42:29: 	POST: Auth validation
+info: Jul-11-2022 03:42:29: 	POST: Auth validation
+info: Jul-11-2022 03:42:29: 	GET: All Database Application Mappings | user_id: 2
+info: Jul-11-2022 03:42:30: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 03:42:31: 	POST: Auth validation
+info: Jul-11-2022 03:42:32: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 03:42:36: 	POST: Auth validation
+info: Jul-11-2022 03:42:36: 	GET: User permissions for an user with user_id : 1 | by user_id: 2
+info: Jul-11-2022 03:42:37: 	POST: Auth validation
+info: Jul-11-2022 03:42:38: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 03:42:38: 	POST: Auth validation
+info: Jul-11-2022 03:42:39: 	GET: User permissions for an user with user_id : 13 | by user_id: 2
+info: Jul-11-2022 03:42:41: 	POST: Auth validation
+info: Jul-11-2022 03:42:41: 	GET: All users | user_id: 2
+info: Jul-11-2022 03:42:42: 	POST: Auth validation
+info: Jul-11-2022 03:42:42: 	GET: All users | user_id: 2
+info: Jul-11-2022 03:42:43: 	POST: Auth validation
+info: Jul-11-2022 03:42:43: 	POST: Auth validation
+info: Jul-11-2022 03:42:43: 	GET: All application screens rights | user_id: 13
+info: Jul-11-2022 03:42:43: 	GET: All application screens rights | user_id: 2
+info: Jul-11-2022 03:42:43: 	POST: Auth validation
+info: Jul-11-2022 03:42:43: 	GET: All application screens rights | user_id: 13
+info: Jul-11-2022 03:42:43: 	POST: Auth validation
+info: Jul-11-2022 03:42:43: 	GET: All application screens rights | user_id: 13
+info: Jul-11-2022 03:42:45: 	POST: Auth validation
+info: Jul-11-2022 03:42:45: 	POST: Auth validation
+info: Jul-11-2022 03:42:45: 	POST: Auth validation
+info: Jul-11-2022 03:42:45: 	GET: All users | user_id: 2
+info: Jul-11-2022 03:42:45: 	GET: All Database Application Mappings | user_id: 2
+info: Jul-11-2022 03:42:45: 	GET: User permissions for an user with user_id : 13 | by user_id: 2
+info: Jul-11-2022 03:42:45: 	POST: Auth validation
+info: Jul-11-2022 03:42:45: 	POST: Auth validation
+info: Jul-11-2022 03:42:45: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 03:42:45: 	GET: User permissions for an user with user_id : 13 | by user_id: 2
+info: Jul-11-2022 03:42:45: 	POST: Auth validation
+info: Jul-11-2022 03:42:46: 	GET: User permissions for an user with user_id : 13 | by user_id: 2
+info: Jul-11-2022 03:43:11: 	POST: Auth validation
+info: Jul-11-2022 03:43:11: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 03:43:11: 	POST: Auth validation
+info: Jul-11-2022 03:43:11: 	POST: Auth validation
+info: Jul-11-2022 03:43:11: 	POST: Auth validation
+info: Jul-11-2022 03:43:11: 	POST: Auth validation
+info: Jul-11-2022 03:43:11: 	GET: User details | of user_id: 1
+info: Jul-11-2022 03:43:11: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jul-11-2022 03:43:11: 	GET: Recent Queries | user_id: 1
+info: Jul-11-2022 03:43:11: 	GET: All application screens rights | user_id: 1
+info: Jul-11-2022 03:43:12: 	POST: Auth validation
+info: Jul-11-2022 03:43:12: 	POST: Auth validation
+info: Jul-11-2022 03:43:12: 	POST: Auth validation
+info: Jul-11-2022 03:43:12: 	GET: All users | user_id: 1
+info: Jul-11-2022 03:43:12: 	GET: All Database Application Mappings | user_id: 1
+info: Jul-11-2022 03:43:12: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 03:43:14: 	POST: Auth validation
+info: Jul-11-2022 03:43:15: 	GET: User permissions for an user with user_id : 2 | by user_id: 1
+info: Jul-11-2022 03:43:30: 	POST: Auth validation
+info: Jul-11-2022 03:43:30: 	PUT: User permissions for an user | user_id: 1
+info: Jul-11-2022 03:43:30: 	POST: Auth validation
+info: Jul-11-2022 03:43:30: 	POST: Auth validation
+info: Jul-11-2022 03:43:30: 	GET: User permissions for an user with user_id : 2 | by user_id: 1
+info: Jul-11-2022 03:43:30: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 03:43:44: 	POST: Auth validation
+info: Jul-11-2022 03:43:44: 	POST: Auth validation
+info: Jul-11-2022 03:43:44: 	POST: Auth validation
+info: Jul-11-2022 03:43:44: 	POST: Auth validation
+info: Jul-11-2022 03:43:44: 	GET: All application screens rights | user_id: 2
+info: Jul-11-2022 03:43:44: 	GET: User details | of user_id: 2
+info: Jul-11-2022 03:43:44: 	POST: Auth validation
+info: Jul-11-2022 03:43:44: 	GET: Queries awaiting for Approval | user_id: 2
+info: Jul-11-2022 03:43:44: 	GET: Recent Queries | user_id: 2
+info: Jul-11-2022 03:43:45: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 03:44:34: 	POST: Auth validation
+info: Jul-11-2022 03:44:34: 	POST: Auth validation
+info: Jul-11-2022 03:44:34: 	POST: Auth validation
+info: Jul-11-2022 03:44:34: 	GET: All users | user_id: 2
+info: Jul-11-2022 03:44:34: 	GET: User details | of user_id: 2
+info: Jul-11-2022 03:44:34: 	GET: All application screens rights | user_id: 2
+info: Jul-11-2022 03:44:36: 	POST: Auth validation
+info: Jul-11-2022 03:44:36: 	POST: Auth validation
+info: Jul-11-2022 03:44:36: 	POST: Auth validation
+info: Jul-11-2022 03:44:36: 	GET: All users | user_id: 2
+info: Jul-11-2022 03:44:36: 	GET: All Database Application Mappings | user_id: 2
+info: Jul-11-2022 03:44:36: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 03:47:56: 	POST: Auth validation
+info: Jul-11-2022 03:47:56: 	POST: Auth validation
+info: Jul-11-2022 03:47:56: 	POST: Auth validation
+info: Jul-11-2022 03:47:56: 	POST: Auth validation
+info: Jul-11-2022 03:47:56: 	POST: Auth validation
+info: Jul-11-2022 03:47:56: 	GET: All users | user_id: 2
+info: Jul-11-2022 03:47:56: 	GET: All Database Application Mappings | user_id: 2
+info: Jul-11-2022 03:47:56: 	GET: User details | of user_id: 2
+info: Jul-11-2022 03:47:56: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 03:47:56: 	GET: All application screens rights | user_id: 2
+info: Jul-11-2022 03:50:29: 	POST: Auth validation
+info: Jul-11-2022 03:50:29: 	POST: Auth validation
+info: Jul-11-2022 03:50:29: 	POST: Auth validation
+info: Jul-11-2022 03:50:29: 	POST: Auth validation
+info: Jul-11-2022 03:50:29: 	POST: Auth validation
+info: Jul-11-2022 03:50:29: 	GET: All users | user_id: 2
+info: Jul-11-2022 03:50:29: 	GET: All Database Application Mappings | user_id: 2
+info: Jul-11-2022 03:50:29: 	GET: User details | of user_id: 2
+info: Jul-11-2022 03:50:29: 	GET: All application screens rights | user_id: 2
+info: Jul-11-2022 03:50:29: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 03:50:48: 	POST: Auth validation
+info: Jul-11-2022 03:50:48: 	POST: Auth validation
+info: Jul-11-2022 03:50:48: 	POST: Auth validation
+info: Jul-11-2022 03:50:48: 	POST: Auth validation
+info: Jul-11-2022 03:50:48: 	POST: Auth validation
+info: Jul-11-2022 03:50:48: 	GET: All Database Application Mappings | user_id: 2
+info: Jul-11-2022 03:50:48: 	GET: User details | of user_id: 2
+info: Jul-11-2022 03:50:48: 	GET: All users | user_id: 2
+info: Jul-11-2022 03:50:48: 	GET: All application screens rights | user_id: 2
+info: Jul-11-2022 03:50:48: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 03:50:55: 	POST: Auth validation
+info: Jul-11-2022 03:50:55: 	GET: User permissions for an user with user_id : 13 | by user_id: 2
+info: Jul-11-2022 03:50:59: 	POST: Auth validation
+info: Jul-11-2022 03:50:59: 	GET: User permissions for an user with user_id : 1 | by user_id: 2
+info: Jul-11-2022 03:51:01: 	POST: Auth validation
+info: Jul-11-2022 03:51:01: 	GET: User permissions for an user with user_id : 15 | by user_id: 2
+info: Jul-11-2022 03:51:03: 	POST: Auth validation
+info: Jul-11-2022 03:51:03: 	GET: User permissions for an user with user_id : 16 | by user_id: 2
+info: Jul-11-2022 03:51:04: 	POST: Auth validation
+info: Jul-11-2022 03:51:04: 	GET: User permissions for an user with user_id : 15 | by user_id: 2
+info: Jul-11-2022 03:51:06: 	POST: Auth validation
+info: Jul-11-2022 03:51:06: 	GET: User permissions for an user with user_id : 16 | by user_id: 2
+info: Jul-11-2022 03:51:08: 	POST: Auth validation
+info: Jul-11-2022 03:51:08: 	GET: User permissions for an user with user_id : 17 | by user_id: 2
+info: Jul-11-2022 03:51:12: 	POST: Auth validation
+info: Jul-11-2022 03:51:12: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 03:51:15: 	POST: Auth validation
+info: Jul-11-2022 03:51:16: 	GET: User permissions for an user with user_id : 1 | by user_id: 2
+info: Jul-11-2022 03:51:18: 	POST: Auth validation
+info: Jul-11-2022 03:51:18: 	GET: User permissions for an user with user_id : 13 | by user_id: 2
+info: Jul-11-2022 03:52:13: 	POST: Auth validation
+info: Jul-11-2022 03:52:14: 	GET: All users | user_id: 2
+info: Jul-11-2022 03:52:14: 	POST: Auth validation
+info: Jul-11-2022 03:52:14: 	GET: All Mapped Draft Queries for an user | user_id: 2
+info: Jul-11-2022 03:52:17: 	POST: Auth validation
+info: Jul-11-2022 03:52:17: 	POST: Auth validation
+info: Jul-11-2022 03:52:17: 	GET: Query Details for given query ID | user_id: 2 | query_id: 5
+info: Jul-11-2022 03:52:17: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 03:52:20: 	POST: Auth validation
+error: Jul-11-2022 03:52:20: 	POST: Execute Query | user_id: 2 | error: relation "QueryStatus12" does not exist
+info: Jul-11-2022 03:52:28: 	POST: Auth validation
+error: Jul-11-2022 03:52:29: 	POST: Execute Query | user_id: 2 | error: relation "QueryStatus12" does not exist
+info: Jul-11-2022 03:52:33: 	POST: Auth validation
+info: Jul-11-2022 03:52:33: 	GET: All application screens rights | user_id: 2
+info: Jul-11-2022 03:52:33: 	POST: Auth validation
+info: Jul-11-2022 03:52:33: 	POST: Auth validation
+info: Jul-11-2022 03:52:33: 	POST: Auth validation
+info: Jul-11-2022 03:52:33: 	GET: User details | of user_id: 2
+info: Jul-11-2022 03:52:33: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 03:52:33: 	GET: Query Details for given query ID | user_id: 2 | query_id: 5
+info: Jul-11-2022 03:52:43: 	POST: Auth validation
+info: Jul-11-2022 03:52:43: 	GET: All Mapped History Queries for an user | user_id: 2
+info: Jul-11-2022 03:52:44: 	POST: Auth validation
+info: Jul-11-2022 03:52:44: 	POST: Auth validation
+info: Jul-11-2022 03:52:44: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 03:52:44: 	GET: Query Details for given query ID | user_id: 2 | query_id: 1
+info: Jul-11-2022 03:52:46: 	POST: Auth validation
+info: Jul-11-2022 03:52:47: 	POST: Execute Query | user_id: 2 | query_id: 1
+info: Jul-11-2022 03:52:47: 	POST: Auth validation
+info: Jul-11-2022 03:52:47: 	GET: Query Details for given query ID | user_id: 2 | query_id: 1
+info: Jul-11-2022 03:52:59: 	POST: Auth validation
+info: Jul-11-2022 03:52:59: 	GET: All Mapped Draft Queries for an user | user_id: 2
+info: Jul-11-2022 03:53:00: 	POST: Auth validation
+info: Jul-11-2022 03:53:00: 	POST: Auth validation
+info: Jul-11-2022 03:53:00: 	GET: Query Details for given query ID | user_id: 2 | query_id: 5
+info: Jul-11-2022 03:53:00: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 03:53:02: 	POST: Auth validation
+info: Jul-11-2022 03:53:02: 	GET: All Mapped History Queries for an user | user_id: 2
+info: Jul-11-2022 03:53:03: 	POST: Auth validation
+info: Jul-11-2022 03:53:03: 	POST: Auth validation
+info: Jul-11-2022 03:53:03: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 03:53:03: 	GET: Query Details for given query ID | user_id: 2 | query_id: 1
+info: Jul-11-2022 03:53:14: 	POST: Auth validation
+info: Jul-11-2022 03:53:14: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 03:53:18: 	POST: Auth validation
+info: Jul-11-2022 03:53:18: 	GET: All Mapped History Queries for an user | user_id: 2
+info: Jul-11-2022 03:53:19: 	POST: Auth validation
+info: Jul-11-2022 03:53:19: 	POST: Auth validation
+info: Jul-11-2022 03:53:19: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 03:53:19: 	GET: Query Details for given query ID | user_id: 2 | query_id: 1
+info: Jul-11-2022 03:57:10: 	POST: Auth validation
+info: Jul-11-2022 03:57:10: 	POST: Auth validation
+info: Jul-11-2022 03:57:10: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 03:57:10: 	GET: Query Details for given query ID | user_id: 2 | query_id: 1
+info: Jul-11-2022 03:57:19: 	POST: Auth validation
+info: Jul-11-2022 03:57:19: 	POST: Auth validation
+info: Jul-11-2022 03:57:19: 	POST: Auth validation
+info: Jul-11-2022 03:57:19: 	GET: All application screens rights | user_id: 2
+info: Jul-11-2022 03:57:19: 	POST: Auth validation
+info: Jul-11-2022 03:57:19: 	GET: User details | of user_id: 2
+info: Jul-11-2022 03:57:19: 	GET: Query Details for given query ID | user_id: 2 | query_id: 1
+info: Jul-11-2022 03:57:19: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 04:00:45: 	POST: Auth validation
+info: Jul-11-2022 04:00:45: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 04:00:55: 	POST: Auth validation
+info: Jul-11-2022 04:00:55: 	GET: All Mapped History Queries for an user | user_id: 2
+info: Jul-11-2022 04:00:55: 	POST: Auth validation
+info: Jul-11-2022 04:00:56: 	POST: Auth validation
+info: Jul-11-2022 04:00:56: 	GET: Query Details for given query ID | user_id: 2 | query_id: 1
+info: Jul-11-2022 04:00:56: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 04:02:55: 	POST: Auth validation
+info: Jul-11-2022 04:02:55: 	POST: Auth validation
+info: Jul-11-2022 04:02:55: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 04:02:55: 	GET: Query Details for given query ID | user_id: 2 | query_id: 1
+info: Jul-11-2022 04:03:11: 	POST: Auth validation
+info: Jul-11-2022 04:03:11: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 04:03:22: 	POST: Auth validation
+info: Jul-11-2022 04:03:23: 	GET: All Mapped Draft Queries for an user | user_id: 2
+info: Jul-11-2022 04:03:23: 	POST: Auth validation
+info: Jul-11-2022 04:03:23: 	GET: All users | user_id: 2
+info: Jul-11-2022 04:03:24: 	POST: Auth validation
+info: Jul-11-2022 04:03:24: 	GET: All users | user_id: 2
+info: Jul-11-2022 04:03:24: 	POST: Auth validation
+info: Jul-11-2022 04:03:24: 	POST: Auth validation
+info: Jul-11-2022 04:03:24: 	GET: All Database Application Mappings | user_id: 2
+info: Jul-11-2022 04:03:25: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 04:03:26: 	POST: Auth validation
+info: Jul-11-2022 04:03:26: 	GET: All Mapped History Queries for an user | user_id: 2
+info: Jul-11-2022 04:03:27: 	POST: Auth validation
+info: Jul-11-2022 04:03:27: 	POST: Auth validation
+info: Jul-11-2022 04:03:27: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 04:03:27: 	GET: Query Details for given query ID | user_id: 2 | query_id: 1
+info: Jul-11-2022 04:04:42: 	POST: Auth validation
+info: Jul-11-2022 04:04:42: 	GET: All application screens rights | user_id: 1
+info: Jul-11-2022 04:04:42: 	POST: Auth validation
+info: Jul-11-2022 04:04:42: 	POST: Auth validation
+info: Jul-11-2022 04:04:42: 	POST: Auth validation
+info: Jul-11-2022 04:04:42: 	POST: Auth validation
+info: Jul-11-2022 04:04:42: 	GET: User details | of user_id: 1
+info: Jul-11-2022 04:04:42: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jul-11-2022 04:04:42: 	GET: Recent Queries | user_id: 1
+info: Jul-11-2022 04:04:43: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 04:08:59: 	POST: Auth validation
+info: Jul-11-2022 04:08:59: 	POST: Auth validation
+info: Jul-11-2022 04:08:59: 	POST: Auth validation
+info: Jul-11-2022 04:08:59: 	POST: Auth validation
+info: Jul-11-2022 04:08:59: 	POST: Auth validation
+info: Jul-11-2022 04:08:59: 	GET: User details | of user_id: 1
+info: Jul-11-2022 04:08:59: 	GET: Recent Queries | user_id: 1
+info: Jul-11-2022 04:08:59: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jul-11-2022 04:08:59: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 04:08:59: 	GET: All application screens rights | user_id: 1
+info: Jul-11-2022 04:09:04: 	POST: Auth validation
+info: Jul-11-2022 04:09:04: 	POST: Auth validation
+info: Jul-11-2022 04:09:04: 	POST: Auth validation
+info: Jul-11-2022 04:09:04: 	GET: All users | user_id: 1
+info: Jul-11-2022 04:09:04: 	GET: All Database Application Mappings | user_id: 1
+info: Jul-11-2022 04:09:04: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 04:09:12: 	POST: Auth validation
+info: Jul-11-2022 04:09:13: 	GET: User permissions for an user with user_id : 2 | by user_id: 1
+info: Jul-11-2022 04:09:20: 	POST: Auth validation
+info: Jul-11-2022 04:09:20: 	PUT: User permissions for an user | user_id: 1
+info: Jul-11-2022 04:09:21: 	POST: Auth validation
+info: Jul-11-2022 04:09:21: 	POST: Auth validation
+info: Jul-11-2022 04:09:30: 	GET: User permissions for an user with user_id : 2 | by user_id: 1
+info: Jul-11-2022 04:09:30: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-11-2022 04:09:35: 	POST: Auth validation
+info: Jul-11-2022 04:09:35: 	POST: Auth validation
+info: Jul-11-2022 04:09:36: 	POST: Auth validation
+info: Jul-11-2022 04:09:36: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 04:09:36: 	POST: Auth validation
+info: Jul-11-2022 04:09:36: 	GET: All application screens rights | user_id: 2
+info: Jul-11-2022 04:09:36: 	POST: Auth validation
+info: Jul-11-2022 04:09:36: 	GET: Queries awaiting for Approval | user_id: 2
+info: Jul-11-2022 04:09:41: 	GET: Recent Queries | user_id: 2
+info: Jul-11-2022 04:09:41: 	GET: User details | of user_id: 2
+info: Jul-11-2022 04:09:44: 	POST: Auth validation
+info: Jul-11-2022 04:09:44: 	GET: All Mapped History Queries for an user | user_id: 2
+info: Jul-11-2022 04:09:45: 	POST: Auth validation
+info: Jul-11-2022 04:09:45: 	POST: Auth validation
+info: Jul-11-2022 04:09:45: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 04:09:45: 	GET: Query Details for given query ID | user_id: 2 | query_id: 1
+info: Jul-11-2022 04:10:21: 	POST: Auth validation
+info: Jul-11-2022 04:10:21: 	POST: Auth validation
+info: Jul-11-2022 04:10:21: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 04:10:21: 	GET: Query Details for given query ID | user_id: 2 | query_id: 1
+info: Jul-11-2022 04:10:21: 	POST: Auth validation
+info: Jul-11-2022 04:10:21: 	POST: Auth validation
+info: Jul-11-2022 04:10:21: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 04:10:22: 	GET: Query Details for given query ID | user_id: 2 | query_id: 1
+info: Jul-11-2022 04:10:25: 	POST: Auth validation
+info: Jul-11-2022 04:10:25: 	POST: Auth validation
+info: Jul-11-2022 04:10:26: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-11-2022 04:10:26: 	GET: Query Details for given query ID | user_id: 2 | query_id: 1

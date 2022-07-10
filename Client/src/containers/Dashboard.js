@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import AddApplication from '../components/AddApplication';
 import AddDatabase from '../components/AddDatabase';
+import AddDatabaseApplicationMapping from '../components/AddDatabaseApplicationMapping';
 import AddUser from '../components/UserWindow';
 import Home from '../components/Home';
 import Navbar from '../components/NavBar';
@@ -82,6 +83,11 @@ function Dashboard(props) {
                 exact
                 path={APPLICATION_URLS.DATABASE_PAGE}
                 component={AddDatabase}
+              />
+              <Route
+                exact
+                path={APPLICATION_URLS.DATABASE_APPLICATION_MAPPING_PAGE}
+                component={AddDatabaseApplicationMapping}
               />
               <Route
                 exact

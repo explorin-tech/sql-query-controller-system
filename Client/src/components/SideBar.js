@@ -72,6 +72,12 @@ function Sidebar(props) {
                   <MenuItem
                     to={APPLICATION_URLS.DATABASE_PAGE}
                     image={require('../static/images/dummy.png')}
+                    title="Add Database"
+                  />
+
+                  <MenuItem
+                    to={APPLICATION_URLS.DATABASE_APPLICATION_MAPPING_PAGE}
+                    image={require('../static/images/dummy.png')}
                     title="Application-Database Mappings"
                   />
 
@@ -148,7 +154,7 @@ function Sidebar(props) {
                     (each_screen_right) => {
                       if (
                         each_screen_right['AS_Name'] ===
-                        CONSTANTS.APPLICATION_SCREENS.DATABASE_MAPPING_WINDOW
+                        CONSTANTS.APPLICATION_SCREENS.MASTER_DATABASE_WINDOW
                       ) {
                         return each_screen_right['ASR_RightToView'];
                       }
@@ -156,6 +162,24 @@ function Sidebar(props) {
                   ) ? (
                     <MenuItem
                       to={APPLICATION_URLS.DATABASE_PAGE}
+                      image={require('../static/images/dummy.png')}
+                      title="Add Databases"
+                    />
+                  ) : null}
+
+                  {props.screen_rights.screen_rights.find(
+                    (each_screen_right) => {
+                      if (
+                        each_screen_right['AS_Name'] ===
+                        CONSTANTS.APPLICATION_SCREENS
+                          .DATABASE_APPLICATION_MAPPING_WINDOW
+                      ) {
+                        return each_screen_right['ASR_RightToView'];
+                      }
+                    }
+                  ) ? (
+                    <MenuItem
+                      to={APPLICATION_URLS.DATABASE_APPLICATION_MAPPING_PAGE}
                       image={require('../static/images/dummy.png')}
                       title="Application-Database Mappings"
                     />

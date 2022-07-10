@@ -35,22 +35,30 @@ export const APPLICATION = {
   MA_Owner2: 'MA_Owner2',
 };
 
+export const DATABASE = {
+  MD_ID: 'MD_ID',
+  MD_DBName: 'MD_DBName',
+  MD_DBT_ID: 'MD_DBT_ID',
+  MD_DBConnectionString: 'MD_DBConnectionString',
+  MD_DBPortNumber: 'MD_DBPortNumber',
+  MD_DBHostName: 'MD_DBHostName',
+  MD_DBUserName: 'MD_DBUserName',
+  MD_DBPassword: 'MD_DBPassword',
+  MD_AddedOn: 'MD_AddedOn',
+  MD_AddedBy: 'MD_AddedBy',
+  MD_UpdatedOn: 'MD_UpdatedOn',
+  MD_UpdatedBy: 'MD_UpdatedBy',
+};
+
+export const DATABASE_TYPE = {
+  DBT_ID: 'DBT_ID',
+  DBT_Name: 'DBT_Name',
+};
+
 export const DATABASE_APPLICATION_MAPPING = {
   DBAM_ID: 'DBAM_ID',
   DBAM_MA_ID: 'DBAM_MA_ID',
-  DBAM_MA_Name: 'DBAM_MA_Name',
-  DBAM_DBName: 'DBAM_DBName',
-  DBAM_DBT_ID: 'DBAM_DBT_ID',
-  DBAM_DBT_Name: 'DBAM_DBT_Name',
-  DBAM_DBConnectionString: 'DBAM_DBConnectionString',
-  DBAM_DBPortNumber: 'DBAM_DBPortNumber',
-  DBAM_DBHostName: 'DBAM_DBHostName',
-  DBAM_DBUserName: 'DBAM_DBUserName',
-  DBAM_DBPassword: 'DBAM_DBPassword',
-  DBAM_AddedOn: 'DBAM_AddedOn',
-  DBAM_AddedBy: 'DBAM_AddedBy',
-  DBAM_UpdatedOn: 'DBAM_UpdatedOn',
-  DBAM_UpdatedBy: 'DBAM_UpdatedBy',
+  DBAM_MD_ID: 'DBAM_MD_ID',
 };
 
 export const DATABASE_TYPES = [
@@ -80,7 +88,8 @@ export const APPLICATION_SCREENS = {
   QUERY_WINDOW: 'Query Window',
   USER_WINDOW: 'User Window',
   MASTER_APPLICATION_WINDOW: 'Master Application Window',
-  DATABASE_MAPPING_WINDOW: 'Database Mapping Window',
+  MASTER_DATABASE_WINDOW: 'Master Database Window',
+  DATABASE_APPLICATION_MAPPING_WINDOW: 'Database Mapping Window',
   SCREEN_RIGHTS_WINDOW: 'Screen Rights',
   DATABASE_RIGHTS_WINDOW: 'User Permissions',
 };

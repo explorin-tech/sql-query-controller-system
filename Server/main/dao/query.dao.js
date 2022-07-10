@@ -171,11 +171,11 @@ module.exports.executeQuery = async (params) => {
     const rawQueryDetails = params.raw_query_details[0];
     const { Pool } = require('pg');
     const new_pool = new Pool({
-      host: rawQueryDetails['DBAM_DBHostName'],
-      user: rawQueryDetails['DBAM_DBUserName'],
+      host: rawQueryDetails['MD_DBHostName'],
+      user: rawQueryDetails['MD_DBUserName'],
       database: 'postgres',
-      password: rawQueryDetails['DBAM_DBPassword'],
-      port: rawQueryDetails['DBAM_DBPortNumber'],
+      password: rawQueryDetails['MD_DBPassword'],
+      port: rawQueryDetails['MD_DBPortNumber'],
     });
     const result = await new_pool.query(rawQueryDetails['Q_RawQuery']);
     return result.rows;

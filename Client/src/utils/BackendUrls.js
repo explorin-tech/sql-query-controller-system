@@ -9,8 +9,7 @@ export const ADD_AN_APPLICATION = 'http://127.0.0.1:1346/api/post/application';
 export const EDIT_AN_APPLICATION = 'http://127.0.0.1:1346/api/put/application';
 export const DELETE_AN_APPLICATION =
   'http://127.0.0.1:1346/api/delete/application';
-export const GET_ALL_MAPPED_DATABASES =
-  'http://127.0.0.1:1346/api/get/databases';
+export const GET_ALL_DATABASES = 'http://127.0.0.1:1346/api/get/databases';
 export const GET_DATABASE_DETAILS =
   'http://127.0.0.1:1346/api/get/database_details';
 export const ADD_DATABASE = 'http://127.0.0.1:1346/api/post/database';
@@ -18,6 +17,16 @@ export const EDIT_A_DATABASE = 'http://127.0.0.1:1346/api/put/database';
 export const DELETE_A_DATABASE = 'http://127.0.0.1:1346/api/delete/database';
 export const GET_ALL_DATABASE_TYPES =
   'http://127.0.0.1:1346/api/get/database_types';
+export const GET_ALL_DATABASE_APPLICATION_MAPPINGS =
+  'http://127.0.0.1:1346/api/get/database_application_mappings';
+export const GET_DATABASE_APPLICATION_MAPPING_DETAILS =
+  'http://127.0.0.1:1346/api/get/database_application_mapping_details';
+export const ADD_DATABASE_APPLICATION_MAPPING =
+  'http://127.0.0.1:1346/api/post/database_application_mapping';
+export const EDIT_DATABASE_APPLICATION_MAPPING =
+  'http://127.0.0.1:1346/api/edit/database_application_mapping';
+export const DELETE_DATABASE_APPLICATION_MAPPING =
+  'http://127.0.0.1:1346/api/delete/database_application_mapping';
 export const GET_ALL_USERTYPES = 'http://127.0.0.1:1346/api/get/user_types';
 export const GET_ALL_USERS = 'http://127.0.0.1:1346/api/get/users';
 export const GET_USER_DETAILS = 'http://127.0.0.1:1346/api/get/user_details';

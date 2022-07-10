@@ -6,11 +6,19 @@ module.exports = Object.freeze({
   ADD_AN_APPLICATION: '/post/application',
   EDIT_AN_APPLICATION: '/put/application',
   DELETE_AN_APPLICATION: '/delete/application',
-  GET_ALL_MAPPED_DATABASES: '/get/databases',
+  GET_ALL_DATABASES: '/get/databases',
   GET_DATABASE_DETAILS: '/get/database_details',
   ADD_DATABASE: '/post/database',
   EDIT_A_DATABASE: '/put/database',
   DELETE_A_DATABASE: '/delete/database',
+
+  GET_ALL_DATABASE_APPLICATION_MAPPINGS: '/get/database_application_mappings',
+  GET_DATABASE_APPLICATION_MAPPING_DETAILS:
+    '/get/database_application_mapping_details',
+  ADD_DATABASE_APPLICATION_MAPPING: '/post/database_application_mapping',
+  EDIT_DATABASE_APPLICATION_MAPPING: '/edit/database_application_mapping',
+  DELETE_DATABASE_APPLICATION_MAPPING: '/delete/database_application_mapping',
+
   GET_ALL_DATABASE_TYPES: '/get/database_types',
   GET_ALL_USERTYPES: '/get/user_types',
   GET_ALL_USERS: '/get/users',

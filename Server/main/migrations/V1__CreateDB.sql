@@ -29,6 +29,22 @@ CREATE TABLE "MasterApplication"(
 	"MA_UpdatedBy" BIGSERIAL REFERENCES "User" ("U_ID") NOT NULL
 );
 
+CREATE TABLE "MasterDatabase" (
+	"MD_ID" BIGSERIAL PRIMARY KEY,
+	"MD_DBName" VARCHAR(200) NOT NULL,
+	"MD_DBT_ID" SERIAL REFERENCES "DataBaseType" ("DBT_ID") ON DELETE CASCADE,
+	"MD_DBConnectionString" VARCHAR(500),
+	"MD_DBPortNumber" INT,
+	"MD_DBHostName" VARCHAR(500),
+	"MD_DBUserName" VARCHAR(100),
+	"MD_DBPassword" VARCHAR(500),
+	"MD_AddedOn" TIMESTAMPTZ NOT NULL,
+	"MD_AddedBy" BIGSERIAL REFERENCES "User" ("U_ID") NOT NULL,
+	"MD_UpdatedOn" TIMESTAMPTZ NOT NULL,
+	"MD_UpdatedBy" BIGSERIAL REFERENCES "User" ("U_ID") NOT NULL
+)
+
+
 CREATE TABLE "DataBaseType" (
 	"DBT_ID" SERIAL PRIMARY KEY,
 	"DBT_Name" VARCHAR(3) NOT NULL UNIQUE
@@ -37,15 +53,7 @@ CREATE TABLE "DataBaseType" (
 CREATE TABLE "DataBaseApplicationMapping"(
 	"DBAM_ID" BIGSERIAL PRIMARY KEY,
 	"DBAM_MA_ID" SERIAL REFERENCES "MasterApplication" ("MA_ID") ON DELETE CASCADE,
-	"DBAM_MA_Name" VARCHAR(200),
-	"DBAM_DBName" VARCHAR(200) NOT NULL,
-	"DBAM_DBT_ID" SERIAL REFERENCES "DataBaseType" ("DBT_ID") ON DELETE CASCADE,
-	"DBAM_DBT_Name" VARCHAR(3),
-	"DBAM_DBConnectionString" VARCHAR(500),
-	"DBAM_DBPortNumber" INT,
-	"DBAM_DBHostName" VARCHAR(500),
-	"DBAM_DBUserName" VARCHAR(100),
-	"DBAM_DBPassword" VARCHAR(500),
+	"DBAM_MD_ID" SERIAL REFERENCES "MasterDatabase" ("MD_ID") ON DELETE CASCADE,
 	"DBAM_AddedOn" TIMESTAMPTZ NOT NULL,
 	"DBAM_AddedBy" BIGSERIAL REFERENCES "User" ("U_ID") NOT NULL,
 	"DBAM_UpdatedOn" TIMESTAMPTZ NOT NULL,
@@ -151,6 +159,7 @@ We now need to assign an admin user --
 
 INSERT INTO "ApplicationScreen"("AS_Name", "AS_AddedOn" , "AS_AddedBy", "AS_UpdatedOn", "AS_UpdatedBy") VALUES('User Window', NOW(), 1, NOW(), 1 ) ON CONFLICT DO NOTHING;
 INSERT INTO "ApplicationScreen"("AS_Name", "AS_AddedOn" , "AS_AddedBy", "AS_UpdatedOn", "AS_UpdatedBy") VALUES('Master Application Window', NOW(), 1, NOW(), 1 ) ON CONFLICT DO NOTHING;
+INSERT INTO "ApplicationScreen"("AS_Name", "AS_AddedOn" , "AS_AddedBy", "AS_UpdatedOn", "AS_UpdatedBy") VALUES('Master Database Window', NOW(), 1, NOW(), 1 ) ON CONFLICT DO NOTHING;
 INSERT INTO "ApplicationScreen"("AS_Name", "AS_AddedOn" , "AS_AddedBy", "AS_UpdatedOn", "AS_UpdatedBy") VALUES('Database Mapping Window', NOW(), 1, NOW(), 1 ) ON CONFLICT DO NOTHING;
 INSERT INTO "ApplicationScreen"("AS_Name", "AS_AddedOn" , "AS_AddedBy", "AS_UpdatedOn", "AS_UpdatedBy") VALUES('Screen Rights', NOW(), 1, NOW(), 1 ) ON CONFLICT DO NOTHING;
 INSERT INTO "ApplicationScreen"("AS_Name", "AS_AddedOn" , "AS_AddedBy", "AS_UpdatedOn", "AS_UpdatedBy") VALUES('User Permissions', NOW(), 1, NOW(), 1 ) ON CONFLICT DO NOTHING;

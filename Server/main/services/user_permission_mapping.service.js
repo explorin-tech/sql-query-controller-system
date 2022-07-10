@@ -1,5 +1,5 @@
 const {
-  ApplicationDatabaseMappingDao,
+  DatabaseApplicationMappingDao,
   UserPermissionMappingDao,
   UserDao,
 } = require('../dao/index');
@@ -29,19 +29,27 @@ module.exports.GET_getAllUserPermissionMappingForAnUser = async (
       user_id: decoded.UserID,
     });
     const user_type = user_details[0]['UT_Name'];
-    let databases;
+    let databases_application_mappings;
+    let arrayOfDatabaseIDs;
     if (user_type == 'AD') {
-      databases = await ApplicationDatabaseMappingDao.getAllDatabases();
+      databases_application_mappings =
+        await DatabaseApplicationMappingDao.getAllDatabaseApplicationMappings();
+      arrayOfDatabaseIDs = _.pluck(databases_application_mappings, 'DBAM_ID');
     } else {
-      databases =
-        await ApplicationDatabaseMappingDao.getAllDatabasesMappedForAnUser({
-          user_id: decoded.UserID,
-        });
+      databases_application_mappings =
+        await DatabaseApplicationMappingDao.getAllDatabaseApplicationMappingsForAnUser(
+          {
+            user_id: decoded.UserID,
+          }
+        );
+      arrayOfDatabaseIDs = _.pluck(
+        databases_application_mappings,
+        'UP_DBAM_ID'
+      );
     }
     let databasesRights;
     databasesRights =
       await UserPermissionMappingDao.getAllUserPermissionMappings(params);
-    const arrayOfDatabaseIDs = _.pluck(databases, 'DBAM_ID');
     const arrayOfDatabaseIDsInDatabaseRights = _.pluck(
       databasesRights,
       'UP_DBAM_ID'

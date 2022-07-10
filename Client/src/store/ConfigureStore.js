@@ -7,6 +7,7 @@ import AuthReducer from './reducers/AuthReducer';
 import DatabaseReducer from './reducers/DatabaseReducer';
 import ApplicationScreenReducer from './reducers/ApplicationScreenReducer';
 import ApplicationScreenRightsReducer from './reducers/ApplicationScreenRightsReducer';
+import DatabaseApplicationMappingReducer from './reducers/DatabaseApplicationMappingReducer';
 import UserReducer from './reducers/UserReducer';
 import UserPermissionReducer from './reducers/UserPermissionReducer';
 
@@ -18,6 +19,7 @@ const reducer = combineReducers({
   applicationScreenRights: ApplicationScreenRightsReducer,
   users: UserReducer,
   userPermissions: UserPermissionReducer,
+  database_application_mappings: DatabaseApplicationMappingReducer,
 });
 
 const store = configureStore({

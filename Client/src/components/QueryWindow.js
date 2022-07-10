@@ -14,25 +14,26 @@ import * as actions from '../store/actions/Actions';
 
 import '../static/css/queryWindow.css';
 
-const PopulateDatabaseMappings = ({ databases }) => {
+const PopulateDatabaseMappings = ({ database_application_mappings }) => {
   return (
     <>
-      {databases.map((database) => {
-        if (database['UP_RightToRead']) {
+      {database_application_mappings.map((database_application_mapping) => {
+        if (database_application_mapping['UP_RightToRead']) {
           return (
             <option
-              key={database['UP_DBAM_ID']}
-              value={database['UP_DBAM_ID']}
+              key={database_application_mapping['UP_DBAM_ID']}
+              value={database_application_mapping['UP_DBAM_ID']}
               name={
-                database['MA_Name'] +
+                database_application_mapping['MA_Name'] +
                 '_' +
-                database['DBAM_DBName'] +
+                database_application_mapping['MD_DBName'] +
                 '_' +
-                database['DBT_Name']
+                database_application_mapping['DBT_Name']
               }
             >
-              {database['MA_Name']} - {database['DBAM_DBName']} -{' '}
-              {database['DBT_Name']}
+              {database_application_mapping['MA_Name']} -{' '}
+              {database_application_mapping['MD_DBName']} -{' '}
+              {database_application_mapping['DBT_Name']}
             </option>
           );
         }
@@ -108,7 +109,7 @@ function QueryWindow(props) {
 
   const [values, setValues] = useState({
     queryID: '',
-    databaseMappingID: '',
+    databaseApplicationMappingID: '',
     sysDefQueryName: '',
     userDefQueryName: '',
     queryStatus: '',
@@ -123,13 +124,16 @@ function QueryWindow(props) {
     queryTypeIsApproved: false,
   });
 
-  const getDatabaseNameForID = (databaseMappingID) => {
+  const getDatabaseNameForID = (databaseApplicationMappingID) => {
     let name = '';
     if (
       props.user_permissions.user_permissions[0]
         ? (name = props.user_permissions.user_permissions.filter(
             (each_permission_array) => {
-              if (each_permission_array['UP_DBAM_ID'] == databaseMappingID) {
+              if (
+                each_permission_array['UP_DBAM_ID'] ==
+                databaseApplicationMappingID
+              ) {
                 return each_permission_array;
               }
             }
@@ -139,7 +143,7 @@ function QueryWindow(props) {
       return (
         name[0]['MA_Name'] +
         '_' +
-        name[0]['DBAM_DBName'] +
+        name[0]['MD_DBName'] +
         '_' +
         name[0]['DBT_Name']
       );
@@ -194,7 +198,7 @@ function QueryWindow(props) {
           const queryDetailsObject = res.data.data.queryObject[0];
           setValues({
             queryID: queryDetailsObject['Q_ID'],
-            databaseMappingID: queryDetailsObject['Q_DBAM_ID'],
+            databaseApplicationMappingID: queryDetailsObject['Q_DBAM_ID'],
             sysDefQueryName: queryDetailsObject['Q_SysDefName'],
             userDefQueryName: queryDetailsObject['Q_UserDefName'],
             queryStatus: queryDetailsObject['QS_Name'],
@@ -221,11 +225,13 @@ function QueryWindow(props) {
       });
   };
 
-  const checkForApprovalNotRequired = (databaseMappingID) => {
+  const checkForApprovalNotRequired = (databaseApplicationMappingID) => {
     const user_permission_array_for_selected_database_mapping =
       props.user_permissions.user_permissions.filter(
         (each_permission_array) => {
-          if (each_permission_array['UP_DBAM_ID'] === databaseMappingID) {
+          if (
+            each_permission_array['UP_DBAM_ID'] === databaseApplicationMappingID
+          ) {
             return each_permission_array;
           }
         }
@@ -328,7 +334,8 @@ function QueryWindow(props) {
               query_desc: values.queryDescription,
               query_comments: values.queryComments,
               raw_query: values.rawQuery,
-              database_application_mapping_id: values.databaseMappingID,
+              database_application_mapping_id:
+                values.databaseApplicationMappingID,
               query_status_id:
                 CONSTANTS.QUERY_STATUS_ID_MAPPING[values.queryStatus],
             },
@@ -362,13 +369,14 @@ function QueryWindow(props) {
           BACKEND_URLS.POST_ADD_NEW_QUERY,
           {
             query: {
-              database_application_mapping_id: values.databaseMappingID,
+              database_application_mapping_id:
+                values.databaseApplicationMappingID,
               query_status_id:
                 CONSTANTS.QUERY_STATUS_ID_MAPPING['HOLD_FOR_APPROVAL'],
               sys_defined_name:
                 values.userDefQueryName +
                 '_' +
-                getDatabaseNameForID(values.databaseMappingID) +
+                getDatabaseNameForID(values.databaseApplicationMappingID) +
                 '_' +
                 current_date.getFullYear() +
                 current_date.getMonth() +
@@ -407,7 +415,7 @@ function QueryWindow(props) {
   const handleQuerySetForApproval = () => {
     const is_query_allowed = checkIsQueryAllowed(
       values.rawQuery,
-      values.databaseMappingID
+      values.databaseApplicationMappingID
     );
     if (is_query_allowed) {
       if (query_id) {
@@ -422,7 +430,8 @@ function QueryWindow(props) {
                 query_desc: values.queryDescription,
                 query_comments: values.queryComments,
                 raw_query: values.rawQuery,
-                database_application_mapping_id: values.databaseMappingID,
+                database_application_mapping_id:
+                  values.databaseApplicationMappingID,
                 query_status_id:
                   CONSTANTS.QUERY_STATUS_ID_MAPPING['SET_FOR_APPROVAL'],
               },
@@ -456,13 +465,14 @@ function QueryWindow(props) {
             BACKEND_URLS.POST_ADD_NEW_QUERY,
             {
               query: {
-                database_application_mapping_id: values.databaseMappingID,
+                database_application_mapping_id:
+                  values.databaseApplicationMappingID,
                 query_status_id:
                   CONSTANTS.QUERY_STATUS_ID_MAPPING['SET_FOR_APPROVAL'],
                 sys_defined_name:
                   values.userDefQueryName +
                   '_' +
-                  getDatabaseNameForID(values.databaseMappingID) +
+                  getDatabaseNameForID(values.databaseApplicationMappingID) +
                   '_' +
                   current_date.getFullYear() +
                   current_date.getMonth() +
@@ -488,18 +498,12 @@ function QueryWindow(props) {
             }
           })
           .catch((err) => {
-            if (err.response.data.message.detail) {
-              toast.error(
-                `Failed to set query for approval : ${err.response.data.message.detail}`,
-                {
-                  autoClose: 3000,
-                }
-              );
-            } else {
-              toast.error(`Failed to set query for approval : ${err}`, {
+            toast.error(
+              `Failed to set query for approval : ${err.response.data.message}`,
+              {
                 autoClose: 3000,
-              });
-            }
+              }
+            );
           });
       }
     } else {
@@ -659,13 +663,14 @@ function QueryWindow(props) {
           BACKEND_URLS.POST_ADD_NEW_QUERY,
           {
             query: {
-              database_application_mapping_id: values.databaseMappingID,
+              database_application_mapping_id:
+                values.databaseApplicationMappingID,
               query_status_id:
                 CONSTANTS.QUERY_STATUS_ID_MAPPING['APPROVED_FOR_EVER'],
               sys_defined_name:
                 values.userDefQueryName +
                 '_' +
-                getDatabaseNameForID(values.databaseMappingID) +
+                getDatabaseNameForID(values.databaseApplicationMappingID) +
                 '_' +
                 current_date.getFullYear() +
                 current_date.getMonth() +
@@ -734,7 +739,8 @@ function QueryWindow(props) {
         const copiedQueryDetails = props.location.state;
         setValues({
           queryID: '',
-          databaseMappingID: copiedQueryDetails.databaseMappingID,
+          databaseApplicationMappingID:
+            copiedQueryDetails.databaseApplicationMappingID,
           sysDefQueryName: '',
           userDefQueryName: copiedQueryDetails.userDefQueryName,
           queryStatus: '',
@@ -751,7 +757,7 @@ function QueryWindow(props) {
       } else {
         setValues({
           queryID: '',
-          databaseMappingID: '',
+          databaseApplicationMappingID: '',
           sysDefQueryName: '',
           userDefQueryName: '',
           queryStatus: '',
@@ -775,26 +781,26 @@ function QueryWindow(props) {
       e.target.value != '-- Select Application - Database Name --' &&
       e.target.value != ''
     ) {
-      if (e.target.value != values.databaseMappingID) {
+      if (e.target.value != values.databaseApplicationMappingID) {
         isDifferentDatabaseChosen = true;
       }
       if (checkForApprovalNotRequired(e.target.value)) {
         setValues({
           ...values,
-          ['databaseMappingID']: e.target.value,
+          ['databaseApplicationMappingID']: e.target.value,
           ['approvalNotRequired']: true,
         });
       } else {
         setValues({
           ...values,
-          ['databaseMappingID']: e.target.value,
+          ['databaseApplicationMappingID']: e.target.value,
           ['approvalNotRequired']: false,
         });
       }
     } else {
       setValues({
         ...values,
-        ['databaseMappingID']: e.target.value,
+        ['databaseApplicationMappingID']: e.target.value,
         ['approvalNotRequired']: false,
       });
     }
@@ -848,12 +854,13 @@ function QueryWindow(props) {
 
   const handleRawQueryChange = (e) => {
     if (
-      values.databaseMappingID != '-- Select Application - Database Name --' &&
-      values.databaseMappingID != ''
+      values.databaseApplicationMappingID !=
+        '-- Select Application - Database Name --' &&
+      values.databaseApplicationMappingID != ''
     ) {
       const is_query_executable = checkIsQueryAllowed(
         values.rawQuery,
-        values.databaseMappingID
+        values.databaseApplicationMappingID
       );
       if (is_query_executable) {
         setValues({
@@ -891,7 +898,8 @@ function QueryWindow(props) {
               query_desc: values.queryDescription,
               query_comments: values.queryComments,
               raw_query: values.rawQuery,
-              database_application_mapping_id: values.databaseMappingID,
+              database_application_mapping_id:
+                values.databaseApplicationMappingID,
               query_status_id:
                 CONSTANTS.QUERY_STATUS_ID_MAPPING['HOLD_FOR_APPROVAL'],
             },
@@ -925,7 +933,7 @@ function QueryWindow(props) {
     if (query_id) {
       const queryDetails = {
         canUserApproveTheQuery: values.canUserApproveTheQuery,
-        databaseMappingID: values.databaseMappingID,
+        databaseApplicationMappingID: values.databaseApplicationMappingID,
         fetchedRawQuery: values.fetchedRawQuery,
         queryComments: values.queryComments,
         queryDescription: values.queryDescription,
@@ -970,7 +978,7 @@ function QueryWindow(props) {
                 onChange={(e) => {
                   handleChangeInDatabaseDropdown(e);
                 }}
-                value={values.databaseMappingID}
+                value={values.databaseApplicationMappingID}
                 disabled={values.IsQueryExecuted}
               >
                 <option value={null}>
@@ -978,7 +986,9 @@ function QueryWindow(props) {
                 </option>
                 {props.user_permissions ? (
                   <PopulateDatabaseMappings
-                    databases={props.user_permissions.user_permissions}
+                    database_application_mappings={
+                      props.user_permissions.user_permissions
+                    }
                   />
                 ) : null}
               </select>
@@ -987,8 +997,8 @@ function QueryWindow(props) {
               <button
                 className="greenButton"
                 disabled={
-                  values.databaseMappingID === '' ||
-                  values.databaseMappingID ===
+                  values.databaseApplicationMappingID === '' ||
+                  values.databaseApplicationMappingID ===
                     '-- Select Application - Database Name --' ||
                   values.rawQuery === '' ||
                   values.userDefQueryName === '' ||
@@ -1010,8 +1020,8 @@ function QueryWindow(props) {
                 <button
                   className="blueButton"
                   disabled={
-                    values.databaseMappingID === '' ||
-                    values.databaseMappingID ===
+                    values.databaseApplicationMappingID === '' ||
+                    values.databaseApplicationMappingID ===
                       '-- Select Application - Database Name --' ||
                     values.rawQuery === '' ||
                     values.userDefQueryName === '' ||
@@ -1037,8 +1047,8 @@ function QueryWindow(props) {
                 className="yellowButton"
                 onClick={handleSaveAsDraft}
                 disabled={
-                  values.databaseMappingID === '' ||
-                  values.databaseMappingID ===
+                  values.databaseApplicationMappingID === '' ||
+                  values.databaseApplicationMappingID ===
                     '-- Select Application - Database Name --' ||
                   values.rawQuery === '' ||
                   values.userDefQueryName === '' ||

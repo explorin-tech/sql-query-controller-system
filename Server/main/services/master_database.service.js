@@ -1,4 +1,4 @@
-const { ApplicationDatabaseMappingDao, UserDao } = require('../dao/index');
+const { MasterDatabaseDao, UserDao } = require('../dao/index');
 const { _200, _error } = require('../common/httpHelper');
 const logger = require('../common/logger');
 
@@ -10,7 +10,7 @@ module.exports.GET_getAllDatabaseTypes = async (
   const { decoded } = httpRequest.headers;
   const user_id = decoded.UserID;
   try {
-    const result = await ApplicationDatabaseMappingDao.getAllDatabaseTypes();
+    const result = await MasterDatabaseDao.getAllDatabaseTypes();
     logger.info(`GET: Database types | user_id: ${user_id}`);
     return _200(httpResponse, result);
   } catch (err) {
@@ -30,26 +30,10 @@ module.exports.GET_getAllDatabases = async (
   const { decoded } = httpRequest.headers;
   const user_id = decoded.UserID;
   try {
-    const params = {
-      user_id: user_id,
-    };
-    const user_details = await UserDao.getUserDetails(params);
-    const user_type = user_details[0]['UT_Name'];
-    let result;
-    if (user_type == 'AD') {
-      result = await ApplicationDatabaseMappingDao.getAllDatabases();
-    } else {
-      result =
-        await ApplicationDatabaseMappingDao.getAllDatabasesMappedForAnUser(
-          params
-        );
-    }
-    logger.info(`GET: Application database mappings | user_id: ${user_id}`);
+    const result = await MasterDatabaseDao.getAllDatabases();
     return _200(httpResponse, result);
   } catch (err) {
-    logger.error(
-      `GET: Application database mappings | user_id: ${user_id} | ${err}`
-    );
+    logger.error(`GET: All databases | user_id: ${user_id} | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
       message: err.message,
@@ -65,16 +49,13 @@ module.exports.GET_databaseDetails = async (
   const { decoded } = httpRequest.headers;
   const user_id = decoded.UserID;
   try {
-    const database_application_mapping_id =
-      httpRequest.query.database_application_mapping_id;
+    const master_database_id = httpRequest.query.master_database_id;
     const params = {
-      database_application_mapping_id: database_application_mapping_id,
+      master_database_id: master_database_id,
     };
-    const result = await ApplicationDatabaseMappingDao.getDatabaseDetails(
-      params
-    );
+    const result = await MasterDatabaseDao.getDatabaseDetails(params);
     logger.info(
-      `GET: Database Details | user_id: ${user_id} | database_mapping_id: ${database_application_mapping_id}`
+      `GET: Database Details | user_id: ${user_id} | database_mapping_id: ${master_database_id}`
     );
     return _200(httpResponse, result);
   } catch (err) {
@@ -91,7 +72,6 @@ module.exports.POST_addDatabase = async (httpRequest, httpResponse, next) => {
   const user_id = decoded.UserID;
   try {
     const values = [
-      httpRequest.body.database.application_id,
       httpRequest.body.database.database_name,
       httpRequest.body.database.database_type_id,
       httpRequest.body.database.database_connection_string,
@@ -105,7 +85,7 @@ module.exports.POST_addDatabase = async (httpRequest, httpResponse, next) => {
     const params = {
       values: values,
     };
-    const result = await ApplicationDatabaseMappingDao.addDatabase(params);
+    const result = await MasterDatabaseDao.addDatabase(params);
     logger.info(
       `POST: Database | user_id: ${user_id} | database_details: ${result}`
     );
@@ -124,8 +104,7 @@ module.exports.PUT_editDatabase = async (httpRequest, httpResponse, next) => {
   const user_id = decoded.UserID;
   try {
     const values = [
-      httpRequest.body.database.database_application_mapping_id,
-      httpRequest.body.database.application_id,
+      httpRequest.body.database.database_id,
       httpRequest.body.database.database_name,
       httpRequest.body.database.database_type_id,
       httpRequest.body.database.database_connection_string,
@@ -138,9 +117,9 @@ module.exports.PUT_editDatabase = async (httpRequest, httpResponse, next) => {
     const params = {
       values: values,
     };
-    const result = await ApplicationDatabaseMappingDao.editDatabase(params);
+    const result = await MasterDatabaseDao.editDatabase(params);
     logger.info(
-      `PUT: Database details | user_id: ${user_id} | database_id: ${database_application_mapping_id}`
+      `PUT: Database details | user_id: ${user_id} | database_id: ${httpRequest.body.database.database_id}`
     );
     return _200(httpResponse, result);
   } catch (err) {
@@ -160,15 +139,14 @@ module.exports.DELETE_deleteDatabase = async (
   const { decoded } = httpRequest.headers;
   const user_id = decoded.UserID;
   try {
-    const database_application_mapping_id =
-      httpRequest.query.database_application_mapping_id;
+    const database_id = httpRequest.query.database_id;
 
     const params = {
-      database_application_mapping_id: database_application_mapping_id,
+      database_id: database_id,
     };
-    const result = await ApplicationDatabaseMappingDao.deleteDatabase(params);
+    const result = await MasterDatabaseDao.deleteDatabase(params);
     logger.info(
-      `DELETE: Database | user_id: ${user_id} | database_id: ${database_application_mapping_id}`
+      `DELETE: Database | user_id: ${user_id} | database_id: ${database_id}`
     );
     return _200(httpResponse, result);
   } catch {
