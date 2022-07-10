@@ -12,9 +12,9 @@ module.exports.generateHashedPassword = async (password) => {
 };
 
 module.exports.generateToken = async (userID) => {
-  const token = jwt.sign({ UserID: userID }, process.env.JWT_CONFIG_KEY, {
+  const token = jwt.sign({ UserID: userID },"MulLCrD3XqXBDYo65DCkCOe7IwDsiyFiPDzfk6SuVp7Bh3g1rc6qtz0Yiu5XYhr", {
     algorithm: 'HS256',
-    expiresIn: process.env.JWT_EXPIRES_IN,
+    expiresIn: "1d",
   });
   return token;
 };
@@ -34,7 +34,7 @@ module.exports.authValidator = async (httpRequest, httpResponse, next) => {
   if (httpRequest.headers && httpRequest.headers.token) {
     const decoded = jwt.verify(
       httpRequest.headers.token,
-      process.env.JWT_CONFIG_KEY
+     "MulLCrD3XqXBDYo65DCkCOe7IwDsiyFiPDzfk6SuVp7Bh3g1rc6qtz0Yiu5XYhr"
     );
     httpRequest.headers['decoded'] = decoded;
     const userDetails = await UserDao.getUserDetails({
