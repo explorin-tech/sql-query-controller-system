@@ -36,7 +36,7 @@ module.exports.POST_loginUser = async (httpRequest, httpResponse, next) => {
     logger.error(`POST: Login | ${err}`);
     return _error(httpResponse, {
       type: 'validation',
-      message: err,
+      message: err.message,
     });
   }
 };

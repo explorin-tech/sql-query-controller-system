@@ -40,7 +40,7 @@ module.exports.GET_getAllMappedDraftQueriesForAnUser = async (
     );
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -79,7 +79,7 @@ module.exports.GET_getAllMappedHistoryQueriesForAnUser = async (
     );
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -156,7 +156,7 @@ module.exports.GET_getQueryDetailsForGivenQueryID = async (
     );
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -189,7 +189,7 @@ module.exports.POST_addNewQuery = async (httpRequest, httpResponse, next) => {
     );
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -232,7 +232,7 @@ module.exports.PUT_editQueryStatusForApprovalOrRejection = async (
     logger.error(`PUT: Edit query details| user_id: ${user_id} | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -263,7 +263,7 @@ module.exports.PUT_editQuery = async (httpRequest, httpResponse, next) => {
     logger.error(`PUT: Edit query details| user_id: ${user_id} | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -300,7 +300,7 @@ module.exports.POST_executeQuery = async (httpRequest, httpResponse, next) => {
     logger.error(`POST: Execute Query | user_id: ${user_id} | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -333,7 +333,7 @@ module.exports.GET_queriesAwaitingForApproval = async (
     );
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -352,7 +352,7 @@ module.exports.GET_RecentQueries = async (httpRequest, httpResponse, next) => {
     logger.error(`GET: Recent Queries | user_id: ${user_id} | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };

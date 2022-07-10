@@ -17,7 +17,7 @@ module.exports.GET_getAllApplicationScreens = async (
     logger.error(`GET: All application screens | user_id: ${user_id} | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -45,7 +45,7 @@ module.exports.GET_getScreenDetails = async (
     );
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -69,7 +69,7 @@ module.exports.POST_addApplicationScreen = async (
     logger.error(`POST: Add Application | user_id: ${user_id} | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -97,7 +97,7 @@ module.exports.PUT_editApplicationScreen = async (
     logger.error(`PUT: Edit Application Screen Details | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -121,7 +121,7 @@ module.exports.DELETE_deleteApplicationScreen = async (
     logger.error(`DELETE: Application Screen | user_id: ${user_id} | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };

@@ -138,10 +138,9 @@ function DraftQueries(props) {
       })
       .catch((err) => {
         toast.error(
-          `Error while fetching draft queries, please try again. ${err}`,
+          `Error while fetching draft queries, please try again. ${err.response.data.message}`,
           { autoClose: 2000 }
         );
-        console.log(err);
       });
   };
 

@@ -17,7 +17,7 @@ module.exports.GET_getAllDatabaseTypes = async (
     logger.error(`GET: Database types | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -52,7 +52,7 @@ module.exports.GET_getAllDatabases = async (
     );
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -81,7 +81,7 @@ module.exports.GET_databaseDetails = async (
     logger.error(`GET: Database Details | user_id: ${user_id} | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -114,7 +114,7 @@ module.exports.POST_addDatabase = async (httpRequest, httpResponse, next) => {
     logger.error(`POST: Database | user_id: ${user_id} | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -147,7 +147,7 @@ module.exports.PUT_editDatabase = async (httpRequest, httpResponse, next) => {
     logger.error(`PUT: Database details | user_id: ${user_id} | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -175,7 +175,7 @@ module.exports.DELETE_deleteDatabase = async (
     logger.error(`DELETE: Database | user_id: ${user_id} | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };

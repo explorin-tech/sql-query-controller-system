@@ -148,7 +148,7 @@ function AddDatabase(props) {
       })
       .catch((err) => {
         toast.error(
-          `Error while fetching list of all applications, please try again. ${err}`,
+          `Error while fetching list of all applications, please try again. ${err.response.data.message}`,
           { autoClose: 2000 }
         );
       });
@@ -168,7 +168,7 @@ function AddDatabase(props) {
       })
       .catch((err) => {
         toast.error(
-          `Error while fetching list of all databases, please try again. ${err}`,
+          `Error while fetching list of all databases, please try again. ${err.response.data.message}`,
           { autoClose: 2000 }
         );
       });
@@ -229,9 +229,8 @@ function AddDatabase(props) {
         }
       })
       .catch((err) => {
-        console.log(err);
         toast.error(
-          `Failed to add the new database, please try again. ${err.response.data.message.detail}`,
+          `Failed to add the new database, please try again. ${err.response.data.message}`,
           { autoClose: 2000 }
         );
       });

@@ -46,10 +46,8 @@ function Dashboard(props) {
           })
           .catch((err) => {
             if (err.response) {
-              toast.error(
-                `Failed to fetch loggedIn user details, please try again ${err}`,
-                { autoClose: 2000 }
-              );
+              localStorage.removeItem('token');
+              history.push(APPLICATION_URLS.SIGN_PAGE);
             }
           });
       } else {

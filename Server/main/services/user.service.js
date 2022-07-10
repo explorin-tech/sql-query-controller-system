@@ -18,7 +18,7 @@ module.exports.GET_getAllUserTypes = async (
     logger.error(`GET: All user types | user_id: ${user_id} | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -34,7 +34,7 @@ module.exports.GET_getAllUsers = async (httpRequest, httpResponse, next) => {
     logger.error(`GET: All users | user_id: ${user_id} | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -58,7 +58,7 @@ module.exports.GET_getUserDetails = async (httpRequest, httpResponse, next) => {
     logger.error(`GET: User details | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -91,7 +91,7 @@ module.exports.POST_addNewUser = async (httpRequest, httpResponse, next) => {
     logger.error(`POST: Add new User | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -126,7 +126,7 @@ module.exports.PUT_editUserDetails = async (
     logger.error(`PUT: Edit User Details | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -147,7 +147,7 @@ module.exports.POST_deleteUser = async (httpRequest, httpResponse, next) => {
     logger.error(`DELETE: Delete User | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -164,7 +164,7 @@ module.exports.GET_UserTypesForDBConnection = async (
   } catch (err) {
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };

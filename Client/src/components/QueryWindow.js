@@ -168,7 +168,7 @@ function QueryWindow(props) {
       .catch((err) => {
         if (err.response) {
           toast.error(
-            'Error while fetching user permissions, please try again by refreshing.',
+            `Error while fetching user permissions, please try again by refreshing. - ${err.response.data.message}`,
             { autoClose: 2000 }
           );
         }
@@ -214,7 +214,7 @@ function QueryWindow(props) {
       })
       .catch((err) => {
         toast.error(
-          'Error while fetching such query details, please try again.',
+          `Error while fetching such query details, please try again. - ${err.response.data.message}`,
           { autoClose: 1000 }
         );
         history.push(`/query`);
@@ -348,9 +348,12 @@ function QueryWindow(props) {
           }
         })
         .catch((err) => {
-          toast.error('Failed to save query as draft, please try again', {
-            autoClose: 1000,
-          });
+          toast.error(
+            `Failed to save query as draft, please try again -- ${err.response.data.message}`,
+            {
+              autoClose: 1000,
+            }
+          );
         });
     } else {
       // save a new query as draft with a status of HOLD_FOR_APPROVAL
@@ -392,7 +395,7 @@ function QueryWindow(props) {
         })
         .catch((err) => {
           toast.error(
-            `Failed to save query as draft, please try again : ${err}`,
+            `Failed to save query as draft, please try again : ${err.response.data.message}`,
             {
               autoClose: 1000,
             }
@@ -439,9 +442,12 @@ function QueryWindow(props) {
             }
           })
           .catch((err) => {
-            toast.error(`Failed to set query for approval : ${err}`, {
-              autoClose: 1000,
-            });
+            toast.error(
+              `Failed to set query for approval : ${err.response.data.message}`,
+              {
+                autoClose: 1000,
+              }
+            );
           });
       } else {
         // insert a query directly into table first time with status of set for approval.
@@ -482,16 +488,25 @@ function QueryWindow(props) {
             }
           })
           .catch((err) => {
-            toast.error(`Failed to set query for approval : ${err}`, {
-              autoClose: 1000,
-            });
+            if (err.response.data.message.detail) {
+              toast.error(
+                `Failed to set query for approval : ${err.response.data.message.detail}`,
+                {
+                  autoClose: 3000,
+                }
+              );
+            } else {
+              toast.error(`Failed to set query for approval : ${err}`, {
+                autoClose: 3000,
+              });
+            }
           });
       }
     } else {
       toast.error(
         'Permission to execute this type of query is not given. Please contact owner of the application.',
         {
-          autoClose: 1000,
+          autoClose: 3000,
         }
       );
     }
@@ -525,9 +540,12 @@ function QueryWindow(props) {
         }
       })
       .catch((err) => {
-        toast.error(`Failed to set query as APPROVED_FOR_ONCE : ${err}`, {
-          autoClose: 1000,
-        });
+        toast.error(
+          `Failed to set query as APPROVED_FOR_ONCE : ${err.response.data.message}`,
+          {
+            autoClose: 3000,
+          }
+        );
       });
   };
 
@@ -558,9 +576,12 @@ function QueryWindow(props) {
         }
       })
       .catch((err) => {
-        toast.error(`Failed to set query as APPROVED_FOR_EVER : ${err}`, {
-          autoClose: 1000,
-        });
+        toast.error(
+          `Failed to set query as APPROVED_FOR_EVER : ${err.response.data.message}`,
+          {
+            autoClose: 3000,
+          }
+        );
       });
   };
 
@@ -590,9 +611,12 @@ function QueryWindow(props) {
         }
       })
       .catch((err) => {
-        toast.success(`Failed to set query as REJECTED : ${err}`, {
-          autoClose: 1000,
-        });
+        toast.error(
+          `Failed to set query as REJECTED : ${err.response.data.message}`,
+          {
+            autoClose: 3000,
+          }
+        );
       });
   };
 
@@ -625,8 +649,8 @@ function QueryWindow(props) {
           }
         })
         .catch((err) => {
-          toast.error(`Failed to execute the query. : ${err}`, {
-            autoClose: 1000,
+          toast.error(`${err.response.data.message}`, {
+            autoClose: 3000,
           });
         });
     } else {
@@ -661,6 +685,7 @@ function QueryWindow(props) {
         .then((res) => {
           if (res.status === 200) {
             const postedQueryID = res.data.data[0]['Q_ID'];
+            history.push(`/query/${postedQueryID}`);
             axios
               .post(
                 BACKEND_URLS.EXECUTE_QUERY,
@@ -681,20 +706,22 @@ function QueryWindow(props) {
                     autoClose: 1000,
                   });
                   setQueryResult(res.data.data);
-                  history.push(`/query/${postedQueryID}`);
                 }
               })
               .catch((err) => {
-                toast.error(`Failed to execute the query. : ${err}`, {
-                  autoClose: 1000,
+                toast.error(`${err.response.data.message}`, {
+                  autoClose: 3000,
                 });
               });
           }
         })
         .catch((err) => {
-          toast.error(`Failed to execute the query. : ${err}`, {
-            autoClose: 1000,
-          });
+          toast.error(
+            `Failed to save the query. : ${err.response.data.message}`,
+            {
+              autoClose: 1000,
+            }
+          );
         });
     }
   };
@@ -810,7 +837,7 @@ function QueryWindow(props) {
         })
         .catch((err) => {
           toast.error(
-            `Failed to set query as HOLD_FOR_APPROVAL and reflect the changes made.`,
+            `Failed to set query as HOLD_FOR_APPROVAL and reflect the changes made. - ${err.response.data.message}`,
             {
               autoClose: 1000,
             }
@@ -885,7 +912,7 @@ function QueryWindow(props) {
         })
         .catch((err) => {
           toast.error(
-            `Failed to set query as HOLD_FOR_APPROVAL and reflect the changes made.`,
+            `Failed to set query as HOLD_FOR_APPROVAL and reflect the changes made. - ${err.response.data.message}`,
             {
               autoClose: 1000,
             }

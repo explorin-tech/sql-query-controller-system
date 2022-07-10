@@ -1,15 +1,762 @@
-info: Jun-17-2022 20:49:53: 	POST: Auth validation
-info: Jun-17-2022 20:49:53: 	GET: All application screens rights | user_id: 1
-info: Jun-17-2022 20:49:53: 	POST: Auth validation
-info: Jun-17-2022 20:49:53: 	POST: Auth validation
-info: Jun-17-2022 20:49:53: 	POST: Auth validation
-info: Jun-17-2022 20:49:53: 	POST: Auth validation
-info: Jun-17-2022 20:49:53: 	GET: Queries awaiting for Approval | user_id: 1
-info: Jun-17-2022 20:49:53: 	GET: Recent Queries | user_id: 1
-info: Jun-17-2022 20:49:53: 	GET: User details | of user_id: 1
-info: Jun-17-2022 20:49:53: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
-error: Jun-18-2022 14:59:10: 	POST: Auth validation | error : Token is required
-error: Jun-18-2022 14:59:36: 	POST: Auth validation | error : Token is required
-error: Jun-18-2022 15:00:21: 	POST: Auth validation | error : Token is required
-error: Jun-18-2022 15:01:59: 	POST: Auth validation | error : Token is required
-error: Jun-18-2022 15:02:20: 	POST: Auth validation | error : Token is required
+info: Jun-27-2022 13:24:59: 	POST: Auth validation
+error: Jun-27-2022 13:24:59: 	POST: Execute Query | user_id: 1 | error: relation "testjoshyasdcasd" does not exist
+info: Jun-27-2022 13:27:54: 	POST: Auth validation
+error: Jun-27-2022 13:27:55: 	POST: Execute Query | user_id: 1 | error: relation "testjoshyasdcasdsdc" does not exist
+info: Jun-27-2022 13:35:56: 	POST: Auth validation
+error: Jun-27-2022 13:35:56: 	POST: Execute Query | user_id: 1 | error: relation "testjoshyokokok" does not exist
+info: Jun-27-2022 13:46:31: 	POST: Auth validation
+error: Jun-27-2022 13:46:31: 	POST: Execute Query | user_id: 1 | error: relation "testjoshyokokokokokokok" does not exist
+info: Jun-27-2022 13:48:46: 	POST: Auth validation
+error: Jun-27-2022 13:48:47: 	POST: Execute Query | user_id: 1 | error: syntax error at or near "1"
+info: Jun-27-2022 13:50:21: 	POST: Auth validation
+error: Jun-27-2022 13:50:21: 	POST: Execute Query | user_id: 1 | error: syntax error at or near "1"
+info: Jun-27-2022 13:53:53: 	POST: Auth validation
+error: Jun-27-2022 13:53:54: 	POST: Execute Query | user_id: 1 | error: syntax error at or near "1"
+info: Jun-27-2022 13:56:06: 	POST: Auth validation
+error: Jun-27-2022 13:56:06: 	POST: Execute Query | user_id: 1 | error: syntax error at or near "1"
+info: Jun-28-2022 12:12:42: 	POST: Auth validation
+error: Jun-28-2022 12:12:43: 	POST: Execute Query | user_id: 1 | error: relation "testjoshyasdc" does not exist
+info: Jun-28-2022 12:13:25: 	POST: Auth validation
+error: Jun-28-2022 12:13:26: 	POST: Execute Query | user_id: 1 | error: relation "testjoshysadcasdc" does not exist
+info: Jun-28-2022 12:14:23: 	POST: Auth validation
+error: Jun-28-2022 12:14:23: 	POST: Execute Query | user_id: 1 | error: relation "testjoshyasdcasdc" does not exist
+info: Jun-28-2022 12:14:59: 	POST: Auth validation
+error: Jun-28-2022 12:14:59: 	POST: Execute Query | user_id: 1 | error: relation "testjoshyasdcasdcasdc" does not exist
+info: Jun-28-2022 15:20:10: 	POST: Auth validation
+error: Jun-28-2022 15:20:11: 	POST: Execute Query | user_id: 1 | error: relation "testjoshyasdcasdcasdc" does not exist
+info: Jun-28-2022 15:24:31: 	POST: Auth validation
+error: Jun-28-2022 15:24:32: 	POST: Execute Query | user_id: 1 | error: relation "testjoshyasdcasdcasdc" does not exist
+info: Jun-28-2022 15:25:43: 	POST: Auth validation
+error: Jun-28-2022 15:25:44: 	POST: Execute Query | user_id: 1 | error: relation "testjoshyasdcasdcasdc" does not exist
+info: Jun-28-2022 15:25:59: 	POST: Auth validation
+error: Jun-28-2022 15:26:00: 	POST: Execute Query | user_id: 1 | error: relation "testjoshyasdcasdcasdc" does not exist
+info: Jun-28-2022 15:26:16: 	POST: Auth validation
+error: Jun-28-2022 15:26:16: 	POST: Execute Query | user_id: 1 | error: relation "testjoshyasdcasdcasdc" does not exist
+info: Jun-28-2022 15:29:49: 	POST: Auth validation
+error: Jun-28-2022 15:29:50: 	POST: Execute Query | user_id: 1 | error: relation "testjoshyasdcasdcasdc" does not exist
+info: Jun-28-2022 15:30:02: 	POST: Auth validation
+error: Jun-28-2022 15:30:03: 	POST: Execute Query | user_id: 1 | error: relation "testjoshyasdcasdcasdc" does not exist
+info: Jun-28-2022 15:47:31: 	POST: Auth validation
+error: Jun-28-2022 15:47:32: 	POST: Execute Query | user_id: 1 | error: relation "testjoshyasdcasdcasdc" does not exist
+info: Jun-28-2022 17:14:29: 	POST: Auth validation
+info: Jun-28-2022 17:14:29: 	POST: Auth validation
+info: Jun-28-2022 17:14:29: 	POST: Auth validation
+info: Jun-28-2022 17:14:29: 	POST: Auth validation
+info: Jun-28-2022 17:14:29: 	POST: Auth validation
+info: Jun-28-2022 17:14:29: 	GET: All application screens rights | user_id: 1
+info: Jun-28-2022 17:14:29: 	GET: User details | of user_id: 1
+info: Jun-28-2022 17:14:29: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jun-28-2022 17:14:29: 	GET: Recent Queries | user_id: 1
+info: Jun-28-2022 17:14:29: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:14:32: 	POST: Auth validation
+info: Jun-28-2022 17:14:33: 	GET: All Mapped Draft Queries for an user | user_id: 1
+info: Jun-28-2022 17:14:34: 	POST: Auth validation
+info: Jun-28-2022 17:14:34: 	POST: Auth validation
+info: Jun-28-2022 17:14:34: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:14:34: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:15:09: 	POST: Auth validation
+info: Jun-28-2022 17:15:09: 	POST: Auth validation
+info: Jun-28-2022 17:15:10: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:15:10: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:17:31: 	POST: Auth validation
+info: Jun-28-2022 17:17:31: 	POST: Auth validation
+info: Jun-28-2022 17:17:31: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:17:32: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:17:38: 	POST: Auth validation
+info: Jun-28-2022 17:17:38: 	POST: Auth validation
+info: Jun-28-2022 17:17:38: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:17:38: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:17:40: 	POST: Auth validation
+info: Jun-28-2022 17:17:40: 	POST: Auth validation
+info: Jun-28-2022 17:17:40: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:17:40: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:18:13: 	POST: Auth validation
+info: Jun-28-2022 17:18:13: 	POST: Auth validation
+info: Jun-28-2022 17:18:14: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:18:14: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:18:18: 	POST: Auth validation
+info: Jun-28-2022 17:18:18: 	POST: Auth validation
+info: Jun-28-2022 17:18:18: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:18:18: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:18:50: 	POST: Auth validation
+info: Jun-28-2022 17:18:50: 	POST: Auth validation
+info: Jun-28-2022 17:18:50: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:18:50: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:18:54: 	POST: Auth validation
+info: Jun-28-2022 17:18:54: 	POST: Auth validation
+info: Jun-28-2022 17:18:54: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:18:54: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:18:58: 	POST: Auth validation
+info: Jun-28-2022 17:18:58: 	POST: Auth validation
+info: Jun-28-2022 17:18:58: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:18:58: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:19:03: 	POST: Auth validation
+info: Jun-28-2022 17:19:03: 	POST: Auth validation
+info: Jun-28-2022 17:19:03: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:19:03: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:19:11: 	POST: Auth validation
+info: Jun-28-2022 17:19:11: 	POST: Auth validation
+info: Jun-28-2022 17:19:11: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:19:11: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:19:15: 	POST: Auth validation
+info: Jun-28-2022 17:19:15: 	POST: Auth validation
+info: Jun-28-2022 17:19:15: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:19:15: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:19:17: 	POST: Auth validation
+info: Jun-28-2022 17:19:17: 	POST: Auth validation
+info: Jun-28-2022 17:19:18: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:19:19: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:19:20: 	POST: Auth validation
+info: Jun-28-2022 17:19:20: 	POST: Auth validation
+info: Jun-28-2022 17:19:20: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:19:20: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:19:52: 	POST: Auth validation
+info: Jun-28-2022 17:19:52: 	POST: Auth validation
+info: Jun-28-2022 17:19:53: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:19:53: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:19:59: 	POST: Auth validation
+info: Jun-28-2022 17:19:59: 	POST: Auth validation
+info: Jun-28-2022 17:19:59: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:19:59: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:20:24: 	POST: Auth validation
+info: Jun-28-2022 17:20:24: 	POST: Auth validation
+info: Jun-28-2022 17:20:25: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:20:25: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:20:26: 	POST: Auth validation
+info: Jun-28-2022 17:20:26: 	POST: Auth validation
+info: Jun-28-2022 17:20:26: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:20:26: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:20:30: 	POST: Auth validation
+info: Jun-28-2022 17:20:30: 	POST: Auth validation
+info: Jun-28-2022 17:20:30: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:20:30: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:20:43: 	POST: Auth validation
+info: Jun-28-2022 17:20:43: 	POST: Auth validation
+info: Jun-28-2022 17:20:43: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:20:44: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:20:45: 	POST: Auth validation
+info: Jun-28-2022 17:20:45: 	POST: Auth validation
+info: Jun-28-2022 17:20:45: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:20:45: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:20:59: 	POST: Auth validation
+info: Jun-28-2022 17:20:59: 	POST: Auth validation
+info: Jun-28-2022 17:21:00: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:21:00: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:21:07: 	POST: Auth validation
+info: Jun-28-2022 17:21:07: 	POST: Auth validation
+info: Jun-28-2022 17:21:07: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:21:07: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:21:46: 	POST: Auth validation
+info: Jun-28-2022 17:21:46: 	POST: Auth validation
+info: Jun-28-2022 17:21:47: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:21:47: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:34:31: 	POST: Auth validation
+info: Jun-28-2022 17:34:31: 	POST: Auth validation
+info: Jun-28-2022 17:34:32: 	GET: All application screens rights | user_id: 1
+info: Jun-28-2022 17:34:32: 	POST: Auth validation
+info: Jun-28-2022 17:34:32: 	POST: Auth validation
+info: Jun-28-2022 17:34:32: 	POST: Auth validation
+info: Jun-28-2022 17:34:32: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jun-28-2022 17:34:32: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 17:34:32: 	GET: User details | of user_id: 1
+info: Jun-28-2022 17:34:32: 	GET: Recent Queries | user_id: 1
+info: Jun-28-2022 17:34:37: 	POST: Auth validation
+info: Jun-28-2022 17:34:37: 	GET: All Mapped Draft Queries for an user | user_id: 1
+info: Jun-28-2022 17:34:39: 	POST: Auth validation
+info: Jun-28-2022 17:34:39: 	POST: Auth validation
+info: Jun-28-2022 17:34:39: 	GET: Query Details for given query ID | user_id: 1 | query_id: 66
+info: Jun-28-2022 17:34:39: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+error: Jun-28-2022 23:11:33: 	POST: Login | Error: connect ETIMEDOUT 43.204.173.6:5432
+error: Jun-28-2022 23:11:55: 	POST: Login | Error: connect ETIMEDOUT 43.204.173.6:5432
+error: Jun-28-2022 23:13:29: 	POST: Login | Error: connect ETIMEDOUT 43.204.173.6:5432
+error: Jun-28-2022 23:14:51: 	POST: Login | Error: connect ETIMEDOUT 43.204.173.6:5432
+error: Jun-28-2022 23:15:41: 	POST: Login | Error: connect ETIMEDOUT 43.204.173.6:5432
+error: Jun-28-2022 23:20:06: 	POST: Login | Error: connect ETIMEDOUT 43.204.173.6:5432
+info: Jun-28-2022 23:23:04: 	POST: Auth validation
+info: Jun-28-2022 23:23:04: 	GET: All application screens rights | user_id: 1
+info: Jun-28-2022 23:23:05: 	POST: Auth validation
+info: Jun-28-2022 23:23:05: 	POST: Auth validation
+info: Jun-28-2022 23:23:05: 	POST: Auth validation
+info: Jun-28-2022 23:23:05: 	POST: Auth validation
+info: Jun-28-2022 23:23:05: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jun-28-2022 23:23:05: 	GET: Recent Queries | user_id: 1
+info: Jun-28-2022 23:23:05: 	GET: User details | of user_id: 1
+info: Jun-28-2022 23:23:05: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 23:23:09: 	POST: Auth validation
+info: Jun-28-2022 23:23:09: 	GET: All Mapped Draft Queries for an user | user_id: 1
+info: Jun-28-2022 23:23:13: 	POST: Auth validation
+info: Jun-28-2022 23:23:13: 	GET: All Mapped History Queries for an user | user_id: 1
+info: Jun-28-2022 23:24:17: 	POST: Auth validation
+info: Jun-28-2022 23:24:17: 	POST: Auth validation
+info: Jun-28-2022 23:24:17: 	POST: Auth validation
+info: Jun-28-2022 23:24:17: 	GET: All users | user_id: 1
+info: Jun-28-2022 23:24:17: 	GET: Application database mappings | user_id: 1
+info: Jun-28-2022 23:24:17: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 23:24:20: 	POST: Auth validation
+info: Jun-28-2022 23:24:20: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 23:24:32: 	POST: Auth validation
+info: Jun-28-2022 23:24:32: 	POST: Auth validation
+info: Jun-28-2022 23:24:32: 	GET: All Applications | user_id: 1
+info: Jun-28-2022 23:24:32: 	GET: Application database mappings | user_id: 1
+info: Jun-28-2022 23:24:39: 	POST: Auth validation
+info: Jun-28-2022 23:24:40: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 23:25:07: 	POST: Auth validation
+info: Jun-28-2022 23:25:07: 	POST: Add new query | user_id: 1 | query_id: [object Object]
+info: Jun-28-2022 23:25:07: 	POST: Auth validation
+error: Jun-28-2022 23:25:08: 	POST: Execute Query | user_id: 1 | error: relation "QueryStatus1" does not exist
+info: Jun-28-2022 23:25:27: 	POST: Auth validation
+info: Jun-28-2022 23:25:27: 	GET: All Mapped Draft Queries for an user | user_id: 1
+info: Jun-28-2022 23:25:32: 	POST: Auth validation
+info: Jun-28-2022 23:25:32: 	GET: Query Details for given query ID | user_id: 1 | query_id: 7
+info: Jun-28-2022 23:25:32: 	POST: Auth validation
+info: Jun-28-2022 23:25:32: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 23:26:13: 	POST: Auth validation
+error: Jun-28-2022 23:26:15: 	POST: Execute Query | user_id: 1 | error: relation "QueryStatus1" does not exist
+info: Jun-28-2022 23:27:41: 	POST: Auth validation
+info: Jun-28-2022 23:27:41: 	POST: Auth validation
+info: Jun-28-2022 23:27:42: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 23:27:42: 	GET: Query Details for given query ID | user_id: 1 | query_id: 7
+info: Jun-28-2022 23:30:37: 	POST: Auth validation
+error: Jun-28-2022 23:30:37: 	POST: Execute Query | user_id: 1 | error: relation "QueryStatus1" does not exist
+info: Jun-28-2022 23:30:57: 	POST: Auth validation
+info: Jun-28-2022 23:30:58: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 23:31:17: 	POST: Auth validation
+info: Jun-28-2022 23:31:17: 	POST: Add new query | user_id: 1 | query_id: [object Object]
+info: Jun-28-2022 23:31:17: 	POST: Auth validation
+error: Jun-28-2022 23:31:18: 	POST: Execute Query | user_id: 1 | error: relation "QueryStatus98" does not exist
+info: Jun-28-2022 23:31:51: 	POST: Auth validation
+info: Jun-28-2022 23:31:52: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 23:32:19: 	POST: Auth validation
+info: Jun-28-2022 23:32:19: 	POST: Add new query | user_id: 1 | query_id: [object Object]
+info: Jun-28-2022 23:32:55: 	POST: Auth validation
+info: Jun-28-2022 23:32:55: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 23:33:04: 	POST: Auth validation
+info: Jun-28-2022 23:33:05: 	GET: All Mapped Draft Queries for an user | user_id: 1
+info: Jun-28-2022 23:33:06: 	POST: Auth validation
+info: Jun-28-2022 23:33:06: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 23:33:32: 	POST: Auth validation
+info: Jun-28-2022 23:33:32: 	POST: Add new query | user_id: 1 | query_id: [object Object]
+info: Jun-28-2022 23:33:32: 	POST: Auth validation
+info: Jun-28-2022 23:33:32: 	POST: Auth validation
+info: Jun-28-2022 23:33:32: 	POST: Auth validation
+info: Jun-28-2022 23:33:32: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 23:33:32: 	POST: Execute Query | user_id: 1 | query_id: 10
+info: Jun-28-2022 23:33:32: 	GET: Query Details for given query ID | user_id: 1 | query_id: 10
+info: Jun-28-2022 23:40:20: 	POST: Auth validation
+info: Jun-28-2022 23:40:20: 	POST: Auth validation
+info: Jun-28-2022 23:40:20: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 23:40:20: 	GET: Query Details for given query ID | user_id: 1 | query_id: 10
+info: Jun-28-2022 23:48:28: 	POST: Auth validation
+info: Jun-28-2022 23:48:28: 	POST: Auth validation
+info: Jun-28-2022 23:48:28: 	POST: Auth validation
+info: Jun-28-2022 23:48:28: 	POST: Auth validation
+info: Jun-28-2022 23:48:28: 	GET: User details | of user_id: 1
+info: Jun-28-2022 23:48:29: 	GET: All application screens rights | user_id: 1
+info: Jun-28-2022 23:48:29: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 23:48:29: 	GET: Query Details for given query ID | user_id: 1 | query_id: 10
+info: Jun-28-2022 23:48:32: 	POST: Auth validation
+info: Jun-28-2022 23:48:32: 	GET: All Mapped Draft Queries for an user | user_id: 1
+info: Jun-28-2022 23:48:33: 	POST: Auth validation
+info: Jun-28-2022 23:48:33: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 23:48:35: 	POST: Auth validation
+info: Jun-28-2022 23:48:35: 	GET: All Mapped Draft Queries for an user | user_id: 1
+info: Jun-28-2022 23:48:37: 	POST: Auth validation
+info: Jun-28-2022 23:48:37: 	POST: Auth validation
+info: Jun-28-2022 23:48:37: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 23:48:37: 	GET: Query Details for given query ID | user_id: 1 | query_id: 9
+info: Jun-28-2022 23:48:42: 	POST: Auth validation
+info: Jun-28-2022 23:48:42: 	POST: Execute Query | user_id: 1 | query_id: 9
+info: Jun-28-2022 23:48:42: 	POST: Auth validation
+info: Jun-28-2022 23:48:43: 	GET: Query Details for given query ID | user_id: 1 | query_id: 9
+info: Jun-28-2022 23:48:47: 	POST: Auth validation
+info: Jun-28-2022 23:48:48: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 23:48:51: 	POST: Auth validation
+info: Jun-28-2022 23:48:51: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 23:48:51: 	POST: Auth validation
+info: Jun-28-2022 23:48:51: 	POST: Auth validation
+info: Jun-28-2022 23:48:51: 	GET: User details | of user_id: 1
+info: Jun-28-2022 23:48:51: 	GET: All application screens rights | user_id: 1
+info: Jun-28-2022 23:49:12: 	POST: Auth validation
+info: Jun-28-2022 23:49:12: 	POST: Add new query | user_id: 1 | query_id: [object Object]
+info: Jun-28-2022 23:49:12: 	POST: Auth validation
+info: Jun-28-2022 23:49:12: 	POST: Auth validation
+info: Jun-28-2022 23:49:12: 	POST: Auth validation
+error: Jun-28-2022 23:49:13: 	POST: Execute Query | user_id: 1 | error: relation "123" does not exist
+info: Jun-28-2022 23:49:13: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 23:49:13: 	GET: Query Details for given query ID | user_id: 1 | query_id: 11
+info: Jun-28-2022 23:49:29: 	POST: Auth validation
+info: Jun-28-2022 23:49:29: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jun-28-2022 23:49:30: 	POST: Auth validation
+info: Jun-28-2022 23:49:30: 	GET: Query Details for given query ID | user_id: 1 | query_id: 11
+info: Jun-28-2022 23:49:34: 	POST: Auth validation
+error: Jun-28-2022 23:49:35: 	POST: Execute Query | user_id: 1 | error: relation "1234" does not exist
+info: Jun-28-2022 23:49:59: 	POST: Auth validation
+error: Jun-28-2022 23:49:59: 	POST: Execute Query | user_id: 1 | error: relation "1234" does not exist
+info: Jun-28-2022 23:50:05: 	POST: Auth validation
+info: Jun-28-2022 23:50:06: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jun-28-2022 23:50:06: 	POST: Auth validation
+info: Jun-28-2022 23:50:06: 	GET: Query Details for given query ID | user_id: 1 | query_id: 11
+info: Jun-28-2022 23:50:08: 	POST: Auth validation
+info: Jun-28-2022 23:50:08: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jun-28-2022 23:50:08: 	POST: Auth validation
+info: Jun-28-2022 23:50:08: 	GET: Query Details for given query ID | user_id: 1 | query_id: 11
+info: Jun-28-2022 23:50:11: 	POST: Auth validation
+error: Jun-28-2022 23:50:12: 	POST: Execute Query | user_id: 1 | error: relation "1234" does not exist
+info: Jun-28-2022 23:50:15: 	POST: Auth validation
+info: Jun-28-2022 23:50:15: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 23:50:45: 	POST: Auth validation
+info: Jun-28-2022 23:50:45: 	POST: Add new query | user_id: 1 | query_id: [object Object]
+info: Jun-28-2022 23:50:45: 	POST: Auth validation
+info: Jun-28-2022 23:50:45: 	POST: Auth validation
+info: Jun-28-2022 23:50:45: 	POST: Auth validation
+error: Jun-28-2022 23:50:46: 	POST: Execute Query | user_id: 1 | error: relation "QueryStatus78" does not exist
+info: Jun-28-2022 23:50:46: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 23:50:46: 	GET: Query Details for given query ID | user_id: 1 | query_id: 12
+info: Jun-28-2022 23:51:34: 	POST: Auth validation
+info: Jun-28-2022 23:51:34: 	POST: Auth validation
+info: Jun-28-2022 23:51:34: 	POST: Auth validation
+info: Jun-28-2022 23:51:34: 	POST: Auth validation
+info: Jun-28-2022 23:51:35: 	GET: User details | of user_id: 1
+info: Jun-28-2022 23:51:35: 	GET: All application screens rights | user_id: 1
+info: Jun-28-2022 23:51:35: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jun-28-2022 23:51:35: 	GET: Query Details for given query ID | user_id: 1 | query_id: 12
+info: Jun-28-2022 23:51:39: 	POST: Auth validation
+error: Jun-28-2022 23:51:40: 	POST: Execute Query | user_id: 1 | error: relation "QueryStatus78" does not exist
+info: Jun-28-2022 23:51:48: 	POST: Auth validation
+info: Jun-28-2022 23:51:48: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jun-28-2022 23:51:48: 	POST: Auth validation
+info: Jun-28-2022 23:51:49: 	POST: Auth validation
+info: Jun-28-2022 23:51:49: 	GET: Query Details for given query ID | user_id: 1 | query_id: 12
+error: Jun-28-2022 23:51:49: 	POST: Execute Query | user_id: 1 | error: relation "QueryStatus7834" does not exist
+info: Jul-08-2022 19:57:44: 	POST: Auth validation
+info: Jul-08-2022 19:57:45: 	GET: All application screens rights | user_id: 1
+info: Jul-08-2022 19:57:45: 	POST: Auth validation
+info: Jul-08-2022 19:57:45: 	POST: Auth validation
+info: Jul-08-2022 19:57:45: 	POST: Auth validation
+info: Jul-08-2022 19:57:45: 	POST: Auth validation
+info: Jul-08-2022 19:57:45: 	GET: User details | of user_id: 1
+info: Jul-08-2022 19:57:45: 	GET: Recent Queries | user_id: 1
+info: Jul-08-2022 19:57:45: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jul-08-2022 19:57:45: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-08-2022 19:57:49: 	POST: Auth validation
+info: Jul-08-2022 19:57:49: 	GET: All Mapped Draft Queries for an user | user_id: 1
+info: Jul-08-2022 19:57:51: 	POST: Auth validation
+info: Jul-08-2022 19:57:51: 	POST: Auth validation
+info: Jul-08-2022 19:57:51: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-08-2022 19:57:51: 	GET: Query Details for given query ID | user_id: 1 | query_id: 12
+info: Jul-08-2022 19:57:59: 	POST: Auth validation
+error: Jul-08-2022 19:58:00: 	POST: Execute Query | user_id: 1 | error: relation "QueryStatus7834" does not exist
+info: Jul-08-2022 19:58:36: 	POST: Auth validation
+error: Jul-08-2022 19:58:36: 	POST: Execute Query | user_id: 1 | error: relation "QueryStatus7834" does not exist
+info: Jul-08-2022 20:00:36: 	POST: Auth validation
+info: Jul-08-2022 20:00:36: 	POST: Auth validation
+info: Jul-08-2022 20:00:36: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-08-2022 20:00:36: 	GET: Query Details for given query ID | user_id: 1 | query_id: 12
+info: Jul-08-2022 20:00:46: 	POST: Auth validation
+error: Jul-08-2022 20:00:48: 	POST: Execute Query | user_id: 1 | error: relation "QueryStatus7834" does not exist
+info: Jul-08-2022 20:02:52: 	POST: Auth validation
+info: Jul-08-2022 20:02:52: 	POST: Auth validation
+info: Jul-08-2022 20:02:52: 	POST: Auth validation
+info: Jul-08-2022 20:02:52: 	POST: Auth validation
+info: Jul-08-2022 20:02:52: 	GET: User details | of user_id: 1
+info: Jul-08-2022 20:02:52: 	GET: All application screens rights | user_id: 1
+info: Jul-08-2022 20:02:52: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-08-2022 20:02:52: 	GET: Query Details for given query ID | user_id: 1 | query_id: 12
+info: Jul-08-2022 20:02:55: 	POST: Auth validation
+error: Jul-08-2022 20:02:56: 	POST: Execute Query | user_id: 1 | error: relation "QueryStatus7834" does not exist
+info: Jul-08-2022 20:03:33: 	POST: Auth validation
+error: Jul-08-2022 20:03:33: 	POST: Execute Query | user_id: 1 | error: relation "QueryStatus7834" does not exist
+info: Jul-08-2022 20:03:46: 	POST: Auth validation
+error: Jul-08-2022 20:03:47: 	POST: Execute Query | user_id: 1 | error: relation "QueryStatus7834" does not exist
+info: Jul-08-2022 20:06:38: 	POST: Auth validation
+error: Jul-08-2022 20:06:38: 	POST: Execute Query | user_id: 1 | error: relation "QueryStatus7834" does not exist
+info: Jul-08-2022 20:11:41: 	POST: Auth validation
+info: Jul-08-2022 20:11:41: 	POST: Auth validation
+info: Jul-08-2022 20:11:41: 	POST: Auth validation
+info: Jul-08-2022 20:11:41: 	POST: Auth validation
+info: Jul-08-2022 20:11:41: 	GET: User details | of user_id: 1
+info: Jul-08-2022 20:11:41: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-08-2022 20:11:41: 	GET: All application screens rights | user_id: 1
+info: Jul-08-2022 20:11:41: 	GET: Query Details for given query ID | user_id: 1 | query_id: 12
+info: Jul-08-2022 20:11:45: 	POST: Auth validation
+error: Jul-08-2022 20:11:46: 	POST: Execute Query | user_id: 1 | error: relation "QueryStatus7834" does not exist
+info: Jul-08-2022 20:12:03: 	POST: Auth validation
+error: Jul-08-2022 20:12:04: 	POST: Execute Query | user_id: 1 | error: relation "QueryStatus7834" does not exist
+info: Jul-08-2022 20:12:21: 	POST: Auth validation
+error: Jul-08-2022 20:12:22: 	POST: Execute Query | user_id: 1 | error: relation "QueryStatus7834" does not exist
+info: Jul-08-2022 20:12:30: 	POST: Auth validation
+error: Jul-08-2022 20:12:31: 	POST: Execute Query | user_id: 1 | error: relation "QueryStatus7834" does not exist
+info: Jul-08-2022 20:14:06: 	POST: Auth validation
+error: Jul-08-2022 20:14:06: 	POST: Execute Query | user_id: 1 | error: relation "QueryStatus7834" does not exist
+info: Jul-08-2022 20:14:17: 	POST: Auth validation
+info: Jul-08-2022 20:14:17: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-08-2022 20:14:17: 	POST: Auth validation
+info: Jul-08-2022 20:14:17: 	GET: Query Details for given query ID | user_id: 1 | query_id: 12
+info: Jul-08-2022 20:14:22: 	POST: Auth validation
+error: Jul-08-2022 20:14:23: 	POST: Execute Query | user_id: 1 | error: column QueryStatus.okok does not exist
+error: Jul-08-2022 20:39:58: 	POST: Login | User tried to login with email - (sajdfb@gmail.com) which doesn't exist.
+error: Jul-08-2022 20:40:15: 	POST: Login | User tried to login with email - (sajdfb@gmail.com) which doesn't exist.
+error: Jul-08-2022 20:40:39: 	POST: Login | User tried to login with email - (asdcas@gmail.com) which doesn't exist.
+error: Jul-08-2022 20:40:55: 	POST: Login | User tried to login with email - (asdcas@gmail.com) which doesn't exist.
+error: Jul-08-2022 20:41:04: 	POST: Login | User tried to login with email (admin2@gmail.com) with wrong password.
+info: Jul-08-2022 20:44:37: 	POST: Auth validation
+info: Jul-08-2022 20:44:37: 	GET: All application screens rights | user_id: 1
+info: Jul-08-2022 20:44:37: 	POST: Auth validation
+info: Jul-08-2022 20:44:37: 	POST: Auth validation
+info: Jul-08-2022 20:44:37: 	POST: Auth validation
+info: Jul-08-2022 20:44:37: 	POST: Auth validation
+info: Jul-08-2022 20:44:37: 	GET: Recent Queries | user_id: 1
+info: Jul-08-2022 20:44:37: 	GET: User details | of user_id: 1
+info: Jul-08-2022 20:44:37: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jul-08-2022 20:44:37: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-08-2022 20:44:41: 	POST: Auth validation
+info: Jul-08-2022 20:44:41: 	GET: All users | user_id: 1
+info: Jul-08-2022 20:44:58: 	POST: Auth validation
+error: Jul-08-2022 20:44:58: 	POST: Add new User | error: invalid input syntax for type boolean: "56"
+info: Jul-08-2022 22:43:12: 	POST: Auth validation
+info: Jul-08-2022 22:43:12: 	POST: Auth validation
+info: Jul-08-2022 22:43:12: 	GET: All application screens rights | user_id: 1
+info: Jul-08-2022 22:43:12: 	POST: Auth validation
+info: Jul-08-2022 22:43:12: 	POST: Auth validation
+info: Jul-08-2022 22:43:12: 	POST: Auth validation
+info: Jul-08-2022 22:43:12: 	POST: Auth validation
+info: Jul-08-2022 22:43:12: 	GET: User details | of user_id: 1
+info: Jul-08-2022 22:43:13: 	GET: All users | user_id: 1
+info: Jul-08-2022 22:43:13: 	GET: All users | user_id: 1
+info: Jul-08-2022 22:43:13: 	GET: User details | of user_id: 1
+info: Jul-08-2022 22:43:13: 	GET: All application screens rights | user_id: 1
+info: Jul-08-2022 22:43:18: 	POST: Auth validation
+info: Jul-08-2022 22:43:18: 	POST: Auth validation
+info: Jul-08-2022 22:43:18: 	POST: Auth validation
+info: Jul-08-2022 22:43:18: 	POST: Auth validation
+info: Jul-08-2022 22:43:18: 	POST: Auth validation
+info: Jul-08-2022 22:43:18: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jul-08-2022 22:43:18: 	GET: User details | of user_id: 1
+info: Jul-08-2022 22:43:18: 	GET: Recent Queries | user_id: 1
+info: Jul-08-2022 22:43:18: 	GET: All application screens rights | user_id: 1
+info: Jul-08-2022 22:43:18: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-08-2022 22:43:31: 	POST: Auth validation
+info: Jul-08-2022 22:43:31: 	GET: All users | user_id: 1
+info: Jul-08-2022 22:43:48: 	POST: Auth validation
+info: Jul-08-2022 22:43:48: 	GET: All users | user_id: 1
+info: Jul-08-2022 22:43:59: 	POST: Auth validation
+error: Jul-08-2022 22:44:00: 	POST: Add new User | error: invalid input syntax for type boolean: "56"
+info: Jul-08-2022 22:45:02: 	POST: Auth validation
+info: Jul-08-2022 22:45:02: 	GET: All users | user_id: 1
+info: Jul-08-2022 22:45:04: 	POST: Auth validation
+error: Jul-08-2022 22:45:04: 	POST: Add new User | error: invalid input syntax for type boolean: "56"
+info: Jul-09-2022 01:42:58: 	POST: Auth validation
+info: Jul-09-2022 01:42:58: 	POST: Auth validation
+info: Jul-09-2022 01:42:58: 	POST: Auth validation
+info: Jul-09-2022 01:42:58: 	POST: Auth validation
+info: Jul-09-2022 01:42:58: 	POST: Auth validation
+info: Jul-09-2022 01:42:58: 	GET: Recent Queries | user_id: 1
+info: Jul-09-2022 01:42:58: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jul-09-2022 01:42:58: 	GET: User details | of user_id: 1
+info: Jul-09-2022 01:42:59: 	GET: All application screens rights | user_id: 1
+info: Jul-09-2022 01:42:59: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-09-2022 01:43:05: 	POST: Auth validation
+info: Jul-09-2022 01:43:05: 	GET: All Mapped Draft Queries for an user | user_id: 1
+info: Jul-09-2022 01:43:16: 	POST: Auth validation
+info: Jul-09-2022 01:43:16: 	POST: Auth validation
+info: Jul-09-2022 01:43:17: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-09-2022 01:43:17: 	GET: Query Details for given query ID | user_id: 1 | query_id: 12
+info: Jul-09-2022 01:44:02: 	POST: Auth validation
+error: Jul-09-2022 01:44:03: 	POST: Execute Query | user_id: 1 | error: column QueryStatus.okok does not exist
+info: Jul-09-2022 01:48:05: 	POST: Auth validation
+error: Jul-09-2022 01:48:05: 	POST: Execute Query | user_id: 1 | error: column QueryStatus.okok does not exist
+info: Jul-09-2022 01:50:07: 	POST: Auth validation
+error: Jul-09-2022 01:50:08: 	POST: Execute Query | user_id: 1 | error: column QueryStatus.okok does not exist
+info: Jul-09-2022 01:50:40: 	POST: Auth validation
+info: Jul-09-2022 01:50:40: 	POST: Auth validation
+info: Jul-09-2022 01:50:40: 	POST: Auth validation
+info: Jul-09-2022 01:50:40: 	POST: Auth validation
+info: Jul-09-2022 01:50:40: 	GET: User details | of user_id: 1
+info: Jul-09-2022 01:50:41: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-09-2022 01:50:41: 	GET: All application screens rights | user_id: 1
+info: Jul-09-2022 01:50:41: 	GET: Query Details for given query ID | user_id: 1 | query_id: 12
+info: Jul-09-2022 01:50:46: 	POST: Auth validation
+error: Jul-09-2022 01:50:47: 	POST: Execute Query | user_id: 1 | error: column QueryStatus.okok does not exist
+info: Jul-09-2022 01:51:55: 	POST: Auth validation
+info: Jul-09-2022 01:51:55: 	POST: Auth validation
+info: Jul-09-2022 01:51:55: 	POST: Auth validation
+info: Jul-09-2022 01:51:55: 	POST: Auth validation
+info: Jul-09-2022 01:51:55: 	GET: User details | of user_id: 1
+info: Jul-09-2022 01:51:56: 	GET: All application screens rights | user_id: 1
+info: Jul-09-2022 01:51:56: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-09-2022 01:51:56: 	GET: Query Details for given query ID | user_id: 1 | query_id: 12
+info: Jul-09-2022 01:51:58: 	POST: Auth validation
+error: Jul-09-2022 01:51:59: 	POST: Execute Query | user_id: 1 | error: column QueryStatus.okok does not exist
+info: Jul-09-2022 04:03:01: 	POST: Auth validation
+info: Jul-09-2022 04:03:01: 	POST: Auth validation
+info: Jul-09-2022 04:03:01: 	POST: Auth validation
+info: Jul-09-2022 04:03:01: 	POST: Auth validation
+info: Jul-09-2022 04:03:01: 	GET: User details | of user_id: 1
+info: Jul-09-2022 04:03:01: 	GET: All application screens rights | user_id: 1
+info: Jul-09-2022 04:03:01: 	GET: Query Details for given query ID | user_id: 1 | query_id: 12
+info: Jul-09-2022 04:03:01: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+error: Jul-10-2022 14:43:33: 	POST: Login | Error: getaddrinfo ENOTFOUND sql-support-desk-instance.c7csrrpjyten.ap-south-1.rds.amazonaws.com
+error: Jul-10-2022 14:43:42: 	POST: Login | Error: getaddrinfo ENOTFOUND sql-support-desk-instance.c7csrrpjyten.ap-south-1.rds.amazonaws.com
+info: Jul-10-2022 14:44:27: 	POST: Auth validation
+info: Jul-10-2022 14:44:27: 	GET: All application screens rights | user_id: 1
+info: Jul-10-2022 14:44:27: 	POST: Auth validation
+info: Jul-10-2022 14:44:27: 	POST: Auth validation
+info: Jul-10-2022 14:44:27: 	POST: Auth validation
+info: Jul-10-2022 14:44:27: 	POST: Auth validation
+info: Jul-10-2022 14:44:27: 	GET: User details | of user_id: 1
+info: Jul-10-2022 14:44:27: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jul-10-2022 14:44:27: 	GET: Recent Queries | user_id: 1
+info: Jul-10-2022 14:44:27: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 14:44:32: 	POST: Auth validation
+info: Jul-10-2022 14:44:33: 	GET: All Mapped Draft Queries for an user | user_id: 1
+info: Jul-10-2022 14:44:33: 	POST: Auth validation
+info: Jul-10-2022 14:44:33: 	POST: Auth validation
+info: Jul-10-2022 14:44:34: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 14:44:34: 	GET: Query Details for given query ID | user_id: 1 | query_id: 12
+info: Jul-10-2022 14:44:36: 	POST: Auth validation
+error: Jul-10-2022 14:44:37: 	POST: Execute Query | user_id: 1 | error: column QueryStatus.okok does not exist
+info: Jul-10-2022 14:45:03: 	POST: Auth validation
+info: Jul-10-2022 14:45:03: 	POST: Auth validation
+info: Jul-10-2022 14:45:04: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 14:45:04: 	GET: Query Details for given query ID | user_id: 1 | query_id: 12
+info: Jul-10-2022 14:45:11: 	POST: Auth validation
+error: Jul-10-2022 14:45:12: 	POST: Execute Query | user_id: 1 | error: column QueryStatus.okok does not exist
+info: Jul-10-2022 14:45:25: 	POST: Auth validation
+info: Jul-10-2022 14:45:25: 	POST: Auth validation
+info: Jul-10-2022 14:45:26: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 14:45:26: 	GET: Query Details for given query ID | user_id: 1 | query_id: 12
+info: Jul-10-2022 14:45:41: 	POST: Auth validation
+info: Jul-10-2022 14:45:42: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 14:45:46: 	POST: Auth validation
+info: Jul-10-2022 14:45:47: 	GET: Query Details for given query ID | user_id: 1 | query_id: 12
+info: Jul-10-2022 14:45:59: 	POST: Auth validation
+info: Jul-10-2022 14:45:59: 	POST: Auth validation
+info: Jul-10-2022 14:45:59: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 14:45:59: 	GET: Query Details for given query ID | user_id: 1 | query_id: 12
+info: Jul-10-2022 14:46:43: 	POST: Auth validation
+info: Jul-10-2022 14:46:43: 	GET: All Mapped Draft Queries for an user | user_id: 1
+info: Jul-10-2022 14:46:44: 	POST: Auth validation
+info: Jul-10-2022 14:46:44: 	GET: All users | user_id: 1
+info: Jul-10-2022 14:47:11: 	POST: Auth validation
+error: Jul-10-2022 14:47:11: 	POST: Add new User | error: invalid input syntax for type boolean: "56"
+info: Jul-10-2022 14:47:38: 	POST: Auth validation
+info: Jul-10-2022 14:47:38: 	GET: All users | user_id: 1
+info: Jul-10-2022 14:47:41: 	POST: Auth validation
+info: Jul-10-2022 14:47:41: 	GET: All users | user_id: 1
+info: Jul-10-2022 14:47:43: 	POST: Auth validation
+error: Jul-10-2022 14:47:44: 	POST: Add new User | error: invalid input syntax for type boolean: "56"
+info: Jul-10-2022 14:48:39: 	POST: Auth validation
+info: Jul-10-2022 14:48:39: 	GET: All users | user_id: 1
+info: Jul-10-2022 14:48:55: 	POST: Auth validation
+info: Jul-10-2022 14:48:55: 	GET: All users | user_id: 1
+info: Jul-10-2022 14:49:00: 	POST: Auth validation
+info: Jul-10-2022 14:49:00: 	GET: All users | user_id: 1
+info: Jul-10-2022 14:49:14: 	POST: Auth validation
+info: Jul-10-2022 14:49:15: 	GET: All users | user_id: 1
+info: Jul-10-2022 14:49:20: 	POST: Auth validation
+info: Jul-10-2022 14:49:20: 	GET: All users | user_id: 1
+info: Jul-10-2022 15:01:35: 	POST: Auth validation
+info: Jul-10-2022 15:01:36: 	GET: All application screens rights | user_id: 1
+info: Jul-10-2022 15:01:36: 	POST: Auth validation
+info: Jul-10-2022 15:01:36: 	GET: All application screens rights | user_id: 1
+info: Jul-10-2022 15:01:38: 	POST: Auth validation
+info: Jul-10-2022 15:01:38: 	GET: All application screens rights | user_id: 1
+info: Jul-10-2022 15:01:47: 	POST: Auth validation
+info: Jul-10-2022 15:01:47: 	GET: All application screens rights | user_id: 1
+info: Jul-10-2022 15:01:53: 	POST: Auth validation
+info: Jul-10-2022 15:01:53: 	GET: All application screens rights | user_id: 1
+info: Jul-10-2022 15:01:53: 	POST: Auth validation
+info: Jul-10-2022 15:01:53: 	POST: Auth validation
+info: Jul-10-2022 15:01:53: 	GET: All users | user_id: 1
+info: Jul-10-2022 15:01:53: 	GET: User details | of user_id: 1
+info: Jul-10-2022 15:02:15: 	POST: Auth validation
+info: Jul-10-2022 15:02:15: 	POST: Auth validation
+info: Jul-10-2022 15:02:15: 	POST: Auth validation
+info: Jul-10-2022 15:02:15: 	GET: Recent Queries | user_id: 1
+info: Jul-10-2022 15:02:15: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jul-10-2022 15:02:15: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 15:02:23: 	POST: Auth validation
+info: Jul-10-2022 15:02:23: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 15:02:24: 	POST: Auth validation
+info: Jul-10-2022 15:02:24: 	POST: Auth validation
+info: Jul-10-2022 15:02:24: 	GET: All users | user_id: 1
+info: Jul-10-2022 15:02:24: 	GET: All Applications | user_id: 1
+info: Jul-10-2022 15:02:25: 	POST: Auth validation
+info: Jul-10-2022 15:02:25: 	POST: Auth validation
+info: Jul-10-2022 15:02:25: 	GET: All Applications | user_id: 1
+info: Jul-10-2022 15:02:25: 	GET: Application database mappings | user_id: 1
+info: Jul-10-2022 15:02:26: 	POST: Auth validation
+info: Jul-10-2022 15:02:26: 	POST: Auth validation
+info: Jul-10-2022 15:02:26: 	GET: All users | user_id: 1
+info: Jul-10-2022 15:02:26: 	GET: All application screens rights | user_id: 1
+info: Jul-10-2022 15:02:27: 	POST: Auth validation
+info: Jul-10-2022 15:02:27: 	POST: Auth validation
+info: Jul-10-2022 15:02:27: 	GET: All users | user_id: 1
+info: Jul-10-2022 15:02:27: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 15:02:27: 	POST: Auth validation
+info: Jul-10-2022 15:02:28: 	GET: Application database mappings | user_id: 1
+info: Jul-10-2022 15:02:28: 	POST: Auth validation
+info: Jul-10-2022 15:02:28: 	GET: All users | user_id: 1
+info: Jul-10-2022 15:02:29: 	POST: Auth validation
+info: Jul-10-2022 15:02:29: 	GET: All Mapped Draft Queries for an user | user_id: 1
+info: Jul-10-2022 15:02:41: 	POST: Auth validation
+info: Jul-10-2022 15:02:41: 	POST: Auth validation
+info: Jul-10-2022 15:02:41: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 15:02:41: 	GET: Query Details for given query ID | user_id: 1 | query_id: 12
+info: Jul-10-2022 15:02:48: 	POST: Auth validation
+error: Jul-10-2022 15:02:49: 	POST: Execute Query | user_id: 1 | error: column QueryStatus.okok does not exist
+info: Jul-10-2022 15:04:12: 	POST: Auth validation
+info: Jul-10-2022 15:04:12: 	POST: Auth validation
+info: Jul-10-2022 15:04:13: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 15:04:13: 	GET: Query Details for given query ID | user_id: 1 | query_id: 12
+info: Jul-10-2022 15:04:20: 	POST: Auth validation
+info: Jul-10-2022 15:04:20: 	POST: Auth validation
+info: Jul-10-2022 15:04:21: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 15:04:21: 	GET: Query Details for given query ID | user_id: 1 | query_id: 12
+info: Jul-10-2022 15:04:25: 	POST: Auth validation
+info: Jul-10-2022 15:04:25: 	POST: Auth validation
+info: Jul-10-2022 15:04:25: 	GET: All Applications | user_id: 1
+info: Jul-10-2022 15:04:25: 	GET: All users | user_id: 1
+info: Jul-10-2022 15:04:48: 	POST: Auth validation
+info: Jul-10-2022 15:04:48: 	POST: Auth validation
+info: Jul-10-2022 15:04:49: 	GET: All Applications | user_id: 1
+info: Jul-10-2022 15:04:49: 	GET: All users | user_id: 1
+info: Jul-10-2022 15:05:12: 	POST: Auth validation
+error: Jul-10-2022 15:05:12: 	POST : Add new Application | user_id: 1 | error: invalid input syntax for type bigint: ""
+info: Jul-10-2022 15:05:31: 	POST: Auth validation
+error: Jul-10-2022 15:05:31: 	POST : Add new Application | user_id: 1 | error: null value in column "MA_Owner2" of relation "MasterApplication" violates not-null constraint
+info: Jul-10-2022 15:05:52: 	POST: Auth validation
+info: Jul-10-2022 15:05:52: 	POST: Auth validation
+info: Jul-10-2022 15:05:52: 	GET: All users | user_id: 1
+info: Jul-10-2022 15:05:52: 	GET: All Applications | user_id: 1
+info: Jul-10-2022 15:05:55: 	POST: Auth validation
+error: Jul-10-2022 15:05:55: 	POST : Add new Application | user_id: 1 | error: invalid input syntax for type bigint: ""
+info: Jul-10-2022 15:06:16: 	POST: Auth validation
+error: Jul-10-2022 15:06:16: 	PUT : Edit Application Details | user_id: 1 | error: invalid input syntax for type bigint: "-- SELECT USER --"
+info: Jul-10-2022 15:06:35: 	POST: Auth validation
+info: Jul-10-2022 15:06:35: 	POST: Auth validation
+info: Jul-10-2022 15:06:35: 	GET: All Applications | user_id: 1
+info: Jul-10-2022 15:06:35: 	GET: Application database mappings | user_id: 1
+info: Jul-10-2022 15:06:42: 	POST: Auth validation
+info: Jul-10-2022 15:06:42: 	POST: Auth validation
+info: Jul-10-2022 15:06:42: 	GET: All users | user_id: 1
+info: Jul-10-2022 15:06:42: 	GET: All application screens rights | user_id: 1
+info: Jul-10-2022 15:06:44: 	POST: Auth validation
+info: Jul-10-2022 15:06:44: 	GET: All application screens rights | user_id: 1
+info: Jul-10-2022 15:06:49: 	POST: Auth validation
+info: Jul-10-2022 15:06:50: 	GET: All application screens rights | user_id: 16
+info: Jul-10-2022 15:06:51: 	POST: Auth validation
+info: Jul-10-2022 15:06:52: 	GET: All application screens rights | user_id: 13
+info: Jul-10-2022 15:06:53: 	POST: Auth validation
+info: Jul-10-2022 15:06:54: 	GET: All application screens rights | user_id: 17
+info: Jul-10-2022 15:06:55: 	POST: Auth validation
+info: Jul-10-2022 15:06:55: 	GET: All application screens rights | user_id: 1
+error: Jul-10-2022 15:07:14: 	POST: Auth validation | error : Token is required
+info: Jul-10-2022 15:07:14: 	POST: Auth validation
+info: Jul-10-2022 15:07:14: 	POST: Auth validation
+info: Jul-10-2022 15:07:15: 	GET: All application screens rights | user_id: 1
+info: Jul-10-2022 15:07:15: 	GET: All application screens rights | user_id: 1
+info: Jul-10-2022 15:07:15: 	POST: Auth validation
+info: Jul-10-2022 15:07:15: 	GET: All application screens rights | user_id: 1
+info: Jul-10-2022 15:07:15: 	POST: Auth validation
+info: Jul-10-2022 15:07:15: 	GET: All application screens rights | user_id: 1
+info: Jul-10-2022 15:07:22: 	POST: Auth validation
+info: Jul-10-2022 15:07:22: 	POST: Auth validation
+info: Jul-10-2022 15:07:22: 	GET: All users | user_id: 1
+info: Jul-10-2022 15:07:22: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 15:07:22: 	POST: Auth validation
+info: Jul-10-2022 15:07:22: 	POST: Auth validation
+error: Jul-10-2022 15:07:22: 	POST: Auth validation | error : Token is required
+info: Jul-10-2022 15:07:22: 	POST: Auth validation
+info: Jul-10-2022 15:07:22: 	POST: Auth validation
+info: Jul-10-2022 15:07:22: 	GET: Application database mappings | user_id: 1
+info: Jul-10-2022 15:07:22: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 15:07:23: 	GET: All application screens rights | user_id: 1
+info: Jul-10-2022 15:07:23: 	GET: All application screens rights | user_id: 1
+info: Jul-10-2022 15:07:23: 	POST: Auth validation
+info: Jul-10-2022 15:07:23: 	POST: Auth validation
+info: Jul-10-2022 15:07:23: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 15:07:23: 	GET: All application screens rights | user_id: 1
+info: Jul-10-2022 15:07:23: 	POST: Auth validation
+info: Jul-10-2022 15:07:23: 	POST: Auth validation
+info: Jul-10-2022 15:07:23: 	GET: All application screens rights | user_id: 1
+info: Jul-10-2022 15:07:23: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 15:07:30: 	POST: Auth validation
+info: Jul-10-2022 15:07:30: 	GET: All application screens rights | user_id: 14
+error: Jul-10-2022 15:07:55: 	POST: Auth validation | error : Token is required
+info: Jul-10-2022 15:07:56: 	POST: Auth validation
+info: Jul-10-2022 15:07:56: 	POST: Auth validation
+info: Jul-10-2022 15:07:56: 	GET: User details | of user_id: 1
+info: Jul-10-2022 15:07:56: 	GET: All application screens rights | user_id: 1
+info: Jul-10-2022 15:07:56: 	POST: Auth validation
+info: Jul-10-2022 15:07:56: 	GET: All application screens rights | user_id: 1
+error: Jul-10-2022 15:08:17: 	POST: Auth validation | error : Token is required
+info: Jul-10-2022 15:08:17: 	POST: Auth validation
+info: Jul-10-2022 15:08:18: 	GET: All application screens rights | user_id: 1
+error: Jul-10-2022 15:08:48: 	POST: Auth validation | error : Token is required
+info: Jul-10-2022 15:08:49: 	POST: Auth validation
+info: Jul-10-2022 15:08:49: 	POST: Auth validation
+info: Jul-10-2022 15:08:49: 	GET: User details | of user_id: 1
+info: Jul-10-2022 15:08:49: 	GET: All application screens rights | user_id: 1
+info: Jul-10-2022 15:08:49: 	POST: Auth validation
+info: Jul-10-2022 15:08:49: 	GET: All application screens rights | user_id: 1
+error: Jul-10-2022 15:09:03: 	POST: Auth validation | error : Token is required
+info: Jul-10-2022 15:09:04: 	POST: Auth validation
+info: Jul-10-2022 15:09:04: 	GET: All application screens rights | user_id: 1
+error: Jul-10-2022 15:09:35: 	POST: Auth validation | error : Token is required
+info: Jul-10-2022 15:09:36: 	POST: Auth validation
+info: Jul-10-2022 15:09:36: 	GET: All application screens rights | user_id: 1
+info: Jul-10-2022 15:09:40: 	POST: Auth validation
+info: Jul-10-2022 15:09:40: 	GET: All users | user_id: 1
+info: Jul-10-2022 15:09:41: 	POST: Auth validation
+info: Jul-10-2022 15:09:41: 	GET: All application screens rights | user_id: 1
+info: Jul-10-2022 15:09:45: 	POST: Auth validation
+info: Jul-10-2022 15:09:45: 	GET: All application screens rights | user_id: 1
+info: Jul-10-2022 15:10:09: 	POST: Auth validation
+info: Jul-10-2022 15:10:09: 	POST: Auth validation
+info: Jul-10-2022 15:10:09: 	POST: Auth validation
+info: Jul-10-2022 15:10:09: 	POST: Auth validation
+info: Jul-10-2022 15:10:09: 	GET: All users | user_id: 1
+info: Jul-10-2022 15:10:10: 	GET: Application database mappings | user_id: 1
+info: Jul-10-2022 15:10:10: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 15:10:10: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 15:10:10: 	POST: Auth validation
+info: Jul-10-2022 15:10:10: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 15:10:11: 	POST: Auth validation
+info: Jul-10-2022 15:10:11: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 15:10:48: 	POST: Auth validation
+info: Jul-10-2022 15:10:48: 	POST: Auth validation
+info: Jul-10-2022 15:10:48: 	POST: Auth validation
+info: Jul-10-2022 15:10:48: 	POST: Auth validation
+info: Jul-10-2022 15:10:48: 	GET: All users | user_id: 1
+info: Jul-10-2022 15:10:48: 	GET: Application database mappings | user_id: 1
+info: Jul-10-2022 15:10:48: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 15:10:48: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 15:10:48: 	POST: Auth validation
+info: Jul-10-2022 15:10:49: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 15:10:49: 	POST: Auth validation
+info: Jul-10-2022 15:10:49: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 15:11:00: 	POST: Auth validation
+error: Jul-10-2022 15:11:00: 	PUT: User permissions for an user | user_id: 1 | TypeError: Cannot read properties of undefined (reading 'map')
+info: Jul-10-2022 15:11:11: 	POST: Auth validation
+info: Jul-10-2022 15:11:12: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 15:11:16: 	POST: Auth validation
+info: Jul-10-2022 15:11:17: 	GET: All application screens rights | user_id: 1
+info: Jul-10-2022 15:11:17: 	POST: Auth validation
+info: Jul-10-2022 15:11:17: 	POST: Auth validation
+info: Jul-10-2022 15:11:17: 	POST: Auth validation
+info: Jul-10-2022 15:11:17: 	POST: Auth validation
+info: Jul-10-2022 15:11:17: 	GET: All users | user_id: 1
+info: Jul-10-2022 15:11:17: 	GET: User details | of user_id: 1
+info: Jul-10-2022 15:11:17: 	GET: Application database mappings | user_id: 1
+info: Jul-10-2022 15:11:17: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 15:11:19: 	POST: Auth validation
+info: Jul-10-2022 15:11:19: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 15:11:24: 	POST: Auth validation
+info: Jul-10-2022 15:11:24: 	GET: All users | user_id: 1
+info: Jul-10-2022 15:11:31: 	POST: Auth validation
+info: Jul-10-2022 15:11:31: 	GET: All Mapped Draft Queries for an user | user_id: 1
+info: Jul-10-2022 15:11:33: 	POST: Auth validation
+info: Jul-10-2022 15:11:33: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-10-2022 15:11:34: 	POST: Auth validation
+info: Jul-10-2022 15:11:34: 	GET: Query Details for given query ID | user_id: 1 | query_id: 12

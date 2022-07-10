@@ -137,7 +137,6 @@ module.exports.editQueryDetails = async (params) => {
     const result = await pool.query(Query.EDIT_QUERY_DETAILS, values);
     return result.rows;
   } catch (err) {
-    console.log(err);
     throw err;
   }
 };

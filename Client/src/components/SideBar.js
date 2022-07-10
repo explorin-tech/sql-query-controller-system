@@ -3,6 +3,9 @@ import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { MenuItem } from '../common/MenuItem';
 import * as BACKEND_URLS from '../utils/BackendUrls';
 import * as APPLICATION_URLS from '../utils/ApplicationUrls';
@@ -12,8 +15,8 @@ import * as actions from '../store/actions/Actions';
 import '../static/css/sideBar.css';
 
 function Sidebar(props) {
+  toast.configure();
   const history = useHistory();
-  const [error, setError] = useState('');
 
   const fetchScreenRights = () => {
     axios
@@ -28,9 +31,12 @@ function Sidebar(props) {
         }
       })
       .catch((err) => {
-        if (err.response) {
-          setError(err);
-        }
+        toast.error(
+          `Failed to fetch screen rights ${err.response.data.message}`,
+          {
+            autoClose: 2000,
+          }
+        );
       });
   };
 

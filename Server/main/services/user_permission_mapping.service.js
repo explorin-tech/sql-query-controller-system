@@ -96,7 +96,7 @@ module.exports.GET_getAllUserPermissionMappingForAnUser = async (
     );
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -138,7 +138,7 @@ module.exports.PUT_editUserPermissionsMappingForAnUser = async (
     );
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };

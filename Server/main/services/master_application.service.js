@@ -17,7 +17,7 @@ module.exports.GET_getAllApplications = async (
     logger.error(`GET: All Applications | user_id: ${user_id} | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -44,7 +44,7 @@ module.exports.GET_getAllApplicationsForAnUser = async (
     );
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -70,7 +70,7 @@ module.exports.GET_getApplicationDetails = async (
     logger.error(`GET: All Application Details | user_id: ${user_id} | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -102,7 +102,7 @@ module.exports.POST_addApplication = async (
     logger.error(`POST : Add new Application | user_id: ${user_id} | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -136,7 +136,7 @@ module.exports.PUT_editApplication = async (
     );
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -162,7 +162,7 @@ module.exports.DELETE_deleteApplication = async (
     logger.error(`DELETE : Delete Application | user_id: ${user_id} | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };

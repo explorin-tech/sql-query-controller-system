@@ -60,7 +60,7 @@ module.exports.GET_getAllScreenRightsMappingForAnUser = async (
     logger.error(`GET: All application screens rights | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -90,7 +90,7 @@ module.exports.GET_getScreenRightsMappingForAnUser = async (
     logger.error(`GET: Screens rights mapping for an user | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -128,7 +128,7 @@ module.exports.POST_addScreenRightsMappingForAnUser = async (
     logger.error(`POST: Screens rights mapping for an user | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -168,7 +168,7 @@ module.exports.PUT_editScreenRightsMappingForAnUser = async (
     logger.error(`PUT: Screens rights mapping for an user | ${err}`);
     return _error(httpResponse, {
       type: 'generic',
-      message: err,
+      message: err.message,
     });
   }
 };

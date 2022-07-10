@@ -188,7 +188,7 @@ function AddApplication(props) {
       })
       .catch((err) => {
         toast.error(
-          `Failed to add an new application, please try again. ${err.response.data.message.detail}`,
+          `Failed to add an new application, please try again. ${err.response.data.message}`,
           { autoClose: 2000 }
         );
       });
@@ -240,7 +240,7 @@ function AddApplication(props) {
       })
       .catch((err) => {
         toast.error(
-          `Failed to edit the application details, please try again. ${err.response.data.message.detail}`,
+          `Failed to edit the application details, please try again. ${err.response.data.message}`,
           { autoClose: 2000 }
         );
       });
@@ -274,7 +274,7 @@ function AddApplication(props) {
       })
       .catch((err) => {
         toast.error(
-          `Falied to delete the application, please try again. ${err}`,
+          `Falied to delete the application, please try again. ${err.response.data.message}`,
           { autoClose: 2000 }
         );
       });

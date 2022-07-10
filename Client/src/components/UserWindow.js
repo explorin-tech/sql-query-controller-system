@@ -161,12 +161,9 @@ function AddUser(props) {
           }
         })
         .catch((err) => {
-          toast.error(
-            `Failed to add new user. ${err.response.data.message.detail}`,
-            {
-              autoClose: 2000,
-            }
-          );
+          toast.error(`Failed to add new user. ${err.response.data.message}`, {
+            autoClose: 2000,
+          });
         });
     }
   };
@@ -182,9 +179,12 @@ function AddUser(props) {
         props.set_all_users(res.data.data);
       })
       .catch((err) => {
-        toast.error(`Failed to fetch list of all users. ${err}`, {
-          autoClose: 2000,
-        });
+        toast.error(
+          `Failed to fetch list of all users. ${err.response.data.message}`,
+          {
+            autoClose: 2000,
+          }
+        );
       });
   };
 
@@ -251,7 +251,7 @@ function AddUser(props) {
       })
       .catch((err) => {
         toast.error(
-          `Failed to edit user details, please try again. ${err.response.data.message.detail}`,
+          `Failed to edit user details, please try again. ${err.response.data.message}`,
           {
             autoClose: 2000,
           }
@@ -291,9 +291,12 @@ function AddUser(props) {
         }
       })
       .catch((err) => {
-        toast.error(`Failed to delete the user, please try again. ${err}`, {
-          autoClose: 2000,
-        });
+        toast.error(
+          `Failed to delete the user, please try again. ${err.response.data.message}`,
+          {
+            autoClose: 2000,
+          }
+        );
       });
   };
   useEffect(() => {

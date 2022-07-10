@@ -133,7 +133,7 @@ function DatabaseRights(props) {
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response.data.message);
       });
   };
 
@@ -150,7 +150,7 @@ function DatabaseRights(props) {
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response.data.message);
       });
   };
 
@@ -174,7 +174,7 @@ function DatabaseRights(props) {
           }
         })
         .catch((err) => {
-          console.log(err);
+          console.log(err.response.data.message);
         });
     } else {
       setFilteredData([]);
@@ -192,9 +192,12 @@ function DatabaseRights(props) {
         props.set_all_users(res.data.data);
       })
       .catch((err) => {
-        toast.error(`Failed to fetch list of all users. ${err}`, {
-          autoClose: 2000,
-        });
+        toast.error(
+          `Failed to fetch list of all users. ${err.response.data.message}`,
+          {
+            autoClose: 2000,
+          }
+        );
       });
   };
 
@@ -260,11 +263,9 @@ function DatabaseRights(props) {
         }
       })
       .catch((err) => {
-        toast.err(
-          `Failed to edit screen rights for selected user, please try again. ${err}`,
-          {
-            autoClose: 2000,
-          }
+        toast.error(
+          `Falied to edit the database rights, please try again. ${err.response.data.message}`,
+          { autoClose: 2000 }
         );
       });
   };

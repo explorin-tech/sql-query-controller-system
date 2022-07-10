@@ -145,7 +145,7 @@ function History(props) {
       })
       .catch((err) => {
         toast.error(
-          `Error while fetching history queries, please try again. ${err}`,
+          `Error while fetching history queries, please try again. ${err.response.data.message}`,
           { autoClose: 2000 }
         );
       });
