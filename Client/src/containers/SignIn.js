@@ -32,8 +32,8 @@ function SignIn(props) {
     await axios
       .post(BACKEND_URLS.SIGNIN_URL, {
         user: {
-          email: values.email_id,
-          password: values.password,
+          email: values.email_id.toLowerCase().trim(),
+          password: values.password.trim(),
         },
       })
       .then((res) => {
@@ -68,7 +68,7 @@ function SignIn(props) {
           <form onSubmit={handleSubmit}>
             <input
               type="text"
-              placeholder="Email"
+              placeholder="Email/UserID"
               onChange={handleChange('email_id')}
               value={values.email_id}
             />

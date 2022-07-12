@@ -129,10 +129,10 @@ function AddUser(props) {
           BACKEND_URLS.ADD_AN_USER,
           {
             user: {
-              first_name: values.firstName,
-              last_name: values.lastName,
-              email: values.email,
-              password: values.password,
+              first_name: values.firstName.trim(),
+              last_name: values.lastName.trim(),
+              email: values.email.toLowerCase().trim(),
+              password: values.password.trim(),
               user_type_id: CONSTANTS.USER_TYPE_ID_MAPPING[values.userType],
               is_active: 'true',
               is_active_direct_user: values.isActiveDirectUser,
@@ -155,6 +155,7 @@ function AddUser(props) {
               email: '',
               password: '',
               userType: CONSTANTS.USER_TYPES.DEV,
+              isActive: 'true',
               isActiveDirectUser: 'true',
               userTypeID: '',
             });
@@ -215,9 +216,9 @@ function AddUser(props) {
         {
           user: {
             user_id: values.userID,
-            first_name: values.firstName,
-            last_name: values.lastName,
-            email: values.email,
+            first_name: values.firstName.trim(),
+            last_name: values.lastName.trim(),
+            email: values.email.toLowerCase().trim(),
             user_type_id: CONSTANTS.USER_TYPE_ID_MAPPING[values.userType],
             is_active: values.isActive,
             is_active_direct_user: values.isActiveDirectUser,
