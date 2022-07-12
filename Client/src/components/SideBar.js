@@ -206,7 +206,7 @@ function Sidebar(props) {
                     (each_screen_right) => {
                       if (
                         each_screen_right['AS_Name'] ===
-                        CONSTANTS.APPLICATION_SCREENS.SCREEN_RIGHTS_WINDOW
+                        CONSTANTS.APPLICATION_SCREENS.DATABASE_RIGHTS_WINDOW
                       ) {
                         return each_screen_right['ASR_RightToView'];
                       }

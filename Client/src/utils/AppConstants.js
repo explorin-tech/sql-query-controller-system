@@ -91,7 +91,7 @@ export const APPLICATION_SCREENS = {
   MASTER_DATABASE_WINDOW: 'Master Database Window',
   DATABASE_APPLICATION_MAPPING_WINDOW: 'Database Mapping Window',
   SCREEN_RIGHTS_WINDOW: 'Screen Rights',
-  DATABASE_RIGHTS_WINDOW: 'User Permissions',
+  DATABASE_RIGHTS_WINDOW: 'Database Rights',
 };
 
 export const QUERY_STATUS_ID_MAPPING = {
