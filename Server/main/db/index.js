@@ -1,10 +1,10 @@
 require('dotenv').config();
 const { Pool } = require('pg');
 const pool = new Pool({
-  host: 'sql-support-desk-instance.c7csrrpjyten.ap-south-1.rds.amazonaws.com',
-  user: 'jai',
+  host: 'cobranding-db.cwaupinwoyhl.ap-south-1.rds.amazonaws.com',
+  user: 'pravin',
   database: 'postgres',
-  password: 'jaisoni2004',
+  password: 'India-123',
   port: 5432,
 });
 
