@@ -118,12 +118,12 @@ function AddApplication(props) {
       },
       {
         Header: 'Owner 1',
-        accessor: 'MA_Owner1',
+        accessor: 'MA_Owner1Name',
         filterable: true,
       },
       {
         Header: 'Owner 2',
-        accessor: 'MA_Owner2',
+        accessor: 'MA_Owner2Name',
         filterable: true,
       },
     ],

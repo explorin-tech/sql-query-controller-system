@@ -1820,3 +1820,57 @@ info: Jul-12-2022 20:44:19: 	GET: All users | user_id: 2
 info: Jul-12-2022 20:44:19: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
 info: Jul-12-2022 20:44:20: 	POST: Auth validation
 info: Jul-12-2022 20:44:21: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-12-2022 21:19:11: 	POST: Auth validation
+info: Jul-12-2022 21:19:12: 	GET: All application screens rights | user_id: 1
+info: Jul-12-2022 21:19:12: 	POST: Auth validation
+info: Jul-12-2022 21:19:12: 	POST: Auth validation
+info: Jul-12-2022 21:19:12: 	POST: Auth validation
+info: Jul-12-2022 21:19:12: 	POST: Auth validation
+info: Jul-12-2022 21:19:12: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jul-12-2022 21:19:12: 	GET: Recent Queries | user_id: 1
+info: Jul-12-2022 21:19:12: 	GET: User details | of user_id: 1
+info: Jul-12-2022 21:19:12: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-12-2022 21:19:14: 	POST: Auth validation
+info: Jul-12-2022 21:19:14: 	POST: Auth validation
+info: Jul-12-2022 21:19:14: 	GET: All users | user_id: 1
+info: Jul-12-2022 21:19:14: 	GET: All Applications | user_id: 1
+info: Jul-12-2022 21:19:59: 	POST: Auth validation
+info: Jul-12-2022 21:19:59: 	POST: Auth validation
+info: Jul-12-2022 21:19:59: 	POST: Auth validation
+info: Jul-12-2022 21:19:59: 	GET: All Applications | user_id: 1
+info: Jul-12-2022 21:19:59: 	GET: All users | user_id: 1
+info: Jul-12-2022 21:19:59: 	GET: All application screens rights | user_id: 1
+info: Jul-12-2022 21:20:28: 	POST: Auth validation
+info: Jul-12-2022 21:20:28: 	POST: Auth validation
+info: Jul-12-2022 21:20:28: 	POST: Auth validation
+info: Jul-12-2022 21:20:28: 	GET: All Applications | user_id: 1
+info: Jul-12-2022 21:20:28: 	GET: All users | user_id: 1
+info: Jul-12-2022 21:20:28: 	GET: All application screens rights | user_id: 1
+info: Jul-12-2022 21:22:26: 	POST: Auth validation
+info: Jul-12-2022 21:22:26: 	POST: Auth validation
+info: Jul-12-2022 21:22:26: 	POST: Auth validation
+info: Jul-12-2022 21:22:26: 	POST: Auth validation
+info: Jul-12-2022 21:22:26: 	GET: User details | of user_id: 1
+info: Jul-12-2022 21:22:26: 	GET: All Applications | user_id: 1
+info: Jul-12-2022 21:22:26: 	GET: All users | user_id: 1
+info: Jul-12-2022 21:22:26: 	GET: All application screens rights | user_id: 1
+info: Jul-12-2022 21:22:38: 	POST: Auth validation
+info: Jul-12-2022 21:22:38: 	POST: Auth validation
+info: Jul-12-2022 21:22:38: 	GET: All users | user_id: 1
+info: Jul-12-2022 21:22:38: 	GET: All Applications | user_id: 1
+info: Jul-12-2022 21:22:44: 	POST: Auth validation
+info: Jul-12-2022 21:22:44: 	POST: Auth validation
+info: Jul-12-2022 21:22:44: 	GET: All Applications | user_id: 1
+info: Jul-12-2022 21:22:44: 	GET: All users | user_id: 1
+info: Jul-12-2022 21:22:46: 	POST: Auth validation
+info: Jul-12-2022 21:22:46: 	POST: Auth validation
+info: Jul-12-2022 21:22:46: 	GET: All users | user_id: 1
+info: Jul-12-2022 21:22:46: 	GET: All Applications | user_id: 1
+info: Jul-12-2022 21:23:30: 	POST: Auth validation
+info: Jul-12-2022 21:23:30: 	POST: Auth validation
+info: Jul-12-2022 21:23:30: 	POST: Auth validation
+info: Jul-12-2022 21:23:30: 	POST: Auth validation
+info: Jul-12-2022 21:23:30: 	GET: User details | of user_id: 1
+info: Jul-12-2022 21:23:30: 	GET: All Applications | user_id: 1
+info: Jul-12-2022 21:23:30: 	GET: All users | user_id: 1
+info: Jul-12-2022 21:23:30: 	GET: All application screens rights | user_id: 1
