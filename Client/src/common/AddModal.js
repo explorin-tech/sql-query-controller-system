@@ -13,6 +13,7 @@ export default function AddModal({
     <Fragment>
       <Modal
         show={addModalShow}
+        backdrop="static"
         onHide={() => setAddModalShow(false)}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
