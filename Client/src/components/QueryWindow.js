@@ -60,7 +60,7 @@ const DisplayResult = ({ result }) => {
                 <i className="fas fa-download download"></i> Download
               </CSVLink>
             </div>
-            <div className="selectTable">
+            <div className="selectTable" style={{ maxWidth: 100 }}>
               <table>
                 <thead>
                   <tr className="tableHeading">
