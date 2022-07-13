@@ -118,7 +118,7 @@ function Home(props) {
                     <Card
                       key={index}
                       appName={item[CONSTANTS.APPLICATION.MA_Name]}
-                      db={item[CONSTANTS.DATABASE.MD_DBName]}
+                      db={item[CONSTANTS.DATABASE.MD_UserDefinedDBName]}
                       type={item['DBT_Name']}
                     />
                   );

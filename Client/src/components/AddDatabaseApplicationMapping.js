@@ -51,7 +51,7 @@ const PopulateDatabases = ({ databases }) => {
             key={database[CONSTANTS.DATABASE.MD_ID]}
             value={database[CONSTANTS.DATABASE.MD_ID]}
           >
-            {database[CONSTANTS.DATABASE.MD_DBName]} -{' '}
+            {database[CONSTANTS.DATABASE.MD_UserDefinedDBName]} -{' '}
             {database[CONSTANTS.DATABASE_TYPE.DBT_Name]}
           </option>
         );
@@ -79,8 +79,8 @@ function AddDatabaseApplicationMapping(props) {
         filterable: true,
       },
       {
-        Header: 'Database Name',
-        accessor: 'MD_DBName',
+        Header: 'Database Name (Alias)',
+        accessor: 'MD_UserDefinedDBName',
         filterable: true,
       },
       {

@@ -26,13 +26,13 @@ const PopulateDatabaseMappings = ({ database_application_mappings }) => {
               name={
                 database_application_mapping['MA_Name'] +
                 '_' +
-                database_application_mapping['MD_DBName'] +
+                database_application_mapping['MD_UserDefinedDBName'] +
                 '_' +
                 database_application_mapping['DBT_Name']
               }
             >
               {database_application_mapping['MA_Name']} -{' '}
-              {database_application_mapping['MD_DBName']} -{' '}
+              {database_application_mapping['MD_UserDefinedDBName']} -{' '}
               {database_application_mapping['DBT_Name']}
             </option>
           );
@@ -53,7 +53,7 @@ const DisplayResult = ({ result }) => {
     return (
       <div className="application">
         {result ? (
-          <>
+          <div>
             <div className="appTab">
               <span className="headData"> Result </span>
               <CSVLink data={result} filename="Result">
@@ -82,7 +82,7 @@ const DisplayResult = ({ result }) => {
                 </tbody>
               </table>
             </div>
-          </>
+          </div>
         ) : null}
       </div>
     );
@@ -94,7 +94,11 @@ const DisplayResult = ({ result }) => {
             <div className="appTab">
               <span className="headData"> Result </span>
             </div>
-            <div className="selectTable">Query Executed Successfully</div>
+            {result == '' ? (
+              <div className="selectTable">Query Executed Successfully.</div>
+            ) : (
+              <div className="selectTable">{result}</div>
+            )}
           </>
         ) : null}
       </div>
@@ -143,7 +147,7 @@ function QueryWindow(props) {
       return (
         name[0]['MA_Name'] +
         '_' +
-        name[0]['MD_DBName'] +
+        name[0]['MD_UserDefinedDBName'] +
         '_' +
         name[0]['DBT_Name']
       );

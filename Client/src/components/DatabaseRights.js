@@ -52,8 +52,8 @@ function DatabaseRights(props) {
         filterable: true,
       },
       {
-        Header: 'Database Name',
-        accessor: 'MD_DBName',
+        Header: 'Database Name (Alias)',
+        accessor: 'MD_UserDefinedDBName',
         filterable: true,
       },
       {

@@ -32,9 +32,9 @@ function AddDatabase(props) {
     databaseID: '',
     databaseTypeName: '',
     databaseTypeID: '',
-    databaseName: '',
+    userDefinedDatabaseName: '',
     databaseHostName: '',
-    databaseConnectionString: '',
+    databaseName: '',
     databaseUserName: '',
     databasePassword: '',
     databasePortNumber: '',
@@ -45,8 +45,8 @@ function AddDatabase(props) {
   const columns = useMemo(
     () => [
       {
-        Header: 'Database Name',
-        accessor: 'MD_DBName',
+        Header: 'Database Name (Alias)',
+        accessor: 'MD_UserDefinedDBName',
         filterable: true,
       },
       {
@@ -65,8 +65,8 @@ function AddDatabase(props) {
         filterable: true,
       },
       {
-        Header: 'Connection String',
-        accessor: 'MD_DBConnectionString',
+        Header: 'Database Name',
+        accessor: 'MD_DBName',
         filterable: true,
       },
       {
@@ -145,9 +145,9 @@ function AddDatabase(props) {
         BACKEND_URLS.ADD_DATABASE,
         {
           database: {
-            database_name: values.databaseName,
+            user_defined_database_name: values.userDefinedDatabaseName,
             database_type_id: values.databaseTypeID,
-            database_connection_string: values.databaseConnectionString,
+            database_name: values.databaseName,
             database_port_number: values.databasePortNumber,
             database_host_name: values.databaseHostName,
             database_user_name: values.databaseUserName,
@@ -171,9 +171,9 @@ function AddDatabase(props) {
             databaseID: '',
             databaseTypeName: '',
             databaseTypeID: '',
-            databaseName: '',
+            userDefinedDatabaseName: '',
             databaseHostName: '',
-            databaseConnectionString: '',
+            databaseName: '',
             databaseUserName: '',
             databasePassword: '',
             databasePortNumber: '',
@@ -192,10 +192,10 @@ function AddDatabase(props) {
     setValues({
       databaseID: database[CONSTANTS.DATABASE.MD_ID],
       databaseTypeID: database[CONSTANTS.DATABASE.MD_DBT_ID],
-      databaseName: database[CONSTANTS.DATABASE.MD_DBName],
+      userDefinedDatabaseName:
+        database[CONSTANTS.DATABASE.MD_UserDefinedDBName],
       databaseHostName: database[CONSTANTS.DATABASE.MD_DBHostName],
-      databaseConnectionString:
-        database[CONSTANTS.DATABASE.MD_DBConnectionString],
+      databaseName: database[CONSTANTS.DATABASE.MD_DBName],
       databaseUserName: database[CONSTANTS.DATABASE.MD_DBUserName],
       databasePassword: database[CONSTANTS.DATABASE.MD_DBPassword],
       databasePortNumber: database[CONSTANTS.DATABASE.MD_DBPortNumber],
@@ -211,9 +211,9 @@ function AddDatabase(props) {
         {
           database: {
             database_id: values.databaseID,
-            database_name: values.databaseName,
+            user_defined_database_name: values.userDefinedDatabaseName,
             database_type_id: values.databaseTypeID,
-            database_connection_string: values.databaseConnectionString,
+            database_name: values.databaseName,
             database_port_number: values.databasePortNumber,
             database_host_name: values.databaseHostName,
             database_user_name: values.databaseUserName,
@@ -237,9 +237,9 @@ function AddDatabase(props) {
             databaseID: '',
             databaseTypeName: '',
             databaseTypeID: '',
-            databaseName: '',
+            userDefinedDatabaseName: '',
             databaseHostName: '',
-            databaseConnectionString: '',
+            databaseName: '',
             databaseUserName: '',
             databasePassword: '',
             databasePortNumber: '',
@@ -276,9 +276,9 @@ function AddDatabase(props) {
             databaseID: '',
             databaseTypeName: '',
             databaseTypeID: '',
-            databaseName: '',
+            userDefinedDatabaseName: '',
             databaseHostName: '',
-            databaseConnectionString: '',
+            databaseName: '',
             databaseUserName: '',
             databasePassword: '',
             databasePortNumber: '',
@@ -312,11 +312,11 @@ function AddDatabase(props) {
                 <tbody>
                   <tr>
                     <td>
-                      <span>Database Name</span>
+                      <span>Database Name (Alias)</span>
                       <input
-                        value={values.databaseName}
+                        value={values.userDefinedDatabaseName}
                         type="text"
-                        onChange={handleChange('databaseName')}
+                        onChange={handleChange('userDefinedDatabaseName')}
                         required
                       />
                     </td>
@@ -343,11 +343,11 @@ function AddDatabase(props) {
                   </tr>
                   <tr>
                     <td>
-                      <span>Database Connection String</span>
+                      <span>Database Name</span>
                       <input
-                        value={values.databaseConnectionString}
+                        value={values.databaseName}
                         type="text"
-                        onChange={handleChange('databaseConnectionString')}
+                        onChange={handleChange('databaseName')}
                         required
                       />
                     </td>
@@ -429,11 +429,11 @@ function AddDatabase(props) {
                 <tbody>
                   <tr>
                     <td>
-                      <span>Database Name</span>
+                      <span>Database Name (Alias)</span>
                       <input
-                        value={values.databaseName}
+                        value={values.userDefinedDatabaseName}
                         type="text"
-                        onChange={handleChange('databaseName')}
+                        onChange={handleChange('userDefinedDatabaseName')}
                         required
                       />
                     </td>
@@ -460,11 +460,11 @@ function AddDatabase(props) {
                   </tr>
                   <tr>
                     <td>
-                      <span>Database Connection String</span>
+                      <span>Database Name</span>
                       <input
-                        value={values.databaseConnectionString}
+                        value={values.databaseName}
                         type="text"
-                        onChange={handleChange('databaseConnectionString')}
+                        onChange={handleChange('databaseName')}
                         required
                       />
                     </td>
@@ -566,9 +566,9 @@ function AddDatabase(props) {
                   databaseID: '',
                   databaseTypeName: '',
                   databaseTypeID: '',
-                  databaseName: '',
+                  userDefinedDatabaseName: '',
                   databaseHostName: '',
-                  databaseConnectionString: '',
+                  databaseName: '',
                   databaseUserName: '',
                   databasePassword: '',
                   databasePortNumber: '',

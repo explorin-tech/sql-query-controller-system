@@ -173,14 +173,14 @@ module.exports.executeQuery = async (params) => {
     const new_pool = new Pool({
       host: rawQueryDetails['MD_DBHostName'],
       user: rawQueryDetails['MD_DBUserName'],
-      database: 'postgres',
+      database: rawQueryDetails['MD_DBName'],
       password: rawQueryDetails['MD_DBPassword'],
       port: rawQueryDetails['MD_DBPortNumber'],
     });
     const result = await new_pool.query(rawQueryDetails['Q_RawQuery']);
     return result.rows;
   } catch (err) {
-    throw err;
+    return err.message;
   }
 };
 

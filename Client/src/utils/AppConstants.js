@@ -37,9 +37,9 @@ export const APPLICATION = {
 
 export const DATABASE = {
   MD_ID: 'MD_ID',
-  MD_DBName: 'MD_DBName',
+  MD_UserDefinedDBName: 'MD_UserDefinedDBName',
   MD_DBT_ID: 'MD_DBT_ID',
-  MD_DBConnectionString: 'MD_DBConnectionString',
+  MD_DBName: 'MD_DBName',
   MD_DBPortNumber: 'MD_DBPortNumber',
   MD_DBHostName: 'MD_DBHostName',
   MD_DBUserName: 'MD_DBUserName',

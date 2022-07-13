@@ -72,9 +72,9 @@ module.exports.POST_addDatabase = async (httpRequest, httpResponse, next) => {
   const user_id = decoded.UserID;
   try {
     const values = [
-      httpRequest.body.database.database_name,
+      httpRequest.body.database.user_defined_database_name,
       httpRequest.body.database.database_type_id,
-      httpRequest.body.database.database_connection_string,
+      httpRequest.body.database.database_name,
       httpRequest.body.database.database_port_number,
       httpRequest.body.database.database_host_name,
       httpRequest.body.database.database_user_name,
@@ -105,9 +105,9 @@ module.exports.PUT_editDatabase = async (httpRequest, httpResponse, next) => {
   try {
     const values = [
       httpRequest.body.database.database_id,
-      httpRequest.body.database.database_name,
+      httpRequest.body.database.user_defined_database_name,
       httpRequest.body.database.database_type_id,
-      httpRequest.body.database.database_connection_string,
+      httpRequest.body.database.database_name,
       httpRequest.body.database.database_port_number,
       httpRequest.body.database.database_host_name,
       httpRequest.body.database.database_user_name,

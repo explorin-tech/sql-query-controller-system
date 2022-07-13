@@ -8,14 +8,14 @@
 .queryWindow .makeQueries {
   max-height: 60%;
   min-height: 60%;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .queryWindow .application {
   border-top: 5px solid var(--baseWhite);
   min-height: 40%;
   max-height: 40%;
-  overflow: auto;
+  overflow: scroll;
 }
 
 .queryWindow .functionalities {
