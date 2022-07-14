@@ -178,10 +178,21 @@ module.exports.executeQuery = async (params) => {
       port: rawQueryDetails['MD_DBPortNumber'],
     });
     const result = await new_pool.query(rawQueryDetails['Q_RawQuery']);
-    return {
-      result: result.rows,
-      queryStatus: 'success',
-    };
+    if (Array.isArray(result)) {
+      let finalResult = [];
+      for (var i = 0; i < result.length; i++) {
+        finalResult.push(result[i].rows);
+      }
+      return {
+        result: finalResult,
+        queryStatus: 'success',
+      };
+    } else {
+      return {
+        result: [result.rows],
+        queryStatus: 'success',
+      };
+    }
   } catch (err) {
     return {
       result: err.message,

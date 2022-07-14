@@ -42,46 +42,52 @@ const PopulateDatabaseMappings = ({ database_application_mappings }) => {
   );
 };
 
-const DisplayResult = ({ result }) => {
+const DisplayResult = React.memo(({ result }) => {
+  console.log('CALLED');
   const is_result_an_array = Array.isArray(result);
   if (is_result_an_array) {
-    let keys = [];
-    if (result[0]) {
-      keys = Object.keys(result[0]);
+    var resultTable = document.getElementById('resultTable');
+    for (var i = 0; i < result.length; i++) {
+      var table = document.createElement('TABLE');
+      table.border = '1';
+      var tableHead = document.createElement('THEAD');
+      let keys = [];
+      keys = Object.keys(result[i][0]);
+      var tr = document.createElement('TR');
+      for (var j = 0; j < keys.length; j++) {
+        var td = document.createElement('TD');
+        td.innerHTML = keys[j];
+        tr.appendChild(td);
+      }
+      tableHead.appendChild(tr);
+      var tableBody = document.createElement('TBODY');
+      {
+        result[i]?.map((each_row, idx) => {
+          var tableDataRow = document.createElement('TR');
+          Object.values(each_row).map((each_data, index) => {
+            var tableData = document.createElement('TD');
+            tableData.innerHTML = each_data;
+            tableDataRow.appendChild(tableData);
+          });
+          tableBody.appendChild(tableDataRow);
+        });
+      }
+      table.appendChild(tableHead);
+      table.appendChild(tableBody);
+      resultTable.appendChild(table);
     }
-
     return (
       <div className="application">
         {result ? (
           <div>
             <div className="appTab">
               <span className="headData"> Result </span>
-              <CSVLink data={result} filename="Result">
-                <i className="fas fa-download download"></i> Download
-              </CSVLink>
             </div>
-            <div className="selectTable" style={{ maxWidth: 100 }}>
-              <table>
-                <thead>
-                  <tr className="tableHeading">
-                    {keys?.map((each_heading) => {
-                      return <th key={each_heading}>{each_heading}</th>;
-                    })}
-                  </tr>
-                </thead>
-                <tbody>
-                  {result?.map((each_row, idx) => {
-                    return (
-                      <tr key={idx}>
-                        {Object.values(each_row).map((each_data, index) => {
-                          return <td key={index}>{each_data}</td>;
-                        })}
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
+            <div
+              className="selectTable"
+              style={{ maxWidth: 100 }}
+              id="resultTable"
+            ></div>
           </div>
         ) : null}
       </div>
@@ -104,7 +110,7 @@ const DisplayResult = ({ result }) => {
       </div>
     );
   }
-};
+});
 
 function QueryWindow(props) {
   const history = useHistory();
@@ -657,7 +663,7 @@ function QueryWindow(props) {
         )
         .then((res) => {
           if (res.status === 200) {
-            toast.success('Query successfully saved query as draft', {
+            toast.success('Query successfully saved query.', {
               autoClose: 1000,
             });
             axios
