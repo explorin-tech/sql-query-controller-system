@@ -143,6 +143,7 @@ INSERT INTO "QueryStatus"("QS_Name") VALUES('SET_FOR_APPROVAL');
 INSERT INTO "QueryStatus"("QS_Name") VALUES('APPROVED_FOR_ONCE');
 INSERT INTO "QueryStatus"("QS_Name") VALUES('APPROVED_FOR_EVER');
 INSERT INTO "QueryStatus"("QS_Name") VALUES('REJECTED');
+INSERT INTO "QueryStatus"("QS_Name") VALUES('NOT_SET_FOR_APPROVAL')
 
 We now need to assign an admin user -- 
 {

@@ -21,8 +21,10 @@ module.exports = Object.freeze({
     'SELECT "MA_Owner1", "MA_Owner2" from "MasterApplication" where "MasterApplication"."MA_ID" = (SELECT "DBAM_MA_ID" FROM "DataBaseApplicationMapping" where "DataBaseApplicationMapping"."DBAM_ID" = (SELECT "Q_DBAM_ID" from "Query" where "Q_ID" = $1))',
   GET_RAW_QUERY_DETAILS_FOR_QUERY_ID:
     'SELECT "DataBaseApplicationMapping".* , "MasterDatabase".*, "Query"."Q_RawQuery" from "Query" LEFT JOIN "DataBaseApplicationMapping" ON "DataBaseApplicationMapping"."DBAM_ID" = "Query"."Q_DBAM_ID" LEFT JOIN "MasterDatabase" ON "MasterDatabase"."MD_ID" = "DataBaseApplicationMapping"."DBAM_MD_ID" where "Q_ID" = $1;',
-  MARK_A_QUERY_AS_EXECUTED:
+  MARK_A_QUERY_AS_SUCCESSFULLY_EXECUTED:
     'UPDATE "Query" SET "Q_IsExecuted" = TRUE, "Q_IsDrafted" = FALSE, "Q_IsMovedToHistory" = TRUE, "Q_LastExecutedOn" = NOW() WHERE "Query"."Q_ID" = $1 RETURNING "Q_ID";',
+  MARK_A_QUERY_AS_EXECUTED:
+    'UPDATE "Query" SET "Q_IsExecuted" = TRUE, "Q_LastExecutedOn" = NOW() WHERE "Query"."Q_ID" = $1 RETURNING "Q_ID";',
   GET_QUERIES_AWAITING_APPROVAL: `SELECT * FROM "Query" LEFT JOIN "QueryStatus" ON "Query"."Q_QS_ID" = "QueryStatus"."QS_ID" WHERE "Query"."Q_IsDrafted" = TRUE AND "QueryStatus"."QS_Name" = 'SET_FOR_APPROVAL' AND "Query"."Q_CreatedBy" = $1 OR "Query"."Q_DBAM_ID" IN (SELECT "DataBaseApplicationMapping"."DBAM_ID" FROM "MasterApplication" LEFT JOIN "DataBaseApplicationMapping" ON "MasterApplication"."MA_ID" = "DataBaseApplicationMapping"."DBAM_MA_ID" WHERE "MasterApplication"."MA_Owner1" = $1 OR "MasterApplication"."MA_Owner2" = $1) AND "Query"."Q_IsDrafted" = TRUE AND "QueryStatus"."QS_Name" = 'SET_FOR_APPROVAL' ORDER BY "Query"."Q_CreatedOn" DESC LIMIT 5;`,
   GET_RECENT_QUERIES:
     'SELECT * FROM "Query" WHERE "Q_CreatedBy" = $1 ORDER BY "Query"."Q_CreatedOn" DESC LIMIT 5;',

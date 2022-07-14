@@ -178,16 +178,30 @@ module.exports.executeQuery = async (params) => {
       port: rawQueryDetails['MD_DBPortNumber'],
     });
     const result = await new_pool.query(rawQueryDetails['Q_RawQuery']);
-    return result.rows;
+    return {
+      result: result.rows,
+      queryStatus: 'success',
+    };
   } catch (err) {
-    return err.message;
+    return {
+      result: err.message,
+      queryStatus: 'failed',
+    };
   }
 };
 
 module.exports.markQueryAsExecuted = async (params) => {
   try {
     const query_id = params.query_id;
-    const result = await pool.query(Query.MARK_A_QUERY_AS_EXECUTED, [query_id]);
+    const query_status = params.query_status;
+    let result;
+    if (query_status === 'success') {
+      result = await pool.query(Query.MARK_A_QUERY_AS_SUCCESSFULLY_EXECUTED, [
+        query_id,
+      ]);
+    } else {
+      result = await pool.query(Query.MARK_A_QUERY_AS_EXECUTED, [query_id]);
+    }
     return result.rows;
   } catch (err) {
     throw err;

@@ -279,14 +279,23 @@ module.exports.POST_executeQuery = async (httpRequest, httpResponse, next) => {
     const execute_query = await QueryDao.executeQuery({
       raw_query_details: raw_query_details,
     });
-    const mark_query_as_executed = await QueryDao.markQueryAsExecuted({
-      query_id: query_id,
-    });
+    let mark_query_as_executed;
+    if (execute_query.queryStatus == 'failed') {
+      mark_query_as_executed = await QueryDao.markQueryAsExecuted({
+        query_id: query_id,
+        query_status: 'failed',
+      });
+    } else {
+      mark_query_as_executed = await QueryDao.markQueryAsExecuted({
+        query_id: query_id,
+        query_status: 'success',
+      });
+    }
     if (mark_query_as_executed[0]['Q_ID']) {
       logger.info(
         `POST: Execute Query | user_id: ${user_id} | query_id: ${query_id}`
       );
-      return _200(httpResponse, execute_query);
+      return _200(httpResponse, execute_query.result);
     } else {
       logger.error(
         `POST: Execute Query | user_id: ${user_id} |    Query Failed To Execute`

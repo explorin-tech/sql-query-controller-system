@@ -123,6 +123,7 @@ function QueryWindow(props) {
     queryApprovedBy: '',
     queryComments: '',
     IsQueryExecuted: '',
+    IsQueryDraft: '',
     canUserApproveTheQuery: false,
     approvalNotRequired: false,
     queryTypeIsApproved: false,
@@ -211,6 +212,7 @@ function QueryWindow(props) {
             fetchedRawQuery: queryDetailsObject['Q_RawQuery'],
             queryApprovedBy: queryDetailsObject['Q_ApprovedByName'],
             queryComments: queryDetailsObject['Q_Comments'],
+            IsQueryDraft: queryDetailsObject['Q_IsDrafted'],
             IsQueryExecuted: queryDetailsObject['Q_IsExecuted'],
             canUserApproveTheQuery: res.data.data.queryApprovalRight,
             approvalNotRequired: res.data.data.approvalNotRequired,
@@ -632,11 +634,19 @@ function QueryWindow(props) {
     // handle execute button
     if (query_id) {
       axios
-        .post(
-          BACKEND_URLS.EXECUTE_QUERY,
+        .put(
+          BACKEND_URLS.EDIT_QUERY,
           {
             query: {
               query_id: query_id,
+              user_defined_name: values.userDefQueryName,
+              query_desc: values.queryDescription,
+              query_comments: values.queryComments,
+              raw_query: values.rawQuery,
+              database_application_mapping_id:
+                values.databaseApplicationMappingID,
+              query_status_id:
+                CONSTANTS.QUERY_STATUS_ID_MAPPING[values.queryStatus],
             },
           },
           {
@@ -647,19 +657,49 @@ function QueryWindow(props) {
         )
         .then((res) => {
           if (res.status === 200) {
-            // display the results now
-            setQueryResult(res.data.data);
-            // display this message
-            toast.success(`Successfully executed the query.`, {
+            toast.success('Query successfully saved query as draft', {
               autoClose: 1000,
             });
-            fetchQueryDetails(query_id);
+            axios
+              .post(
+                BACKEND_URLS.EXECUTE_QUERY,
+                {
+                  query: {
+                    query_id: query_id,
+                  },
+                },
+                {
+                  headers: {
+                    token: localStorage.getItem('token'),
+                  },
+                }
+              )
+              .then((res) => {
+                if (res.status === 200) {
+                  // display the results now
+                  setQueryResult(res.data.data);
+                  // display this message
+                  toast.success(`Successfully executed the query.`, {
+                    autoClose: 1000,
+                  });
+                  fetchQueryDetails(query_id);
+                }
+              })
+              .catch((err) => {
+                toast.error(`${err.response.data.message}`, {
+                  autoClose: 3000,
+                });
+              });
+            // fetchQueryDetails(res.data.data[0]['Q_ID']);
           }
         })
         .catch((err) => {
-          toast.error(`${err.response.data.message}`, {
-            autoClose: 3000,
-          });
+          toast.error(
+            `Failed to save query as draft, please try again -- ${err.response.data.message}`,
+            {
+              autoClose: 1000,
+            }
+          );
         });
     } else {
       axios
@@ -670,7 +710,7 @@ function QueryWindow(props) {
               database_application_mapping_id:
                 values.databaseApplicationMappingID,
               query_status_id:
-                CONSTANTS.QUERY_STATUS_ID_MAPPING['APPROVED_FOR_EVER'],
+                CONSTANTS.QUERY_STATUS_ID_MAPPING['NOT_SET_FOR_APPROVAL'],
               sys_defined_name:
                 values.userDefQueryName +
                 '_' +
@@ -715,6 +755,7 @@ function QueryWindow(props) {
                     autoClose: 1000,
                   });
                   setQueryResult(res.data.data);
+                  fetchQueryDetails(postedQueryID);
                 }
               })
               .catch((err) => {
@@ -754,6 +795,7 @@ function QueryWindow(props) {
           queryApprovedBy: '',
           queryComments: copiedQueryDetails.queryComments,
           IsQueryExecuted: '',
+          IsQueryDraft: '',
           canUserApproveTheQuery: copiedQueryDetails.canUserApproveTheQuery,
           approvalNotRequired: copiedQueryDetails.approvalNotRequired,
           queryTypeIsApproved: copiedQueryDetails.queryTypeIsApproved,
@@ -770,6 +812,7 @@ function QueryWindow(props) {
           fetchedRawQuery: '',
           queryApprovedBy: '',
           queryComments: '',
+          IsQueryDraft: '',
           IsQueryExecuted: '',
           canUserApproveTheQuery: false,
           approvalNotRequired: false,
@@ -983,7 +1026,7 @@ function QueryWindow(props) {
                   handleChangeInDatabaseDropdown(e);
                 }}
                 value={values.databaseApplicationMappingID}
-                disabled={values.IsQueryExecuted}
+                disabled={values.IsQueryExecuted && !values.IsQueryDraft}
               >
                 <option value={null}>
                   -- Select Application - Database Name --
@@ -1009,7 +1052,9 @@ function QueryWindow(props) {
                   values.queryStatus === 'SET_FOR_APPROVAL' ||
                   values.queryStatus === 'APPROVED_FOR_ONCE' ||
                   values.queryStatus === 'APPROVED_FOR_EVER' ||
-                  values.queryStatus === 'REJECTED'
+                  values.queryStatus === 'REJECTED' ||
+                  (values.queryStatus === 'NOT_SET_FOR_APPROVAL' &&
+                    values.IsQueryExecuted)
                 }
                 onClick={handleQuerySetForApproval}
               >
@@ -1020,7 +1065,9 @@ function QueryWindow(props) {
               (values.queryStatus === 'APPROVED_FOR_ONCE' &&
                 !values.IsQueryExecuted) ||
               values.queryStatus === 'REJECTED' ||
-              values.queryStatus === 'APPROVED_FOR_EVER' ? (
+              values.queryStatus === 'APPROVED_FOR_EVER' ||
+              (values.queryStatus === 'NOT_SET_FOR_APPROVAL' &&
+                values.IsQueryDraft) ? (
                 <button
                   className="blueButton"
                   disabled={
@@ -1059,7 +1106,9 @@ function QueryWindow(props) {
                   values.queryStatus === 'REJECTED' ||
                   (values.queryStatus === 'APPROVED_FOR_ONCE' &&
                     values.IsQueryExecuted) ||
-                  values.queryStatus === 'APPROVED_FOR_EVER'
+                  values.queryStatus === 'APPROVED_FOR_EVER' ||
+                  (values.queryStatus === 'NOT_SET_FOR_APPROVAL' &&
+                    values.IsQueryExecuted)
                 }
               >
                 Save as Draft
@@ -1129,7 +1178,7 @@ function QueryWindow(props) {
                   onBlur={(e) => {
                     handleRawQueryChange(e);
                   }}
-                  readOnly={values.IsQueryExecuted}
+                  readOnly={values.IsQueryExecuted && !values.IsQueryDraft}
                 />
               </div>
             </form>
