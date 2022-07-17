@@ -1,3 +1,4 @@
+const e = require('express');
 const pool = require('../db/index');
 const { Query } = require('../query');
 
@@ -188,10 +189,17 @@ module.exports.executeQuery = async (params) => {
         queryStatus: 'success',
       };
     } else {
-      return {
-        result: [result.rows],
-        queryStatus: 'success',
-      };
+      if (result.rows.length > 0) {
+        return {
+          result: [result.rows],
+          queryStatus: 'success',
+        };
+      } else {
+        return {
+          result: 'Query Executed Successfully.',
+          queryStatus: 'success',
+        };
+      }
     }
   } catch (err) {
     return {

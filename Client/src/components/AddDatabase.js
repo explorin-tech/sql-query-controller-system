@@ -124,8 +124,7 @@ function AddDatabase(props) {
       })
       .catch((err) => {
         toast.error(
-          `Error while fetching list of all databases, please try again. ${err.response.data.message}`,
-          { autoClose: 2000 }
+          `Error while fetching list of all databases, please try again. ${err.response.data.message}`
         );
       });
   };
@@ -163,7 +162,7 @@ function AddDatabase(props) {
       .then((res) => {
         if (res.status == 200) {
           toast.success(`Successfully added the new database.`, {
-            autoClose: 2000,
+            autoClose: 6000,
           });
           fetchAllDatabases();
           setAddModalShow(false);
@@ -182,8 +181,7 @@ function AddDatabase(props) {
       })
       .catch((err) => {
         toast.error(
-          `Failed to add the new database, please try again. ${err.response.data.message}`,
-          { autoClose: 2000 }
+          `Failed to add the new database, please try again. ${err.response.data.message}`
         );
       });
   };
@@ -229,7 +227,7 @@ function AddDatabase(props) {
       .then((res) => {
         if (res.status === 200) {
           toast.success(`Successfully edited the database details.`, {
-            autoClose: 2000,
+            autoClose: 6000,
           });
           fetchAllDatabases();
           setEditModalShow(false);
@@ -248,8 +246,7 @@ function AddDatabase(props) {
       })
       .catch((err) => {
         toast.error(
-          `Failed to edit the database details, please try again. ${err.response.data.message}`,
-          { autoClose: 2000 }
+          `Failed to edit the database details, please try again. ${err.response.data.message}`
         );
       });
   };
@@ -268,7 +265,7 @@ function AddDatabase(props) {
       .then((res) => {
         if (res.status == 200) {
           toast.success(`Successfully deleted the database.`, {
-            autoClose: 2000,
+            autoClose: 6000,
           });
           fetchAllDatabases();
           setEditModalShow(false);
@@ -287,10 +284,7 @@ function AddDatabase(props) {
       })
       .catch((err) => {
         toast.error(
-          `Failed to delete the database, please try again. ${err.response.data.message}`,
-          {
-            autoClose: 2000,
-          }
+          `Failed to delete the database, please try again. ${err.response.data.message}`
         );
       });
   };

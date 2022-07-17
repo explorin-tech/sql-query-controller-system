@@ -3400,3 +3400,485 @@ info: Jul-14-2022 19:56:16: 	POST: Auth validation
 info: Jul-14-2022 19:56:18: 	POST: Execute Query | user_id: 1 | query_id: 1
 info: Jul-14-2022 19:56:18: 	POST: Auth validation
 info: Jul-14-2022 19:56:19: 	GET: Query Details for given query ID | user_id: 1 | query_id: 1
+info: Jul-18-2022 00:58:34: 	POST: Auth validation
+info: Jul-18-2022 00:58:34: 	GET: All application screens rights | user_id: 1
+info: Jul-18-2022 00:58:34: 	POST: Auth validation
+info: Jul-18-2022 00:58:34: 	POST: Auth validation
+info: Jul-18-2022 00:58:34: 	POST: Auth validation
+info: Jul-18-2022 00:58:34: 	POST: Auth validation
+info: Jul-18-2022 00:58:34: 	GET: Recent Queries | user_id: 1
+info: Jul-18-2022 00:58:34: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jul-18-2022 00:58:34: 	GET: User details | of user_id: 1
+info: Jul-18-2022 00:58:34: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 00:58:38: 	POST: Auth validation
+info: Jul-18-2022 00:58:39: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 00:58:39: 	POST: Auth validation
+info: Jul-18-2022 00:58:39: 	POST: Auth validation
+info: Jul-18-2022 00:58:39: 	GET: All users | user_id: 1
+info: Jul-18-2022 00:58:39: 	GET: All Applications | user_id: 1
+info: Jul-18-2022 00:58:40: 	POST: Auth validation
+info: Jul-18-2022 00:58:41: 	POST: Auth validation
+info: Jul-18-2022 00:58:41: 	POST: Auth validation
+info: Jul-18-2022 00:58:41: 	GET: All users | user_id: 1
+info: Jul-18-2022 00:58:41: 	GET: All Applications | user_id: 1
+info: Jul-18-2022 00:58:42: 	POST: Auth validation
+info: Jul-18-2022 00:58:42: 	POST: Auth validation
+info: Jul-18-2022 00:58:42: 	POST: Auth validation
+info: Jul-18-2022 00:58:42: 	GET: All Applications | user_id: 1
+info: Jul-18-2022 00:58:42: 	GET: All Database Application Mappings | user_id: 1
+info: Jul-18-2022 00:58:43: 	POST: Auth validation
+info: Jul-18-2022 00:58:43: 	POST: Auth validation
+info: Jul-18-2022 00:58:43: 	GET: All users | user_id: 1
+info: Jul-18-2022 00:58:43: 	GET: All application screens rights | user_id: 1
+info: Jul-18-2022 00:58:44: 	POST: Auth validation
+info: Jul-18-2022 00:58:44: 	POST: Auth validation
+info: Jul-18-2022 00:58:44: 	POST: Auth validation
+info: Jul-18-2022 00:58:44: 	GET: All Database Application Mappings | user_id: 1
+info: Jul-18-2022 00:58:44: 	GET: All users | user_id: 1
+info: Jul-18-2022 00:58:44: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 00:58:45: 	POST: Auth validation
+info: Jul-18-2022 00:58:45: 	GET: All users | user_id: 1
+info: Jul-18-2022 00:58:47: 	POST: Auth validation
+info: Jul-18-2022 00:58:47: 	GET: All Mapped Draft Queries for an user | user_id: 1
+info: Jul-18-2022 00:58:48: 	POST: Auth validation
+info: Jul-18-2022 00:58:48: 	GET: All users | user_id: 1
+info: Jul-18-2022 01:01:29: 	POST: Auth validation
+info: Jul-18-2022 01:01:30: 	GET: All application screens rights | user_id: 1
+info: Jul-18-2022 01:01:33: 	POST: Auth validation
+info: Jul-18-2022 01:01:34: 	GET: All users | user_id: 1
+info: Jul-18-2022 01:01:38: 	POST: Auth validation
+info: Jul-18-2022 01:01:38: 	GET: All users | user_id: 1
+info: Jul-18-2022 01:01:40: 	POST: Auth validation
+info: Jul-18-2022 01:01:41: 	GET: All users | user_id: 1
+info: Jul-18-2022 01:01:45: 	POST: Auth validation
+info: Jul-18-2022 01:01:45: 	GET: All users | user_id: 1
+info: Jul-18-2022 01:04:41: 	POST: Auth validation
+info: Jul-18-2022 01:04:41: 	GET: All users | user_id: 1
+info: Jul-18-2022 01:04:47: 	POST: Auth validation
+info: Jul-18-2022 01:04:47: 	GET: All users | user_id: 1
+info: Jul-18-2022 01:04:52: 	POST: Auth validation
+info: Jul-18-2022 01:04:52: 	GET: All users | user_id: 1
+info: Jul-18-2022 01:05:04: 	POST: Auth validation
+info: Jul-18-2022 01:05:04: 	GET: All Mapped Draft Queries for an user | user_id: 1
+info: Jul-18-2022 01:05:13: 	POST: Auth validation
+info: Jul-18-2022 01:05:13: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:05:20: 	POST: Auth validation
+info: Jul-18-2022 01:05:20: 	GET: All Mapped History Queries for an user | user_id: 1
+info: Jul-18-2022 01:05:23: 	POST: Auth validation
+info: Jul-18-2022 01:05:24: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:06:29: 	POST: Auth validation
+info: Jul-18-2022 01:06:29: 	POST: Add new query | user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:06:29: 	POST: Auth validation
+info: Jul-18-2022 01:06:29: 	POST: Auth validation
+info: Jul-18-2022 01:06:29: 	POST: Auth validation
+info: Jul-18-2022 01:06:29: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:06:29: 	GET: Query Details for given query ID | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:06:29: 	POST: Execute Query | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:06:30: 	POST: Auth validation
+info: Jul-18-2022 01:06:30: 	GET: Query Details for given query ID | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:09:00: 	POST: Auth validation
+info: Jul-18-2022 01:09:00: 	POST: Auth validation
+info: Jul-18-2022 01:09:00: 	POST: Auth validation
+info: Jul-18-2022 01:09:00: 	GET: All application screens rights | user_id: 1
+info: Jul-18-2022 01:09:00: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:09:00: 	GET: Query Details for given query ID | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:09:16: 	POST: Auth validation
+info: Jul-18-2022 01:09:16: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:09:16: 	POST: Auth validation
+info: Jul-18-2022 01:09:17: 	POST: Execute Query | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:09:17: 	POST: Auth validation
+info: Jul-18-2022 01:09:17: 	GET: Query Details for given query ID | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:10:09: 	POST: Auth validation
+info: Jul-18-2022 01:10:09: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:10:09: 	POST: Auth validation
+info: Jul-18-2022 01:10:10: 	POST: Execute Query | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:10:10: 	POST: Auth validation
+info: Jul-18-2022 01:10:10: 	GET: Query Details for given query ID | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:10:32: 	POST: Auth validation
+info: Jul-18-2022 01:10:32: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:10:32: 	POST: Auth validation
+info: Jul-18-2022 01:10:33: 	POST: Execute Query | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:10:33: 	POST: Auth validation
+info: Jul-18-2022 01:10:33: 	GET: Query Details for given query ID | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:11:06: 	POST: Auth validation
+info: Jul-18-2022 01:11:06: 	POST: Auth validation
+info: Jul-18-2022 01:11:06: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:11:06: 	GET: Query Details for given query ID | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:11:33: 	POST: Auth validation
+info: Jul-18-2022 01:11:33: 	POST: Auth validation
+info: Jul-18-2022 01:11:33: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:11:33: 	GET: Query Details for given query ID | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:12:34: 	POST: Auth validation
+info: Jul-18-2022 01:12:34: 	POST: Auth validation
+info: Jul-18-2022 01:12:34: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:12:34: 	GET: Query Details for given query ID | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:13:06: 	POST: Auth validation
+info: Jul-18-2022 01:13:06: 	POST: Auth validation
+info: Jul-18-2022 01:13:06: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:13:06: 	GET: Query Details for given query ID | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:13:09: 	POST: Auth validation
+info: Jul-18-2022 01:13:09: 	POST: Auth validation
+info: Jul-18-2022 01:13:09: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:13:09: 	GET: Query Details for given query ID | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:13:17: 	POST: Auth validation
+info: Jul-18-2022 01:13:17: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:13:17: 	POST: Auth validation
+info: Jul-18-2022 01:13:18: 	POST: Execute Query | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:13:18: 	POST: Auth validation
+info: Jul-18-2022 01:13:19: 	GET: Query Details for given query ID | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:13:35: 	POST: Auth validation
+info: Jul-18-2022 01:13:35: 	GET: All Mapped History Queries for an user | user_id: 1
+info: Jul-18-2022 01:13:36: 	POST: Auth validation
+info: Jul-18-2022 01:13:37: 	POST: Auth validation
+info: Jul-18-2022 01:13:37: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:13:37: 	GET: Query Details for given query ID | user_id: 1 | query_id: 9
+info: Jul-18-2022 01:13:39: 	POST: Auth validation
+info: Jul-18-2022 01:13:39: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:13:39: 	POST: Auth validation
+info: Jul-18-2022 01:13:39: 	POST: Execute Query | user_id: 1 | query_id: 9
+info: Jul-18-2022 01:13:39: 	POST: Auth validation
+info: Jul-18-2022 01:13:40: 	GET: Query Details for given query ID | user_id: 1 | query_id: 9
+info: Jul-18-2022 01:13:47: 	POST: Auth validation
+info: Jul-18-2022 01:13:47: 	GET: All Mapped History Queries for an user | user_id: 1
+info: Jul-18-2022 01:13:49: 	POST: Auth validation
+info: Jul-18-2022 01:13:49: 	POST: Auth validation
+info: Jul-18-2022 01:13:49: 	GET: Query Details for given query ID | user_id: 1 | query_id: 7
+info: Jul-18-2022 01:13:50: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:13:50: 	POST: Auth validation
+info: Jul-18-2022 01:13:50: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:13:51: 	POST: Auth validation
+info: Jul-18-2022 01:13:51: 	POST: Execute Query | user_id: 1 | query_id: 7
+info: Jul-18-2022 01:13:51: 	POST: Auth validation
+info: Jul-18-2022 01:13:51: 	GET: Query Details for given query ID | user_id: 1 | query_id: 7
+info: Jul-18-2022 01:14:05: 	POST: Auth validation
+info: Jul-18-2022 01:14:05: 	POST: Auth validation
+info: Jul-18-2022 01:14:05: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:14:05: 	GET: Query Details for given query ID | user_id: 1 | query_id: 7
+info: Jul-18-2022 01:17:05: 	POST: Auth validation
+info: Jul-18-2022 01:17:05: 	POST: Auth validation
+info: Jul-18-2022 01:17:05: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:17:05: 	GET: Query Details for given query ID | user_id: 1 | query_id: 7
+info: Jul-18-2022 01:17:10: 	POST: Auth validation
+info: Jul-18-2022 01:17:10: 	POST: Auth validation
+info: Jul-18-2022 01:17:10: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:17:10: 	GET: Query Details for given query ID | user_id: 1 | query_id: 7
+info: Jul-18-2022 01:17:23: 	POST: Auth validation
+info: Jul-18-2022 01:17:23: 	POST: Auth validation
+info: Jul-18-2022 01:17:23: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:17:23: 	GET: Query Details for given query ID | user_id: 1 | query_id: 7
+info: Jul-18-2022 01:17:30: 	POST: Auth validation
+info: Jul-18-2022 01:17:30: 	POST: Auth validation
+info: Jul-18-2022 01:17:30: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:17:30: 	GET: Query Details for given query ID | user_id: 1 | query_id: 7
+info: Jul-18-2022 01:18:00: 	POST: Auth validation
+info: Jul-18-2022 01:18:00: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:18:00: 	POST: Auth validation
+info: Jul-18-2022 01:18:01: 	POST: Execute Query | user_id: 1 | query_id: 7
+info: Jul-18-2022 01:18:01: 	POST: Auth validation
+info: Jul-18-2022 01:18:01: 	GET: Query Details for given query ID | user_id: 1 | query_id: 7
+info: Jul-18-2022 01:18:21: 	POST: Auth validation
+info: Jul-18-2022 01:18:21: 	POST: Auth validation
+info: Jul-18-2022 01:18:21: 	POST: Auth validation
+info: Jul-18-2022 01:18:21: 	POST: Auth validation
+info: Jul-18-2022 01:18:21: 	GET: User details | of user_id: 1
+info: Jul-18-2022 01:18:21: 	GET: All application screens rights | user_id: 1
+info: Jul-18-2022 01:18:21: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:18:22: 	GET: Query Details for given query ID | user_id: 1 | query_id: 7
+info: Jul-18-2022 01:19:33: 	POST: Auth validation
+info: Jul-18-2022 01:19:33: 	POST: Auth validation
+info: Jul-18-2022 01:19:33: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:19:33: 	GET: Query Details for given query ID | user_id: 1 | query_id: 7
+info: Jul-18-2022 01:19:45: 	POST: Auth validation
+info: Jul-18-2022 01:19:45: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:19:45: 	POST: Auth validation
+info: Jul-18-2022 01:19:45: 	POST: Execute Query | user_id: 1 | query_id: 7
+info: Jul-18-2022 01:19:45: 	POST: Auth validation
+info: Jul-18-2022 01:19:46: 	GET: Query Details for given query ID | user_id: 1 | query_id: 7
+info: Jul-18-2022 01:20:09: 	POST: Auth validation
+info: Jul-18-2022 01:20:09: 	POST: Auth validation
+info: Jul-18-2022 01:20:09: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:20:09: 	GET: Query Details for given query ID | user_id: 1 | query_id: 7
+info: Jul-18-2022 01:20:18: 	POST: Auth validation
+info: Jul-18-2022 01:20:18: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:20:19: 	POST: Auth validation
+info: Jul-18-2022 01:20:19: 	POST: Execute Query | user_id: 1 | query_id: 7
+info: Jul-18-2022 01:20:19: 	POST: Auth validation
+info: Jul-18-2022 01:20:19: 	GET: Query Details for given query ID | user_id: 1 | query_id: 7
+info: Jul-18-2022 01:20:27: 	POST: Auth validation
+info: Jul-18-2022 01:20:27: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:20:27: 	POST: Auth validation
+info: Jul-18-2022 01:20:27: 	GET: Query Details for given query ID | user_id: 1 | query_id: 7
+info: Jul-18-2022 01:20:28: 	POST: Auth validation
+info: Jul-18-2022 01:20:29: 	GET: All Mapped Draft Queries for an user | user_id: 1
+info: Jul-18-2022 01:20:29: 	POST: Auth validation
+info: Jul-18-2022 01:20:29: 	GET: All Mapped History Queries for an user | user_id: 1
+info: Jul-18-2022 01:20:32: 	POST: Auth validation
+info: Jul-18-2022 01:20:32: 	POST: Auth validation
+info: Jul-18-2022 01:20:33: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:20:33: 	GET: Query Details for given query ID | user_id: 1 | query_id: 6
+info: Jul-18-2022 01:20:34: 	POST: Auth validation
+info: Jul-18-2022 01:20:34: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:20:34: 	POST: Auth validation
+info: Jul-18-2022 01:20:35: 	POST: Execute Query | user_id: 1 | query_id: 6
+info: Jul-18-2022 01:20:35: 	POST: Auth validation
+info: Jul-18-2022 01:20:35: 	GET: Query Details for given query ID | user_id: 1 | query_id: 6
+info: Jul-18-2022 01:20:44: 	POST: Auth validation
+info: Jul-18-2022 01:20:44: 	POST: Auth validation
+info: Jul-18-2022 01:20:44: 	GET: All application screens rights | user_id: 1
+info: Jul-18-2022 01:20:44: 	POST: Auth validation
+info: Jul-18-2022 01:20:44: 	POST: Auth validation
+info: Jul-18-2022 01:20:44: 	GET: User details | of user_id: 1
+info: Jul-18-2022 01:20:44: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:20:45: 	GET: Query Details for given query ID | user_id: 1 | query_id: 6
+info: Jul-18-2022 01:20:52: 	POST: Auth validation
+info: Jul-18-2022 01:20:52: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:20:52: 	POST: Auth validation
+info: Jul-18-2022 01:20:53: 	POST: Execute Query | user_id: 1 | query_id: 6
+info: Jul-18-2022 01:20:53: 	POST: Auth validation
+info: Jul-18-2022 01:20:53: 	GET: Query Details for given query ID | user_id: 1 | query_id: 6
+info: Jul-18-2022 01:21:05: 	POST: Auth validation
+info: Jul-18-2022 01:21:05: 	POST: Auth validation
+info: Jul-18-2022 01:21:05: 	POST: Auth validation
+info: Jul-18-2022 01:21:05: 	POST: Auth validation
+info: Jul-18-2022 01:21:05: 	GET: User details | of user_id: 1
+info: Jul-18-2022 01:21:06: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:21:06: 	GET: All application screens rights | user_id: 1
+info: Jul-18-2022 01:21:06: 	GET: Query Details for given query ID | user_id: 1 | query_id: 6
+info: Jul-18-2022 01:21:13: 	POST: Auth validation
+info: Jul-18-2022 01:21:13: 	POST: Auth validation
+info: Jul-18-2022 01:21:13: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:21:13: 	GET: Query Details for given query ID | user_id: 1 | query_id: 6
+info: Jul-18-2022 01:21:18: 	POST: Auth validation
+info: Jul-18-2022 01:21:18: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:21:19: 	POST: Auth validation
+info: Jul-18-2022 01:21:19: 	POST: Execute Query | user_id: 1 | query_id: 6
+info: Jul-18-2022 01:21:19: 	POST: Auth validation
+info: Jul-18-2022 01:21:20: 	GET: Query Details for given query ID | user_id: 1 | query_id: 6
+info: Jul-18-2022 01:22:31: 	POST: Auth validation
+info: Jul-18-2022 01:22:31: 	POST: Auth validation
+info: Jul-18-2022 01:22:31: 	POST: Auth validation
+info: Jul-18-2022 01:22:31: 	GET: All application screens rights | user_id: 1
+info: Jul-18-2022 01:22:31: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:22:31: 	GET: Query Details for given query ID | user_id: 1 | query_id: 6
+info: Jul-18-2022 01:22:38: 	POST: Auth validation
+info: Jul-18-2022 01:22:38: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:22:38: 	POST: Auth validation
+info: Jul-18-2022 01:22:39: 	POST: Execute Query | user_id: 1 | query_id: 6
+info: Jul-18-2022 01:22:39: 	POST: Auth validation
+info: Jul-18-2022 01:22:39: 	GET: Query Details for given query ID | user_id: 1 | query_id: 6
+info: Jul-18-2022 01:22:51: 	POST: Auth validation
+info: Jul-18-2022 01:22:51: 	POST: Auth validation
+info: Jul-18-2022 01:22:51: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:22:51: 	GET: Query Details for given query ID | user_id: 1 | query_id: 6
+info: Jul-18-2022 01:22:54: 	POST: Auth validation
+info: Jul-18-2022 01:22:54: 	POST: Auth validation
+info: Jul-18-2022 01:22:54: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:22:54: 	GET: Query Details for given query ID | user_id: 1 | query_id: 6
+info: Jul-18-2022 01:23:02: 	POST: Auth validation
+info: Jul-18-2022 01:23:02: 	GET: All Mapped History Queries for an user | user_id: 1
+info: Jul-18-2022 01:23:03: 	POST: Auth validation
+info: Jul-18-2022 01:23:03: 	POST: Auth validation
+info: Jul-18-2022 01:23:03: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:23:04: 	GET: Query Details for given query ID | user_id: 1 | query_id: 6
+info: Jul-18-2022 01:23:06: 	POST: Auth validation
+info: Jul-18-2022 01:23:06: 	GET: All Mapped History Queries for an user | user_id: 1
+info: Jul-18-2022 01:23:08: 	POST: Auth validation
+info: Jul-18-2022 01:23:08: 	POST: Auth validation
+info: Jul-18-2022 01:23:08: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:23:08: 	GET: Query Details for given query ID | user_id: 1 | query_id: 4
+info: Jul-18-2022 01:23:15: 	POST: Auth validation
+info: Jul-18-2022 01:23:15: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:23:15: 	POST: Auth validation
+info: Jul-18-2022 01:23:16: 	POST: Execute Query | user_id: 1 | query_id: 4
+info: Jul-18-2022 01:23:16: 	POST: Auth validation
+info: Jul-18-2022 01:23:16: 	GET: Query Details for given query ID | user_id: 1 | query_id: 4
+info: Jul-18-2022 01:23:23: 	POST: Auth validation
+info: Jul-18-2022 01:23:24: 	GET: All Mapped History Queries for an user | user_id: 1
+info: Jul-18-2022 01:23:25: 	POST: Auth validation
+info: Jul-18-2022 01:23:25: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:23:25: 	POST: Auth validation
+info: Jul-18-2022 01:23:26: 	GET: Query Details for given query ID | user_id: 1 | query_id: 1
+info: Jul-18-2022 01:24:43: 	POST: Auth validation
+info: Jul-18-2022 01:24:43: 	POST: Auth validation
+info: Jul-18-2022 01:24:43: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:24:43: 	GET: Query Details for given query ID | user_id: 1 | query_id: 1
+info: Jul-18-2022 01:25:09: 	POST: Auth validation
+info: Jul-18-2022 01:25:09: 	POST: Auth validation
+info: Jul-18-2022 01:25:09: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:25:09: 	GET: Query Details for given query ID | user_id: 1 | query_id: 1
+info: Jul-18-2022 01:25:15: 	POST: Auth validation
+info: Jul-18-2022 01:25:15: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:25:15: 	POST: Auth validation
+info: Jul-18-2022 01:25:16: 	POST: Execute Query | user_id: 1 | query_id: 1
+info: Jul-18-2022 01:25:16: 	POST: Auth validation
+info: Jul-18-2022 01:25:16: 	GET: Query Details for given query ID | user_id: 1 | query_id: 1
+info: Jul-18-2022 01:26:01: 	POST: Auth validation
+info: Jul-18-2022 01:26:01: 	POST: Auth validation
+info: Jul-18-2022 01:26:01: 	POST: Auth validation
+info: Jul-18-2022 01:26:01: 	POST: Auth validation
+info: Jul-18-2022 01:26:01: 	GET: User details | of user_id: 1
+info: Jul-18-2022 01:26:01: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:26:01: 	GET: All application screens rights | user_id: 1
+info: Jul-18-2022 01:26:01: 	GET: Query Details for given query ID | user_id: 1 | query_id: 1
+info: Jul-18-2022 01:26:02: 	POST: Auth validation
+info: Jul-18-2022 01:26:02: 	POST: Auth validation
+info: Jul-18-2022 01:26:02: 	POST: Auth validation
+info: Jul-18-2022 01:26:02: 	POST: Auth validation
+info: Jul-18-2022 01:26:02: 	GET: User details | of user_id: 1
+info: Jul-18-2022 01:26:02: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:26:02: 	GET: All application screens rights | user_id: 1
+info: Jul-18-2022 01:26:02: 	GET: Query Details for given query ID | user_id: 1 | query_id: 1
+info: Jul-18-2022 01:27:58: 	POST: Auth validation
+info: Jul-18-2022 01:27:58: 	POST: Auth validation
+info: Jul-18-2022 01:27:59: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:27:59: 	GET: Query Details for given query ID | user_id: 1 | query_id: 1
+info: Jul-18-2022 01:28:17: 	POST: Auth validation
+info: Jul-18-2022 01:28:17: 	POST: Auth validation
+info: Jul-18-2022 01:28:17: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:28:18: 	GET: Query Details for given query ID | user_id: 1 | query_id: 1
+info: Jul-18-2022 01:28:21: 	POST: Auth validation
+info: Jul-18-2022 01:28:21: 	POST: Auth validation
+info: Jul-18-2022 01:28:21: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:28:21: 	GET: Query Details for given query ID | user_id: 1 | query_id: 1
+info: Jul-18-2022 01:28:28: 	POST: Auth validation
+info: Jul-18-2022 01:28:28: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:28:28: 	POST: Auth validation
+info: Jul-18-2022 01:28:29: 	POST: Execute Query | user_id: 1 | query_id: 1
+info: Jul-18-2022 01:28:29: 	POST: Auth validation
+info: Jul-18-2022 01:28:29: 	GET: Query Details for given query ID | user_id: 1 | query_id: 1
+info: Jul-18-2022 01:28:50: 	POST: Auth validation
+info: Jul-18-2022 01:28:50: 	POST: Auth validation
+info: Jul-18-2022 01:28:50: 	POST: Auth validation
+info: Jul-18-2022 01:28:50: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:28:50: 	GET: All application screens rights | user_id: 1
+info: Jul-18-2022 01:28:50: 	GET: Query Details for given query ID | user_id: 1 | query_id: 1
+info: Jul-18-2022 01:28:55: 	POST: Auth validation
+info: Jul-18-2022 01:28:55: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:28:55: 	POST: Auth validation
+info: Jul-18-2022 01:28:55: 	POST: Execute Query | user_id: 1 | query_id: 1
+info: Jul-18-2022 01:28:55: 	POST: Auth validation
+info: Jul-18-2022 01:28:56: 	GET: Query Details for given query ID | user_id: 1 | query_id: 1
+info: Jul-18-2022 01:29:15: 	POST: Auth validation
+info: Jul-18-2022 01:29:15: 	POST: Auth validation
+info: Jul-18-2022 01:29:15: 	POST: Auth validation
+info: Jul-18-2022 01:29:15: 	POST: Auth validation
+info: Jul-18-2022 01:29:15: 	GET: User details | of user_id: 1
+info: Jul-18-2022 01:29:15: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:29:15: 	GET: All application screens rights | user_id: 1
+info: Jul-18-2022 01:29:15: 	GET: Query Details for given query ID | user_id: 1 | query_id: 1
+info: Jul-18-2022 01:29:20: 	POST: Auth validation
+info: Jul-18-2022 01:29:20: 	GET: All Mapped History Queries for an user | user_id: 1
+info: Jul-18-2022 01:29:22: 	POST: Auth validation
+info: Jul-18-2022 01:29:22: 	POST: Auth validation
+info: Jul-18-2022 01:29:22: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:29:22: 	GET: Query Details for given query ID | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:29:26: 	POST: Auth validation
+info: Jul-18-2022 01:29:26: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:29:26: 	POST: Auth validation
+info: Jul-18-2022 01:29:26: 	POST: Execute Query | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:29:26: 	POST: Auth validation
+info: Jul-18-2022 01:29:27: 	GET: Query Details for given query ID | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:29:30: 	POST: Auth validation
+info: Jul-18-2022 01:29:31: 	GET: All Mapped History Queries for an user | user_id: 1
+info: Jul-18-2022 01:29:34: 	POST: Auth validation
+info: Jul-18-2022 01:29:34: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:29:34: 	POST: Auth validation
+info: Jul-18-2022 01:29:35: 	GET: Query Details for given query ID | user_id: 1 | query_id: 8
+info: Jul-18-2022 01:29:37: 	POST: Auth validation
+info: Jul-18-2022 01:29:37: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:29:37: 	POST: Auth validation
+info: Jul-18-2022 01:29:37: 	POST: Execute Query | user_id: 1 | query_id: 8
+info: Jul-18-2022 01:29:37: 	POST: Auth validation
+info: Jul-18-2022 01:29:38: 	GET: Query Details for given query ID | user_id: 1 | query_id: 8
+info: Jul-18-2022 01:30:49: 	POST: Auth validation
+info: Jul-18-2022 01:30:49: 	POST: Auth validation
+info: Jul-18-2022 01:30:49: 	POST: Auth validation
+info: Jul-18-2022 01:30:49: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:30:49: 	GET: All application screens rights | user_id: 1
+info: Jul-18-2022 01:30:50: 	GET: Query Details for given query ID | user_id: 1 | query_id: 8
+info: Jul-18-2022 01:30:51: 	POST: Auth validation
+info: Jul-18-2022 01:30:51: 	POST: Auth validation
+info: Jul-18-2022 01:30:51: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:30:51: 	GET: Query Details for given query ID | user_id: 1 | query_id: 8
+info: Jul-18-2022 01:31:04: 	POST: Auth validation
+info: Jul-18-2022 01:31:04: 	POST: Auth validation
+info: Jul-18-2022 01:31:04: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:31:04: 	GET: Query Details for given query ID | user_id: 1 | query_id: 8
+info: Jul-18-2022 01:31:07: 	POST: Auth validation
+info: Jul-18-2022 01:31:07: 	GET: All Mapped History Queries for an user | user_id: 1
+info: Jul-18-2022 01:31:09: 	POST: Auth validation
+info: Jul-18-2022 01:31:09: 	POST: Auth validation
+info: Jul-18-2022 01:31:09: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:31:09: 	GET: Query Details for given query ID | user_id: 1 | query_id: 9
+info: Jul-18-2022 01:31:12: 	POST: Auth validation
+info: Jul-18-2022 01:31:12: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:31:12: 	POST: Auth validation
+info: Jul-18-2022 01:31:12: 	POST: Execute Query | user_id: 1 | query_id: 9
+info: Jul-18-2022 01:31:13: 	POST: Auth validation
+info: Jul-18-2022 01:31:13: 	GET: Query Details for given query ID | user_id: 1 | query_id: 9
+info: Jul-18-2022 01:31:15: 	POST: Auth validation
+info: Jul-18-2022 01:31:15: 	GET: All Mapped History Queries for an user | user_id: 1
+info: Jul-18-2022 01:31:17: 	POST: Auth validation
+info: Jul-18-2022 01:31:17: 	POST: Auth validation
+info: Jul-18-2022 01:31:18: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:31:18: 	GET: Query Details for given query ID | user_id: 1 | query_id: 8
+info: Jul-18-2022 01:31:24: 	POST: Auth validation
+info: Jul-18-2022 01:31:24: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:31:24: 	POST: Auth validation
+info: Jul-18-2022 01:31:24: 	POST: Execute Query | user_id: 1 | query_id: 8
+info: Jul-18-2022 01:31:25: 	POST: Auth validation
+info: Jul-18-2022 01:31:25: 	GET: Query Details for given query ID | user_id: 1 | query_id: 8
+info: Jul-18-2022 01:31:50: 	POST: Auth validation
+info: Jul-18-2022 01:31:50: 	POST: Auth validation
+info: Jul-18-2022 01:31:50: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:31:50: 	GET: Query Details for given query ID | user_id: 1 | query_id: 8
+info: Jul-18-2022 01:31:51: 	POST: Auth validation
+info: Jul-18-2022 01:31:51: 	GET: All Mapped Draft Queries for an user | user_id: 1
+info: Jul-18-2022 01:31:52: 	POST: Auth validation
+info: Jul-18-2022 01:31:52: 	GET: All Mapped History Queries for an user | user_id: 1
+info: Jul-18-2022 01:31:54: 	POST: Auth validation
+info: Jul-18-2022 01:31:54: 	POST: Auth validation
+info: Jul-18-2022 01:31:54: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:31:54: 	GET: Query Details for given query ID | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:31:58: 	POST: Auth validation
+info: Jul-18-2022 01:31:58: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:31:58: 	POST: Auth validation
+info: Jul-18-2022 01:31:59: 	POST: Execute Query | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:31:59: 	POST: Auth validation
+info: Jul-18-2022 01:31:59: 	GET: Query Details for given query ID | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:32:02: 	POST: Auth validation
+info: Jul-18-2022 01:32:02: 	GET: All Mapped History Queries for an user | user_id: 1
+info: Jul-18-2022 01:32:04: 	POST: Auth validation
+info: Jul-18-2022 01:32:05: 	POST: Auth validation
+info: Jul-18-2022 01:32:05: 	GET: Query Details for given query ID | user_id: 1 | query_id: 1
+info: Jul-18-2022 01:32:05: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:32:06: 	POST: Auth validation
+info: Jul-18-2022 01:32:06: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:32:06: 	POST: Auth validation
+info: Jul-18-2022 01:32:08: 	POST: Execute Query | user_id: 1 | query_id: 1
+info: Jul-18-2022 01:32:08: 	POST: Auth validation
+info: Jul-18-2022 01:32:09: 	GET: Query Details for given query ID | user_id: 1 | query_id: 1
+info: Jul-18-2022 01:32:12: 	POST: Auth validation
+info: Jul-18-2022 01:32:13: 	GET: All Mapped History Queries for an user | user_id: 1
+info: Jul-18-2022 01:32:13: 	POST: Auth validation
+info: Jul-18-2022 01:32:13: 	POST: Auth validation
+info: Jul-18-2022 01:32:14: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:32:14: 	GET: Query Details for given query ID | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:32:15: 	POST: Auth validation
+info: Jul-18-2022 01:32:15: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:32:15: 	POST: Auth validation
+info: Jul-18-2022 01:32:15: 	POST: Execute Query | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:32:15: 	POST: Auth validation
+info: Jul-18-2022 01:32:16: 	GET: Query Details for given query ID | user_id: 1 | query_id: 10
+info: Jul-18-2022 01:32:17: 	POST: Auth validation
+info: Jul-18-2022 01:32:19: 	GET: All Mapped History Queries for an user | user_id: 1
+info: Jul-18-2022 01:32:21: 	POST: Auth validation
+info: Jul-18-2022 01:32:21: 	POST: Auth validation
+info: Jul-18-2022 01:32:21: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:32:21: 	GET: Query Details for given query ID | user_id: 1 | query_id: 4
+info: Jul-18-2022 01:32:22: 	POST: Auth validation
+info: Jul-18-2022 01:32:22: 	PUT: Edit query details| user_id: 1 | query_id: [object Object]
+info: Jul-18-2022 01:32:22: 	POST: Auth validation
+info: Jul-18-2022 01:32:23: 	POST: Execute Query | user_id: 1 | query_id: 4
+info: Jul-18-2022 01:32:23: 	POST: Auth validation
+info: Jul-18-2022 01:32:23: 	GET: Query Details for given query ID | user_id: 1 | query_id: 4

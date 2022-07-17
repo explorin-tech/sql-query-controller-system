@@ -32,10 +32,7 @@ function Sidebar(props) {
       })
       .catch((err) => {
         toast.error(
-          `Failed to fetch screen rights ${err.response.data.message}`,
-          {
-            autoClose: 2000,
-          }
+          `Failed to fetch screen rights ${err.response.data.message}`
         );
       });
   };

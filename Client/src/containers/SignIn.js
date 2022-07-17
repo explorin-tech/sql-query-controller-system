@@ -39,7 +39,7 @@ function SignIn(props) {
       .then((res) => {
         if (res.status === 200) {
           props.login_success();
-          toast.success(`User loggedIn successfully.`, { autoClose: 2000 });
+          toast.success(`User loggedIn successfully.`, { autoClose: 4000 });
           localStorage.setItem('token', res.data.data);
           history.push(APPLICATION_URLS.DASHBOARD_PAGE);
         }
@@ -48,10 +48,7 @@ function SignIn(props) {
         props.login_failed();
         if (err.response) {
           toast.error(
-            `Failed to login, please try again : ${err.response.data.message}`,
-            {
-              autoClose: 2000,
-            }
+            `Failed to login, please try again : ${err.response.data.message}`
           );
         }
       });

@@ -168,7 +168,7 @@ function DatabaseRights(props) {
         .then((res) => {
           if (res.status === 200) {
             toast.success(`Successfully fetched the user permission rights.`, {
-              autoClose: 2000,
+              autoClose: 4000,
             });
             props.set_user_permissions_for_selected_user(res.data.data);
           }
@@ -193,10 +193,7 @@ function DatabaseRights(props) {
       })
       .catch((err) => {
         toast.error(
-          `Failed to fetch list of all users. ${err.response.data.message}`,
-          {
-            autoClose: 2000,
-          }
+          `Failed to fetch list of all users. ${err.response.data.message}`
         );
       });
   };
@@ -255,7 +252,7 @@ function DatabaseRights(props) {
           toast.success(
             `Successfully edited user permissions rights for selected user.`,
             {
-              autoClose: 2000,
+              autoClose: 6000,
             }
           );
           fetchAllUserPermissions();
@@ -264,8 +261,7 @@ function DatabaseRights(props) {
       })
       .catch((err) => {
         toast.error(
-          `Falied to edit the database rights, please try again. ${err.response.data.message}`,
-          { autoClose: 2000 }
+          `Falied to edit the database rights, please try again. ${err.response.data.message}`
         );
       });
   };

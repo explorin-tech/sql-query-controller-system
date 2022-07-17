@@ -133,8 +133,7 @@ function AddDatabaseApplicationMapping(props) {
       })
       .catch((err) => {
         toast.error(
-          `Error while fetching list of all applications, please try again. ${err.response.data.message}`,
-          { autoClose: 2000 }
+          `Error while fetching list of all applications, please try again. ${err.response.data.message}`
         );
       });
   };
@@ -153,8 +152,7 @@ function AddDatabaseApplicationMapping(props) {
       })
       .catch((err) => {
         toast.error(
-          `Error while fetching list of all databases, please try again. ${err.response.data.message}`,
-          { autoClose: 2000 }
+          `Error while fetching list of all databases, please try again. ${err.response.data.message}`
         );
       });
   };
@@ -173,8 +171,7 @@ function AddDatabaseApplicationMapping(props) {
       })
       .catch((err) => {
         toast.error(
-          `Error while fetching list of all database application mappings, please try again. ${err.response.data.message}`,
-          { autoClose: 2000 }
+          `Error while fetching list of all database application mappings, please try again. ${err.response.data.message}`
         );
       });
   };
@@ -213,7 +210,7 @@ function AddDatabaseApplicationMapping(props) {
           toast.success(
             `Successfully added the new database application mapping.`,
             {
-              autoClose: 2000,
+              autoClose: 6000,
             }
           );
           fetchAllDatabaseApplicationMappings();
@@ -227,8 +224,7 @@ function AddDatabaseApplicationMapping(props) {
       })
       .catch((err) => {
         toast.error(
-          `Failed to add the new database application mapping, please try again. ${err.response.data.message}`,
-          { autoClose: 2000 }
+          `Failed to add the new database application mapping, please try again. ${err.response.data.message}`
         );
       });
   };
@@ -275,7 +271,7 @@ function AddDatabaseApplicationMapping(props) {
       .then((res) => {
         if (res.status === 200) {
           toast.success(`Successfully edited the database details.`, {
-            autoClose: 2000,
+            autoClose: 6000,
           });
           fetchAllDatabaseApplicationMappings();
           setEditModalShow(false);
@@ -288,8 +284,7 @@ function AddDatabaseApplicationMapping(props) {
       })
       .catch((err) => {
         toast.error(
-          `Failed to edit the database details, please try again. ${err.response.data.message}`,
-          { autoClose: 2000 }
+          `Failed to edit the database details, please try again. ${err.response.data.message}`
         );
       });
   };
@@ -308,7 +303,7 @@ function AddDatabaseApplicationMapping(props) {
       .then((res) => {
         if (res.status == 200) {
           toast.success(`Successfully deleted the database.`, {
-            autoClose: 2000,
+            autoClose: 6000,
           });
           fetchAllDatabaseApplicationMappings();
           setEditModalShow(false);
@@ -321,10 +316,7 @@ function AddDatabaseApplicationMapping(props) {
       })
       .catch((err) => {
         toast.error(
-          `Failed to delete the database, please try again. ${err.response.data.message}`,
-          {
-            autoClose: 2000,
-          }
+          `Failed to delete the database, please try again. ${err.response.data.message}`
         );
       });
   };

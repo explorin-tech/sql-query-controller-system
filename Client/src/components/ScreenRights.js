@@ -110,8 +110,7 @@ function ScreenRights(props) {
       })
       .catch((err) => {
         toast.error(
-          `Error while fetching user screen rights, please try again. ${err.response.data.message}`,
-          { autoClose: 2000 }
+          `Error while fetching user screen rights, please try again. ${err.response.data.message}`
         );
       });
   };
@@ -131,15 +130,14 @@ function ScreenRights(props) {
           if (res.status === 200) {
             toast.success(
               `Successfully fetched screen rights for selected user.`,
-              { autoClose: 2000 }
+              { autoClose: 5000 }
             );
             props.set_all_screen_rights_for_selected_user(res.data.data);
           }
         })
         .catch((err) => {
           toast.error(
-            `Error while fetching user screen rights, please try again. ${err.response.data.message}`,
-            { autoClose: 2000 }
+            `Error while fetching user screen rights, please try again. ${err.response.data.message}`
           );
         });
     } else {
@@ -159,10 +157,7 @@ function ScreenRights(props) {
       })
       .catch((err) => {
         toast.error(
-          `Error while fetching list of users to populate user dropdown. ${err.response.data.message}`,
-          {
-            autoClose: 2000,
-          }
+          `Error while fetching list of users to populate user dropdown. ${err.response.data.message}`
         );
       });
   };
@@ -218,7 +213,7 @@ function ScreenRights(props) {
           toast.success(
             `Successfully edited screen rights for selected user.`,
             {
-              autoClose: 2000,
+              autoClose: 6000,
             }
           );
           fetchScreenRightsForSelectedUser();

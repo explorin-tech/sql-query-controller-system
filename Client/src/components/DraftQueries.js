@@ -131,15 +131,14 @@ function DraftQueries(props) {
       .then((res) => {
         if (res.status == 200) {
           toast.success(`Successfully fetched draft queries.`, {
-            autoClose: 2000,
+            autoClose: 6000,
           });
           setFilteredData(res.data.data);
         }
       })
       .catch((err) => {
         toast.error(
-          `Error while fetching draft queries, please try again. ${err.response.data.message}`,
-          { autoClose: 2000 }
+          `Error while fetching draft queries, please try again. ${err.response.data.message}`
         );
       });
   };

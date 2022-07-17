@@ -138,15 +138,14 @@ function History(props) {
       .then((res) => {
         if (res.status == 200) {
           toast.success(`Successfully fetched history queries.`, {
-            autoClose: 2000,
+            autoClose: 6000,
           });
           setFilteredData(res.data.data);
         }
       })
       .catch((err) => {
         toast.error(
-          `Error while fetching history queries, please try again. ${err.response.data.message}`,
-          { autoClose: 2000 }
+          `Error while fetching history queries, please try again. ${err.response.data.message}`
         );
       });
   };

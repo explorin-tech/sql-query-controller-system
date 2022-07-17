@@ -71,8 +71,7 @@ function AddApplication(props) {
       })
       .catch((err) => {
         toast.error(
-          `Error while fetching list of all users, please try again. ${err}`,
-          { autoClose: 2000 }
+          `Error while fetching list of all users, please try again. ${err}`
         );
       });
   };
@@ -91,8 +90,7 @@ function AddApplication(props) {
       })
       .catch((err) => {
         toast.error(
-          `Error while fetching list of all applications, please try again. ${err}`,
-          { autoClose: 2000 }
+          `Error while fetching list of all applications, please try again. ${err}`
         );
       });
   };
@@ -174,7 +172,7 @@ function AddApplication(props) {
       .then((res) => {
         if (res.status == 200) {
           toast.success(`Successfully added an new application.`, {
-            autoClose: 2000,
+            autoClose: 6000,
           });
           fetchAllApplicationsForAnUser();
           setAddModalShow(false);
@@ -188,8 +186,7 @@ function AddApplication(props) {
       })
       .catch((err) => {
         toast.error(
-          `Failed to add an new application, please try again. ${err.response.data.message}`,
-          { autoClose: 2000 }
+          `Failed to add an new application, please try again. ${err.response.data.message}`
         );
       });
   };
@@ -225,7 +222,7 @@ function AddApplication(props) {
       )
       .then((res) => {
         toast.success(`Successfully edited the application details.`, {
-          autoClose: 2000,
+          autoClose: 6000,
         });
         if (res.status === 200) {
           fetchAllApplicationsForAnUser();
@@ -240,8 +237,7 @@ function AddApplication(props) {
       })
       .catch((err) => {
         toast.error(
-          `Failed to edit the application details, please try again. ${err.response.data.message}`,
-          { autoClose: 2000 }
+          `Failed to edit the application details, please try again. ${err.response.data.message}`
         );
       });
   };
@@ -260,7 +256,7 @@ function AddApplication(props) {
       .then((res) => {
         if (res.status == 200) {
           toast.success(`Successfully deleted the application.`, {
-            autoClose: 2000,
+            autoClose: 6000,
           });
           fetchAllApplicationsForAnUser();
           setEditModalShow(false);
@@ -274,8 +270,7 @@ function AddApplication(props) {
       })
       .catch((err) => {
         toast.error(
-          `Falied to delete the application, please try again. ${err.response.data.message}`,
-          { autoClose: 2000 }
+          `Falied to delete the application, please try again. ${err.response.data.message}`
         );
       });
   };

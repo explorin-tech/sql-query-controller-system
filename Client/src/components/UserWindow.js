@@ -146,7 +146,7 @@ function AddUser(props) {
         )
         .then((res) => {
           if (res.status === 200) {
-            toast.success(`Successfully added new user.`, { autoClose: 2000 });
+            toast.success(`Successfully added new user.`, { autoClose: 6000 });
             fetchAllUsers();
             setAddModalShow(false);
             setValues({
@@ -162,9 +162,7 @@ function AddUser(props) {
           }
         })
         .catch((err) => {
-          toast.error(`Failed to add new user. ${err.response.data.message}`, {
-            autoClose: 2000,
-          });
+          toast.error(`Failed to add new user. ${err.response.data.message}`);
         });
     }
   };
@@ -181,10 +179,7 @@ function AddUser(props) {
       })
       .catch((err) => {
         toast.error(
-          `Failed to fetch list of all users. ${err.response.data.message}`,
-          {
-            autoClose: 2000,
-          }
+          `Failed to fetch list of all users. ${err.response.data.message}`
         );
       });
   };
@@ -233,7 +228,7 @@ function AddUser(props) {
       .then((res) => {
         if (res.status === 200) {
           toast.success(`Successfully edited the user details.`, {
-            autoClose: 2000,
+            autoClose: 6000,
           });
           fetchAllUsers();
           setEditModalShow(false);
@@ -252,10 +247,7 @@ function AddUser(props) {
       })
       .catch((err) => {
         toast.error(
-          `Failed to edit user details, please try again. ${err.response.data.message}`,
-          {
-            autoClose: 2000,
-          }
+          `Failed to edit user details, please try again. ${err.response.data.message}`
         );
       });
   };
@@ -274,7 +266,7 @@ function AddUser(props) {
       .then((res) => {
         if (res.status == 200) {
           toast.success(`Successfully deleted the user.`, {
-            autoClose: 2000,
+            autoClose: 6000,
           });
           fetchAllUsers();
           setEditModalShow(false);
@@ -293,10 +285,7 @@ function AddUser(props) {
       })
       .catch((err) => {
         toast.error(
-          `Failed to delete the user, please try again. ${err.response.data.message}`,
-          {
-            autoClose: 2000,
-          }
+          `Failed to delete the user, please try again. ${err.response.data.message}`
         );
       });
   };
