@@ -54,7 +54,15 @@ module.exports.addUser = async (params) => {
 module.exports.editUser = async (params) => {
   try {
     const values = params.values;
-    const result = await pool.query(UserQuery.EDIT_USER_DETAILS, values);
+    let result;
+    if (values.length === 9) {
+      result = await pool.query(
+        UserQuery.EDIT_USER_DETAILS_WITH_NEW_PASSWORD,
+        values
+      );
+    } else {
+      result = await pool.query(UserQuery.EDIT_USER_DETAILS, values);
+    }
     return result.rows;
   } catch (err) {
     throw err;

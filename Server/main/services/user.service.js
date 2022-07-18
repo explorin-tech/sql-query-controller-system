@@ -104,16 +104,37 @@ module.exports.PUT_editUserDetails = async (
   const { decoded } = httpRequest.headers;
   const user_id = decoded.UserID;
   try {
-    const values = [
-      httpRequest.body.user.user_id,
-      httpRequest.body.user.first_name,
-      httpRequest.body.user.last_name,
-      httpRequest.body.user.email,
-      httpRequest.body.user.user_type_id,
-      user_id,
-      httpRequest.body.user.is_active,
-      httpRequest.body.user.is_active_direct_user,
-    ];
+    let values;
+    if (
+      httpRequest.body.user.password &&
+      httpRequest.body.user.password != ''
+    ) {
+      const hashedPassword = await generateHashedPassword(
+        httpRequest.body.user.password
+      );
+      values = [
+        httpRequest.body.user.user_id,
+        httpRequest.body.user.first_name,
+        httpRequest.body.user.last_name,
+        httpRequest.body.user.email,
+        httpRequest.body.user.user_type_id,
+        user_id,
+        httpRequest.body.user.is_active,
+        httpRequest.body.user.is_active_direct_user,
+        hashedPassword,
+      ];
+    } else {
+      values = [
+        httpRequest.body.user.user_id,
+        httpRequest.body.user.first_name,
+        httpRequest.body.user.last_name,
+        httpRequest.body.user.email,
+        httpRequest.body.user.user_type_id,
+        user_id,
+        httpRequest.body.user.is_active,
+        httpRequest.body.user.is_active_direct_user,
+      ];
+    }
     const params = {
       values: values,
     };

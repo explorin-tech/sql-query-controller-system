@@ -3882,3 +3882,280 @@ info: Jul-18-2022 01:32:22: 	POST: Auth validation
 info: Jul-18-2022 01:32:23: 	POST: Execute Query | user_id: 1 | query_id: 4
 info: Jul-18-2022 01:32:23: 	POST: Auth validation
 info: Jul-18-2022 01:32:23: 	GET: Query Details for given query ID | user_id: 1 | query_id: 4
+info: Jul-18-2022 01:36:16: 	POST: Auth validation
+info: Jul-18-2022 01:36:16: 	POST: Auth validation
+info: Jul-18-2022 01:36:16: 	POST: Auth validation
+info: Jul-18-2022 01:36:16: 	GET: All application screens rights | user_id: 1
+info: Jul-18-2022 01:36:16: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 01:36:16: 	GET: Query Details for given query ID | user_id: 1 | query_id: 4
+info: Jul-18-2022 02:01:52: 	POST: Auth validation
+info: Jul-18-2022 02:01:52: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:07:33: 	POST: Auth validation
+info: Jul-18-2022 02:07:33: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:07:54: 	POST: Auth validation
+info: Jul-18-2022 02:07:54: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:08:23: 	POST: Auth validation
+info: Jul-18-2022 02:08:24: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:09:31: 	POST: Auth validation
+info: Jul-18-2022 02:09:31: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:09:42: 	POST: Auth validation
+info: Jul-18-2022 02:09:42: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:09:48: 	POST: Auth validation
+info: Jul-18-2022 02:09:48: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:10:42: 	POST: Auth validation
+info: Jul-18-2022 02:10:42: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:10:49: 	POST: Auth validation
+info: Jul-18-2022 02:10:49: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:10:55: 	POST: Auth validation
+info: Jul-18-2022 02:10:55: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:11:36: 	POST: Auth validation
+info: Jul-18-2022 02:11:37: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:12:09: 	POST: Auth validation
+info: Jul-18-2022 02:12:09: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:12:44: 	POST: Auth validation
+info: Jul-18-2022 02:12:44: 	POST: Auth validation
+info: Jul-18-2022 02:12:44: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:12:44: 	GET: All application screens rights | user_id: 1
+info: Jul-18-2022 02:13:29: 	POST: Auth validation
+info: Jul-18-2022 02:13:29: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:14:02: 	POST: Auth validation
+info: Jul-18-2022 02:14:02: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:14:07: 	POST: Auth validation
+info: Jul-18-2022 02:14:07: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:14:18: 	POST: Auth validation
+info: Jul-18-2022 02:14:18: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:15:16: 	POST: Auth validation
+info: Jul-18-2022 02:15:16: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:15:33: 	POST: Auth validation
+info: Jul-18-2022 02:15:33: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:16:22: 	POST: Auth validation
+info: Jul-18-2022 02:16:22: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:16:27: 	POST: Auth validation
+info: Jul-18-2022 02:16:27: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:17:28: 	POST: Auth validation
+info: Jul-18-2022 02:17:29: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:17:33: 	POST: Auth validation
+info: Jul-18-2022 02:17:34: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:17:35: 	POST: Auth validation
+info: Jul-18-2022 02:17:35: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:17:49: 	POST: Auth validation
+info: Jul-18-2022 02:17:49: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:17:53: 	POST: Auth validation
+info: Jul-18-2022 02:17:53: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:18:45: 	POST: Auth validation
+info: Jul-18-2022 02:18:45: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:18:58: 	POST: Auth validation
+info: Jul-18-2022 02:18:59: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:19:11: 	POST: Auth validation
+info: Jul-18-2022 02:19:11: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:19:25: 	POST: Auth validation
+info: Jul-18-2022 02:19:25: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:19:37: 	POST: Auth validation
+info: Jul-18-2022 02:19:37: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:19:48: 	POST: Auth validation
+info: Jul-18-2022 02:19:48: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:20:33: 	POST: Auth validation
+info: Jul-18-2022 02:20:33: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:21:16: 	POST: Auth validation
+info: Jul-18-2022 02:21:16: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:22:27: 	POST: Auth validation
+info: Jul-18-2022 02:22:27: 	POST: Auth validation
+info: Jul-18-2022 02:22:27: 	POST: Auth validation
+info: Jul-18-2022 02:22:27: 	GET: User details | of user_id: 1
+info: Jul-18-2022 02:22:28: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:22:28: 	GET: All application screens rights | user_id: 1
+info: Jul-18-2022 02:22:37: 	POST: Auth validation
+info: Jul-18-2022 02:22:37: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:22:44: 	POST: Auth validation
+info: Jul-18-2022 02:22:44: 	GET: All application screens rights | user_id: 1
+info: Jul-18-2022 02:22:44: 	POST: Auth validation
+info: Jul-18-2022 02:22:44: 	POST: Auth validation
+info: Jul-18-2022 02:22:44: 	GET: User details | of user_id: 1
+info: Jul-18-2022 02:22:44: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:22:45: 	POST: Auth validation
+info: Jul-18-2022 02:22:45: 	POST: Auth validation
+info: Jul-18-2022 02:22:45: 	POST: Auth validation
+info: Jul-18-2022 02:22:45: 	GET: User details | of user_id: 1
+info: Jul-18-2022 02:22:45: 	GET: All users | user_id: 1
+info: Jul-18-2022 02:22:46: 	GET: All application screens rights | user_id: 1
+info: Jul-18-2022 02:23:02: 	POST: Auth validation
+info: Jul-18-2022 02:23:02: 	GET: All application screens rights | user_id: 2
+info: Jul-18-2022 02:23:02: 	POST: Auth validation
+info: Jul-18-2022 02:23:02: 	POST: Auth validation
+info: Jul-18-2022 02:23:02: 	POST: Auth validation
+info: Jul-18-2022 02:23:02: 	POST: Auth validation
+info: Jul-18-2022 02:23:02: 	GET: User details | of user_id: 2
+info: Jul-18-2022 02:23:02: 	GET: Queries awaiting for Approval | user_id: 2
+info: Jul-18-2022 02:23:02: 	GET: Recent Queries | user_id: 2
+info: Jul-18-2022 02:23:02: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-18-2022 02:23:03: 	POST: Auth validation
+info: Jul-18-2022 02:23:03: 	GET: All users | user_id: 2
+info: Jul-18-2022 02:23:39: 	POST: Auth validation
+info: Jul-18-2022 02:23:40: 	GET: All users | user_id: 2
+info: Jul-18-2022 04:23:10: 	POST: Auth validation
+info: Jul-18-2022 04:23:10: 	GET: All users | user_id: 2
+info: Jul-18-2022 04:31:30: 	POST: Auth validation
+info: Jul-18-2022 04:31:30: 	GET: All users | user_id: 2
+info: Jul-18-2022 04:31:55: 	POST: Auth validation
+info: Jul-18-2022 04:31:55: 	GET: All users | user_id: 2
+info: Jul-18-2022 04:39:02: 	POST: Auth validation
+info: Jul-18-2022 04:39:02: 	PUT: Edit User Details | by user_id: 2 | for user_id : 2
+info: Jul-18-2022 04:39:02: 	POST: Auth validation
+info: Jul-18-2022 04:39:02: 	GET: All users | user_id: 2
+error: Jul-18-2022 04:39:27: 	POST: Login | User tried to login with email (ra1app1@gmail.com) with wrong password.
+info: Jul-18-2022 04:39:32: 	POST: Auth validation
+info: Jul-18-2022 04:39:32: 	GET: All application screens rights | user_id: 2
+info: Jul-18-2022 04:39:32: 	POST: Auth validation
+info: Jul-18-2022 04:39:32: 	POST: Auth validation
+info: Jul-18-2022 04:39:32: 	POST: Auth validation
+info: Jul-18-2022 04:39:32: 	POST: Auth validation
+info: Jul-18-2022 04:39:32: 	GET: Recent Queries | user_id: 2
+info: Jul-18-2022 04:39:32: 	GET: Queries awaiting for Approval | user_id: 2
+info: Jul-18-2022 04:39:32: 	GET: User details | of user_id: 2
+info: Jul-18-2022 04:39:32: 	GET: User permissions for an user with user_id : 2 | by user_id: 2
+info: Jul-18-2022 04:39:42: 	POST: Auth validation
+info: Jul-18-2022 04:39:42: 	GET: All users | user_id: 2
+info: Jul-18-2022 04:40:06: 	POST: Auth validation
+info: Jul-18-2022 04:40:06: 	PUT: Edit User Details | by user_id: 2 | for user_id : 2
+info: Jul-18-2022 04:40:06: 	POST: Auth validation
+info: Jul-18-2022 04:40:06: 	GET: All users | user_id: 2
+error: Jul-18-2022 04:40:21: 	POST: Login | User tried to login with email (ra1app1@gmail.com) with wrong password.
+error: Jul-18-2022 04:40:24: 	POST: Login | User tried to login with email (ra1app1@gmail.com) with wrong password.
+error: Jul-18-2022 04:40:43: 	POST: Login | User tried to login with email (ra1app1@gmail.com) with wrong password.
+info: Jul-18-2022 04:48:49: 	POST: Auth validation
+info: Jul-18-2022 04:48:50: 	POST: Auth validation
+info: Jul-18-2022 04:48:50: 	POST: Auth validation
+info: Jul-18-2022 04:48:50: 	GET: All application screens rights | user_id: 1
+info: Jul-18-2022 04:48:50: 	POST: Auth validation
+info: Jul-18-2022 04:48:50: 	POST: Auth validation
+info: Jul-18-2022 04:48:50: 	GET: User details | of user_id: 1
+info: Jul-18-2022 04:48:50: 	GET: Recent Queries | user_id: 1
+info: Jul-18-2022 04:48:50: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jul-18-2022 04:48:50: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 05:06:37: 	POST: Auth validation
+info: Jul-18-2022 05:06:37: 	GET: All users | user_id: 1
+info: Jul-18-2022 15:22:37: 	POST: Auth validation
+info: Jul-18-2022 15:22:37: 	GET: All users | user_id: 1
+info: Jul-18-2022 15:24:53: 	POST: Auth validation
+info: Jul-18-2022 15:24:53: 	GET: All users | user_id: 1
+info: Jul-18-2022 15:25:23: 	POST: Auth validation
+info: Jul-18-2022 15:25:23: 	GET: All users | user_id: 1
+info: Jul-18-2022 15:25:41: 	POST: Auth validation
+info: Jul-18-2022 15:25:41: 	GET: All users | user_id: 1
+info: Jul-18-2022 15:26:55: 	POST: Auth validation
+info: Jul-18-2022 15:26:55: 	GET: All users | user_id: 1
+info: Jul-18-2022 15:27:14: 	POST: Auth validation
+info: Jul-18-2022 15:27:15: 	GET: All users | user_id: 1
+info: Jul-18-2022 15:27:48: 	POST: Auth validation
+info: Jul-18-2022 15:27:48: 	GET: All users | user_id: 1
+info: Jul-18-2022 15:29:27: 	POST: Auth validation
+info: Jul-18-2022 15:29:27: 	GET: All users | user_id: 1
+info: Jul-18-2022 15:30:10: 	POST: Auth validation
+info: Jul-18-2022 15:30:10: 	GET: All users | user_id: 1
+info: Jul-18-2022 15:30:18: 	POST: Auth validation
+info: Jul-18-2022 15:30:18: 	GET: All users | user_id: 1
+info: Jul-18-2022 15:38:26: 	POST: Auth validation
+info: Jul-18-2022 15:38:26: 	GET: All users | user_id: 1
+info: Jul-18-2022 15:38:31: 	POST: Auth validation
+info: Jul-18-2022 15:38:31: 	PUT: Edit User Details | by user_id: 1 | for user_id : 16
+info: Jul-18-2022 15:38:31: 	POST: Auth validation
+info: Jul-18-2022 15:38:31: 	GET: All users | user_id: 1
+info: Jul-18-2022 15:38:46: 	POST: Auth validation
+info: Jul-18-2022 15:38:46: 	POST: Auth validation
+info: Jul-18-2022 15:38:46: 	GET: User permissions for an user with user_id : 16 | by user_id: 16
+info: Jul-18-2022 15:38:46: 	POST: Auth validation
+info: Jul-18-2022 15:38:46: 	POST: Auth validation
+info: Jul-18-2022 15:38:46: 	POST: Auth validation
+info: Jul-18-2022 15:38:47: 	GET: Queries awaiting for Approval | user_id: 16
+info: Jul-18-2022 15:38:47: 	GET: User details | of user_id: 16
+info: Jul-18-2022 15:38:47: 	GET: Recent Queries | user_id: 16
+info: Jul-18-2022 15:38:47: 	GET: All application screens rights | user_id: 16
+info: Jul-18-2022 15:39:01: 	POST: Auth validation
+info: Jul-18-2022 15:39:02: 	GET: All application screens rights | user_id: 1
+info: Jul-18-2022 15:39:02: 	POST: Auth validation
+info: Jul-18-2022 15:39:02: 	POST: Auth validation
+info: Jul-18-2022 15:39:02: 	POST: Auth validation
+info: Jul-18-2022 15:39:02: 	POST: Auth validation
+info: Jul-18-2022 15:39:02: 	GET: Recent Queries | user_id: 1
+info: Jul-18-2022 15:39:02: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jul-18-2022 15:39:02: 	GET: User details | of user_id: 1
+info: Jul-18-2022 15:39:02: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 15:39:03: 	POST: Auth validation
+info: Jul-18-2022 15:39:03: 	GET: All users | user_id: 1
+info: Jul-18-2022 15:39:10: 	POST: Auth validation
+info: Jul-18-2022 15:39:11: 	PUT: Edit User Details | by user_id: 1 | for user_id : 1
+info: Jul-18-2022 15:39:11: 	POST: Auth validation
+info: Jul-18-2022 15:39:11: 	GET: All users | user_id: 1
+error: Jul-18-2022 15:39:25: 	POST: Login | User tried to login with email (admin2@gmail.com) with wrong password.
+info: Jul-18-2022 15:39:29: 	POST: Auth validation
+info: Jul-18-2022 15:39:29: 	POST: Auth validation
+info: Jul-18-2022 15:39:29: 	POST: Auth validation
+info: Jul-18-2022 15:39:29: 	POST: Auth validation
+info: Jul-18-2022 15:39:29: 	GET: All application screens rights | user_id: 1
+info: Jul-18-2022 15:39:29: 	POST: Auth validation
+info: Jul-18-2022 15:39:29: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jul-18-2022 15:39:29: 	GET: Recent Queries | user_id: 1
+info: Jul-18-2022 15:39:29: 	GET: User details | of user_id: 1
+info: Jul-18-2022 15:39:30: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 15:39:33: 	POST: Auth validation
+info: Jul-18-2022 15:39:33: 	POST: Auth validation
+info: Jul-18-2022 15:39:33: 	GET: All users | user_id: 1
+info: Jul-18-2022 15:39:33: 	GET: All application screens rights | user_id: 1
+info: Jul-18-2022 15:39:35: 	POST: Auth validation
+info: Jul-18-2022 15:39:36: 	GET: All application screens rights | user_id: 16
+info: Jul-18-2022 15:39:40: 	POST: Auth validation
+info: Jul-18-2022 15:39:40: 	PUT: Screens rights mapping for an user with user_id: 16 | by user_id: 1
+info: Jul-18-2022 15:39:40: 	POST: Auth validation
+info: Jul-18-2022 15:39:41: 	GET: All application screens rights | user_id: 16
+info: Jul-18-2022 15:39:56: 	POST: Auth validation
+info: Jul-18-2022 15:39:57: 	GET: All application screens rights | user_id: 16
+info: Jul-18-2022 15:39:57: 	POST: Auth validation
+info: Jul-18-2022 15:39:57: 	POST: Auth validation
+info: Jul-18-2022 15:39:57: 	POST: Auth validation
+info: Jul-18-2022 15:39:57: 	POST: Auth validation
+info: Jul-18-2022 15:39:57: 	GET: User details | of user_id: 16
+info: Jul-18-2022 15:39:57: 	GET: Queries awaiting for Approval | user_id: 16
+info: Jul-18-2022 15:39:57: 	GET: Recent Queries | user_id: 16
+info: Jul-18-2022 15:39:57: 	GET: User permissions for an user with user_id : 16 | by user_id: 16
+info: Jul-18-2022 15:39:58: 	POST: Auth validation
+info: Jul-18-2022 15:39:58: 	GET: All users | user_id: 16
+info: Jul-18-2022 15:40:15: 	POST: Auth validation
+info: Jul-18-2022 15:40:15: 	PUT: Edit User Details | by user_id: 16 | for user_id : 16
+info: Jul-18-2022 15:40:15: 	POST: Auth validation
+info: Jul-18-2022 15:40:15: 	GET: All users | user_id: 16
+info: Jul-18-2022 15:40:29: 	POST: Auth validation
+info: Jul-18-2022 15:40:29: 	PUT: Edit User Details | by user_id: 16 | for user_id : 1
+info: Jul-18-2022 15:40:29: 	POST: Auth validation
+info: Jul-18-2022 15:40:29: 	GET: All users | user_id: 16
+info: Jul-18-2022 15:40:46: 	POST: Auth validation
+info: Jul-18-2022 15:40:46: 	POST: Auth validation
+info: Jul-18-2022 15:40:46: 	POST: Auth validation
+info: Jul-18-2022 15:40:46: 	GET: All application screens rights | user_id: 16
+info: Jul-18-2022 15:40:46: 	POST: Auth validation
+info: Jul-18-2022 15:40:46: 	POST: Auth validation
+info: Jul-18-2022 15:40:46: 	GET: Recent Queries | user_id: 16
+info: Jul-18-2022 15:40:46: 	GET: User details | of user_id: 16
+info: Jul-18-2022 15:40:47: 	GET: Queries awaiting for Approval | user_id: 16
+info: Jul-18-2022 15:40:47: 	GET: User permissions for an user with user_id : 16 | by user_id: 16
+info: Jul-18-2022 15:40:58: 	POST: Auth validation
+info: Jul-18-2022 15:40:58: 	POST: Auth validation
+info: Jul-18-2022 15:40:58: 	GET: All application screens rights | user_id: 1
+info: Jul-18-2022 15:40:58: 	POST: Auth validation
+info: Jul-18-2022 15:40:58: 	POST: Auth validation
+info: Jul-18-2022 15:40:58: 	POST: Auth validation
+info: Jul-18-2022 15:40:58: 	GET: Queries awaiting for Approval | user_id: 1
+info: Jul-18-2022 15:40:58: 	GET: Recent Queries | user_id: 1
+info: Jul-18-2022 15:40:58: 	GET: User details | of user_id: 1
+info: Jul-18-2022 15:40:58: 	GET: User permissions for an user with user_id : 1 | by user_id: 1
+info: Jul-18-2022 15:40:59: 	POST: Auth validation
+info: Jul-18-2022 15:40:59: 	GET: All users | user_id: 1
+info: Jul-18-2022 15:41:36: 	POST: Auth validation
+info: Jul-18-2022 15:41:36: 	PUT: Edit User Details | by user_id: 1 | for user_id : 17
+info: Jul-18-2022 15:41:36: 	POST: Auth validation
+info: Jul-18-2022 15:41:36: 	GET: All users | user_id: 1
+info: Jul-18-2022 15:41:47: 	POST: Auth validation
+info: Jul-18-2022 15:41:47: 	PUT: Edit User Details | by user_id: 1 | for user_id : 2
+info: Jul-18-2022 15:41:47: 	POST: Auth validation
+info: Jul-18-2022 15:41:47: 	GET: All users | user_id: 1
+info: Jul-18-2022 15:42:03: 	POST: Auth validation
+info: Jul-18-2022 15:42:03: 	GET: All users | user_id: 1

@@ -112,7 +112,7 @@ function AddUser(props) {
     userType: CONSTANTS.USER_TYPES.DEV,
     isActive: 'true',
     isActiveDirectUser: 'true',
-    selectedUser: JSON.stringify(props.users.selected_user),
+    selectedUser: null,
     userID: '',
     userTypeID: '',
   });
@@ -158,6 +158,7 @@ function AddUser(props) {
               isActive: 'true',
               isActiveDirectUser: 'true',
               userTypeID: '',
+              selectedUser: null,
             });
           }
         })
@@ -194,31 +195,46 @@ function AddUser(props) {
       firstName: user['U_FirstName'],
       lastName: user['U_LastName'],
       email: user['U_Email'],
-      password: user['U_Password'],
+      password: '',
       userType: user['UT_Name'],
       userTypeID: user['U_UT_ID'],
       isActive: user['U_IsActive'],
       isActiveDirectUser: user['U_IsActDrtUser'],
+      selectedUser: user,
     });
     setEditModalShow(true);
   };
 
   const handleEditUser = (e) => {
     e.preventDefault();
+    let new_user_object;
+    if (values.password.trim() != '') {
+      new_user_object = {
+        user_id: values.userID,
+        first_name: values.firstName.trim(),
+        last_name: values.lastName.trim(),
+        email: values.email.toLowerCase().trim(),
+        user_type_id: CONSTANTS.USER_TYPE_ID_MAPPING[values.userType],
+        is_active: values.isActive,
+        is_active_direct_user: values.isActiveDirectUser,
+        password: values.password.trim(),
+      };
+    } else {
+      new_user_object = {
+        user_id: values.userID,
+        first_name: values.firstName.trim(),
+        last_name: values.lastName.trim(),
+        email: values.email.toLowerCase().trim(),
+        user_type_id: CONSTANTS.USER_TYPE_ID_MAPPING[values.userType],
+        is_active: values.isActive,
+        is_active_direct_user: values.isActiveDirectUser,
+      };
+    }
+
     axios
       .put(
         BACKEND_URLS.EDIT_USER_DETAILS,
-        {
-          user: {
-            user_id: values.userID,
-            first_name: values.firstName.trim(),
-            last_name: values.lastName.trim(),
-            email: values.email.toLowerCase().trim(),
-            user_type_id: CONSTANTS.USER_TYPE_ID_MAPPING[values.userType],
-            is_active: values.isActive,
-            is_active_direct_user: values.isActiveDirectUser,
-          },
-        },
+        { user: new_user_object },
         {
           headers: {
             token: localStorage.getItem('token'),
@@ -242,6 +258,7 @@ function AddUser(props) {
             isActive: 'true',
             isActiveDirectUser: 'true',
             userTypeID: '',
+            selectedUser: null,
           });
         }
       })
@@ -280,6 +297,7 @@ function AddUser(props) {
             isActiveDirectUser: 'true',
             isActive: 'true',
             userTypeID: '',
+            selectedUser: null,
           });
         }
       })
@@ -295,7 +313,7 @@ function AddUser(props) {
 
   useEffect(() => {
     if (values.selectedUser && values.selectedUser != '') {
-      props.set_selected_user(JSON.parse(values.selectedUser));
+      props.set_selected_user(values.selectedUser);
     } else {
       props.set_selected_user(null);
     }
@@ -506,6 +524,25 @@ function AddUser(props) {
                       <br />
                     </td>
                   </tr>
+                  {props.db_user.user && props.users.selected_user ? (
+                    <tr>
+                      <td>
+                        <span>Password</span>
+                        <input
+                          type="text"
+                          value={values.password}
+                          onChange={handleChange('password')}
+                          disabled={
+                            props.db_user.user['UT_ID'] != 1 &&
+                            props.users.selected_user['U_ID'] !==
+                              props.db_user.user['U_ID']
+                          }
+                        />
+                        <br />
+                        <br />
+                      </td>
+                    </tr>
+                  ) : null}
                 </tbody>
               </table>
               <button
@@ -566,6 +603,7 @@ function AddUser(props) {
                     isActiveDirectUser: 'true',
                     isActive: 'true',
                     userTypeID: '',
+                    selectedUser: null,
                   });
                 }}
                 disabled={

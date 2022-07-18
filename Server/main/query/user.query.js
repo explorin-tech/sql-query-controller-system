@@ -9,5 +9,7 @@ module.exports = Object.freeze({
   ADD_NEW_USER: `INSERT INTO "User"("U_FirstName", "U_LastName", "U_Email", "U_Password", "U_UT_ID", "U_AddedOn", "U_AddedBy", "U_UpdatedOn", "U_UpdatedBy", "U_IsActive", "U_IsActDrtUser") VALUES($1, $2, $3, $4, $5, NOW(), $6, NOW() ,$7, $8 ,$9);`,
   EDIT_USER_DETAILS:
     'UPDATE "User" SET "U_FirstName" = $2 , "U_LastName" = $3 , "U_Email" = $4, "U_UT_ID" = $5, "U_UpdatedOn" = NOW(), "U_UpdatedBy" = $6, "U_IsActive" = $7, "U_IsActDrtUser" = $8 WHERE "User"."U_ID" = $1;',
+  EDIT_USER_DETAILS_WITH_NEW_PASSWORD:
+    'UPDATE "User" SET "U_FirstName" = $2 , "U_LastName" = $3 , "U_Email" = $4, "U_UT_ID" = $5, "U_UpdatedOn" = NOW(), "U_UpdatedBy" = $6, "U_IsActive" = $7, "U_IsActDrtUser" = $8, "U_Password" = $9 WHERE "User"."U_ID" = $1;',
   DELETE_USER: 'DELETE FROM "User" WHERE "User"."U_ID" = $1;',
 });
